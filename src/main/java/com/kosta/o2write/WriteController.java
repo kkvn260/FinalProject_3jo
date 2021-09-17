@@ -1,5 +1,8 @@
 package com.kosta.o2write;
 
-public class WriteController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class WriteController {
+	
 }
