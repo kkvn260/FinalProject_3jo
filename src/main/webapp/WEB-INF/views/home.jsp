@@ -7,6 +7,7 @@
 <body>
 <h1>
 	Hello world!  
+	commit test!
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
