@@ -1,4 +1,4 @@
-package com.kosta.O2O2;
+package com.kosta.o2write;
 
 public class WriteController {
 
