@@ -4,7 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.kosta.o2dao.O2DAO">
   <insert id="writeinsert" parameterType="com.kosta.o2dao.O2DAO">
-  	insert into TradeBoard_3jo
+  	insert into TradeBoard_3jo(user_id,title,content
+  								,category,like,writedate
+  								,file_name,deal,deal_price
+  								,map_x,map_y,tradeaddr
+  								,viewno)
+  	values('kim',${title},${content},'test',0,sysdate()
+  			,'test',0,0
+  			,${map_x},${map_y},'서울 구로구'
+  			,0)
   
   </insert>
   
