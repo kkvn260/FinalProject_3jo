@@ -1,10 +1,13 @@
 package com.kosta.o2write;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.o2dto.O2DTO;
@@ -22,27 +25,19 @@ public class WriteController {
 		return "writeboard/twrite";
 	}
 	@RequestMapping("/twriteresult")
-	public String twriteresult(O2DTO dto,HttpServletRequest request,Model model) {
-		service.writeinsert(dto);
+	public String twriteresult(O2DTO dto,Model model) {
+		service.twriteinsert(dto);
 
-		String x=request.getParameter("x");
-		String y=request.getParameter("y");
-		
-		model.addAttribute("x",x);
-		model.addAttribute("y",y);
-		return "writeboard/writedetail";
+		return "home";//판매게시판으로
 	}
 		
-	@RequestMapping("/twritedetail")
-	public String twritedetail(HttpServletRequest request,Model model) {
-//		service.writedetail();
+	@RequestMapping("/twritedetail/{no}")
+	public String twritedetail(HttpServletRequest request,Model model,@PathVariable int no) {
+		List<O2DTO> list= service.twritedetail(no);
+		
+		model.addAttribute("list",list);
 		
 		
-		String x=request.getParameter("x");
-		String y=request.getParameter("y");
-		
-		model.addAttribute("x",x);
-		model.addAttribute("y",y);
 		return "writeboard/writedetail";
 	}
 }

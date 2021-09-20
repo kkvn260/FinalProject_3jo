@@ -1,5 +1,7 @@
 package com.kosta.o2service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -13,9 +15,15 @@ public class O2ServiceImple implements O2Service {
 	private O2DAO dao;
 
 	@Override
-	public void writeinsert(O2DTO dto) {
+	public void twriteinsert(O2DTO dto) {
 		// TODO Auto-generated method stub
-		dao.writeinsert(dto);
+		dao.twriteinsert(dto);
+	}
+
+	@Override
+	public List<O2DTO> twritedetail(int no) {
+		
+		return dao.twritedetail(no);
 	}
 	
 	
