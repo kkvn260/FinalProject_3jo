@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kosta.o2dto.O2DTO;
+import com.kosta.o2dto.O2QnaBoardDTO;
 
 @Mapper
 public interface O2DAO {

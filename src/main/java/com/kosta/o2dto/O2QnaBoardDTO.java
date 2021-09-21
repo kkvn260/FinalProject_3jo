@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Setter @Getter
 @NoArgsConstructor
-public class O2WriteBoardDTO {
+public class O2QnaBoardDTO {
 	
 	private int qnano;
 	private String user_id;

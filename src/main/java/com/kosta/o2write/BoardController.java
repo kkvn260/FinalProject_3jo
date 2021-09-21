@@ -1,6 +1,14 @@
 package com.kosta.o2write;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2service.O2Service;
 
 @Controller
 public class BoardController {
