@@ -15,7 +15,9 @@
   			,0)
   </insert>
   
+
   <select id="getlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
+
     select qnano,
            user_id,
            content,
