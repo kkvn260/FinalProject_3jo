@@ -10,4 +10,7 @@ public interface O2Service {
 
 	List<O2DTO> twritedetail(int no);
 	
+	public List<O2QnaBoardDTO> qnalist();
+	
+	
 }

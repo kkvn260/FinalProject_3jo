@@ -26,5 +26,10 @@ public class O2ServiceImple implements O2Service {
 		return dao.twritedetail(no);
 	}
 	
+	@Override
+	public List<O2QnaBoardDTO> qnalist(){
+		return dao.getlist();
+	}
+	
 	
 }

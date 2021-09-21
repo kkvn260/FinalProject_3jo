@@ -12,5 +12,7 @@ public interface O2DAO {
 	void twriteinsert(O2DTO dto);
 
 	List<O2DTO> twritedetail(int no);
+	
+	public List<O2QnaBoardDTO> getlist();
 
 }

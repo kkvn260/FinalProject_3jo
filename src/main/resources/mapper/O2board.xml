@@ -15,4 +15,13 @@
   			,0)
   </insert>
   
+  <select id="getlist" resultType="com.kosta.dto.O2QnaBoardDTO">
+    select qnano,
+           user_id,
+           content,
+           category,
+           writedate
+           from QABoard_3jo;
+  </select>
+  
   </mapper>
