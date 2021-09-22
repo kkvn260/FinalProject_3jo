@@ -17,8 +17,8 @@
   </insert>
   
     <select id="getlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
-     select qnano
-           ,user_id
+     select 
+            user_id
            ,title
            ,category
            ,writedate
@@ -26,6 +26,7 @@
   </select>
   
   <insert id="qnainsert" parameterType="com.kosta.o2dto.O2QnaBoardDTO">
-     insert into QABoard_3jo(qnano,user_id,title,content,category)
+     insert into QABoard_3jo(user_id,title,content,category,writedate)
+     values(#{user_id},#{title},#{content},#{category})
   </insert>
   </mapper>
