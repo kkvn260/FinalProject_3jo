@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.o2dto.O2DTO;
+import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2Service;
 
 @Controller
@@ -25,7 +26,7 @@ public class WriteController {
 		return "writeboard/twrite";
 	}
 	@RequestMapping("/twriteresult")
-	public String twriteresult(O2DTO dto,Model model) {
+	public String twriteresult(O2WriteBoardDTO dto,Model model) {
 		service.twriteinsert(dto);
 
 		return "home";//판매게시판으로
@@ -33,7 +34,7 @@ public class WriteController {
 		
 	@RequestMapping("/twritedetail/{no}")
 	public String twritedetail(HttpServletRequest request,Model model,@PathVariable int no) {
-		List<O2DTO> list= service.twritedetail(no);
+		List<O2WriteBoardDTO> list= service.twritedetail(no);
 		
 		model.addAttribute("list",list);
 		

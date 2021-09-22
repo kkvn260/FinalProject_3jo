@@ -21,7 +21,7 @@
 		<input type="text" id="title" value="" readonly>
 	</li>
 	<li>
-		<input type="text" id="price" value="" readonly>
+		<input type="text" id="sell_price" value="" readonly>
 	</li>
 	<li>
 		<textarea rows="30" cols="100" readonly></textarea>

@@ -12,19 +12,19 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <body>
-<form method="post" action="twritedetail"> <!-- detail로 이동 -->
+<form method="post" action="twriteresult"> <!-- detail로 이동 -->
 <ul>
 	<li>
-		<select id="category">
-			<option value="category1">카테고리1</option>
-			<option value="category2">카테고리2</option>
+		<select name="category">
+			<option value="category1" >카테고리1</option>
+			<option value="category2" >카테고리2</option>
 		</select>
 	</li>
 	<li>
 		<input type="text" id="title" name="title" placeholder="제목">
 	</li>
 	<li>
-		<input type="text" id="price" name="price" placeholder="판매 희망 가격">
+		<input type="text" id="sell_price" name="sell_price" placeholder="판매 희망 가격">
 	</li>
 	<li>
 		<textarea rows="30" cols="100" name="content" id="content"></textarea>
@@ -37,8 +37,8 @@
 	<li>
 		<input type="submit" value="등록">
 		<input type="reset" value="초기화">
-		<input type="text" name="x" id="x" hidden="">
-		<input type="text" name="y" id="y" hidden="">
+		<input type="text" name="x" hidden="">
+		<input type="text" name="y" hidden="">
 	</li>
 </ul>
 		

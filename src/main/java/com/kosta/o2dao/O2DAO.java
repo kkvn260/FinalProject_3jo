@@ -6,13 +6,14 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.kosta.o2dto.O2DTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Mapper
 public interface O2DAO {
 
-	void twriteinsert(O2DTO dto);
+	void twriteinsert(O2WriteBoardDTO dto);
 
-	List<O2DTO> twritedetail(int no);
+	List<O2WriteBoardDTO> twritedetail(int no); 
 	
 	public List<O2QnaBoardDTO> getlist();
 
