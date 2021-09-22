@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.kosta.o2dao.O2DAO">
+
   <insert id="twriteinsert" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
   	insert into TradeBoard_3jo(user_id,title,content
   								,category,like,writedate
@@ -15,13 +16,5 @@
   			,0,${sell_price})
   </insert>
   
-  <select id="getlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
-    select qnano,
-           user_id,
-           content,
-           category,
-           writedate
-           from QABoard_3jo;
-  </select>
   
   </mapper>

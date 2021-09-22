@@ -1,4 +1,4 @@
-package com.kosta.o2service;
+package com.kosta.o2writeservice;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Service
-public class O2ServiceImple implements O2Service {
+public class O2WriteServiceImple implements O2WriteService {
 	@Resource(name = "o2DAO")
 	private O2DAO dao;
 
