@@ -8,6 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/writeboard.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
@@ -32,17 +33,19 @@
 	</li>
 	<li>
 		<label>경매기능 사용여부</label>
-		<input type="checkbox">
+		<input type="checkbox" id="deal">
+		<input type="text" id="deal_price" name="deal_price" placeholder="경매 시작 가격" hidden="">
 	</li>
 	<li>
 		<input type="submit" value="등록">
 		<input type="reset" value="초기화">
-		<input type="text" name="map_x" id="x" >
-		<input type="text" name="map_y" id="y" >
+		<input type="text" name="map_x" id="x" hidden="">
+		<input type="text" name="map_y" id="y" hidden="">
 	</li>
 </ul>
 </form>
 
+<script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
 		var mapOptions = {
 			center : new naver.maps.LatLng(37.5088702, 126.8395384),
