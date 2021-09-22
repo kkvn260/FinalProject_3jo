@@ -19,6 +19,6 @@ public interface O2DAO {
 
 	public int qnainsert(O2QnaBoardDTO dto);
 	
-
-
+	
+	
 }

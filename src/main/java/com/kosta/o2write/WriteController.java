@@ -1,6 +1,6 @@
 package com.kosta.o2write;
 
-import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.o2dto.O2WriteBoardDTO;
-import com.kosta.o2service.O2Service;
 import com.kosta.o2writeservice.O2WriteService;
 
 @Controller
@@ -25,16 +24,18 @@ public class WriteController {
 		
 		return "writeboard/twrite";
 	}
-	
+	//twriteresult
 	@RequestMapping("/twriteresult")
 	public String twriteresult(O2WriteBoardDTO dto,HttpServletRequest request,Model model) {
-
-		String x=request.getParameter("x");
-		String y=request.getParameter("y");
+		service.twriteinsert(dto);
+		
+		String x=request.getParameter("map_x");
+		String y=request.getParameter("map_y");
 		
 		model.addAttribute("x",x);
 		model.addAttribute("y",y);
-		return "writeboard/writedetail";
+		
+		return "home";
 	}
 		
 

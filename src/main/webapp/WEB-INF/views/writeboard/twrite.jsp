@@ -37,12 +37,12 @@
 	<li>
 		<input type="submit" value="등록">
 		<input type="reset" value="초기화">
-		<input type="text" name="x" hidden="">
-		<input type="text" name="y" hidden="">
+		<input type="text" name="map_x" id="x" >
+		<input type="text" name="map_y" id="y" >
 	</li>
 </ul>
-		
 </form>
+
 <script>
 		var mapOptions = {
 			center : new naver.maps.LatLng(37.5088702, 126.8395384),

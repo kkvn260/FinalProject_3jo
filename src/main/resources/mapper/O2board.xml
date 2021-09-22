@@ -6,14 +6,12 @@
 
   <insert id="twriteinsert" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
   	insert into TradeBoard_3jo(user_id,title,content
-  								,category,like,writedate
-  								,file_name,deal,deal_price
-  								,map_x,map_y,tradeaddr
-  								,viewno,sell_price)
-  	values('kim',${title},${content},${category},0,sysdate()
-  			,'test',0,0
-  			,${x},${y},'서울 구로구'
-  			,0,${sell_price})
+  								,category,writedate
+  								,file_name,map_x,map_y
+  								,tradeaddr,sell_price)
+  	values('test','${title}','${content}','${category}',sysdate()
+  			,'test1','${map_x}','${map_y}'
+  			,'서울 구로구',${sell_price})
   </insert>
   
     <select id="getlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">

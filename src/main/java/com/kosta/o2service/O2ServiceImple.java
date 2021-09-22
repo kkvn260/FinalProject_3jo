@@ -21,7 +21,7 @@ public class O2ServiceImple implements O2Service {
 	}
 
 	@Override
-	public List<O2WriteBoardDTO> twritedetail(int no) {
+	public O2WriteBoardDTO twritedetail(int no) {
 		
 		return dao.twritedetail(no);
 	}

@@ -12,7 +12,7 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <body>
-<form method="post" action="twritedetail"> <!-- detail로 이동 -->
+
 <ul>
 	<li>
 		<input type="text" id="detailcategory" value="카테고리받아오기" readonly>
@@ -33,9 +33,7 @@
 		<input type="text" name="x" id="x" hidden="">
 		<input type="text" name="y" id="y" hidden="">
 	</li>
-</ul>
-		
-</form>
+</ul>	
 	<script>
 var mapOptions = {
 		center : new naver.maps.LatLng(${x},${y}),
