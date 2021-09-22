@@ -20,9 +20,12 @@
      select qnano
            ,user_id
            ,title
-           ,content
            ,category
            ,writedate
      from QABoard_3jo
   </select>
+  
+  <insert id="qnainsert" parameterType="com.kosta.o2dto.O2QnaBoardDTO">
+     insert into QABoard_3jo(qnano,user_id,title,content,category)
+  </insert>
   </mapper>

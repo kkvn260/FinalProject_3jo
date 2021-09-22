@@ -21,6 +21,16 @@ public class O2ServiceImpleOther implements O2ServiceOther {
 		return dao.getlist();
 	
 	}
+
+
+	@Override
+	public int qnainsert(O2QnaBoardDTO dto) {
+		// TODO Auto-generated method stub
+		
+		int result=dao.qnainsert(dto);
+		
+		return result;
+	}
 	
 	
 }

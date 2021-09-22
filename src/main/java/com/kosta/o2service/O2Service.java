@@ -11,7 +11,5 @@ public interface O2Service {
 	void twriteinsert(O2WriteBoardDTO dto);
 
 	List<O2WriteBoardDTO> twritedetail(int no);
-	
-	public List<O2QnaBoardDTO> qnalist();
 
 }

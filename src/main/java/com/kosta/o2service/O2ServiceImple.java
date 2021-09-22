@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2DAO;
-import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Service
@@ -26,12 +25,7 @@ public class O2ServiceImple implements O2Service {
 		
 		return dao.twritedetail(no);
 	}
-	
-	@Override
-	public List<O2QnaBoardDTO> qnalist(){
-		return dao.getlist();
 
-	}
 	
 	
 }
