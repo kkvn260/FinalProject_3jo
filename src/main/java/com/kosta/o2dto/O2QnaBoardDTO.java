@@ -10,6 +10,7 @@ public class O2QnaBoardDTO {
 	
 	private int qnano;
 	private String user_id;
+	private String title;
 	private String content;
 	private String category;
 	private String writedate;
