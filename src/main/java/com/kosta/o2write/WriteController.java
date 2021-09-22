@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2Service;
+import com.kosta.o2writeservice.O2WriteService;
 
 @Controller
 public class WriteController {
 	@Autowired
-	private O2Service service;
+	private O2WriteService service;
 	
 	@RequestMapping("/write")
 	public String twrite() {
@@ -39,8 +40,8 @@ public class WriteController {
 
 	@RequestMapping("/twritedetail/{no}")
 	public String twritedetail(HttpServletRequest request,Model model,@PathVariable int no) {
-		List<O2WriteBoardDTO> list= service.twritedetail(no);
 		
+		O2WriteBoardDTO list= service.twritedetail(no);
 		model.addAttribute("list",list);
 
 		return "writeboard/writedetail";
