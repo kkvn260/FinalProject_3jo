@@ -16,6 +16,7 @@ public interface O2DAO {
 	List<O2WriteBoardDTO> twritedetail(int no); 
 	
 	public List<O2QnaBoardDTO> getlist();
+	
 
 
 }

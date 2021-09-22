@@ -18,7 +18,7 @@ import com.kosta.o2service.O2Service;
 @Controller
 public class BoardController {
 	@Autowired
-	O2Service service;
+	private O2Service service;
 	
 
 	@RequestMapping("/main")
@@ -35,13 +35,13 @@ public class BoardController {
 		return "list";
 	}
 
-	
 	@RequestMapping("/qnalist")
 	public String list(Model model) {
 		List<O2QnaBoardDTO> list= service.qnalist();
 		model.addAttribute("list",list);
 		
 		return "writeboard/qnalist";
+
 
 	}
 }
