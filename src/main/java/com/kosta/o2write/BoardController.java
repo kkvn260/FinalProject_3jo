@@ -46,14 +46,4 @@ public class BoardController {
 		return "writeboard/qnalist";
 	}
 	
-	@RequestMapping("/qnainsert")
-	public String qnainsertform() {
-		return "writeboard/qnainsertform";
-		}
-	
-	@RequestMapping("/qnainsertresult")
-	public String qnainsertresult(O2QnaBoardDTO dto) {
-		int result=service2.qnainsert(dto);
-		return "redirect:/qnainsert";
-	}
 }

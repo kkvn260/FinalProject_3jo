@@ -18,10 +18,10 @@
 
 		<nav class="menu">
 		<ul>
-			<li><a href="mainpage">전체</a></li>
-			<li><a href="">판매</a></li>
-			<li><a href="">동네 커뮤니티</a></li>
-			<li><a href="">Q & A</a></li>
+			<li><a href="mainpage">전체</a>
+			<a href="">판매</a>
+			<a href="">동네 커뮤니티</a>
+			<a href="">Q&A</a></li>
 		</ul>
 		</nav>
 
