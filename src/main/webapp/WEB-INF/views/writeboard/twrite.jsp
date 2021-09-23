@@ -32,6 +32,9 @@
 		<p id="map" style="width: 500px; height: 400px;"></p>
 	</li>
 	<li>
+		<input type="">
+	</li>
+	<li>
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
 		<input type="text" id="deal_price" name="deal_price" placeholder="경매 시작 가격" hidden="">
@@ -99,19 +102,6 @@
 	        menuLayer.hide();
 	    });
 
-	    naver.maps.Event.addListener(map, 'rightclick', function(e) {
-	        var coordHtml =
-	            'Coord: '+ '(우 클릭 지점 위/경도 좌표)' + '<br />' +
-	            'Point: ' + e.point + '<br />' +
-	            'Offset: ' + e.offset;
-
-	        menuLayer.show().css({
-	            left: e.offset.x,
-	            top: e.offset.y
-	        }).html(coordHtml);
-
-	        console.log('Coord: ' + e.coord.toString());
-	    });
 	</script>
 </body>
 </html>
