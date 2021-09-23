@@ -10,7 +10,7 @@ public class MainController {
 
 
 	@RequestMapping("/mainpage")
-	public String list() {
+	public String main() {
 
 		
 		return "include/main";
