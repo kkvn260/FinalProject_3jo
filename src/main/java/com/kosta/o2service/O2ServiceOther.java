@@ -8,6 +8,4 @@ public interface O2ServiceOther {
 	
 	public List<O2QnaBoardDTO> qnalist();
 	
-	int qnainsert(O2QnaBoardDTO dto);
-	
 }
