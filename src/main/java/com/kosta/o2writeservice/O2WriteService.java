@@ -7,9 +7,9 @@ import com.kosta.o2dto.O2WriteBoardDTO;
 
 public interface O2WriteService {
 
-	void twriteinsert(O2WriteBoardDTO dto);
+	public void twriteinsert(O2WriteBoardDTO dto);
 
-	O2WriteBoardDTO twritedetail(int no);
+	public O2WriteBoardDTO twritedetail(int no);
 	
 	public List<O2QnaBoardDTO> qnalist();
 }

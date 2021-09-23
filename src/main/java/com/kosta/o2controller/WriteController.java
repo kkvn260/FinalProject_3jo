@@ -15,6 +15,7 @@ import com.kosta.o2writeservice.O2WriteService;
 
 @Controller
 public class WriteController {
+	
 	@Autowired
 	private O2WriteService service;
 	
