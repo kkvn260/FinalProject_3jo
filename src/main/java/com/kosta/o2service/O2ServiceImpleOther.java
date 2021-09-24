@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2DAO;
-import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Service
@@ -17,9 +16,9 @@ public class O2ServiceImpleOther implements O2ServiceOther {
 
 
 	@Override
-	public List<O2WriteBoardDTO> toplike() {
+	public List<O2WriteBoardDTO> topview() {
 		// TODO Auto-generated method stub
-		return dao.toplikelist();
+		return dao.topviewlist();
 	}
 	
 	

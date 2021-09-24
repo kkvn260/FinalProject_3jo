@@ -12,22 +12,34 @@
 
 <%@ include file="header.jsp" %>
 <section id="content" >
-<div id="like" style="float:left; margin-right:200px;">
-	<br>
-		<h4>좋아요 TOP5 미리보기</h4>
+ <div id="like" style="float:left; margin-right:200px;">
+	<h3>인기글 TOP10 미리보기</h3>
 		<div id="preview">
-			<table>
-				
+		   <table>
+			  <thead>
+			    <tr><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th><th>좋아요</th></tr>
+			  </thead>
+			  <tbody>
+			      <c:forEach var="item" items="${list}">
+						<tr><td><c:out value="${item.title }"></c:out>
+							<td><c:out value="${item.user_id }"></c:out></td>
+							<td><c:out value="${item.writedate}"></c:out></td>
+							<td><c:out value="${item.viewno }"></c:out></td>
+							<td><c:out value="${item.likeno }"></c:out></td></tr>
+				   </c:forEach>
+			   </tbody>
 			</table>
 		</div>
-	</div>
-     <iframe
-      width="350"
-      height="430"
-      src="https://console.dialogflow.com/api-client/demo/embedded/a20bbc1d-bc2d-42d1-9423-d5df37b93a4a">
-     </iframe>
-      
+ </div>
+ <h3>챗봇</h3>
+ <div id="cb"></div>
+       <iframe
+          width="350"
+          height="430"
+          src="https://console.dialogflow.com/api-client/demo/embedded/a20bbc1d-bc2d-42d1-9423-d5df37b93a4a">
+       </iframe>
 </section>
+
 <%@ include file="footer.jsp" %>
 </body>
 </html>
