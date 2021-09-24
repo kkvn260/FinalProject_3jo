@@ -13,7 +13,7 @@ public class O2WriteBoardDTO {
 	private String content;
 	private String category;
 	private int sell_price;
-	private int like;
+	private int likeno;
 	private String writedate;
 	private String file_name;
 	private int deal;

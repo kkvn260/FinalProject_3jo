@@ -20,10 +20,10 @@ public class MainController {
 	
 	@RequestMapping("/mainpage")
 	public String main(Model model) {
-		/*
+
 		  List<O2WriteBoardDTO> list=service.toplike();
 			 model.addAttribute("list", list);
-		*/
+		
 		return "include/main";
 	}
 }
