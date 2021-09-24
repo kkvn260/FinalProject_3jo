@@ -15,11 +15,17 @@
   </insert>
   
     <select id="getlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
-     select 
-            qnano
+     select qnano
            ,user_id
            ,title
            ,writedate
      from QABoard_3jo
+  </select>
+  
+  <select id="toplikelist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+     select like
+	        ,file_name        	      
+	   from TradeBoard_3jo                   	     
+	   order by like desc limit 5
   </select>
   </mapper>
