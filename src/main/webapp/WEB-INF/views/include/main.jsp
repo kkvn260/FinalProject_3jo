@@ -17,15 +17,15 @@
 		<div id="preview">
 		   <table>
 			  <thead>
-			    <tr><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th><th>좋아요</th></tr>
+			    <tr><th>제목</th><th>좋아요</th><th>조회수</th><th>작성자</th><th>작성일</th></tr>
 			  </thead>
 			  <tbody>
 			      <c:forEach var="item" items="${list}">
-						<tr><td><c:out value="${item.title }"></c:out>
+						<tr><td><a href=""><c:out value="${item.title }"></c:out></a>
+							<td><c:out value="${item.likeno }"></c:out></td>
+							<td><c:out value="${item.viewno }"></c:out></td>
 							<td><c:out value="${item.user_id }"></c:out></td>
 							<td><c:out value="${item.writedate}"></c:out></td>
-							<td><c:out value="${item.viewno }"></c:out></td>
-							<td><c:out value="${item.likeno }"></c:out></td></tr>
 				   </c:forEach>
 			   </tbody>
 			</table>
