@@ -10,7 +10,7 @@
   								,file_name,map_x,map_y
   								,tradeaddr,sell_price)
   	values('test','${title}','${content}','${category}',sysdate()
-  			,'test1','${map_x}','${map_y}'
+  			,'${file_name}','${map_x}','${map_y}'
   			,'서울 구로구',${sell_price})
   </insert>
   
