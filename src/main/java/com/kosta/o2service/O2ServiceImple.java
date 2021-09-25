@@ -46,7 +46,7 @@ public class O2ServiceImple implements O2Service {
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startRow);
 		hm.put("endrow", endRow);
-		return dao.getlist(hm);
+		return dao.getmlist(hm);
 	}
 
 	

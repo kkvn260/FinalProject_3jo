@@ -29,7 +29,7 @@ public class O2WriteServiceImple implements O2WriteService {
 	
 	@Override
 	public List<O2QnaBoardDTO> qnalist(){
-		return dao.getlist();
+		return dao.getqlist();
 
 	}
 	
