@@ -56,8 +56,8 @@
 					<div class="filebody">
 						<!-- 첨부 버튼 -->
 						<div id="attach">
-							<label class="upload" for="uploadInputBox">사진첨부</label>
-							<input id="uploadInputBox" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
+							<label class="upload" for="file_name">사진첨부</label>
+							<input id="file_name" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 						</div>
 	
 						<!-- 미리보기 영역 -->
