@@ -19,11 +19,11 @@ public interface O2DAO {
 
 	List<O2WriteBoardDTO> topviewlist();
 
-	List<O2QnaBoardDTO> getlist();
+	List<O2QnaBoardDTO> getqlist();
 
 	int totalCount(HashMap<String, Object> hm);
 
-	List<O2MainBoardDTO> getlist(HashMap<String, Object> hm);	
+	List<O2MainBoardDTO> getmlist(HashMap<String, Object> hm);	
 	
 	
 }

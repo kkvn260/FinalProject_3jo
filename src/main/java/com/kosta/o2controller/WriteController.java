@@ -82,5 +82,9 @@ public class WriteController {
 
 		return "writeboard/writedetail";
 	}
+	@RequestMapping("/test")
+	public String test() {
+		return "/writeboard/main";
+	}
 }
 
