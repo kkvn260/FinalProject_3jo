@@ -2,35 +2,97 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.kosta.o2dao.O2DAO">
+<mapper namespace="com.kosta.o2dao.O2DAO">
 
-  <insert id="twriteinsert" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
-  	insert into TradeBoard_3jo(user_id,title,content
-  								,category,writedate
-  								,file_name,map_x,map_y
-  								,tradeaddr,sell_price)
-  	values('test','${title}','${content}','${category}',sysdate()
-  			,'${file_name}','${map_x}','${map_y}'
-  			,'서울 구로구',${sell_price})
-  </insert>
-  
-    <select id="getlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
-     select qnano
-           ,user_id
-           ,title
-           ,writedate
-     from QABoard_3jo
-  </select>
-  
+	<insert id="twriteinsert"
+		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
+		insert into TradeBoard_3jo(user_id,title,content
+		,category,writedate
+		,file_name,map_x,map_y
+		,tradeaddr,sell_price)
+		values('test','${title}','${content}','${category}',sysdate()
+		,'${file_name}','${map_x}','${map_y}'
+		,'서울 구로구',${sell_price})
+	</insert>
 
-  <select id="topviewlist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
-     select title
-            ,user_id
-            ,writedate
-            ,viewno
-            ,likeno      	      
-	   from TradeBoard_3jo                   	     
-	   order by viewno desc limit 10
-  </select>
- 
-  </mapper>
+	<select id="getlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
+		select qnano
+		,user_id
+		,title
+		,writedate
+		from QABoard_3jo
+	</select>
+
+
+	<select id="totalCount" parameterMap="hashmap" resultType="int">
+		select count(*) from TradeBoard_3jo
+		<where>
+			<if
+				test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
+				<choose>
+					<when test="search=='user_id'">
+						and user_id=#{searchtxt}
+					</when>
+					<when test="search=='content'">
+						and content=#{searchtxt}
+					</when>
+					<when test="search=='title'">
+						and title=#{searchtxt}
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+
+
+	<select id="list" parameterMap="hashmap"
+		resultType="com.kosta.dto.EmpDTO">
+		select * from (
+		select rownum, b.*
+		from( select user_id, content, title
+		from TradeBoard_3jo
+		<where>
+			<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
+					<when test="search=='user_id'">
+						and user_id = #{searchtxt}
+					</when>
+					<when test="search=='content'">
+						and content = #{searchtxt}
+					</when>
+					<when test="search=='title'">
+						and title = #{searchtxt}
+					</when>
+				</choose>
+			</if>
+		</where>
+ 		<![CDATA[
+ 			order by tradeno
+ 			) e
+ 		]]>
+		<where>
+ 		<![CDATA[
+ 		    rownum<=#{endRow}
+ 		]]>
+		</where>
+		)
+		<where>
+ 		<![CDATA[
+ 			rnum>=#{startRow}
+ 		]]>
+		</where>
+	</select>
+
+
+	<select id="topviewlist"
+		resultType="com.kosta.o2dto.O2WriteBoardDTO">
+		select title
+		,user_id
+		,writedate
+		,viewno
+		,likeno
+		from TradeBoard_3jo
+		order by viewno desc limit 10
+	</select>
+
+</mapper>
