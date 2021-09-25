@@ -46,7 +46,7 @@
 
 
 	<select id="list" parameterMap="hashmap"
-		resultType="com.kosta.dto.EmpDTO">
+		resultType="com.kosta.o2dto.O2MainBoardDTO">
 		select * from (
 		select rownum, b.*
 		from( select user_id, content, title
