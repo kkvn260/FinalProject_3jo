@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosta.o2dao.O2DAO">
-
+     <parameterMap type="java.util.HashMap" id="hashmap"/>	
+ 
 	<insert id="twriteinsert"
 		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		insert into TradeBoard_3jo(user_id,title,content
