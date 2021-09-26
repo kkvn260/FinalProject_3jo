@@ -25,7 +25,7 @@
 	</select>
 
 
-	<select id="totalCount" parameterMap="hashmap" resultType="int">
+	<select id="totalCount" parameterType="hashmap" resultType="int">
 		select count(*) from TradeBoard_3jo
 		<where>
 			<if
@@ -46,7 +46,7 @@
 	</select>
 
 
-	<select id="list" parameterMap="hashmap"
+	<select id="list" parameterType="hashmap"
 		resultType="com.kosta.o2dto.O2MainBoardDTO">
 		select * from (
 		select rownum, b.*
