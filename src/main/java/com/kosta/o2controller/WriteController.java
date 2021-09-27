@@ -40,7 +40,7 @@ public class WriteController {
 	public String twrite() {
 		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
 
-		return "writeboard/twrite";
+		return "twrite";
 	}
 
 	private static final long LIMIT_SIZE = 10 * 1024 * 1024;
@@ -48,14 +48,7 @@ public class WriteController {
 	//twriteresult
 	@RequestMapping("/twriteresult")
 	public String twriteresult(O2WriteBoardDTO dto,HttpServletRequest request,Model model
-												,@RequestParam("files")List<MultipartFile> images) {
-		service.twriteinsert(dto);
-		String x=request.getParameter("map_x");
-		String y=request.getParameter("map_y");
-		
-		model.addAttribute("x",x);
-		model.addAttribute("y",y);
-		
+								,@RequestParam("files")List<MultipartFile> images) {
 		long sizeSum = 0;
 		for(MultipartFile image : images) {
 			//용량 검사
@@ -64,10 +57,18 @@ public class WriteController {
 				return "writeboard/fail";
 			}
 		}
+		service.twriteinsert(dto,images);
+		
+		String x=request.getParameter("map_x");
+		String y=request.getParameter("map_y");
+		
+		model.addAttribute("x",x);
+		model.addAttribute("y",y);
+		
 
 		//실제로는 저장 후 이미지를 불러올 위치를 콜백반환하거나,
 		//특정 행위를 유도하는 값을 주는 것이 옳은 것 같다.
-		return "home";
+		return "redirect:mainpage";
 	}
 
 

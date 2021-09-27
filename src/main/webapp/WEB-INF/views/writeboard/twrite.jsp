@@ -60,7 +60,7 @@
 							<label class="upload" for="file_name">사진첨부</label>
 							<input id="file_name" type="file" name="file_name" style="display: none" multiple accept="image/*"/>
 						</div>
-	
+						<div id="updiv" style="display: none;"></div>
 						<!-- 미리보기 영역 -->
 						<label>미리보기</label>
 						<div id="preview" class="filecontent"></div>
@@ -74,11 +74,11 @@
 	<li>
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
-		<input type="text" id="deal_price" name="deal_price" hidden>
+		<input type="text" id="deal_price" name="deal_price" hidden="">
 	</li>
 	<li>
-		<input type="submit" value="등록" id="submit">
-		<input type="reset" value="취소">
+		<input type="submit" value="등록" id="up">
+		<input type="button" value="취소">
 		<input type="text" name="map_x" id="x" hidden="">
 		<input type="text" name="map_y" id="y" hidden="">
 	</li>
@@ -111,8 +111,6 @@
 	        });
 	        
 	        markerList.push(marker);
-	        console.log(e.coord.lat()); // 좌표
-	        console.log(e.coord.lng());
 	        document.getElementById("x").value = e.coord.lat();
 	        document.getElementById("y").value = e.coord.lng();
 	        

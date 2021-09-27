@@ -6,14 +6,24 @@
      <parameterMap type="java.util.HashMap" id="hashmap"/>	
  
 	<insert id="twriteinsert"
-		parameterType="com.kosta.o2dto.O2WriteBoardDTO">s
+		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		insert into TradeBoard_3jo(user_id,title,content
 		,category,writedate
 		,map_x,map_y
 		,tradeaddr,sell_price,deal_price)
+		
 		values('test','${title}','${content}','${category}',sysdate()
 		,'${map_x}','${map_y}'
 		,'서울 구로구',${sell_price},'${deal_price}')
+		
+		<selectKey keyProperty="tradeno" resultType="int" order="AFTER">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="tinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
+		insert into (temp_name,real_name,tradeno)
+		values (${temp_name},${real_name},${tradeno})
 	</insert>
 	
 	<select id="getqlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
