@@ -15,7 +15,7 @@
 		,'${map_x}','${map_y}'
 		,'서울 구로구',${sell_price},${deal_price})
 	</insert>
-
+	
 	<select id="getqlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
 		select qnano
 		,user_id
