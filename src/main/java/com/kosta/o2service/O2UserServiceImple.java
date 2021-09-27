@@ -1,9 +1,9 @@
 package com.kosta.o2service;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2UserDAO;
@@ -12,24 +12,29 @@ import com.kosta.o2dto.O2UserDTO;
 @Service
 public class O2UserServiceImple implements O2UserService {
 
-	@Autowired
+	@Resource(name = "o2UserDAO")
 	private O2UserDAO dao;
 	
 	@Override
 	public boolean login(O2UserDTO dto, HttpSession session) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = dao.login(dto);
+		if(result) {
+			O2UserDTO user = userInfo(dto);
+			session.setAttribute("userId", user.getUser_id());
+			session.setAttribute("userPwd", user.getPwd());
+		}
+		
+		return result;
 	}
 
 	@Override
-	public O2UserDTO UserInfo(O2UserDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+	public O2UserDTO userInfo(O2UserDTO dto) {
+		return dao.userInfo(dto);
 	}
 
 	@Override
 	public void logout(HttpSession session) {
-		// TODO Auto-generated method stub
+		session.invalidate();
 		
 	}
 

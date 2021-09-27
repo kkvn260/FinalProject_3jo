@@ -7,7 +7,7 @@ import lombok.ToString;
 
 
 @Getter
-@Setter
+@Setter  
 @ToString
 public class O2UserDTO {
 

@@ -8,7 +8,13 @@
 		   select user_id from User_3jo
 		   where user_id = #{userId} and pwd = #{userPwd}
     </select>
- 
+    
+    <select id="userInfo" resultType="com.kosta.o2dto.O2UserDTO">
+      select user_id, nick_name, email
+      from User_3jo
+      where user_id = #{userId} and pwd = #{userPwd}
+    </select>
+ 	
  	
  	
 
