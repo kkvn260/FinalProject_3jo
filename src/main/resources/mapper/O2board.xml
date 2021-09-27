@@ -9,10 +9,10 @@
 		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		insert into TradeBoard_3jo(user_id,title,content
 		,category,writedate
-		,file_name,map_x,map_y
+		,map_x,map_y
 		,tradeaddr,sell_price)
 		values('test','${title}','${content}','${category}',sysdate()
-		,'${file_name}','${map_x}','${map_y}'
+		,'${map_x}','${map_y}'
 		,'서울 구로구',${sell_price})
 	</insert>
 

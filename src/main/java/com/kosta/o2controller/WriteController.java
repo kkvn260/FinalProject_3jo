@@ -42,19 +42,17 @@ public class WriteController {
 
 		return "writeboard/twrite";
 	}
-	private static final int RESULT_EXCEED_SIZE = -2;	
+
 	private static final long LIMIT_SIZE = 10 * 1024 * 1024;
 	
 	//twriteresult
 	@RequestMapping("/twriteresult")
-	@ResponseBody
 	public String twriteresult(O2WriteBoardDTO dto,HttpServletRequest request,Model model
 												,@RequestParam("files")List<MultipartFile> images) {
 		service.twriteinsert(dto);
-
 		String x=request.getParameter("map_x");
 		String y=request.getParameter("map_y");
-
+		
 		model.addAttribute("x",x);
 		model.addAttribute("y",y);
 		
@@ -64,7 +62,7 @@ public class WriteController {
 			//용량 검사
 			sizeSum += image.getSize();
 			if(sizeSum >= LIMIT_SIZE) {
-				return "fail";
+				return "writeboard/fail";
 			}
 		}
 
@@ -84,7 +82,7 @@ public class WriteController {
 	}
 	@RequestMapping("/test")
 	public String test() {
-		return "/writeboard/main";
+		return "writeboard/main";
 	}
 }
 
