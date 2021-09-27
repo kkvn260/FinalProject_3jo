@@ -21,7 +21,7 @@
 			<li><a href="mainpage">전체</a>
 			<a href="">판매</a>
 			<a href="">동네 커뮤니티</a>
-			<a href="">Q&A</a></li>
+			<a href="qnalist">Q&A</a></li>
 		</ul>
 		</nav>
 

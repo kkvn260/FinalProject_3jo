@@ -37,8 +37,9 @@
 	background-color: aqua;
 }
 
-</style><body>
-<form method="post" action="twriteresult"> <!-- detail로 이동 -->
+</style>
+<body>
+<form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
 	<li>
 		<select name="category">
@@ -57,15 +58,13 @@
 						<!-- 첨부 버튼 -->
 						<div id="attach">
 							<label class="upload" for="file_name">사진첨부</label>
-							<input id="file_name" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
+							<input id="file_name" type="file" name="file_name" style="display: none" multiple accept="image/*"/>
 						</div>
 	
 						<!-- 미리보기 영역 -->
 						<label>미리보기</label>
 						<div id="preview" class="filecontent"></div>
 						<div class="clear"></div>
-						<!-- multipart 업로드시 영역 -->
-						<form id="uploadForm" style="display: none;" />
 					</div>
 		</li>
 	<li>
@@ -79,7 +78,7 @@
 	</li>
 	<li>
 		<input type="submit" value="등록" id="submit">
-		<input type="reset" value="초기화">
+		<input type="reset" value="취소">
 		<input type="text" name="map_x" id="x" hidden="">
 		<input type="text" name="map_y" id="y" hidden="">
 	</li>

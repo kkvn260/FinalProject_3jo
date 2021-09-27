@@ -20,7 +20,6 @@ var files = {};
                 //파일 선택이 여러개였을 시의 대응
                 for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
                     var file = input[0].files[fileIndex];
-                    if(validation(file.name)) continue;
                     setPreviewForm(file);
                 }
             } else
@@ -57,61 +56,7 @@ var files = {};
             resizeHeight();
         }
  
-        //client-side validation
-        //always server-side validation required
-        function validation(fileName) {
-            fileName = fileName + "";
-            var fileNameExtensionIndex = fileName.lastIndexOf('.') + 1;
-            var fileNameExtension = fileName.toLowerCase().substring(
-                    fileNameExtensionIndex, fileName.length);
-            if (!((fileNameExtension === 'jpg')
-                    || (fileNameExtension === 'gif') || (fileNameExtension === 'png'))) {
-                alert('jpg, gif, png 확장자만 업로드 가능합니다.');
-                return true;
-            } else {
-                return false;
-            }
-        }
- 
         $(document).ready(function() {
-            //submit 등록. 실제로 submit type은 아니다.
-            $('#submit').on('click',function() {                        
-                var form = $('#uploadForm')[0];
-                var formData = new FormData(form);
-    
-                for (var index = 0; index < Object.keys(files).length; index++) {
-                    //formData 공간에 files라는 이름으로 파일을 추가한다.
-                    //동일명으로 계속 추가할 수 있다.
-                    formData.append('files',files[index]);
-                }
- 
-                //ajax 통신으로 multipart form을 전송한다.
-                $.ajax({
-                    type : 'POST',
-                    enctype : 'multipart/form-data',
-                    processData : false,
-                    contentType : false,
-                    cache : false,
-                    timeout : 600000,
-                    url : '/twriteresult',
-                    dataType : 'JSON',
-                    data : formData,
-                    success : function(result) {
-                        //이 부분을 수정해서 다양한 행동을 할 수 있으며,
-                        //여기서는 데이터를 전송받았다면 순수하게 OK 만을 보내기로 하였다.
-                        //-1 = 잘못된 확장자 업로드, -2 = 용량초과, 그외 = 성공(1)
-                        if (result.equals("fail")) {
-                            alert('파일이 10MB를 초과하였습니다.');
-                            // 이후 동작 ...
-                        } else {
-                            alert('이미지 업로드 성공');
-                            // 이후 동작 ...
-                        }
-                    }
-                    //전송실패에대한 핸들링은 고려하지 않음
-                });
-            });
-            // <input type=file> 태그 기능 구현
             $('#attach input[type=file]').change(function() {
                 addPreview($(this)); //preview form 추가하기
             });
