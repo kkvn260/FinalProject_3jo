@@ -16,7 +16,7 @@ import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2service.O2UserService;
 
 @Controller
-@RequestMapping("/member/*")
+
 public class UserController {
 
 	private static final Logger logger=LoggerFactory.getLogger(UserController.class);
@@ -25,7 +25,7 @@ public class UserController {
 	O2UserService service;
 	  
 	//login
-	@RequestMapping("/login")
+	@RequestMapping("login")
 	public String login() {
 		return "member/login";
 	}

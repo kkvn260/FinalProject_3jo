@@ -23,7 +23,7 @@ $(document).ready(function(){
 			$("#pwd").focus();
 			return;
 		}
-		document.form1.action=${path}/member/loginCheck"
+		document.form1.action=${path}/loginCheck"
 		document.form1.submit();
 	});
 });
@@ -31,7 +31,7 @@ $(document).ready(function(){
 </head>
 <body>
 <h2>로그인</h2>
-<form name="form1" method="post">
+<form name="form1" method="post" >
 <table border="1" width="400px">
 <tr>
 	<td>아이디</td>
