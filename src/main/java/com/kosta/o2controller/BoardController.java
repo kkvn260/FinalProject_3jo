@@ -12,12 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2Page;
+import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2service.O2Service;
+import com.kosta.o2service.O2ServiceOther;
 
 @Controller
 public class BoardController {
 	@Autowired
 	private O2Service service;
+	
+	@Autowired
+	private O2ServiceOther service2;
 
 	@RequestMapping("/main")
 	public String list(@RequestParam(required = false, defaultValue = "1") int currPage,
@@ -49,8 +54,16 @@ public class BoardController {
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 
-		//보낼 곳 지정
+		//蹂대궪 怨� 吏��젙
 		return "";
+	}
+	
+	@RequestMapping("/qnalist")
+	public String list(Model model) {
+		List<O2QnaBoardDTO> list=service2.qnalist();
+		model.addAttribute("list",list);
+		
+		return "writeboard/qnalist";
 	}
 
 }
