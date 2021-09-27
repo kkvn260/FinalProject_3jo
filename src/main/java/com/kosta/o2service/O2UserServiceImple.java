@@ -14,14 +14,14 @@ public class O2UserServiceImple implements O2UserService {
 
 	@Resource(name = "o2UserDAO")
 	private O2UserDAO dao;
-	
+	 
 	@Override
 	public boolean login(O2UserDTO dto, HttpSession session) {
 		boolean result = dao.login(dto);
 		if(result) {
 			O2UserDTO user = userInfo(dto);
-			session.setAttribute("userId", user.getUser_id());
-			session.setAttribute("userPwd", user.getPwd());
+			session.setAttribute("user_id", user.getUser_id());
+			session.setAttribute("pwd", user.getPwd());
 		}
 		
 		return result;

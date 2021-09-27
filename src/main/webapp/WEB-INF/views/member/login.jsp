@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>	
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp" %>
@@ -23,7 +24,7 @@ $(document).ready(function(){
 			$("#pwd").focus();
 			return;
 		}
-		document.form1.action=${path}/loginCheck"
+		document.form1.action="${path}/loginCheck"
 		document.form1.submit();
 	});
 });

@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kosta.o2dao.O2UserDAO">
+<mapper namespace="member">
     
     <select id="login" resultType="String">
 		   select user_id from User_3jo
-		   where user_id = #{userId} and pwd = #{userPwd}
+		   where user_id = #{user_id} and pwd = #{pwd}
     </select>
     
     <select id="userInfo" resultType="com.kosta.o2dto.O2UserDTO">
       select user_id, nick_name, email
       from User_3jo
-      where user_id = #{userId} and pwd = #{userPwd}
+      where user_id = #{user_id} and pwd = #{pwd}
     </select>
  	
  	

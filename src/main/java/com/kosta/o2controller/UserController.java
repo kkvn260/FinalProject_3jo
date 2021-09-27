@@ -25,7 +25,7 @@ public class UserController {
 	O2UserService service;
 	  
 	//login
-	@RequestMapping("login")
+	@GetMapping("login")
 	public String login() {
 		return "member/login";
 	}
