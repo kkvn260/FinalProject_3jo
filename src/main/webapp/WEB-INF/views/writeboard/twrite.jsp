@@ -74,7 +74,7 @@
 	<li>
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
-		<input type="text" id="deal_price" name="deal_price" placeholder=0 hidden>
+		<input type="text" id="deal_price" name="deal_price" hidden>
 	</li>
 	<li>
 		<input type="submit" value="등록" id="submit">

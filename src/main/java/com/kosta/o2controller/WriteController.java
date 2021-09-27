@@ -58,7 +58,6 @@ public class WriteController {
 		
 		long sizeSum = 0;
 		for(MultipartFile image : images) {
-			String originalName = image.getOriginalFilename(); 
 			//용량 검사
 			sizeSum += image.getSize();
 			if(sizeSum >= LIMIT_SIZE) {
