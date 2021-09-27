@@ -1,5 +1,8 @@
 package com.kosta.o2dao;
 
-public class O2UserDAO {
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
+public class O2UserDAO {
+   
 }
