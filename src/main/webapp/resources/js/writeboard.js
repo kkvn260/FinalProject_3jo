@@ -13,8 +13,8 @@ $(function() {
 var files = {};
 var previewIndex = 0;
 
-// image preview 기능 구현
-// input = file object[]
+//image preview 기능 구현
+//input = file object[]
 function addPreview(input) {
 	if (input[0].files) {
 		//파일 선택이 여러개였을 시의 대응
@@ -56,18 +56,7 @@ function deletePreview(obj) {
 	resizeHeight();
 }
 
-$(document).ready(function() {
-	$('#up').on('click',function() {                       
-		var form = $('#updiv')[0];
-		var formData = new FormData(form);
+	$('#attach input[type=file]').change(function() {
+		addPreview($(this)); //preview form 추가하기
+	});
 
-		for (var index = 0; index < Object.keys(files).length; index++) {
-			//formData 공간에 files라는 이름으로 파일을 추가한다.
-			//동일명으로 계속 추가할 수 있다.
-			formData.append('files',files[index]);
-		}
-	});
-		$('#attach input[type=file]').change(function() {
-			addPreview($(this)); //preview form 추가하기
-	});
-});

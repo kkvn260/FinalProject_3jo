@@ -43,8 +43,13 @@
 <ul>
 	<li>
 		<select name="category">
-			<option value="category1" >카테고리1</option>
-			<option value="category2" >카테고리2</option>
+			<option >카테고리를 설정해주세요</option>
+			<option value="의류" >의류</option> <!--남성/여성  -->
+			<option value="디지털/가전" >디지털/가전</option> <!--모바일,카메라,PC/노트북,가전  -->
+			<option value="생활/식품" >생활/식품</option> <!--생활용품  , 주방용품 , 식품  -->
+			<option value="취미" >취미</option> <!-- 스포츠 , 수집품 , 게임 , 반려동물  -->
+			<option value="도서/음반" >도서/음반</option> <!-- 국내도서 , 해외도서 , CD/DVD/LP  -->
+			<option value="기타" >기타(잡화)</option>
 		</select>
 	</li>
 	<li>
@@ -55,13 +60,11 @@
 	</li>
 		<li>
 					<div class="filebody">
-						<!-- 첨부 버튼 -->
 						<div id="attach">
-							<label class="upload" for="file_name">사진첨부</label>
-							<input id="file_name" type="file" name="file_name" style="display: none" multiple accept="image/*"/>
+							<label class="upload" for="filedata">사진첨부</label>
+							<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 						</div>
-						<div id="updiv" style="display: none;"></div>
-						<!-- 미리보기 영역 -->
+				
 						<label>미리보기</label>
 						<div id="preview" class="filecontent"></div>
 						<div class="clear"></div>
@@ -72,17 +75,18 @@
 		<p id="map" style="width: 500px; height: 400px;"></p>
 	</li>
 	<li>
+		<input type="hidden" name="map_x" id="map_x" >
+		<input type="hidden" name="map_y" id="map_y" >
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
 		<input type="text" id="deal_price" name="deal_price" hidden="">
 	</li>
 	<li>
-		<input type="submit" value="등록" id="up">
+		<input type="submit" value="등록">
 		<input type="button" value="취소">
-		<input type="text" name="map_x" id="x" hidden="">
-		<input type="text" name="map_y" id="y" hidden="">
 	</li>
 </ul>
+
 </form>
 
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
@@ -111,8 +115,8 @@
 	        });
 	        
 	        markerList.push(marker);
-	        document.getElementById("x").value = e.coord.lat();
-	        document.getElementById("y").value = e.coord.lng();
+ 	        document.getElementById("map_x").value = e.coord.lat();
+	        document.getElementById("map_y").value = e.coord.lng(); 
 	        
 	    });
 
