@@ -6,8 +6,7 @@
 
 .menu ul{
    list-style:none; 
-   height:50px;
-   background-color:#FFFFFF;
+   height:45px;
    text-shadow: 2px 2px 2px pink;
    font-size:20px;
    display:flex;
@@ -28,7 +27,49 @@
 	float:left;
 }
 
-.footer{margin-left:20px;}
-#f1{float:right;
-    margin-right:20px;}
+html{
+		position: relative;
+		min-height: 900px;
+}
+	
+#header{
+		width: 1200px;
+		height: auto;
+		margin: auto;
+}
+#section{
+		width:1200px;
+		height:auto;
+		margin: auto;
+}
+#footer{
+	    width:1200px;
+	    margin:auto;
+	    bottom:0;
+}
+#f1{
+	float:right;
+	margin-right:20px;
+	text-shadow: 2px 2px 2px pink;
+    font-size:15px;
+    color:green; 
+}
+.footer{
+	margin-left:20px;
+	text-shadow: 2px 2px 2px pink;
+    font-size:15px;
+    color:green; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

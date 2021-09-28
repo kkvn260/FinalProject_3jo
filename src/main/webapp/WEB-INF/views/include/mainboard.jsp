@@ -34,12 +34,13 @@
 		</div>
  </div>
  <h3>챗봇</h3>
- <div id="cb"></div>
+ <div id="cb">
        <iframe
           width="350"
           height="430"
           src="https://console.dialogflow.com/api-client/demo/embedded/a20bbc1d-bc2d-42d1-9423-d5df37b93a4a">
        </iframe>
+</div>
 </section>
 
 </body>

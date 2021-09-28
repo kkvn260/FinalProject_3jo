@@ -7,13 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 </head>
 <body>
-<header>
+<header id="header">
     <tiles:insertAttribute name="header"/>
 </header>
 
-<section>
+<section id="section">
 	<tiles:insertAttribute name="content"/>
 </section>
 
