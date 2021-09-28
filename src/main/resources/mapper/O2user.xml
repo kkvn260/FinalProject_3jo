@@ -14,9 +14,12 @@
       from User_3jo
       where user_id = #{user_id} and pwd = #{pwd}
     </select>
- 	
- 	
- 	
+    
+    <insert id="registerUser">
+      insert into User_3jo(user_id,pwd,nick_name,phoneno,email,user_name,birthday,addr,gender,grade)
+      values (#{user_id},#{pwd},#{nick_name},#{phoneno},#{email},#{user_name},#{birthday},#{addr},#{gender},0)
+    </insert>
+ 		
 
 
 </mapper>

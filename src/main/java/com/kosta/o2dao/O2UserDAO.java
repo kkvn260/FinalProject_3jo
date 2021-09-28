@@ -17,4 +17,6 @@ public interface O2UserDAO {
    
 	public void logout(HttpSession session);
 	
+	public void registerUser(O2UserDTO dto);
+	
 }
