@@ -55,7 +55,8 @@ public class WriteController {
 	//twriteresult
 	@PostMapping("/twriteresult")
 	public String twriteresult(O2WriteBoardDTO dto,Model model
-								,@RequestParam("filedata")List<MultipartFile> images) {
+								,@RequestParam("filedata")List<MultipartFile> images
+								,HttpServletRequest request) {
 		
 		long sizeSum = 0;
 		for(MultipartFile image : images) {
@@ -65,16 +66,30 @@ public class WriteController {
 				return "writboard/fail";
 			}
 		}
-		System.out.println("post");
-		System.out.println("갯수 : "+images.size());
 		service.twriteinsert(dto,images);
-	
-//		/*
-//		 * String x=request.getParameter("map_x"); String
-//		 * y=request.getParameter("map_y");
-//		 */
 		
-		
+		String root_path = request.getSession().getServletContext().getRealPath("/"); 
+		String attach_path = "resources/img/";
+		System.out.println(root_path);
+		System.out.println(attach_path);
+		 for (MultipartFile mf : images) {
+	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
+
+	            System.out.println("originFileName : " + fileName);
+
+	            String safeFile = root_path + attach_path + fileName;
+	            
+	            try {
+	                mf.transferTo(new File(safeFile));
+	            } catch (IllegalStateException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	        }
+
 		return "redirect:/mainpage";
 	}
 

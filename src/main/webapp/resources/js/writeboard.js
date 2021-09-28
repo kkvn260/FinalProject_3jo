@@ -16,6 +16,7 @@ var previewIndex = 0;
 //image preview 기능 구현
 //input = file object[]
 function addPreview(input) {
+	$("#preview .preview-box").remove();
 	if (input[0].files) {
 		//파일 선택이 여러개였을 시의 대응
 		for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
@@ -36,9 +37,7 @@ function setPreviewForm(file, img){
 		$("#preview").append(
 				"<div class=\"preview-box\" value=\"" + imgNum +"\">" +
 				"<img class=\"thumbnail\" src=\"" + img.target.result + "\"\/>" +
-				"<p>" + file.name + "</p>" +
-				"<a href=\"#\" value=\"" + imgNum + "\" onclick=\"deletePreview(this)\">" +
-				"삭제" + "</a>"
+				"<p>" + file.name + "</p>"
 				+ "</div>"
 		);
 		resizeHeight();
@@ -48,13 +47,6 @@ function setPreviewForm(file, img){
 	reader.readAsDataURL(file);
 }
 
-//preview 영역에서 삭제 버튼 클릭시 해당 미리보기이미지 영역 삭제
-function deletePreview(obj) {
-	var imgNum = obj.attributes['value'].value;
-	delete files[imgNum];
-	$("#preview .preview-box[value=" + imgNum + "]").remove();
-	resizeHeight();
-}
 
 	$('#attach input[type=file]').change(function() {
 		addPreview($(this)); //preview form 추가하기
