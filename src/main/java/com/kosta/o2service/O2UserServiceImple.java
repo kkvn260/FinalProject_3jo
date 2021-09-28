@@ -1,7 +1,6 @@
 package com.kosta.o2service;
 
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +17,16 @@ public class O2UserServiceImple implements O2UserService {
 	 
 	@Override
 	public boolean loginCheck(O2UserDTO dto, HttpSession session) {
-		boolean result = dao.loginCheck(dto);
-		if(result) {
+		String result = dao.loginCheck(dto);
+		boolean checkId = (result !=null)? true : false;
+		
+		if(checkId) {
 			O2UserDTO user = userInfo(dto);
 			session.setAttribute("user_id", user.getUser_id());
 			session.setAttribute("nick_name", user.getNick_name());
 		}
 		
-		return result;
+		return checkId;
 	}
 
 	@Override

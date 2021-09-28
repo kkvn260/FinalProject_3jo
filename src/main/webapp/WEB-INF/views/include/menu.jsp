@@ -10,7 +10,7 @@
 <body>
 <c:choose>
 	<c:when test="${sessionScope.user_id == null }">
-		<a href="${path }/jo3/login">로그인</a>
+		<a href="${path }/login">로그인</a>
 	</c:when>
 <c:otherwise>
 	${sessionScope.nick_name }님이 로그인중입니다.
