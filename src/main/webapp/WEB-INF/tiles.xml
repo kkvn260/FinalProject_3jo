@@ -2,9 +2,9 @@
 
 <!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="main" template="/WEB-INF/views/writeboard/mainpage.jsp">
-        <put-attribute name="header" value="/WEB-INF/views/writeboard/header.jsp"></put-attribute>
-        <put-attribute name="footer" value="/WEB-INF/views/writeboard/footer.jsp"></put-attribute>
+    <definition name="main" template="/WEB-INF/views/include/mainpage.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/include/header.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/include/footer.jsp"></put-attribute>
     </definition>
 
     <definition name="*/*" extends="main">

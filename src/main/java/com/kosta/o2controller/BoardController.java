@@ -63,7 +63,7 @@ public class BoardController {
 		List<O2QnaBoardDTO> list=service2.qnalist();
 		model.addAttribute("list",list);
 		
-		return "qnalist";
+		return "writeboard/qnalist";
 	}
 
 }

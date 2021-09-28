@@ -24,6 +24,6 @@ public class MainController {
 		  List<O2WriteBoardDTO> list=service.topview();
 			 model.addAttribute("list", list);
 		
-		return "mainboard";
+		return "include/mainboard";
 	}
 }
