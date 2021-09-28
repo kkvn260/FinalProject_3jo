@@ -4,6 +4,7 @@ package com.kosta.o2service;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2UserDAO;
@@ -12,8 +13,8 @@ import com.kosta.o2dto.O2UserDTO;
 @Service
 public class O2UserServiceImple implements O2UserService {
 
-	@Inject
-	 O2UserDAO dao;
+	@Autowired
+	private O2UserDAO dao;
 	 
 	@Override
 	public boolean loginCheck(O2UserDTO dto, HttpSession session) {
