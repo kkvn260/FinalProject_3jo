@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+   .main a:link,.menu a:link { color: green; text-decoration: none;}
+   .main a:visited, .menu a:visited { color: green; text-decoration: none;}
+</style>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
