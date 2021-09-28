@@ -22,7 +22,7 @@ public class O2UserDAOImple implements O2UserDAO {
 		String name= session.selectOne(NAMESPACE+".loginCheck",dto);
 		return (name == null) ? false : true;
 	}
-
+ 
 	
 
 	@Override
