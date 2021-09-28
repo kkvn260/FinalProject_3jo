@@ -31,12 +31,13 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+
 <h2>로그인</h2>
 <form name="form1" method="post" >
 <table border="1" width="400px">
 <tr>
 	<td>아이디</td>
-	<td><input type="text" name="user_id" id="user_id"></td>
+	<td><input name="user_id" id="user_id"></td>
 </tr>
 <tr>
 	<td>비밀번호</td>

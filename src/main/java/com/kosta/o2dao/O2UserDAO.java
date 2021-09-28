@@ -8,8 +8,10 @@ import com.kosta.o2dto.O2UserDTO;
 
 @Mapper
 public interface O2UserDAO {
-
-	public boolean login(O2UserDTO dto);
+	
+	
+	
+	public boolean loginCheck(O2UserDTO dto);
 		
 	public O2UserDTO userInfo(O2UserDTO dto);
    

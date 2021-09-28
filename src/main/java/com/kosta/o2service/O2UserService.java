@@ -6,7 +6,7 @@ import com.kosta.o2dto.O2UserDTO;
 
 public interface O2UserService {
   
-	boolean login(O2UserDTO dto, HttpSession session);
+	boolean loginCheck(O2UserDTO dto, HttpSession session);
 	
 	O2UserDTO userInfo(O2UserDTO dto);
 	

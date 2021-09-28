@@ -30,9 +30,9 @@ public class UserController {
 		return "member/login";
 	}
 	//login 처리
-	@RequestMapping("loginCheck")
-	public ModelAndView login(@ModelAttribute O2UserDTO dto,HttpSession session) {
-		boolean result= service.login(dto, session);
+	@RequestMapping("/loginCheck")
+	public ModelAndView loginCheck(@ModelAttribute O2UserDTO dto,HttpSession session) {
+		boolean result= service.loginCheck(dto, session);
 		ModelAndView mav=new ModelAndView();
 		if(result==true) {
 			//main

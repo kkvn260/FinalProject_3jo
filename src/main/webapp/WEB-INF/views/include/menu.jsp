@@ -15,6 +15,7 @@
 <c:otherwise>
 	${sessionScope.nick_name }님이 로그인중입니다.
 	<a href="${path }/logout">로그아웃</a>
+	<a href="${path }/myInfopage">마이페이지</a>
 </c:otherwise>
 </c:choose>
 </body>

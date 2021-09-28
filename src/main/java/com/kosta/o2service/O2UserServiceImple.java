@@ -1,6 +1,6 @@
 package com.kosta.o2service;
 
-import javax.annotation.Resource;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -12,16 +12,16 @@ import com.kosta.o2dto.O2UserDTO;
 @Service
 public class O2UserServiceImple implements O2UserService {
 
-	@Resource(name = "o2UserDAO")
-	private O2UserDAO dao;
+	@Inject
+	 O2UserDAO dao;
 	 
 	@Override
-	public boolean login(O2UserDTO dto, HttpSession session) {
-		boolean result = dao.login(dto);
+	public boolean loginCheck(O2UserDTO dto, HttpSession session) {
+		boolean result = dao.loginCheck(dto);
 		if(result) {
 			O2UserDTO user = userInfo(dto);
 			session.setAttribute("user_id", user.getUser_id());
-			session.setAttribute("pwd", user.getPwd());
+			session.setAttribute("nick_name", user.getNick_name());
 		}
 		
 		return result;
