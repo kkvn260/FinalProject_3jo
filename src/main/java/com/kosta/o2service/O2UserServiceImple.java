@@ -38,5 +38,9 @@ public class O2UserServiceImple implements O2UserService {
 		
 	}
 
+	@Override
+	public void registerUser(O2UserDTO dto) {
+		dao.registerUser(dto);
+	}
 	
 } 

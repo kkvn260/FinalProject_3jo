@@ -10,6 +10,8 @@ public interface O2UserService {
 	
 	O2UserDTO userInfo(O2UserDTO dto);
 	
-	void logout(HttpSession session); 
+	void logout(HttpSession session);
+
+	void registerUser(O2UserDTO dto); 
 	
 }
