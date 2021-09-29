@@ -7,14 +7,14 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.kosta.o2dao.O2DAO;
+import com.kosta.o2dao.O2WriteDAO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Service
 public class O2ServiceImple implements O2Service {
-	@Resource(name = "o2DAO")
-	private O2DAO dao;
+	@Resource(name = "o2WriteDAO")
+	private O2WriteDAO dao;
 
 	@Override
 	public void twriteinsert(O2WriteBoardDTO dto) {

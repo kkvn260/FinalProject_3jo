@@ -13,7 +13,7 @@
 
 <section id="content" >
  <div id="topview" style="float:left; margin-right:200px;">
-	<h3>인기글 TOP10 미리보기</h3>
+	<h3>판매 인기글 TOP10 미리보기</h3>
 		<div id="preview">
 		   <table>
 			  <thead>
@@ -23,7 +23,7 @@
 			      <c:forEach var="item" items="${list}">
 			        <c:set var="number" value="${number+1 }" />
 						<tr><td><c:out value="${number }" /></td>
-						    <td><a href=""><c:out value="${item.title }"></c:out></a>
+						    <td><a href="twritedetail/no?${item.tradeno }"><c:out value="${item.title }"></c:out></a>
 							<td><c:out value="${item.likeno }"></c:out></td>
 							<td><c:out value="${item.viewno }"></c:out></td>
 							<td><c:out value="${item.user_id }"></c:out></td>

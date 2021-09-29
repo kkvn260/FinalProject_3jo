@@ -11,7 +11,7 @@ import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Mapper
-public interface O2DAO {
+public interface O2WriteDAO {
 
 
 	void twriteinsert(O2WriteBoardDTO dto);

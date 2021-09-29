@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kosta.o2dao.O2DAO;
+import com.kosta.o2dao.O2WriteDAO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -20,7 +20,7 @@ import com.kosta.o2dto.O2WriteBoardDTO;
 public class O2WriteServiceImple implements O2WriteService {
 	
 	@Autowired
-	private O2DAO dao;
+	private O2WriteDAO dao;
 	
 	@Override
 	@Transactional

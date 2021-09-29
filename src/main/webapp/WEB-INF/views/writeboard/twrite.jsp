@@ -36,7 +36,15 @@
 #attach label{
 	background-color: aqua;
 }
-
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
+.clear{
+	clear: both;
+}
 </style>
 <body>
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
@@ -71,10 +79,14 @@
 					</div>
 		</li>
 	<li>
-		<textarea rows="30" cols="100" name="content" id="content"></textarea>
+		<textarea rows="21" cols="85" name="content" id="content" class="left"></textarea>
+		<div class="right">
+		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
+		</div>
 	</li>
 	<li>
+		<div class="clear"></div>
 		<input type="hidden" name="map_x" id="map_x" >
 		<input type="hidden" name="map_y" id="map_y" >
 		<label>경매기능 사용여부</label>

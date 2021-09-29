@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kosta.o2dao.O2DAO">
+<mapper namespace="com.kosta.o2dao.O2WriteDAO">
      <parameterMap type="java.util.HashMap" id="hashmap"/>	
  
 	<insert id="twriteinsert"
@@ -98,6 +98,7 @@
 	<select id="topviewlist"
 		resultType="com.kosta.o2dto.O2WriteBoardDTO">
 		select title
+		,tradeno
 		,user_id
 		,writedate
 		,viewno
