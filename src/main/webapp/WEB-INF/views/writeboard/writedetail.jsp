@@ -52,7 +52,7 @@
 	<li>
 	<div class="clear"></div>
 		<input type="button" id="modibtn" value="수정">
-		<input type="button" id="delbtn" value="삭제">
+		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 	</li>
 </ul>	
 	<script>

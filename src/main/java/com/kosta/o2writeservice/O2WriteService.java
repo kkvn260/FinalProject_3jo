@@ -20,4 +20,6 @@ public interface O2WriteService {
 
 	public List<O2FileDTO> tfiledetail(int no);
 
+	public void twritedelete(int no);
+
 }

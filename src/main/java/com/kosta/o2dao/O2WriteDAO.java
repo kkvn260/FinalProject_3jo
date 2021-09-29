@@ -35,7 +35,9 @@ public interface O2WriteDAO {
 
 	List<O2WriteBoardDTO> deallist();
 
-	List<O2FileDTO> tfiledetail(int no);	
+	List<O2FileDTO> tfiledetail(int no);
+
+	void twritedelete(int no);	
 	
 	
 }

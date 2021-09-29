@@ -31,7 +31,7 @@ public class O2WriteServiceImple implements O2WriteService {
 		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
 		String time=dateform.format(cal.getTime());
 		
-		if(images!=null) {
+		if(!images.get(0).getOriginalFilename().equals("")) {
 			for(int i=0;i<images.size();i++) {		
 				O2FileDTO file=new O2FileDTO();
 				file.setTradeno(no);
@@ -65,6 +65,12 @@ public class O2WriteServiceImple implements O2WriteService {
 	public List<O2FileDTO> tfiledetail(int no) {
 		// TODO Auto-generated method stub
 		return dao.tfiledetail(no);
+	}
+
+	@Override
+	public void twritedelete(int no) {
+		dao.twritedelete(no);
+		
 	}
 
 }

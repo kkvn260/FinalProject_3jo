@@ -133,6 +133,11 @@ public class WriteController {
 
 		return "writeboard/dealdetail";
 	}
+	@RequestMapping("twritedelete/{no}")
+	public String twritedelete(@PathVariable int no) {
+		service.twritedelete(no);
+		return "redirect:/selllist";
+	}
 	
 }
 

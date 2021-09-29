@@ -109,6 +109,7 @@
 	
 	<select id="twritedetail" parameterType="int" resultType="com.kosta.o2dto.O2WriteBoardDTO">
 		select title
+		,tradeno
 		,category
 		,map_x,map_y
 		,content
@@ -157,5 +158,10 @@
 		from File_3jo
 		where tradeno=#{no}
 	</select>
+	
+	<delete id="twritedelete" parameterType="int">
+		delete from TradeBoard_3jo
+		where tradeno=#{no}
+	</delete>
 	
 </mapper>
