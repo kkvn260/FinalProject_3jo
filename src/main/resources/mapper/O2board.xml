@@ -106,5 +106,14 @@
 		from TradeBoard_3jo
 		order by viewno desc limit 10
 	</select>
-
+	
+	<select id="twritedetail" parameterType="int" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+		select title
+		,category
+		,map_x,map_y
+		,content
+		,sell_price
+		from TradeBoard_3jo
+		where tradeno=#{no}
+	</select>
 </mapper>

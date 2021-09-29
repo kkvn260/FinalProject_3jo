@@ -67,18 +67,15 @@ public class WriteController {
 			}
 		}
 		service.twriteinsert(dto,images);
-		
 		String root_path = request.getSession().getServletContext().getRealPath("/"); 
 		String attach_path = "resources/img/";
-		System.out.println(root_path);
-		System.out.println(attach_path);
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
 
 	            System.out.println("originFileName : " + fileName);
 
 	            String safeFile = root_path + attach_path + fileName;
-	            
+	            System.out.println(safeFile);
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {

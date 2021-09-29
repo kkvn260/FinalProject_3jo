@@ -23,7 +23,7 @@
 			      <c:forEach var="item" items="${list}">
 			        <c:set var="number" value="${number+1 }" />
 						<tr><td><c:out value="${number }" /></td>
-						    <td><a href="twritedetail/no?${item.tradeno }"><c:out value="${item.title }"></c:out></a>
+						    <td><a href="twritedetail/${item.tradeno }"><c:out value="${item.title }"></c:out></a>
 							<td><c:out value="${item.likeno }"></c:out></td>
 							<td><c:out value="${item.viewno }"></c:out></td>
 							<td><c:out value="${item.user_id }"></c:out></td>
