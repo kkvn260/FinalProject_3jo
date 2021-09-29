@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
@@ -28,7 +29,9 @@ public interface O2WriteDAO {
 
 	void tinsertfile(O2FileDTO file);
 
-	List<O2WriteBoardDTO> selllist();	
+	List<O2WriteBoardDTO> selllist();
+
+	List<O2DongComDTO> getdonglist();	
 	
 	
 }

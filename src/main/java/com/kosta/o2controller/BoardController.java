@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2Page;
 import com.kosta.o2dto.O2QnaBoardDTO;
@@ -54,7 +55,7 @@ public class BoardController {
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 
-		//蹂대궪 怨� 吏��젙
+		//癰귣�沅� �⑨옙 筌욑옙占쎌젟
 		return "";
 	}
 	
@@ -64,6 +65,14 @@ public class BoardController {
 		model.addAttribute("list",list);
 		
 		return "writeboard/qnalist";
+	}
+	
+	@RequestMapping("/dongcomlist")
+	public String donglist(Model model) {
+		List<O2DongComDTO> list=service2.dongcomlist();
+		model.addAttribute("list",list);
+		
+		return "writeboard/dongcomlist";
 	}
 
 }

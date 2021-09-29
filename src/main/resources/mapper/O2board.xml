@@ -28,8 +28,8 @@
 	
 	<select id="getqlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
 		select qnano
-		,user_id
 		,title
+		,user_id
 		,writedate
 		from QABoard_3jo
 	</select>
@@ -125,6 +125,16 @@
 		,viewno
 		,likeno
 		from TradeBoard_3jo
+	</select>
+	
+	<select id="getdonglist" resultType="com.kosta.o2dto.O2DongComDTO">
+	  select chatno
+	         ,title
+	         ,user_id
+	         ,writedate
+	         ,viewno
+	         ,likeno
+	         from ChatBoard_3jo
 	</select>
 	
 	

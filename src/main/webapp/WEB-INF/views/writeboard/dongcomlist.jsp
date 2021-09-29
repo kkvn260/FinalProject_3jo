@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+      <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
    <tbody>
      <c:if test="${list!=null }">
        <c:forEach var="item" items="${list }">
-          <tr><td>${item.qnano }</td>
+          <tr><td>${item.chatno }</td>
               <td><c:out value="${item.title }"/></td>
               <td><c:out value="${item.user_id }"/></td>
               <td><c:out value="${item.writedate }"/></td>
