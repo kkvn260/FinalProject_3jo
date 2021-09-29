@@ -20,7 +20,7 @@
     <div class="main">
 		<header>
 		        <img src="${pageContext.request.contextPath }/resources/img/52.png" width="60px" height="90px">
-				<h1><a href="${pageContext.request.contextPath }/mainpage">&nbsp;오이마켓</a></h1><br><br><br>
+				<h1><a href="mainpage">&nbsp;오이마켓</a></h1><br><br><br>
 				<h4>&nbsp;&nbsp;오늘도 이웃과 거래하는 오이마켓</h4>
 		</header>
     </div>
