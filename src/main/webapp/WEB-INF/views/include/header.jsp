@@ -27,10 +27,10 @@
         <hr>
 		<nav class="menu">
 		<ul>
-			<li><a href="${pageContext.request.contextPath }/mainpage">전체</a></li>
-			<li><a href="${pageContext.request.contextPath }/selllist">판매</a></li>
-			<li><a href="${pageContext.request.contextPath }/dongcomlist">동네 커뮤니티</a></li>
-			<li><a href="${pageContext.request.contextPath }/qnalist">Q&A</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li><a href="mainpage">전체</a></li>
+			<li><a href="selllist">판매</a></li>
+			<li><a href="dongcomlist">동네 커뮤니티</a></li>
+			<li><a href="qnalist">Q&A</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 		</ul>
 		</nav>
 		<hr>
