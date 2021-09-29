@@ -29,7 +29,7 @@
 		<ul>
 			<li><a href="${pageContext.request.contextPath }/mainpage">전체</a></li>
 			<li><a href="${pageContext.request.contextPath }/selllist">판매</a></li>
-			<li><a href="">동네 커뮤니티</a></li>
+			<li><a href="${pageContext.request.contextPath }/dongcomlist">동네 커뮤니티</a></li>
 			<li><a href="${pageContext.request.contextPath }/qnalist">Q&A</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 		</ul>
 		</nav>
