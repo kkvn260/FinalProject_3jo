@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
@@ -37,7 +38,9 @@ public interface O2WriteDAO {
 
 	List<O2FileDTO> tfiledetail(int no);
 
-	void twritedelete(int no);	
+	void twritedelete(int no);
+
+	void twritemodifyresult(O2WriteBoardDTO dto,List<MultipartFile> images);	
 	
 	
 }

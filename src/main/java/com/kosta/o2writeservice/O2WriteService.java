@@ -22,4 +22,6 @@ public interface O2WriteService {
 
 	public void twritedelete(int no);
 
+	public void twritemodifyresult(O2WriteBoardDTO dto, List<MultipartFile> images);
+
 }

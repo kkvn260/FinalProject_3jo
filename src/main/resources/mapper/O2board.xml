@@ -21,10 +21,51 @@
 		</selectKey>
 	</insert>
 	
+	<select id="twritedetail" parameterType="int" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+		select title
+		,tradeno
+		,category
+		,map_x,map_y
+		,content
+		,sell_price
+		,deal_price
+		from TradeBoard_3jo
+		where tradeno=#{no}
+	</select>
+	
+	<delete id="twritedelete" parameterType="int">
+		delete from TradeBoard_3jo
+		where tradeno=#{no}
+	</delete>
+	
+	<update id="twritemodifyresult" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
+		update TradeBoard_3jo
+			set category=#{category}
+				,title=#{title}
+				,content=#{content}
+				,map_x=#{map_x}
+				,map_y=#{map_y}
+		where tradeno=#{tradeno}
+	</update>
+	
 	<insert id="tinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
 		insert into File_3jo(temp_name,real_name,tradeno)
 		values (#{temp_name},#{real_name},#{tradeno})
 	</insert>
+	
+		
+	<select id="tfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
+		select real_name
+		from File_3jo
+		where tradeno=#{no}
+	</select>
+	
+	<update id="tfilemodify" parameterType="com.kosta.o2dto.O2FileDTO">
+		update File_3jo
+			set real_name=#{real_name}
+				,temp_name=#{temp_name}
+		where tradeno=#{tradeno}
+	</update>
 	
 	<select id="getqlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
 		select qnano
@@ -94,7 +135,6 @@
 		</where>
 	</select>
 
-
 	<select id="topviewlist"
 		resultType="com.kosta.o2dto.O2WriteBoardDTO">
 		select title
@@ -105,18 +145,6 @@
 		,likeno
 		from TradeBoard_3jo
 		order by viewno desc limit 10
-	</select>
-	
-	<select id="twritedetail" parameterType="int" resultType="com.kosta.o2dto.O2WriteBoardDTO">
-		select title
-		,tradeno
-		,category
-		,map_x,map_y
-		,content
-		,sell_price
-		,deal_price
-		from TradeBoard_3jo
-		where tradeno=#{no}
 	</select>
 	
 	<select id="selllist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
@@ -152,16 +180,6 @@
 	         ,likeno
 	         from ChatBoard_3jo
 	</select>
-	
-	<select id="tfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
-		select real_name
-		from File_3jo
-		where tradeno=#{no}
-	</select>
-	
-	<delete id="twritedelete" parameterType="int">
-		delete from TradeBoard_3jo
-		where tradeno=#{no}
-	</delete>
+
 	
 </mapper>

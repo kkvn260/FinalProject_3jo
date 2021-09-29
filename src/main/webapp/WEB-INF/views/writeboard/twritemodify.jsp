@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-
 <body>
-<form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
+<form method="post" action="twritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>
 		<select name="category">
@@ -29,53 +29,59 @@
 	</li>
 	<li>
 		<label>제목</label>
-		<input type="text" id="title" name="title" placeholder="제목">
+		<input type="text" id="title" name="title" value="${list.title }">
 	</li>
 	<li>
 		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" name="sell_price" placeholder="판매 희망 가격">
+		<input type="text" id="sell_price" name="sell_price" value="${list.sell_price }">
 	</li>
+	<li>
 		<li>
 			<div class="filebody">
+			<label>수정 전 첨부사진</label>
+			<div>
+				<c:if test="${list2!=null }">
+				<div class="preview">
+					<c:forEach var="item" items="${list2 }">
+						<div class="preview-box">
+							<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
+							<p>${item.real_name}</p>
+						</div>
+					</c:forEach>
+				</div>
+				</c:if>
+			</div>
+				<div class="clear"></div>
 				<div id="attach">
 					<label class="upload" for="filedata">사진첨부</label>
 					<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 				</div>
-				
 				<label>미리보기</label>
 				<div id="preview" class="filecontent"></div>
-				<div class="clear"></div>
+
 			</div>
+			<div class="clear"></div>
 		</li>
 	<li>
-		<textarea rows="21" cols="85" name="content" id="content" class="left"></textarea>
+		<textarea rows="21" cols="85" class="left">${list.content }</textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
 		</div>
 	</li>
 	<li>
-		<div class="clear"></div>
-		<input type="hidden" name="map_x" id="map_x" >
-		<input type="hidden" name="map_y" id="map_y" >
-		<label>경매기능 사용여부</label>
-		<input type="checkbox" id="deal">
-		<input type="text" id="deal_price" name="deal_price" hidden="" placeholder="경매 시작가격">
+	<div class="clear"></div>
+		<input type="button" value="등록" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
+		<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath }/twritedetail/${list.tradeno}'">
 	</li>
-	<li>
-		<input type="submit" value="등록">
-		<input type="button" value="취소">
-	</li>
-</ul>
-
+</ul>	
 </form>
-
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
 	  
 	    //naver Map
 		var mapOptions = {
-			center : new naver.maps.LatLng(37.5088702, 126.8395384),
+			center : new naver.maps.LatLng(${list.map_x}, ${list.map_y}),
 			zoom : 15
 		};
 

@@ -93,21 +93,15 @@ public class WriteController {
 
 
 	@RequestMapping("/twritedetail/{no}")
-	public String twritedetail(HttpServletRequest request,Model model,@PathVariable int no) {
-		
-		String root_path = request.getSession().getServletContext().getRealPath("/"); 
-		String attach_path = "resources/img/";
-		
+	public String twritedetail(Model model,@PathVariable int no) {
 		
 		O2WriteBoardDTO list= service.twritedetail(no);
 		List<O2FileDTO> list2=service.tfiledetail(no);
 		
-		String safeFile = root_path + attach_path;
-		model.addAttribute("filepath",safeFile);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		
-		return "writeboard/writedetail";
+		return "writeboard/twritedetail";
 	}
 	@RequestMapping("/selllist")
 	public String selllist(Model model) {
@@ -138,6 +132,54 @@ public class WriteController {
 		service.twritedelete(no);
 		return "redirect:/selllist";
 	}
+	@RequestMapping("twritemodify/{no}")
+	public String twritemodfiy(@PathVariable int no,Model model) {
+		O2WriteBoardDTO list= service.twritedetail(no);
+		List<O2FileDTO> list2=service.tfiledetail(no);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
+		return "writeboard/twritemodify";
+	}
+	
+	@RequestMapping("twritemodifyresult")
+	public String twritemodify(O2WriteBoardDTO dto
+									,@RequestParam("filedata")List<MultipartFile> images
+									,HttpServletRequest request) {
+		long sizeSum = 0;
+		for(MultipartFile image : images) {
+			//용량 검사
+			sizeSum += image.getSize();
+			if(sizeSum >= LIMIT_SIZE) {
+				
+				return "writboard/fail";
+			}
+		}
+		service.twritemodifyresult(dto,images);
+		String root_path = request.getSession().getServletContext().getRealPath("/"); 
+		String attach_path = "resources/img/";
+		 for (MultipartFile mf : images) {
+	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
+
+	            System.out.println("originFileName : " + fileName);
+
+	            String safeFile = root_path + attach_path + fileName;
+	            System.out.println(safeFile);
+	            try {
+	                mf.transferTo(new File(safeFile));
+	            } catch (IllegalStateException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	        }
+
+	
+		return "redirect:/twritedetail/"+dto.getTradeno();
+	}
+	
 	
 }
 
