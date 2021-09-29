@@ -91,7 +91,7 @@
 		<input type="hidden" name="map_y" id="map_y" >
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
-		<input type="text" id="deal_price" name="deal_price" hidden="">
+		<input type="text" id="deal_price" name="deal_price" hidden="" placeholder="경매 시작가격">
 	</li>
 	<li>
 		<input type="submit" value="등록">

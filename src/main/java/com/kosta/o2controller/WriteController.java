@@ -99,5 +99,13 @@ public class WriteController {
 
 		return "writeboard/writedetail";
 	}
+	@RequestMapping("/selllist")
+	public String selllist(Model model) {
+		
+		List<O2WriteBoardDTO> list= service.selllist();
+		model.addAttribute("list",list);
+		
+		return "writeboard/selllist";
+	}
 }
 

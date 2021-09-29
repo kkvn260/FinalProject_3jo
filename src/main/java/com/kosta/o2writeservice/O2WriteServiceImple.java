@@ -48,4 +48,10 @@ public class O2WriteServiceImple implements O2WriteService {
 		return dao.twritedetail(no);
 	}
 
+	@Override
+	public List<O2WriteBoardDTO> selllist() {
+		
+		return dao.selllist();
+	}
+
 }

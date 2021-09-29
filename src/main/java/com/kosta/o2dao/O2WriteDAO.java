@@ -26,7 +26,9 @@ public interface O2WriteDAO {
 
 	List<O2MainBoardDTO> getmlist(HashMap<String, Object> hm);
 
-	void tinsertfile(O2FileDTO file);	
+	void tinsertfile(O2FileDTO file);
+
+	List<O2WriteBoardDTO> selllist();	
 	
 	
 }

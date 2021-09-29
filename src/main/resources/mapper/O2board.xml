@@ -116,4 +116,16 @@
 		from TradeBoard_3jo
 		where tradeno=#{no}
 	</select>
+	
+	<select id="selllist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+		select title
+		,tradeno
+		,user_id
+		,writedate
+		,viewno
+		,likeno
+		from TradeBoard_3jo
+	</select>
+	
+	
 </mapper>

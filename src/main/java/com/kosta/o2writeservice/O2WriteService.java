@@ -13,4 +13,6 @@ public interface O2WriteService {
 
 	public O2WriteBoardDTO twritedetail(int no);
 
+	public List<O2WriteBoardDTO> selllist();
+
 }
