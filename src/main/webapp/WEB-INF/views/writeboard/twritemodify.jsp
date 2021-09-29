@@ -14,7 +14,8 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <body>
-<form method="post" action="twritemodifyresult" enctype="multipart/form-data">
+
+<form method="post" action="${pageContext.request.contextPath }/twritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>
 		<select name="category">
@@ -28,6 +29,7 @@
 		</select>
 	</li>
 	<li>
+		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
 		<label>제목</label>
 		<input type="text" id="title" name="title" value="${list.title }">
 	</li>
@@ -70,26 +72,35 @@
 		</div>
 	</li>
 	<li>
-	<div class="clear"></div>
-		<input type="button" value="등록" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
+		<div class="clear"></div>
+		<input type="hidden" name="map_x" id="map_x" >
+		<input type="hidden" name="map_y" id="map_y" >
+	</li>
+	<li>
+		<input type="submit" value="등록">
 		<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath }/twritedetail/${list.tradeno}'">
 	</li>
 </ul>	
+
 </form>
+
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
 	  
 	    //naver Map
 		var mapOptions = {
 			center : new naver.maps.LatLng(${list.map_x}, ${list.map_y}),
-			zoom : 15
+			zoom : 18
 		};
-
+		
 		var map = new naver.maps.Map('map', mapOptions);
 		var markerList = [];
-	    var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
-		
-	    map.getPanes().floatPane.appendChild(menuLayer[0]);
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(${list.map_x}, ${list.map_y}),
+            map: map
+        });
+        
+        markerList.push(marker);
 		
 	    naver.maps.Event.addListener(map, 'click', function(e) {
 	    for (var i=0, ii=markerList.length; i<ii; i++) {
@@ -105,29 +116,6 @@
  	        document.getElementById("map_x").value = e.coord.lat();
 	        document.getElementById("map_y").value = e.coord.lng(); 
 	        
-	    });
-
-	    naver.maps.Event.addListener(map, 'keydown', function(e) {
-	        var keyboardEvent = e.keyboardEvent,
-	            keyCode = keyboardEvent.keyCode || keyboardEvent.which;
-
-	        var ESC = 27;
-
-	        if (keyCode === ESC) { //마커 초기화
-	            keyboardEvent.preventDefault();
-
-	            for (var i=0, ii=markerList.length; i<ii; i++) {
-	                markerList[i].setMap(null);
-	            }
-
-	            markerList = [];
-
-	            menuLayer.hide();
-	        }
-	    });
-
-	    naver.maps.Event.addListener(map, 'mousedown', function(e) {
-	        menuLayer.hide();
 	    });
 
 	  	

@@ -54,7 +54,7 @@ public class WriteController {
 	
 	//twriteresult
 	@PostMapping("/twriteresult")
-	public String twriteresult(O2WriteBoardDTO dto,Model model
+	public String twriteresult(O2WriteBoardDTO dto
 								,@RequestParam("filedata")List<MultipartFile> images
 								,HttpServletRequest request) {
 		
@@ -143,7 +143,7 @@ public class WriteController {
 	}
 	
 	@RequestMapping("twritemodifyresult")
-	public String twritemodify(O2WriteBoardDTO dto
+	public String twritemodifyresult(O2WriteBoardDTO dto
 									,@RequestParam("filedata")List<MultipartFile> images
 									,HttpServletRequest request) {
 		long sizeSum = 0;
@@ -156,6 +156,7 @@ public class WriteController {
 			}
 		}
 		service.twritemodifyresult(dto,images);
+		
 		String root_path = request.getSession().getServletContext().getRealPath("/"); 
 		String attach_path = "resources/img/";
 		 for (MultipartFile mf : images) {
@@ -175,11 +176,13 @@ public class WriteController {
 	                e.printStackTrace();
 	            }
 	        }
-
-	
 		return "redirect:/twritedetail/"+dto.getTradeno();
 	}
 	
+	@RequestMapping("fail")
+	public String fail() {
+		return "writeboard/fail";
+	}
 	
 }
 

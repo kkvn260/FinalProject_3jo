@@ -53,19 +53,16 @@
 		values (#{temp_name},#{real_name},#{tradeno})
 	</insert>
 	
-		
 	<select id="tfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
 		select real_name
 		from File_3jo
 		where tradeno=#{no}
 	</select>
 	
-	<update id="tfilemodify" parameterType="com.kosta.o2dto.O2FileDTO">
-		update File_3jo
-			set real_name=#{real_name}
-				,temp_name=#{temp_name}
-		where tradeno=#{tradeno}
-	</update>
+	<delete id="tfiledelete" parameterType="int">
+		delete from File_3jo
+		where tradeno=#{no}
+	</delete>
 	
 	<select id="getqlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
 		select qnano

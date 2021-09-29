@@ -79,11 +79,15 @@ public class O2WriteServiceImple implements O2WriteService {
 		// TODO Auto-generated method stub
 		dao.twritemodifyresult(dto,images);
 		int no=dto.getTradeno();
+		System.out.println(no);
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
 		String time=dateform.format(cal.getTime());
 		
+		
 		if(!images.get(0).getOriginalFilename().equals("")) {
+			dao.tfiledelete(no);
+			
 			for(int i=0;i<images.size();i++) {		
 				O2FileDTO file=new O2FileDTO();
 				file.setTradeno(no);
