@@ -6,7 +6,7 @@
 
 .menu ul{
    list-style:none; 
-   height:45px;
+   height:40px;
    text-shadow: 2px 2px 2px pink;
    font-size:20px;
    display:flex;
@@ -17,7 +17,6 @@
 .main h1{
 	color:green; 
 	text-shadow: 2px 2px 2px #CCFFCC;
-	float:left;
 }
 .main h4{
 	color:black;
@@ -43,6 +42,7 @@ html{
 		margin: auto;
 }
 #footer{
+	    clear:both;
 	    width:1200px;
 	    margin:auto;
 	    bottom:0;
@@ -60,7 +60,9 @@ html{
     font-size:15px;
     color:green; 
 }
-
+#cb{
+   float:right;
+}
 
 
 

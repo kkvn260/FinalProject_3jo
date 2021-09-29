@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 <body>
 
@@ -32,15 +32,9 @@
 			   </tbody>
 			</table>
 		</div>
+		 <br>
  </div>
- <h3>챗봇</h3>
- <div id="cb">
-       <iframe
-          width="350"
-          height="430"
-          src="https://console.dialogflow.com/api-client/demo/embedded/a20bbc1d-bc2d-42d1-9423-d5df37b93a4a">
-       </iframe>
-</div>
+
 </section>
 
 </body>

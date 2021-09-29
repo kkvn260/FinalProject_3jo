@@ -6,10 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
@@ -19,12 +18,17 @@
   
     <div class="main">
 		<header>
-		        <img src="${pageContext.request.contextPath }/resources/img/52.png" width="60px" height="90px">
-				<h1><a href="${pageContext.request.contextPath }/mainpage">&nbsp;오이마켓</a></h1><br><br><br>
-				<h4>&nbsp;&nbsp;오늘도 이웃과 거래하는 오이마켓</h4>
+		        <img src="${pageContext.request.contextPath }/resources/img/52.png" width="60px" height="75px">
+		         <!-- 챗봇 -->
+		         <div id="cb">
+                   <a href="https://console.dialogflow.com/api-client/demo/embedded/a20bbc1d-bc2d-42d1-9423-d5df37b93a4a" target="_blank">
+                   <img src = "${pageContext.request.contextPath }/resources/img/52cb.png" width="70px" height="70px"></a>
+                 </div> 
+				<h1><a href="${pageContext.request.contextPath }/mainpage">&nbsp;오이마켓</a></h1>  
+				<h4>&nbsp;&nbsp;오늘도 이웃과 거래하는 오이마켓</h4><br>
+        <hr>
 		</header>
     </div>
-        <hr>
 		<nav class="menu">
 		<ul>
 			<li><a href="${pageContext.request.contextPath }/mainpage">전체</a></li>
