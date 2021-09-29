@@ -20,17 +20,17 @@
     <div class="main">
 		<header>
 		        <img src="${pageContext.request.contextPath }/resources/img/52.png" width="60px" height="90px">
-				<h1><a href="mainpage">&nbsp;오이마켓</a></h1><br><br><br>
+				<h1><a href="${pageContext.request.contextPath }/mainpage">&nbsp;오이마켓</a></h1><br><br><br>
 				<h4>&nbsp;&nbsp;오늘도 이웃과 거래하는 오이마켓</h4>
 		</header>
     </div>
         <hr>
 		<nav class="menu">
 		<ul>
-			<li><a href="mainpage">전체</a></li>
-			<li><a href="selllist">판매</a></li>
-			<li><a href="dongcomlist">동네 커뮤니티</a></li>
-			<li><a href="qnalist">Q&A</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li><a href="${pageContext.request.contextPath }/mainpage">전체</a></li>
+			<li><a href="${pageContext.request.contextPath }/selllist">판매</a></li>
+			<li><a href="${pageContext.request.contextPath }/dongcomlist">동네 커뮤니티</a></li>
+			<li><a href="${pageContext.request.contextPath }/qnalist">Q&A</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 		</ul>
 		</nav>
 		<hr>

@@ -12,40 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-<style>
-#preview img {
-	width: 100px;
-	height: 100px;
-}
 
-#preview p {
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
-.preview-box {
-	padding: 5px;
-	border-radius: 2px;
-	margin-bottom: 5px;
-	margin-right: 5px;
-	float: left;
-}
-.clear{
-	clear: both;
-}
-#attach label{
-	background-color: aqua;
-}
-.right{
-	float: right;
-}
-.left{
-	float: left;
-}
-.clear{
-	clear: both;
-}
-</style>
 <body>
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>

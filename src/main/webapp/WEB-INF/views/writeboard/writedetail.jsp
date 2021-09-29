@@ -12,17 +12,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-<style>
-.right{
-	float: right;
-}
-.left{
-	float: left;
-}
-.clear{
-	clear: both;
-}
-</style>
 <body>
 
 <ul>

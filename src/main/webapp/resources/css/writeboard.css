@@ -3,3 +3,35 @@
 li{
 	list-style: none;
 }
+#preview img {
+	width: 100px;
+	height: 100px;
+}
+
+#preview p {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.preview-box {
+	padding: 5px;
+	border-radius: 2px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	float: left;
+}
+.clear{
+	clear: both;
+}
+#attach label{
+	background-color: aqua;
+}
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
+.clear{
+	clear: both;
+}
