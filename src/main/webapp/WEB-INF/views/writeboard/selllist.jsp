@@ -19,13 +19,14 @@
        <c:forEach var="item" items="${list }">
           <tr><td>${item.tradeno }</td>
               <td><c:out value="${item.user_id }"/></td>
-              <td><c:out value="${item.title }"/></td>
+              <td><a href="twritedetail/${item.tradeno }"><c:out value="${item.title }"/></a></td>
               <td><c:out value="${item.writedate }"/></td>
               </tr>
        </c:forEach>
      </c:if>
    </tbody>
 </table>
+<a href="${pageContext.request.contextPath }/write">글쓰기</a>
 
 </body>
 </html>
