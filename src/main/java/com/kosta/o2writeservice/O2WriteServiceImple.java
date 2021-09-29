@@ -27,18 +27,19 @@ public class O2WriteServiceImple implements O2WriteService {
 	public void twriteinsert(O2WriteBoardDTO dto, List<MultipartFile> images) {
 		dao.twriteinsert(dto);
 		int no=dto.getTradeno();
-		System.out.println("no : "+dto.getTradeno());
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
 		String time=dateform.format(cal.getTime());
 		
-		for(int i=0;i<images.size();i++) {		
-			O2FileDTO file=new O2FileDTO();
-		file.setTradeno(no);
-		file.setReal_name(images.get(i).getOriginalFilename());
-		file.setTemp_name(i+time);
-		
-		dao.tinsertfile(file);
+		if(images!=null) {
+			for(int i=0;i<images.size();i++) {		
+				O2FileDTO file=new O2FileDTO();
+				file.setTradeno(no);
+				file.setReal_name(images.get(i).getOriginalFilename());
+				file.setTemp_name(i+time);
+
+				dao.tinsertfile(file);
+			}
 		}
 	}
 
@@ -52,6 +53,18 @@ public class O2WriteServiceImple implements O2WriteService {
 	public List<O2WriteBoardDTO> selllist() {
 		
 		return dao.selllist();
+	}
+
+	@Override
+	public List<O2WriteBoardDTO> deallist() {
+		// TODO Auto-generated method stub
+		return dao.deallist();
+	}
+
+	@Override
+	public List<O2FileDTO> tfiledetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.tfiledetail(no);
 	}
 
 }

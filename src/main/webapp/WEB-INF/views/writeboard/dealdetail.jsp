@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,22 +24,8 @@
 		<input type="text" id="title" value="${list.title }" readonly>
 	</li>
 	<li>
-		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" value="${list.sell_price }" readonly>
-	</li>
-	<li>
-		<label>첨부 사진</label>
-		<c:if test="${list2!=null }">
-		<div class="preview">
-			<c:forEach var="item" items="${list2 }">
-				<div class="preview-box">
-					<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
-					<p>${item.real_name}</p>
-				</div>
-			</c:forEach>
-		</div>
-		</c:if>
-	<div class="clear"></div>
+		<label>현재 입찰가격</label>
+		<input type="text" id="sell_price" value="${list.deal_price }" readonly>
 	</li>
 	<li>
 		<textarea rows="21" cols="85" class="left" readonly>${list.content }</textarea>

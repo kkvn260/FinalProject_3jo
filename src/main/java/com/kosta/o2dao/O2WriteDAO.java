@@ -31,7 +31,11 @@ public interface O2WriteDAO {
 
 	List<O2WriteBoardDTO> selllist();
 
-	List<O2DongComDTO> getdonglist();	
+	List<O2DongComDTO> getdonglist();
+
+	List<O2WriteBoardDTO> deallist();
+
+	List<O2FileDTO> tfiledetail(int no);	
 	
 	
 }

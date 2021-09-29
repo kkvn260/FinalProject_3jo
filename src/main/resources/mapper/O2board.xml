@@ -113,6 +113,7 @@
 		,map_x,map_y
 		,content
 		,sell_price
+		,deal_price
 		from TradeBoard_3jo
 		where tradeno=#{no}
 	</select>
@@ -127,6 +128,20 @@
 		from TradeBoard_3jo
 	</select>
 	
+	<select id="deallist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+	<![CDATA[
+		select title
+		,tradeno
+		,user_id
+		,writedate
+		,viewno
+		,likeno
+		,deal_price
+		from TradeBoard_3jo
+		where deal_price REGEXP '^[0-9]+$'
+	]]>
+	</select>
+	
 	<select id="getdonglist" resultType="com.kosta.o2dto.O2DongComDTO">
 	  select chatno
 	         ,title
@@ -137,5 +152,10 @@
 	         from ChatBoard_3jo
 	</select>
 	
+	<select id="tfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
+		select real_name
+		from File_3jo
+		where tradeno=#{no}
+	</select>
 	
 </mapper>

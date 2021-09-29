@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +10,8 @@
 </head>
 <body>
 <div>
-<h2>판매글</h2>
-<a href="${pageContext.request.contextPath }/deallist">경매글</a>
+<h2>경매글</h2>
+<a href="${pageContext.request.contextPath }/selllist">판매글</a>
 </div>
 	<table>
 		<thead>
@@ -29,7 +29,7 @@
 					<tr>
 						<td><c:out value="${number }" /></td>
 						<td><c:out value="${item.user_id }" /></td>
-						<td><a href="twritedetail/${item.tradeno }"><c:out
+						<td><a href="tdealdetail/${item.tradeno }"><c:out
 									value="${item.title }" /></a></td>
 						<td><c:out value="${item.writedate }" /></td>
 					</tr>

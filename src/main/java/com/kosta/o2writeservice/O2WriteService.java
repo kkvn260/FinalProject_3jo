@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -14,5 +15,9 @@ public interface O2WriteService {
 	public O2WriteBoardDTO twritedetail(int no);
 
 	public List<O2WriteBoardDTO> selllist();
+
+	public List<O2WriteBoardDTO> deallist();
+
+	public List<O2FileDTO> tfiledetail(int no);
 
 }

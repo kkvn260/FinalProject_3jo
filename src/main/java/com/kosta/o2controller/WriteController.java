@@ -63,6 +63,7 @@ public class WriteController {
 			//용량 검사
 			sizeSum += image.getSize();
 			if(sizeSum >= LIMIT_SIZE) {
+				
 				return "writboard/fail";
 			}
 		}
@@ -93,10 +94,19 @@ public class WriteController {
 
 	@RequestMapping("/twritedetail/{no}")
 	public String twritedetail(HttpServletRequest request,Model model,@PathVariable int no) {
-
+		
+		String root_path = request.getSession().getServletContext().getRealPath("/"); 
+		String attach_path = "resources/img/";
+		
+		
 		O2WriteBoardDTO list= service.twritedetail(no);
+		List<O2FileDTO> list2=service.tfiledetail(no);
+		
+		String safeFile = root_path + attach_path;
+		model.addAttribute("filepath",safeFile);
 		model.addAttribute("list",list);
-
+		model.addAttribute("list2",list2);
+		
 		return "writeboard/writedetail";
 	}
 	@RequestMapping("/selllist")
@@ -107,5 +117,22 @@ public class WriteController {
 		
 		return "writeboard/selllist";
 	}
+	@RequestMapping("/deallist")
+	public String deallist(Model model) {
+		
+		List<O2WriteBoardDTO> list=service.deallist();
+		model.addAttribute("list",list);
+		
+		return "writeboard/deallist";
+	}
+	@RequestMapping("/tdealdetail/{no}")
+	public String tdealdetail(HttpServletRequest request,Model model,@PathVariable int no) {
+
+		O2WriteBoardDTO list= service.twritedetail(no);
+		model.addAttribute("list",list);
+
+		return "writeboard/dealdetail";
+	}
+	
 }
 
