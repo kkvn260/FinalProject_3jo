@@ -1,6 +1,8 @@
 package com.kosta.o2dao;
 
-import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
+
+
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -9,12 +11,10 @@ import com.kosta.o2dto.O2UserDTO;
 @Mapper
 public interface O2UserDAO {
 		
-	public String loginCheck(O2UserDTO dto);
-		
-	public O2UserDTO userInfo(O2UserDTO dto);
-   
-	public void logout(HttpSession session);
-	
-	public void registerUser(O2UserDTO dto);
+
+	int signUser(O2UserDTO userdto) throws SQLException;//회원가입
+	// int searchPassword(String user_id, String email,String key);//회원임시 비밀번호
+	// O2UserDTO loginUser(@RequestParam("user_id") String user_id); //로그인
+	int checkUserId(String user_id); //아이디중복체크
 	
 }
