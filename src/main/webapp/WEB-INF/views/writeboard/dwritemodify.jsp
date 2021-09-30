@@ -15,7 +15,7 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <body>
 <br><br><br><br>
-<form method="post" action="${pageContext.request.contextPath }/twritemodifyresult" enctype="multipart/form-data">
+<form method="post" action="${pageContext.request.contextPath }/dwritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>
 		<label for="category">카테고리</label>
@@ -30,13 +30,9 @@
 		</select>
 	</li>
 	<li>
-		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
+		<input type="hidden" name="chatno" id="chatno" value="${list.chatno }">
 		<label>제목</label>
 		<input type="text" id="title" name="title" value="${list.title }">
-	</li>
-	<li>
-		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" name="sell_price" value="${list.sell_price }">
 	</li>
 	<li>
 		<li>
@@ -79,7 +75,7 @@
 	</li>
 	<li>
 		<input type="submit" value="등록">
-		<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath }/twritedetail/${list.tradeno}'">
+		<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath }/dwritedetail/${list.chatno}'">
 	</li>
 </ul>	
 

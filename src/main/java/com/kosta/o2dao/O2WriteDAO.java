@@ -46,7 +46,17 @@ public interface O2WriteDAO {
 
 	void dwriteinsert(O2DongComDTO dto);
 
-	void dinsertfile(O2FileDTO file);	
+	void dinsertfile(O2FileDTO file);
+
+	O2DongComDTO dwritedetail(int no);
+
+	List<O2FileDTO> dfiledetail(int no);
+
+	void dwritedelete(int no);
+
+	void dwritemodifyresult(O2DongComDTO dto);
+
+	void dfiledelete(int no);	
 	
 	
 }

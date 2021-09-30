@@ -113,13 +113,59 @@ public class O2WriteServiceImple implements O2WriteService {
 		if(!images.get(0).getOriginalFilename().equals("")) {
 			for(int i=0;i<images.size();i++) {		
 				O2FileDTO file=new O2FileDTO();
-				file.setTradeno(no);
+				file.setChatno(no);
 				file.setReal_name(images.get(i).getOriginalFilename());
 				file.setTemp_name(i+time);
 
 				dao.dinsertfile(file);
 			}
 		}
+	}
+
+	@Override
+	public O2DongComDTO dwritedetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.dwritedetail(no);
+	}
+
+	@Override
+	public List<O2FileDTO> dfiledetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.dfiledetail(no);
+	}
+
+	@Override
+	public void dwritedelete(int no) {
+		// TODO Auto-generated method stub
+		dao.dwritedelete(no);
+		
+	}
+
+	@Override
+	@Transactional
+	public void dwritemodifyresult(O2DongComDTO dto,List<MultipartFile> images) {
+		// TODO Auto-generated method stub
+		int no=dto.getChatno();
+		dao.dwritemodifyresult(dto);
+		
+		Calendar cal=Calendar.getInstance();
+		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
+		String time=dateform.format(cal.getTime());
+
+
+		if(!images.get(0).getOriginalFilename().equals("")) {
+			dao.dfiledelete(no);
+
+			for(int i=0;i<images.size();i++) {		
+				O2FileDTO file=new O2FileDTO();
+				file.setChatno(no);
+				file.setReal_name(images.get(i).getOriginalFilename());
+				file.setTemp_name(i+time);
+
+				dao.dinsertfile(file);
+			}
+		}
+
 	}
 
 }

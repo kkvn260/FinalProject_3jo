@@ -27,4 +27,12 @@ public interface O2WriteService {
 
 	public void dwriteinsert(O2DongComDTO dto, List<MultipartFile> images);
 
+	public O2DongComDTO dwritedetail(int no);
+
+	public List<O2FileDTO> dfiledetail(int no);
+
+	public void dwritedelete(int no);
+
+	public void dwritemodifyresult(O2DongComDTO dto, List<MultipartFile> images);
+
 }

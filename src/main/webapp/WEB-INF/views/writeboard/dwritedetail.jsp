@@ -25,10 +25,6 @@
 		<input type="text" id="title" value="${list.title }" readonly>
 	</li>
 	<li>
-		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" value="${list.sell_price }" readonly>
-	</li>
-	<li>
 		<label>첨부 사진</label>
 		<c:if test="${list2!=null }">
 		<div class="preview">
@@ -51,8 +47,8 @@
 	</li>
 	<li>
 	<div class="clear"></div>
-		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
-		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/dwritemodify/${list.chatno}'">
+		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/dwritedelete/${list.chatno}'">
 	</li>
 </ul>	
 	<script>

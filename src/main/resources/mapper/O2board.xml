@@ -192,10 +192,47 @@
 		</selectKey>
 	</insert>
 	
+	<select id="dwritedetail" parameterType="int" resultType="com.kosta.o2dto.O2DongComDTO">
+		select title
+		,chatno
+		,category
+		,map_x,map_y
+		,content
+		from ChatBoard_3jo
+		where chatno=#{no}
+	</select>
+	
+	<delete id="dwritedelete" parameterType="int">
+		delete from ChatBoard_3jo
+		where chatno=#{no}
+	</delete>
+	
+	<update id="dwritemodifyresult" parameterType="com.kosta.o2dto.O2DongComDTO">
+		update ChatBoard_3jo
+			set category=#{category}
+				,title=#{title}
+				,content=#{content}
+				,map_x=#{map_x}
+				,map_y=#{map_y}
+		where chatno=#{chatno}
+	</update>
+	
 	<insert id="dinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
 		insert into File_3jo(temp_name,real_name,chatno)
 		values (#{temp_name},#{real_name},#{chatno})
 	</insert>
-
+	
+	<select id="dfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
+		select real_name
+		from File_3jo
+		where chatno=#{no}
+	</select>
+	
+	<delete id="dfiledelete" parameterType="int">
+		delete from File_3jo
+		where chatno=#{no}
+	</delete>
+	
+	
 	
 </mapper>

@@ -83,7 +83,7 @@ public class WriteController {
 	            }
 	        }
 
-		return "redirect:/mainpage";
+		return "redirect:/selllist";
 	}
 	
 	@PostMapping("/dwriteresult")
@@ -121,7 +121,7 @@ public class WriteController {
 	            }
 	        }
 
-		return "redirect:/mainpage";
+		return "redirect:/dongcomlist";
 	}
 
 	@RequestMapping("/twritedetail/{no}")
@@ -134,6 +134,18 @@ public class WriteController {
 		model.addAttribute("list2",list2);
 		
 		return "writeboard/twritedetail";
+	}
+	
+	@RequestMapping("/dwritedetail/{no}")
+	public String dwritedetail(Model model,@PathVariable int no) {
+		
+		O2DongComDTO list= service.dwritedetail(no);
+		List<O2FileDTO> list2=service.dfiledetail(no);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
+		
+		return "writeboard/dwritedetail";
 	}
 	@RequestMapping("/selllist")
 	public String selllist(Model model) {
@@ -151,6 +163,7 @@ public class WriteController {
 		
 		return "writeboard/deallist";
 	}
+	
 	@RequestMapping("/tdealdetail/{no}")
 	public String tdealdetail(HttpServletRequest request,Model model,@PathVariable int no) {
 
@@ -159,11 +172,19 @@ public class WriteController {
 
 		return "writeboard/dealdetail";
 	}
+	
 	@RequestMapping("twritedelete/{no}")
 	public String twritedelete(@PathVariable int no) {
 		service.twritedelete(no);
 		return "redirect:/selllist";
 	}
+	
+	@RequestMapping("dwritedelete/{no}")
+	public String dwritedelete(@PathVariable int no) {
+		service.dwritedelete(no);
+		return "redirect:/dongcomlist";
+	}
+	
 	@RequestMapping("twritemodify/{no}")
 	public String twritemodfiy(@PathVariable int no,Model model) {
 		O2WriteBoardDTO list= service.twritedetail(no);
@@ -172,6 +193,17 @@ public class WriteController {
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		return "writeboard/twritemodify";
+	}
+	
+	@RequestMapping("dwritemodify/{no}")
+	public String dwritemodfiy(@PathVariable int no,Model model) {
+		O2DongComDTO list= service.dwritedetail(no);
+		List<O2FileDTO> list2=service.dfiledetail(no);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
+		System.out.println("음");
+		return "writeboard/dwritemodify";
 	}
 	
 	@RequestMapping("twritemodifyresult")
@@ -215,6 +247,41 @@ public class WriteController {
 	            }
 	        }
 		return "redirect:/twritedetail/"+dto.getTradeno();
+	}
+	
+	@RequestMapping("dwritemodifyresult")
+	public String dwritemodifyresult(O2DongComDTO dto
+									,@RequestParam("filedata")List<MultipartFile> images
+									,HttpServletRequest request) {
+		long sizeSum = 0;
+		for(MultipartFile image : images) {
+			//용량 검사
+			sizeSum += image.getSize();
+			if(sizeSum >= LIMIT_SIZE) {
+				
+				return "writboard/fail";
+			}
+		}
+
+		service.dwritemodifyresult(dto,images);
+		
+		String root_path = request.getSession().getServletContext().getRealPath("/"); 
+		String attach_path = "resources/img/";
+		 for (MultipartFile mf : images) {
+	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
+
+	            String safeFile = root_path + attach_path + fileName;
+	            try {
+	                mf.transferTo(new File(safeFile));
+	            } catch (IllegalStateException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	        }
+		return "redirect:/dwritedetail/"+dto.getChatno();
 	}
 	
 	@RequestMapping("fail")

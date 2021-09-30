@@ -25,7 +25,7 @@
 					<c:set var="number" value="${number+1 }" />
 					<tr>
 						<td><c:out value="${number }" /></td>
-						<td><a href="dongdetail/${item.chatno }"><c:out value="${item.title }"></c:out></td>
+						<td><a href="dwritedetail/${item.chatno }"><c:out value="${item.title }"></c:out></td>
 						<td><c:out value="${item.user_id }" /></td>
 						<td><c:out value="${item.writedate }" /></td>
 					</tr>
