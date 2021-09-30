@@ -7,11 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+   h2{color:blue;}
+   h2 a{color:black;}
+   h2 a:link{text-decoration:none;}
+</style>
 </head>
 <body>
 <div>
-<h2>판매글</h2>
-<a href="${pageContext.request.contextPath }/deallist">경매글</a>
+<h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2>
 </div>
 	<table>
 		<thead>
