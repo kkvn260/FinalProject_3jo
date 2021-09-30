@@ -177,6 +177,25 @@
 	         ,likeno
 	         from ChatBoard_3jo
 	</select>
+	
+	<insert id="dwriteinsert"
+		parameterType="com.kosta.o2dto.O2DongComDTO">
+		insert into ChatBoard_3jo(user_id,title,content
+		,category,writedate
+		,map_x,map_y)
+		
+		values('test',#{title},#{content},#{category},sysdate()
+		,#{map_x},#{map_y})
+		
+		<selectKey keyProperty="chatno" resultType="int" order="AFTER">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="dinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
+		insert into File_3jo(temp_name,real_name,chatno)
+		values (#{temp_name},#{real_name},#{chatno})
+	</insert>
 
 	
 </mapper>

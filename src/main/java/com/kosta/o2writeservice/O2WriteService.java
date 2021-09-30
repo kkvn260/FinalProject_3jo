@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
@@ -23,5 +24,7 @@ public interface O2WriteService {
 	public void twritedelete(int no);
 
 	public void twritemodifyresult(O2WriteBoardDTO dto, List<MultipartFile> images);
+
+	public void dwriteinsert(O2DongComDTO dto, List<MultipartFile> images);
 
 }

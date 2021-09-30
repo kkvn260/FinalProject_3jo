@@ -33,6 +33,7 @@
 			</c:if>
 		</tbody>
 	</table>
+	<a href="dwrite">글쓰기</a>
 
 </body>
 </html>

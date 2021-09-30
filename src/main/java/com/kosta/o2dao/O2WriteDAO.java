@@ -42,7 +42,11 @@ public interface O2WriteDAO {
 
 	void twritemodifyresult(O2WriteBoardDTO dto);
 
-	void tfiledelete(int no);	
+	void tfiledelete(int no);
+
+	void dwriteinsert(O2DongComDTO dto);
+
+	void dinsertfile(O2FileDTO file);	
 	
 	
 }

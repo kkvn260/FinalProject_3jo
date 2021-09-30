@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.o2dao.O2WriteDAO;
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -98,6 +99,27 @@ public class O2WriteServiceImple implements O2WriteService {
 			}
 		}
 		
+	}
+
+	@Override
+	public void dwriteinsert(O2DongComDTO dto, List<MultipartFile> images) {
+		// TODO Auto-generated method stub
+		dao.dwriteinsert(dto);
+		int no=dto.getChatno();
+		Calendar cal=Calendar.getInstance();
+		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
+		String time=dateform.format(cal.getTime());
+		
+		if(!images.get(0).getOriginalFilename().equals("")) {
+			for(int i=0;i<images.size();i++) {		
+				O2FileDTO file=new O2FileDTO();
+				file.setTradeno(no);
+				file.setReal_name(images.get(i).getOriginalFilename());
+				file.setTemp_name(i+time);
+
+				dao.dinsertfile(file);
+			}
+		}
 	}
 
 }

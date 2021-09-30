@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2writeservice.O2WriteService;
@@ -37,6 +37,12 @@ public class WriteController {
 		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
 
 		return "writeboard/twrite";
+	}
+	@RequestMapping("/dwrite")
+	public String dwrite() {
+		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
+
+		return "writeboard/dwrite";
 	}
 
 	private static final long LIMIT_SIZE = 10 * 1024 * 1024;
@@ -79,7 +85,44 @@ public class WriteController {
 
 		return "redirect:/mainpage";
 	}
+	
+	@PostMapping("/dwriteresult")
+	public String dwriteresult(O2DongComDTO dto
+								,@RequestParam("filedata")List<MultipartFile> images
+								,HttpServletRequest request) {
+		
+		long sizeSum = 0;
+		for(MultipartFile image : images) {
+			//용량 검사
+			sizeSum += image.getSize();
+			if(sizeSum >= LIMIT_SIZE) {
+				
+				return "writboard/fail";
+			}
+		}
+		service.dwriteinsert(dto,images);
+		String root_path = request.getSession().getServletContext().getRealPath("/"); 
+		String attach_path = "resources/img/";
+		 for (MultipartFile mf : images) {
+	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
 
+	            System.out.println("originFileName : " + fileName);
+
+	            String safeFile = root_path + attach_path + fileName;
+	            System.out.println(safeFile);
+	            try {
+	                mf.transferTo(new File(safeFile));
+	            } catch (IllegalStateException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	        }
+
+		return "redirect:/mainpage";
+	}
 
 	@RequestMapping("/twritedetail/{no}")
 	public String twritedetail(Model model,@PathVariable int no) {
