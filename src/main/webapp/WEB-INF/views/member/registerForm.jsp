@@ -6,7 +6,21 @@
 <meta charset="UTF-8">
 <title>ReigsterForm</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+.container{
+	margin: 60px;
+	border: 3px solid #336633;
+	background-color: #ffff99;
+	width: 1000px;
+	
+}
+hi{
+	font-size: 30px;
+	margin-top: 50px;
+}
 
+
+</style>
 <script>
 
 //아이디 정규식
@@ -178,14 +192,14 @@ $(document).ready(function(){
 </head>
 <body>
 <br><br><br><br><br>
-   <div class="container">
-   	<div class="titlestyle">
+   <div class="container" >
+   	<div class="titlestyle" align="center">
    		<hi>O2.market</hi>
    	</div>
    	<form method="post" id="registerForm">
    		<!-- user_id -->
    		<div class="form-group">
-   			<label for="user_id">아이디</label>
+   			<label for="user_id" >아이디</label>
    				<input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID" required>
    			<div class="check_font" id="id_check"></div>
    		</div>
@@ -249,7 +263,7 @@ $(document).ready(function(){
    		</div>
    		
 		<!-- 가입버튼 -->
-		<div class="sign_button">
+		<div class="sign_button" align="right">
 			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }">
 				<i class="fa fa-rotate-right pr-2" aria-hidden="true"></i>취소하기
 			</a>&emsp;&emsp;

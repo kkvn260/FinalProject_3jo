@@ -9,56 +9,64 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script>
-$(document).ready(function(){
-	$("#btnLogin").click(function(){
-		var user_id= $("#user_id").val();
-		var pwd= $("#pwd").val();
-		if(user_id == ""){
-			alert("아이디를 입력하세요");
-			$("#user_id").focus();//입력포커스 이동
-			return; //함수 종료
-		}
-		if(pwd == ""){
-			alert("비밀번호를 입력하세요");
-			$("#pwd").focus();
-			return;
-		}
-		document.form1.action="${path}/loginCheck"
-		document.form1.submit();
-	});
-});
-</script>
-</head>
-<body>
+<style>
+   form{
+       text-align: center;
+       margin:200px;
+   }
+  
 
-<h2>로그인</h2>
-<form name="form1" method="post" >
-<table border="1" width="400px">
-<tr>
-	<td>아이디</td>
-	<td><input name="user_id" id="user_id"></td>
-</tr>
-<tr>
-	<td>비밀번호</td>
-	<td><input type="password" name="pwd" id="pwd"></td>
-</tr>
-<tr>
-	<td colspan="2" align="center">
-		<button type="button" id="btnLogin">로그인</button>
-	<c:if test="${msg == 'failure' }">
-		<div style="color: red">
-			아이디 또는 비밀번호가 일치하지 않습니다
-		</div>
-	</c:if>
-	<c:if test="${msg == 'logout' }">
-		<div style="color: red">
-			로그아웃되었습니다.
-		</div>
-	</c:if>
-	</td>
-</tr>
-</table>
-</form>
-</body>
+   .border{
+       margin:300px;
+       width:400px;
+       height:500px;
+       border:3px solid #555555;
+       border-radius: 10%;
+       background-color: #336633;
+   }
+
+   img{
+   width:60px;
+   height:70px;
+   border-bottom-left-radius:20px;
+   border-bottom-right-radius:20px;
+   border-top-right-radius:20px;
+   border-top-left-radius:20px;
+    margin-top:20px;
+       margin-bottom:20px; 
+   }
+
+	h1{
+		color: white;
+		margin-top:5px;
+		padding: 15px;
+	
+	}
+   input{
+       	width:300px;
+      	height: 50px;
+       	margin-bottom: 10px;
+        border-bottom-left-radius:5px;
+   		border-bottom-right-radius:5px;
+   		border-top-right-radius:5px;
+   		border-top-left-radius:5px;
+        background-color: white;
+   }
+	</style>
+	</head>
+	<body>
+	<div id="loginform">
+    	<form action ="/Login" method="post">
+        	<div class="border">
+            	<h1>login</h1>
+            	<img src ="${pageContext.request.contextPath}/resources/img/52.png"><br>
+            	
+                <input type="text"  name="id" id="id" placeholder="아이디"><br>
+            	<input type="password" name="password" id="password" placeholder="비밀번호"><br><br>
+            	<input type="submit" value="로그인">
+
+        	</div> 
+    	</form>
+    	</div>
+	</body>
 </html>

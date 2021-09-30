@@ -1,6 +1,7 @@
 package com.kosta.o2controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2service.O2UserService;
@@ -48,8 +50,11 @@ public class UserController {
 			
 			return service.userIdCheck(user_id);
 		}
-		@RequestMapping(value = "/login")
-		public String userlogin() {
+		@RequestMapping(value = "/login" ,method = RequestMethod.GET)
+		public String loginPage()  {
+		
+		
 			return "member/login";
 		}
+		
 }
