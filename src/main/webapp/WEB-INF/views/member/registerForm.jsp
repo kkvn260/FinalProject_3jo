@@ -163,7 +163,7 @@ $(document).ready(function(){
 			}
 			
 			if(validAll){ // 유효성 모두 통과
-				 $("#registerForm").attr("action", "/member/registersucess");
+				 $("#registerForm").attr("action", "registersucess");
 		            $("#registerForm").submit();
 				
 			} else{

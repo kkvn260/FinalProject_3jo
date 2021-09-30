@@ -37,7 +37,7 @@ public class UserController {
 			
 			return "member/registerForm";
 		}
-		@RequestMapping(value = "/member/registersucess")
+		@RequestMapping(value = "/registersucess")
 		public String usersign(O2UserDTO userdto) {
 			service.signUser(userdto);
 			return "member/registersucess";
