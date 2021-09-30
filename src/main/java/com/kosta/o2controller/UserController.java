@@ -32,7 +32,7 @@ public class UserController {
 		private O2UserService service;
 		
 		// 회원가입
-		@GetMapping(value = "/member/registerForm")
+		@GetMapping(value = "/registerForm")
 		public String usersign() {
 			
 			return "member/registerForm";
