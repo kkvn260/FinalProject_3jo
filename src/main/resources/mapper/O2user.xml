@@ -36,4 +36,11 @@
 		where user_id = #{user_id}
 	</select>
 
+	<!-- 로그인 -->
+	<select id="login" resultType="com.kosta.o2dto.O2UserDTO">
+		select user_id, pwd
+		  from User_3jo
+		 where user_id = #{use_id}
+		 and pwd = #{pwd}   
+	</select>
 </mapper>

@@ -48,4 +48,8 @@ public class UserController {
 			
 			return service.userIdCheck(user_id);
 		}
+		@RequestMapping(value = "/login")
+		public String userlogin() {
+			return "member/login";
+		}
 }
