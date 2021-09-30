@@ -10,7 +10,16 @@
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
+<br><br><br><br>
+<div class="main">
+		<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+           <img class="w3-image" src="${pageContext.request.contextPath }/resources/img/test.jpg" width="1200" height="600">
+           <div class="w3-display-middle w3-margin-top w3-center">
+             <h1><a href="${pageContext.request.contextPath }/mainpage">오이마켓</a></h1>
+             <h4>오늘도 이웃과 거래하는 <span id="oe">오이마켓</span></h4>
+           </div>
+       </header>
+    </div>
 <section id="content" >
  <div id="topview" style="float:left; margin-right:200px;">
 	<h3>판매 인기글 TOP10 미리보기</h3>

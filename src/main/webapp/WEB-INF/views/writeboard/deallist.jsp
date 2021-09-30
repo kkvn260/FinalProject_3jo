@@ -14,6 +14,7 @@
 </style>
 </head>
 <body>
+<br><br><br><br>
 <div>
 <h2><a href="${pageContext.request.contextPath }/selllist">판매글 게시판 / </a> 경매글 게시판</h2>
 </div>

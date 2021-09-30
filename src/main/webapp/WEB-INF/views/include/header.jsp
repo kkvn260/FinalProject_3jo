@@ -30,22 +30,5 @@
     </div>
   </div>
 </div>
-
-  
-<div class="main">
-		<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-           <img class="w3-image" src="${pageContext.request.contextPath }/resources/img/test.jpg" width="1500" height="800">
-           <div class="w3-display-middle w3-margin-top w3-center">
-             <h1><a href="${pageContext.request.contextPath }/mainpage">오이마켓</a></h1>
-             <h4>오늘도 이웃과 거래하는 <span id="oe">오이마켓</span></h4>
-           </div>
-       </header>
-    </div>
-        <!-- 챗봇 -->
-		         <div id="cb">
-                   <a href="https://console.dialogflow.com/api-client/demo/embedded/a20bbc1d-bc2d-42d1-9423-d5df37b93a4a" target="_blank">
-                   <img src = "${pageContext.request.contextPath }/resources/img/52cb.png" width="70px" height="70px"></a>
-                 </div> 
-
 </body>
 </html>
