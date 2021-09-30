@@ -2,42 +2,31 @@ package com.kosta.o2controller;
 
 
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2writeservice.O2WriteService;
 
-import lombok.extern.slf4j.Slf4j;
-
 
 @Controller
-@Slf4j
 public class WriteController {
 
 	@Autowired
@@ -155,6 +144,12 @@ public class WriteController {
 				return "writboard/fail";
 			}
 		}
+//		System.out.println(dto.getCategory());
+//		System.out.println(dto.getContent());
+//		System.out.println(dto.getTitle());
+//		System.out.println(dto.getTradeno());
+//		System.out.println(dto.getSell_price());
+		
 		service.twritemodifyresult(dto,images);
 		
 		String root_path = request.getSession().getServletContext().getRealPath("/"); 
@@ -162,10 +157,10 @@ public class WriteController {
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
 
-	            System.out.println("originFileName : " + fileName);
+//	            System.out.println("originFileName : " + fileName);
 
 	            String safeFile = root_path + attach_path + fileName;
-	            System.out.println(safeFile);
+//	            System.out.println(safeFile);
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {

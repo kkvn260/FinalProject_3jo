@@ -18,6 +18,7 @@
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
 	<li>
+		<label for="category">카테고리</label>
 		<select name="category">
 			<option >카테고리를 설정해주세요</option>
 			<option value="의류" >의류</option> <!--남성/여성  -->

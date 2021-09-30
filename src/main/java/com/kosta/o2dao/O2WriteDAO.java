@@ -40,7 +40,7 @@ public interface O2WriteDAO {
 
 	void twritedelete(int no);
 
-	void twritemodifyresult(O2WriteBoardDTO dto,List<MultipartFile> images);
+	void twritemodifyresult(O2WriteBoardDTO dto);
 
 	void tfiledelete(int no);	
 	

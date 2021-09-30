@@ -77,9 +77,9 @@ public class O2WriteServiceImple implements O2WriteService {
 	@Transactional
 	public void twritemodifyresult(O2WriteBoardDTO dto,List<MultipartFile> images) {
 		// TODO Auto-generated method stub
-		dao.twritemodifyresult(dto,images);
 		int no=dto.getTradeno();
-		System.out.println(no);
+		dao.twritemodifyresult(dto);
+//		System.out.println(no);
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
 		String time=dateform.format(cal.getTime());

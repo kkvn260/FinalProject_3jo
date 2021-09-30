@@ -18,6 +18,7 @@
 <form method="post" action="${pageContext.request.contextPath }/twritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>
+		<label for="category">카테고리</label>
 		<select name="category">
 			<option >카테고리를 설정해주세요</option>
 			<option value="의류" >의류</option> <!--남성/여성  -->
@@ -65,7 +66,7 @@
 			<div class="clear"></div>
 		</li>
 	<li>
-		<textarea rows="21" cols="85" class="left">${list.content }</textarea>
+		<textarea rows="21" cols="85" class="left" name="content">${list.content }</textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
