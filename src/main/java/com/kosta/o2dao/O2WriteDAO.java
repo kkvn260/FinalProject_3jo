@@ -56,7 +56,21 @@ public interface O2WriteDAO {
 
 	void dwritemodifyresult(O2DongComDTO dto);
 
-	void dfiledelete(int no);	
+	void dfiledelete(int no);
+
+	void qwriteinsert(O2QnaBoardDTO dto);
+
+	void qinsertfile(O2FileDTO file);
+
+	O2QnaBoardDTO qwritedetail(int no);
+
+	List<O2FileDTO> qfiledetail(int no);
+
+	void qwritedelete(int no);
+
+	void qwritemodifyresult(O2QnaBoardDTO dto);
+
+	void qfiledelete(int no);	
 	
 	
 }

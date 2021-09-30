@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
+import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2writeservice.O2WriteService;
 
@@ -43,6 +44,13 @@ public class WriteController {
 		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
 
 		return "writeboard/dwrite";
+	}
+	
+	@RequestMapping("/qwrite")
+	public String qwrite() {
+		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
+
+		return "writeboard/qwrite";
 	}
 
 	private static final long LIMIT_SIZE = 10 * 1024 * 1024;
@@ -123,6 +131,44 @@ public class WriteController {
 
 		return "redirect:/dongcomlist";
 	}
+	
+	@PostMapping("/qwriteresult")
+	public String qwriteresult(O2QnaBoardDTO dto
+								,@RequestParam("filedata")List<MultipartFile> images
+								,HttpServletRequest request) {
+		
+		long sizeSum = 0;
+		for(MultipartFile image : images) {
+			//용량 검사
+			sizeSum += image.getSize();
+			if(sizeSum >= LIMIT_SIZE) {
+				
+				return "writboard/fail";
+			}
+		}
+		service.qwriteinsert(dto,images);
+		String root_path = request.getSession().getServletContext().getRealPath("/"); 
+		String attach_path = "resources/img/";
+		 for (MultipartFile mf : images) {
+	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
+
+	            System.out.println("originFileName : " + fileName);
+
+	            String safeFile = root_path + attach_path + fileName;
+	            System.out.println(safeFile);
+	            try {
+	                mf.transferTo(new File(safeFile));
+	            } catch (IllegalStateException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	        }
+
+		return "redirect:/qnalist";
+	}
 
 	@RequestMapping("/twritedetail/{no}")
 	public String twritedetail(Model model,@PathVariable int no) {
@@ -147,6 +193,19 @@ public class WriteController {
 		
 		return "writeboard/dwritedetail";
 	}
+	
+	@RequestMapping("/qwritedetail/{no}")
+	public String qwritedetail(Model model,@PathVariable int no) {
+		
+		O2QnaBoardDTO list= service.qwritedetail(no);
+		List<O2FileDTO> list2=service.qfiledetail(no);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
+		
+		return "writeboard/qwritedetail";
+	}
+	
 	@RequestMapping("/selllist")
 	public String selllist(Model model) {
 		
@@ -185,6 +244,12 @@ public class WriteController {
 		return "redirect:/dongcomlist";
 	}
 	
+	@RequestMapping("qwritedelete/{no}")
+	public String qwritedelete(@PathVariable int no) {
+		service.qwritedelete(no);
+		return "redirect:/qnalist";
+	}
+	
 	@RequestMapping("twritemodify/{no}")
 	public String twritemodfiy(@PathVariable int no,Model model) {
 		O2WriteBoardDTO list= service.twritedetail(no);
@@ -202,8 +267,17 @@ public class WriteController {
 		
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
-		System.out.println("음");
 		return "writeboard/dwritemodify";
+	}
+	
+	@RequestMapping("qwritemodify/{no}")
+	public String qwritemodfiy(@PathVariable int no,Model model) {
+		O2QnaBoardDTO list= service.qwritedetail(no);
+		List<O2FileDTO> list2=service.qfiledetail(no);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
+		return "writeboard/qwritemodify";
 	}
 	
 	@RequestMapping("twritemodifyresult")
@@ -282,6 +356,41 @@ public class WriteController {
 	            }
 	        }
 		return "redirect:/dwritedetail/"+dto.getChatno();
+	}
+	
+	@RequestMapping("qwritemodifyresult")
+	public String qwritemodifyresult(O2QnaBoardDTO dto
+									,@RequestParam("filedata")List<MultipartFile> images
+									,HttpServletRequest request) {
+		long sizeSum = 0;
+		for(MultipartFile image : images) {
+			//용량 검사
+			sizeSum += image.getSize();
+			if(sizeSum >= LIMIT_SIZE) {
+				
+				return "writboard/fail";
+			}
+		}
+
+		service.qwritemodifyresult(dto,images);
+		
+		String root_path = request.getSession().getServletContext().getRealPath("/"); 
+		String attach_path = "resources/img/";
+		 for (MultipartFile mf : images) {
+	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
+
+	            String safeFile = root_path + attach_path + fileName;
+	            try {
+	                mf.transferTo(new File(safeFile));
+	            } catch (IllegalStateException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	        }
+		return "redirect:/qwritedetail/"+dto.getQnano();
 	}
 	
 	@RequestMapping("fail")

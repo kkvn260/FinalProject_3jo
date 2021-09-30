@@ -1,5 +1,6 @@
 package com.kosta.o2writeservice;
 
+import java.lang.annotation.Target;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kosta.o2dao.O2WriteDAO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
+import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Service
@@ -102,6 +104,7 @@ public class O2WriteServiceImple implements O2WriteService {
 	}
 
 	@Override
+	@Transactional
 	public void dwriteinsert(O2DongComDTO dto, List<MultipartFile> images) {
 		// TODO Auto-generated method stub
 		dao.dwriteinsert(dto);
@@ -163,6 +166,72 @@ public class O2WriteServiceImple implements O2WriteService {
 				file.setTemp_name(i+time);
 
 				dao.dinsertfile(file);
+			}
+		}
+
+	}
+
+	@Override
+	@Transactional
+	public void qwriteinsert(O2QnaBoardDTO dto, List<MultipartFile> images) {
+		dao.qwriteinsert(dto);
+		int no=dto.getQnano();
+		Calendar cal=Calendar.getInstance();
+		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
+		String time=dateform.format(cal.getTime());
+		
+		if(!images.get(0).getOriginalFilename().equals("")) {
+			for(int i=0;i<images.size();i++) {		
+				O2FileDTO file=new O2FileDTO();
+				file.setQnano(no);
+				file.setReal_name(images.get(i).getOriginalFilename());
+				file.setTemp_name(i+time);
+
+				dao.qinsertfile(file);
+			}
+		}
+	}
+
+	@Override
+	public O2QnaBoardDTO qwritedetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.qwritedetail(no);
+	}
+
+	@Override
+	public List<O2FileDTO> qfiledetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.qfiledetail(no);
+	}
+
+	@Override
+	public void qwritedelete(int no) {
+		// TODO Auto-generated method stub
+		dao.qwritedelete(no);
+	}
+
+	@Override
+	@Transactional
+	public void qwritemodifyresult(O2QnaBoardDTO dto, List<MultipartFile> images) {
+		// TODO Auto-generated method stub
+		int no=dto.getQnano();
+		dao.qwritemodifyresult(dto);
+		
+		Calendar cal=Calendar.getInstance();
+		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
+		String time=dateform.format(cal.getTime());
+
+
+		if(!images.get(0).getOriginalFilename().equals("")) {
+			dao.qfiledelete(no);
+
+			for(int i=0;i<images.size();i++) {		
+				O2FileDTO file=new O2FileDTO();
+				file.setQnano(no);
+				file.setReal_name(images.get(i).getOriginalFilename());
+				file.setTemp_name(i+time);
+
+				dao.qinsertfile(file);
 			}
 		}
 

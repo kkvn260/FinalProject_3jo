@@ -233,6 +233,55 @@
 		where chatno=#{no}
 	</delete>
 	
+	<insert id="qwriteinsert"
+		parameterType="com.kosta.o2dto.O2QnaBoardDTO">
+		insert into QABoard_3jo(user_id,title,content
+		,category,writedate)
+		
+		values('test',#{title},#{content},#{category},sysdate())
+		
+		<selectKey keyProperty="qnano" resultType="int" order="AFTER">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="qwritedetail" parameterType="int" resultType="com.kosta.o2dto.O2QnaBoardDTO">
+		select title
+		,qnano
+		,category
+		,content
+		from QABoard_3jo
+		where qnano=#{no}
+	</select>
+	
+	<delete id="qwritedelete" parameterType="int">
+		delete from QABoard_3jo
+		where qnano=#{no}
+	</delete>
+	
+	<update id="qwritemodifyresult" parameterType="com.kosta.o2dto.O2QnaBoardDTO">
+		update QABoard_3jo
+			set category=#{category}
+				,title=#{title}
+				,content=#{content}
+		where qnano=#{qnano}
+	</update>
+	
+	<insert id="qinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
+		insert into File_3jo(temp_name,real_name,qnano)
+		values (#{temp_name},#{real_name},#{qnano})
+	</insert>
+	
+	<select id="qfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
+		select real_name
+		from File_3jo
+		where qnano=#{no}
+	</select>
+	
+	<delete id="qfiledelete" parameterType="int">
+		delete from File_3jo
+		where qnano=#{no}
+	</delete>
 	
 	
 </mapper>

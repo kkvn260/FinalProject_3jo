@@ -25,7 +25,7 @@
 					<c:set var="number" value="${number+1 }" />
 					<tr>
 						<td><c:out value="${number }" /></td>
-						<td><a href="qdetail/${item.qnano }"><c:out value="${item.title }"></c:out></td>
+						<td><a href="qwritedetail/${item.qnano }"><c:out value="${item.title }"></c:out></td>
 						<td><c:out value="${item.user_id }" /></td>
 						<td><c:out value="${item.writedate }" /></td>
 					</tr>
@@ -33,6 +33,7 @@
 			</c:if>
 		</tbody>
 	</table>
+	<a href="qwrite">글쓰기</a>
 
 </body>
 </html>

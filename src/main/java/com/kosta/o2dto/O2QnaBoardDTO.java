@@ -14,5 +14,4 @@ public class O2QnaBoardDTO {
 	private String content;
 	private String category;
 	private String writedate;
-	private String file_name;
 }

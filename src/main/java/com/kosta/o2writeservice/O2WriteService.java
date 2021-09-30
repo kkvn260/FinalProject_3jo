@@ -35,4 +35,14 @@ public interface O2WriteService {
 
 	public void dwritemodifyresult(O2DongComDTO dto, List<MultipartFile> images);
 
+	public void qwriteinsert(O2QnaBoardDTO dto, List<MultipartFile> images);
+
+	public O2QnaBoardDTO qwritedetail(int no);
+
+	public List<O2FileDTO> qfiledetail(int no);
+
+	public void qwritedelete(int no);
+
+	public void qwritemodifyresult(O2QnaBoardDTO dto, List<MultipartFile> images);
+
 }
