@@ -56,5 +56,19 @@ public class UserController {
 		
 			return "member/login";
 		}
+		@RequestMapping(value = "/login", method = RequestMethod.POST )
+		public String login(@RequestParam("user_id") String id,@RequestParam("pwd") String pwd) throws Exception{
+			String path="";
+			O2UserDTO userdto = new O2UserDTO();
+			userdto.setUser_id(id);
+			userdto.setPwd(pwd);
+			int result= service.login(userdto);
+			if(result==1) {
+				path = "mainpage";
+			}else {
+				path="member/login";
+			}
+			return path;
+		}
 		
 }

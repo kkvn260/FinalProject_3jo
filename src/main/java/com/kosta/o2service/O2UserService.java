@@ -39,5 +39,16 @@ public class O2UserService {
 		userdao = sqlSession.getMapper(O2UserDAO.class);
 		return userdao.checkUserId(user_id);
 	}
+
+	public int login(O2UserDTO userdto) throws Exception {
+		// TODO Auto-generated method stub
+		userdao= sqlSession.getMapper(O2UserDAO.class);
+		return userdao.login(userdto);
+		
+	}
+
+
+
+	
 	
 }
