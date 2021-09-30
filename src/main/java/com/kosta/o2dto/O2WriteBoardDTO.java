@@ -11,7 +11,8 @@ public class O2WriteBoardDTO {
 	private String title;
 	private String user_id;
 	private String content;
-	private String category;
+	private String category1;
+	private String category2;
 	private String sell_price;
 	private int likeno;
 	private String writedate;

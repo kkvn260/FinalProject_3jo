@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.o2dto.O2DongComDTO;
@@ -224,10 +225,13 @@ public class WriteController {
 	}
 	
 	@RequestMapping("/tdealdetail/{no}")
-	public String tdealdetail(HttpServletRequest request,Model model,@PathVariable int no) {
+	public String tdealdetail(Model model,@PathVariable int no) {
 
 		O2WriteBoardDTO list= service.twritedetail(no);
+		List<O2FileDTO> list2=service.tfiledetail(no);
+		
 		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
 
 		return "writeboard/dealdetail";
 	}
@@ -393,9 +397,25 @@ public class WriteController {
 		return "redirect:/qwritedetail/"+dto.getQnano();
 	}
 	
+	@RequestMapping("deal/{no}")
+	public String deal(@PathVariable int no) {
+		return "writeboard/dealdetail"+no;
+	}
+	
 	@RequestMapping("fail")
 	public String fail() {
 		return "writeboard/fail";
+	}
+	
+	@RequestMapping("test")
+	public String test() {
+		return "writeboard/test";
+	}
+	@RequestMapping("test1")
+	@ResponseBody
+	public int test1(int price) {
+		
+		return price;
 	}
 	
 }

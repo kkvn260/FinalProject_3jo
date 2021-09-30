@@ -8,11 +8,11 @@
 	<insert id="twriteinsert"
 		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		insert into TradeBoard_3jo(user_id,title,content
-		,category,writedate
+		,category1,category2,writedate
 		,map_x,map_y
 		,tradeaddr,sell_price,deal_price)
 		
-		values('test',#{title},#{content},#{category},sysdate()
+		values('test',#{title},#{content},#{category1},#{category2},sysdate()
 		,#{map_x},#{map_y}
 		,'서울 구로구',#{sell_price},#{deal_price})
 		
@@ -24,7 +24,7 @@
 	<select id="twritedetail" parameterType="int" resultType="com.kosta.o2dto.O2WriteBoardDTO">
 		select title
 		,tradeno
-		,category
+		,category1,category2
 		,map_x,map_y
 		,content
 		,sell_price
@@ -40,7 +40,8 @@
 	
 	<update id="twritemodifyresult" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		update TradeBoard_3jo
-			set category=#{category}
+			set category1=#{category1}
+				,category2=#{category2}
 				,title=#{title}
 				,content=#{content}
 				,map_x=#{map_x}
@@ -152,6 +153,7 @@
 		,viewno
 		,likeno
 		from TradeBoard_3jo
+		where deal_price=null or deal_price=''
 	</select>
 	
 	<select id="deallist" resultType="com.kosta.o2dto.O2WriteBoardDTO">

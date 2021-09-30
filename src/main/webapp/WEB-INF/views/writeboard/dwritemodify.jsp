@@ -37,9 +37,9 @@
 	<li>
 		<li>
 			<div class="filebody">
+				<c:if test="${list2!=null }">
 			<label>수정 전 첨부사진</label>
 			<div>
-				<c:if test="${list2!=null }">
 				<div class="preview">
 					<c:forEach var="item" items="${list2 }">
 						<div class="preview-box">
@@ -48,8 +48,8 @@
 						</div>
 					</c:forEach>
 				</div>
-				</c:if>
 			</div>
+				</c:if>
 				<div class="clear"></div>
 				<div id="attach">
 					<label class="upload" for="filedata">사진첨부</label>
@@ -62,7 +62,7 @@
 			<div class="clear"></div>
 		</li>
 	<li>
-		<textarea rows="21" cols="85" class="left" name="content">${list.content }</textarea>
+		<textarea rows="19" cols="68" class="left" name="content">${list.content }</textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>

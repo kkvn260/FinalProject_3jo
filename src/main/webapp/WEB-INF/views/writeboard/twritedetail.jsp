@@ -18,7 +18,8 @@
 <ul>
 	<li>
 		<label>카테고리</label>
-		<input type="text" id="detailcategory" value="${list.category }" readonly>
+		<input type="text" id="category1" value="${list.category1 }" readonly>
+		<input type="text" id="category2" value="${list.category2 }" readonly>
 	</li>
 	<li>
 		<label>제목</label>
@@ -29,13 +30,12 @@
 		<input type="text" id="sell_price" value="${list.sell_price }" readonly>
 	</li>
 	<li>
-		<label>첨부 사진</label>
 		<c:if test="${list2!=null }">
+		<label>첨부 사진</label>
 		<div class="preview">
 			<c:forEach var="item" items="${list2 }">
 				<div class="preview-box">
 					<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
-					<p>${item.real_name}</p>
 				</div>
 			</c:forEach>
 		</div>
@@ -43,7 +43,7 @@
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="21" cols="85" class="left" readonly>${list.content }</textarea>
+		<textarea rows="19" cols="68" class="left" readonly>${list.content }</textarea>
 		<div class="right">
 		<label>장소</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>

@@ -25,9 +25,9 @@
 		<input type="text" id="title" value="${list.title }" readonly>
 	</li>
 	<li>
-		<label>첨부 사진</label>
-		<c:if test="${list2!=null }">
+		<c:if test="${list2!=null  }">
 		<div class="preview">
+		<label>첨부 사진</label>
 			<c:forEach var="item" items="${list2 }">
 				<div class="preview-box">
 					<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">

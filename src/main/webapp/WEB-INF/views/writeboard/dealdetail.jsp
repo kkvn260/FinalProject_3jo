@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <body>
-
+<br><br><br><br>
 <ul>
 	<li>
 		<label>카테고리</label>
@@ -25,10 +26,26 @@
 	</li>
 	<li>
 		<label>현재 입찰가격</label>
-		<input type="text" id="sell_price" value="${list.deal_price }" readonly>
+		<input type="text" id="ndeal_price" value="${list.deal_price }" readonly>
+		<label>입찰 희망가격</label>
+		<input type="text" id="deal_price" name="deal_price" >
+		<button id="deal_btn" >입찰하기</button>
 	</li>
 	<li>
-		<textarea rows="21" cols="85" class="left" readonly>${list.content }</textarea>
+		<label>첨부 사진</label>
+		<c:if test="${list2!=null }">
+		<div class="preview">
+			<c:forEach var="item" items="${list2 }">
+				<div class="preview-box">
+					<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
+				</div>
+			</c:forEach>
+		</div>
+		</c:if>
+	<div class="clear"></div>
+	</li>
+	<li>
+		<textarea rows="19" cols="68" class="left" readonly>${list.content }</textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
@@ -36,11 +53,12 @@
 	</li>
 	<li>
 	<div class="clear"></div>
-		<input type="button" id="modibtn" value="수정">
-		<input type="button" id="delbtn" value="삭제">
+		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
+		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 	</li>
 </ul>	
-	<script>
+<script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
+<script>
 var mapOptions = {
 		center : new naver.maps.LatLng(${list.map_x},${list.map_y}),
 		zoom : 18
@@ -52,6 +70,7 @@ var marker = new naver.maps.Marker({
     position: new naver.maps.LatLng(${list.map_x}, ${list.map_y}),
     map: map
 });
+
 </script>
 </body>
 </html>

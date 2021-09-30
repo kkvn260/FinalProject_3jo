@@ -25,13 +25,12 @@
 		<input type="text" id="title" value="${list.title }" readonly>
 	</li>
 	<li>
-		<label>첨부 사진</label>
 		<c:if test="${list2!=null }">
+		<label>첨부 사진</label>
 		<div class="preview">
 			<c:forEach var="item" items="${list2 }">
 				<div class="preview-box">
 					<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
-					<p>${item.real_name}</p>
 				</div>
 			</c:forEach>
 		</div>
@@ -39,7 +38,7 @@
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="21" cols="85" class="left" readonly>${list.content }</textarea>
+		<textarea rows="19" cols="68" class="left" readonly>${list.content }</textarea>
 		<div class="right">
 		<label>장소</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>

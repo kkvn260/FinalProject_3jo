@@ -47,7 +47,7 @@
 			</div>
 		</li>
 	<li>
-		<textarea rows="21" cols="85" name="content" id="content" class="left"></textarea>
+		<textarea rows="19" cols="68" name="content" id="content" class="left"></textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>

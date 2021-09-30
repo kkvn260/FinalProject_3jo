@@ -19,15 +19,8 @@
 <ul>
 	<li>
 		<label for="category">카테고리</label>
-		<select name="category">
-			<option >카테고리를 설정해주세요</option>
-			<option value="의류" >의류</option> <!--남성/여성  -->
-			<option value="디지털/가전" >디지털/가전</option> <!--모바일,카메라,PC/노트북,가전  -->
-			<option value="생활/식품" >생활/식품</option> <!--생활용품  , 주방용품 , 식품  -->
-			<option value="취미" >취미</option> <!-- 스포츠 , 수집품 , 게임 , 반려동물  -->
-			<option value="도서/음반" >도서/음반</option> <!-- 국내도서 , 해외도서 , CD/DVD/LP  -->
-			<option value="기타" >기타(잡화)</option>
-		</select>
+		<select name="category1" id="category1"></select>
+		<select name="category2" id="category2"></select>
 	</li>
 	<li>
 		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
@@ -41,9 +34,9 @@
 	<li>
 		<li>
 			<div class="filebody">
+				<c:if test="${list2!=null }">
 			<label>수정 전 첨부사진</label>
 			<div>
-				<c:if test="${list2!=null }">
 				<div class="preview">
 					<c:forEach var="item" items="${list2 }">
 						<div class="preview-box">
@@ -52,8 +45,8 @@
 						</div>
 					</c:forEach>
 				</div>
-				</c:if>
 			</div>
+				</c:if>
 				<div class="clear"></div>
 				<div id="attach">
 					<label class="upload" for="filedata">사진첨부</label>
@@ -66,7 +59,7 @@
 			<div class="clear"></div>
 		</li>
 	<li>
-		<textarea rows="21" cols="85" class="left" name="content">${list.content }</textarea>
+		<textarea rows="19" cols="68" class="left" name="content">${list.content }</textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
