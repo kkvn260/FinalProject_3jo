@@ -36,6 +36,14 @@ public class O2ServiceImpleOther implements O2ServiceOther {
 		// TODO Auto-generated method stub
 		return dao.getdonglist();
 	}
-	
+
+
+	@Override
+	public List<O2DongComDTO> dongtopview() {
+		// TODO Auto-generated method stub
+		return dao.dongtopviewlist();
+	}
+
+
 	
 }

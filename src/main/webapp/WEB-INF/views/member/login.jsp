@@ -25,7 +25,7 @@
        background-color: #336633;
    }
 
-   img{
+   #loginoe{
    width:60px;
    height:70px;
    border-bottom-left-radius:20px;
@@ -59,7 +59,7 @@
     	<form action ="/Login" method="post">
         	<div class="border">
             	<h1>login</h1>
-            	<img src ="${pageContext.request.contextPath}/resources/img/52.png"><br>
+            	<img src ="${pageContext.request.contextPath}/resources/img/52.png" id="loginoe"><br>
             	
                 <input type="text"  name="id" id="id" placeholder="아이디"><br>
             	<input type="password" name="password" id="password" placeholder="비밀번호"><br><br>

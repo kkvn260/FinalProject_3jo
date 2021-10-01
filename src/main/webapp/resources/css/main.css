@@ -5,6 +5,8 @@
 
 .main a:visited, .w3-top a:visited { color: green; text-decoration: none;}
 
+.w3-top li a:hover{background-color:#FFFFFF;}
+
 .w3-top ul{
    list-style:none; 
    height:40px;

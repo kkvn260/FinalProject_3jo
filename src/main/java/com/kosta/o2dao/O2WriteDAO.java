@@ -70,7 +70,9 @@ public interface O2WriteDAO {
 
 	void qwritemodifyresult(O2QnaBoardDTO dto);
 
-	void qfiledelete(int no);	
+	void qfiledelete(int no);
+
+	List<O2DongComDTO> dongtopviewlist();	
 	
 	
 }

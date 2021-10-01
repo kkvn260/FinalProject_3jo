@@ -15,5 +15,9 @@ public interface O2ServiceOther {
 
 	public List<O2DongComDTO> dongcomlist();
 
+	public List<O2DongComDTO> dongtopview();
+
+
+
 	
 }

@@ -22,7 +22,7 @@
     </div>
 <section id="content" >
  <div id="topview" style="float:left; margin-right:200px;">
-	<h3>판매 인기글 TOP10 미리보기</h3>
+	<h3>판매 인기글 TOP10 미리보기</h3><hr>
 		<div id="preview">
 		   <table>
 			  <thead>
@@ -42,6 +42,28 @@
 			</table>
 		</div>
 		 <br>
+ </div>
+
+ <div id="dongtopview" style="float:right;">
+    <h3>동네 커뮤니티 인기글 TOP10 미리보기</h3><hr>
+       <div id="dongpreview">
+         <table>
+            <thead>
+              <tr><th>번호</th><th>제목</th><th>좋아요</th><th>조회수</th><th>작성자</th><th>작성일</th></tr>
+			  </thead>
+			<tbody>
+			      <c:forEach var="item" items="${list2}">
+			        <c:set var="number" value="${number+1 }" />
+						<tr><td><c:out value="${number }" /></td>
+						    <td><a href="dwritedetail/${item.chatno }"><c:out value="${item.title }"></c:out></a>
+							<td><c:out value="${item.likeno }"></c:out></td>
+							<td><c:out value="${item.viewno }"></c:out></td>
+							<td><c:out value="${item.user_id }"></c:out></td>
+							<td><c:out value="${item.writedate}"></c:out></td>
+				   </c:forEach>
+			 </tbody>
+         </table>
+       </div>
  </div>
 
 </section>

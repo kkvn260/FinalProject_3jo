@@ -285,5 +285,16 @@
 		where qnano=#{no}
 	</delete>
 	
+	<select id="dongtopviewlist"
+		resultType="com.kosta.o2dto.O2DongComDTO">
+		select title
+		,chatno
+		,user_id
+		,writedate
+		,viewno
+		,likeno
+		from ChatBoard_3jo
+		order by viewno desc limit 10
+	</select>
 	
 </mapper>
