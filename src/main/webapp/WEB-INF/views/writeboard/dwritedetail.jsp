@@ -18,7 +18,8 @@
 <ul>
 	<li>
 		<label>카테고리</label>
-		<input type="text" id="detailcategory" value="${list.category }" readonly>
+		<input type="text" id="detailcategory1" value="${list.category1 }" readonly>
+		<input type="text" id="detailcategory2" value="${list.category2 }" readonly>
 	</li>
 	<li>
 		<label>제목</label>
