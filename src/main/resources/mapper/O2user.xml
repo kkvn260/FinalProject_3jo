@@ -37,10 +37,10 @@
 	</select>
 
 	<!-- 로그인 -->
-	<select id="login" parameterType="com.kosta.o2dto.O2UserDTO" resultType="int" >
+	<select id="login" resultType="com.kosta.o2dto.O2UserDTO" >
 		select user_id, pwd
 		  from User_3jo
-		 where user_id = #{use_id}
+		 where user_id = #{user_id}
 		 and pwd = #{pwd}   
 	</select>
 </mapper>

@@ -1,7 +1,7 @@
 package com.kosta.o2dto;
 
 import lombok.Getter;
-
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -9,6 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter  
 @ToString
+@NoArgsConstructor
 public class O2UserDTO {
 
 	private String user_id;

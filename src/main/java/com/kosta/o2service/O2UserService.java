@@ -19,36 +19,31 @@ public class O2UserService {
 	@Autowired
 	private O2UserDAO userdao;
 	
-	//회원가입
+	//�쉶�썝媛��엯
 	public int signUser(O2UserDTO userdto) {
 		int resultcount =0;
 		
 		
 		try {
 			resultcount = userdao.signUser(userdto);
-			System.out.println("dto 확인" +userdto.getUser_id()); 
+			System.out.println("dto �솗�씤" +userdto.getUser_id()); 
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return resultcount;
 	}
 
-	// 아이디 중복 체크
+	// �븘�씠�뵒 以묐났 泥댄겕
 	public int userIdCheck(String user_id) {
 		// TODO Auto-generated method stub
 		
 		return userdao.checkUserId(user_id);
 	}
 
-	public int login(O2UserDTO userdto) throws Exception {
+	public O2UserDTO login(O2UserDTO userdto) throws Exception {
 		// TODO Auto-generated method stub
 		
 		return userdao.login(userdto);
 		
-	}
-
-
-
-	
-	
+	}	
 }

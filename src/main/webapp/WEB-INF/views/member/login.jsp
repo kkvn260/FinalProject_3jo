@@ -63,13 +63,13 @@
 	</head>
 	<body>
 	<div id="loginform">
-    	<form action ="/Login" method="post">
+    	<form action ="${pageContext.request.contextPath }/login" method="post">
         	<div class="border">
             	<h1>login</h1>
             	<img src ="${pageContext.request.contextPath}/resources/img/52.png" id="loginoe"><br>
             	
-                <input type="text"  name="id" id="id" placeholder="아이디"><br>
-            	<input type="password" name="password" id="password" placeholder="비밀번호"><br><br>
+                <input type="text"  name="user_id" id="user_id" placeholder="아이디"><br>
+            	<input type="password" name="pwd" id="pwd" placeholder="비밀번호"><br><br>
             	<input type="submit" value="로그인"><br>
             	
             	<label id="reoe">아직 오이마켓 회원이 아니신가요?</label>

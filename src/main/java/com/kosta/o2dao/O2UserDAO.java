@@ -12,9 +12,9 @@ import com.kosta.o2dto.O2UserDTO;
 public interface O2UserDAO {
 		
 
-	int signUser(O2UserDTO userdto) throws SQLException;//회원가입
-	// int searchPassword(String user_id, String email,String key);//회원임시 비밀번호
-	int login(O2UserDTO userdto) throws Exception;
-	int checkUserId(String user_id); //아이디중복체크
+	int signUser(O2UserDTO userdto) throws SQLException;//�쉶�썝媛��엯
+	// int searchPassword(String user_id, String email,String key);//�쉶�썝�엫�떆 鍮꾨�踰덊샇
+	O2UserDTO login(O2UserDTO userdto) throws Exception;
+	int checkUserId(String user_id); //�븘�씠�뵒以묐났泥댄겕
 	
 }
