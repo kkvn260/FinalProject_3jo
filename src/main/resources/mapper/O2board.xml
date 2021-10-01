@@ -153,7 +153,7 @@
 		,viewno
 		,likeno
 		from TradeBoard_3jo
-		where deal_price=null or deal_price=''
+		where deal_price is null or deal_price=''
 	</select>
 	
 	<select id="deallist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
@@ -296,5 +296,23 @@
 		from ChatBoard_3jo
 		order by viewno desc limit 10
 	</select>
+	
+	<insert id="dealinsert" parameterType="com.kosta.o2dto.O2DealDTO">
+		insert into Deal_3jo(tradeno,deal_price,user_id)	
+		values(#{tradeno},#{deal_price},'test')
+	</insert>
+	
+	<insert id="dealinsert2" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
+		insert into Deal_3jo(tradeno,deal_price,user_id)
+		values(#{tradeno},#{deal_price},'test')
+	</insert>
+	
+	<select id="getprice" parameterType="int" resultType="String">
+		select deal_price
+		from Deal_3jo
+		where tradeno=#{tradeno}
+		order by deal_price desc limit 1
+	</select>
+	
 	
 </mapper>

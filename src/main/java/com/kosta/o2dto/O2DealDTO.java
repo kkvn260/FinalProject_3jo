@@ -10,6 +10,6 @@ import lombok.Setter;
 public class O2DealDTO {
 	private int tradeno;
 	private String user_id;
-	private int deal_price;
+	private String deal_price;
 	private String endtime;
 }

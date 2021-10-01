@@ -13,14 +13,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
@@ -77,10 +80,7 @@ public class WriteController {
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
 
-	            System.out.println("originFileName : " + fileName);
-
 	            String safeFile = root_path + attach_path + fileName;
-	            System.out.println(safeFile);
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {
@@ -229,7 +229,9 @@ public class WriteController {
 
 		O2WriteBoardDTO list= service.twritedetail(no);
 		List<O2FileDTO> list2=service.tfiledetail(no);
+		String price=service.getprice(no);
 		
+		model.addAttribute("price",price);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 
@@ -397,26 +399,24 @@ public class WriteController {
 		return "redirect:/qwritedetail/"+dto.getQnano();
 	}
 	
-	@RequestMapping("deal/{no}")
-	public String deal(@PathVariable int no) {
-		return "writeboard/dealdetail"+no;
-	}
-	
 	@RequestMapping("fail")
 	public String fail() {
 		return "writeboard/fail";
 	}
 	
-	@RequestMapping("test")
-	public String test() {
-		return "writeboard/test";
-	}
-	@RequestMapping("test1")
+	@PostMapping("/deal")
 	@ResponseBody
-	public int test1(int price) {
-		
-		return price;
+	public String test1(@RequestBody O2DealDTO dto) {
+		int before=Integer.parseInt(service.getprice(dto.getTradeno()));
+		int after=Integer.parseInt(dto.getDeal_price());
+			if(after>before) {
+				service.dealinsert(dto);
+		}
+		String result=service.getprice(dto.getTradeno());
+		return result;
 	}
+	
+	
 	
 }
 

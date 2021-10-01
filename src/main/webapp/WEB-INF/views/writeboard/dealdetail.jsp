@@ -13,6 +13,34 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
+<script>
+
+$(function () {
+	$('#deal_btn').on('click',function(){
+		var before=Number($("#ndeal_price").val());
+		var after=Number($("#deal_price").val());
+		if(after<before){
+			alert("입력한 가격이 현재 입찰가 보다 낮습니다");
+		}
+		   let data1={tradeno:$("#tradeno").val(),deal_price:$("#deal_price").val()};
+		 $.ajax({
+			type:"post"
+			,url:'${pageContext.request.contextPath }/deal'
+		    ,dataType:"json"
+			,data: JSON.stringify(data1)
+			,contentType:"application/json;charset=utf-8"
+			,success:function(data)
+			{
+				alert("입찰 성공!");
+				$('#ndeal_price').val(data);
+				$('#deal_price').val(""); //초기화
+			},error:function(err){
+				console.log(err);
+			} 
+		})
+	})
+})
+</script>
 <body>
 <br><br><br><br>
 <ul>
@@ -21,13 +49,14 @@
 		<input type="text" id="detailcategory1" value="${list.category1 }" readonly>
 		<input type="text" id="detailcategory2" value="${list.category2 }" readonly>
 	</li>
-	<li>
+	<li>	
+		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
 	</li>
 	<li>
 		<label>현재 입찰가격</label>
-		<input type="text" id="ndeal_price" value="${list.deal_price }" readonly>
+		<input type="text" id="ndeal_price" value="${price }" readonly>
 		<label>입찰 희망가격</label>
 		<input type="text" id="deal_price" name="deal_price" >
 		<button id="deal_btn" >입찰하기</button>

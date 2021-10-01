@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.o2dao.O2WriteDAO;
+import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
@@ -29,6 +30,7 @@ public class O2WriteServiceImple implements O2WriteService {
 	@Transactional
 	public void twriteinsert(O2WriteBoardDTO dto, List<MultipartFile> images) {
 		dao.twriteinsert(dto);
+		dao.dealinsert2(dto);
 		int no=dto.getTradeno();
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
@@ -235,6 +237,18 @@ public class O2WriteServiceImple implements O2WriteService {
 			}
 		}
 
+	}
+
+	@Override
+	public void dealinsert(O2DealDTO dto) {
+		// TODO Auto-generated method stub
+		dao.dealinsert(dto);
+	}
+
+	@Override
+	public String getprice(int tradeno) {
+		// TODO Auto-generated method stub
+		return dao.getprice(tradeno);
 	}
 
 }

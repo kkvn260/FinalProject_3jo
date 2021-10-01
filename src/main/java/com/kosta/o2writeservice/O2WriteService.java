@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
@@ -44,5 +45,9 @@ public interface O2WriteService {
 	public void qwritedelete(int no);
 
 	public void qwritemodifyresult(O2QnaBoardDTO dto, List<MultipartFile> images);
+
+	public void dealinsert(O2DealDTO dto);
+
+	public String getprice(int tradeno);
 
 }

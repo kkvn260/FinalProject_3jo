@@ -6,17 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function () {
-	$('.deal_btn').on('click',function() {
+	console.log(".....");
+	$('#deal_btn').on('click',function() {
 		var price=20;
 		$.ajax({
 			type:'post',
 			url:"test1",
-			data:price;
+			//data:"price="+price,
+			data:{price:'dcdd'},
 			success:function(data){
-				document.getElementById("ndeal_price").value=data;
+				console.log(data);
+				///document.getElementById("ndeal_price").value=data;
 			},error:function(){
 				alert("입찰 실패");
 			}

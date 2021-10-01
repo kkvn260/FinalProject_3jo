@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
@@ -72,7 +73,13 @@ public interface O2WriteDAO {
 
 	void qfiledelete(int no);
 
-	List<O2DongComDTO> dongtopviewlist();	
+	List<O2DongComDTO> dongtopviewlist();
 	
+	void dealinsert(O2DealDTO dto);
+
+	void dealinsert2(O2WriteBoardDTO dto);
+
+	String getprice(int tradeno);	
+
 	
 }
