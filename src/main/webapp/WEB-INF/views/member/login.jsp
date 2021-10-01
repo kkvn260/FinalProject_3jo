@@ -17,7 +17,7 @@
   
 
    .border{
-       margin:300px;
+       margin:200px;
        width:400px;
        height:500px;
        border:3px solid #555555;
@@ -52,6 +52,13 @@
    		border-top-left-radius:5px;
         background-color: white;
    }
+   #reoe{
+       color:white;
+   }
+   .border a{
+       color:black;
+       text-decoration:none;
+   }
 	</style>
 	</head>
 	<body>
@@ -63,7 +70,10 @@
             	
                 <input type="text"  name="id" id="id" placeholder="아이디"><br>
             	<input type="password" name="password" id="password" placeholder="비밀번호"><br><br>
-            	<input type="submit" value="로그인">
+            	<input type="submit" value="로그인"><br>
+            	
+            	<label id="reoe">아직 오이마켓 회원이 아니신가요?</label>
+                <a href="${pageContext.request.contextPath }/registerForm">회원가입</a>
 
         	</div> 
     	</form>
