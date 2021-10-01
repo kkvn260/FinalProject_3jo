@@ -1,6 +1,7 @@
 /**
  * 
  */
+//경매기능 사용 여부
 $(function() {
 	$('#deal').click(function () {
 		if($('#deal_price').css("display")=='none'){
@@ -10,6 +11,8 @@ $(function() {
 		}
 	})
 })
+
+//카테고리 기능
 var category0=["대분류 선택","의류","디지털/가전","생활/식품","취미","도서/음반","기타(잡화)"];
 var category1=["남성","여성"];
 var category2=["모바일","카메라","PC/노트북","가전"];

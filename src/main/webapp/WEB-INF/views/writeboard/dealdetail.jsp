@@ -14,7 +14,7 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <script>
-
+//경매 기능
 $(function () {
 	$('#deal_btn').on('click',function(){
 		var before=Number($("#ndeal_price").val());
@@ -40,6 +40,7 @@ $(function () {
 		})
 	})
 })
+
 </script>
 <body>
 <br><br><br><br>
