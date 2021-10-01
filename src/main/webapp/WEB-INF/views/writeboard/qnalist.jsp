@@ -10,7 +10,8 @@
 </head>
 <body>
 <br><br><br><br>
-	<table>
+    <h2>Q & A 게시판</h2><hr>
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>글번호</th>
@@ -33,7 +34,7 @@
 			</c:if>
 		</tbody>
 	</table>
-	<a href="qwrite">글쓰기</a>
+	<a href="qwrite" class="btn btn-success pull-right">글쓰기</a><br><br>
 
 </body>
 </html>

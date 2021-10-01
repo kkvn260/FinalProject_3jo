@@ -10,7 +10,8 @@
 </head>
 <body>
 <br><br><br><br>
-	<table>
+    <h2>동네 커뮤니티</h2><hr>
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>글번호</th>
@@ -33,7 +34,7 @@
 			</c:if>
 		</tbody>
 	</table>
-	<a href="dwrite">글쓰기</a>
+	<a href="dwrite" class="btn btn-success pull-right">글쓰기</a><br><br>
 
 </body>
 </html>

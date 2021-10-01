@@ -9,6 +9,16 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+
+   h3{
+     color:green;
+     text-shadow:1px 1px 1px pink;
+     font-family: 'Sunflower', sans-serif;
+   }
+</style>
 <body>
 <br><br><br><br>
 <div class="main">
@@ -22,16 +32,16 @@
     </div>
 <section id="content" >
  <div id="topview" style="float:left; margin-left:30px;"><br>
-	<h3>판매 인기글 TOP10 미리보기</h3><hr>
-		<div id="preview">
-		   <table>
+	<h3>판매 인기글 TOP10 미리보기</h3>
+		<div>
+		   <table class="table table-striped">
 			  <thead>
 			    <tr><th>번호</th><th>제목</th><th>좋아요</th><th>조회수</th><th>작성자</th><th>작성일</th></tr>
 			  </thead>
 			  <tbody>
 			      <c:forEach var="item" items="${list}">
 			        <c:set var="number" value="${number+1 }" />
-						<tr><td><c:out value="${number }" /></td>
+						<tr><td>&nbsp;<c:out value="${number }" /></td>
 						    <td><a href="twritedetail/${item.tradeno }"><c:out value="${item.title }"></c:out></a>
 							<td><c:out value="${item.likeno }"></c:out></td>
 							<td><c:out value="${item.viewno }"></c:out></td>
@@ -45,16 +55,16 @@
  </div>
 
  <div id="dongtopview" style="float:right; margin-right:30px"><br>
-    <h3>동네 커뮤니티 인기글 TOP10 미리보기</h3><hr>
-       <div id="dongpreview">
-         <table>
+    <h3>동네 커뮤니티 인기글 TOP10 미리보기</h3>
+       <div>
+         <table class="table table-striped">
             <thead>
               <tr><th>번호</th><th>제목</th><th>좋아요</th><th>조회수</th><th>작성자</th><th>작성일</th></tr>
 			  </thead>
 			<tbody>
 			      <c:forEach var="item" items="${list2}">
-			        <c:set var="number" value="${number+1 }" />
-						<tr><td><c:out value="${number }" /></td>
+			        <c:set var="number2" value="${number2+1 }" />
+						<tr><td>&nbsp;<c:out value="${number2 }" /></td>
 						    <td><a href="dwritedetail/${item.chatno }"><c:out value="${item.title }"></c:out></a>
 							<td><c:out value="${item.likeno }"></c:out></td>
 							<td><c:out value="${item.viewno }"></c:out></td>

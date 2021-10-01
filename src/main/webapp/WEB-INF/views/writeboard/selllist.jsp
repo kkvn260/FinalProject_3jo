@@ -16,9 +16,9 @@
 <body>
 <br><br><br><br>
 <div>
-<h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2>
+<h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>
 </div>
-	<table>
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>글번호</th>
@@ -42,7 +42,7 @@
 			</c:if>
 		</tbody>
 	</table>
-	<a href="write">글쓰기</a>
+	<a href="write" class="btn btn-success pull-right">글쓰기</a><br><br>
 
 </body>
 </html>
