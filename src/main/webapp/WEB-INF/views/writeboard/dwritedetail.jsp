@@ -48,6 +48,7 @@
 	<div class="clear"></div>
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/dwritemodify/${list.chatno}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/dwritedelete/${list.chatno}'">
+		<input type="button" id="donglist" value="목록" onclick="location.href='${pageContext.request.contextPath }/dongcomlist'">
 	</li>
 </ul>	
 	<script>

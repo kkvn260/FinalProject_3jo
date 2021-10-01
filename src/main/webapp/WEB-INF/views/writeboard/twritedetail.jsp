@@ -53,6 +53,7 @@
 	<div class="clear"></div>
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		<input type="button" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
 	</li>
 </ul>	
 	<script>

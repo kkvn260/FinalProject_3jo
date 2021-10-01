@@ -21,7 +21,7 @@
        </header>
     </div>
 <section id="content" >
- <div id="topview" style="float:left; margin-right:200px;">
+ <div id="topview" style="float:left; margin-left:30px;"><br>
 	<h3>판매 인기글 TOP10 미리보기</h3><hr>
 		<div id="preview">
 		   <table>
@@ -44,7 +44,7 @@
 		 <br>
  </div>
 
- <div id="dongtopview" style="float:right;">
+ <div id="dongtopview" style="float:right; margin-right:30px"><br>
     <h3>동네 커뮤니티 인기글 TOP10 미리보기</h3><hr>
        <div id="dongpreview">
          <table>

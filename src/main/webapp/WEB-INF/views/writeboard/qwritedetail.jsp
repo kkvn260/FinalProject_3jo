@@ -45,6 +45,7 @@
 	<div class="clear"></div>
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/qwritemodify/${list.qnano}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/qwritedelete/${list.qnano}'">
+		<input type="button" id="qlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/qnalist'">
 	</li>
 </ul>	
 </body>
