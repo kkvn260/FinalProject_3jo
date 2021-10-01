@@ -14,7 +14,7 @@
 </c:if>
 <c:if test="${sessionScope.user_id!=null }">
 	<a href="logout">로그아웃</a>
-	<a href="/myInfopage">마이페이지</a>
+	<a href="myinfo">마이페이지</a>
     </c:if>
 </body>
 </html>

@@ -2,6 +2,8 @@ package com.kosta.o2controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2UserDTO;
+import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2UserService;
 
 
@@ -91,5 +95,40 @@ public class UserController {
 			
 			return "member/logout";
 		}
+		@RequestMapping(value="/myinfo")
+		public String myinfo(HttpServletRequest request, HttpServletResponse response,Model model) {
+		
+	         	HttpSession session=request.getSession();
+				String user_id=(String) session.getAttribute("user_id");
 	
+				O2UserDTO list=service.membermdetail(user_id);
+		
+				model.addAttribute("list",list);
+				
+			return "member/myinfo";
+		}
+	/*
+		@RequestMapping(value="/modifyresult")
+		public String membermodify(@RequestParam(required = false) String user_id, @RequestParam(required = false) String nick_name 
+				                  ,@RequestParam(required = false) String phoneno,@RequestParam(required = false) String email
+				                  ,@RequestParam(required = false) String user_name, @RequestParam(required = false) String addr
+				                  ,@RequestParam(required = false) String gender,Model model) {
+		 	
+			O2UserDTO list=new O2UserDTO();
+			list.setUser_id(user_id);
+			list.setNick_name(nick_name);
+			list.setPhoneno(phoneno);
+			list.setEmail(email);
+			list.setUser_name(user_name);
+			list.setAddr(addr);
+			list.setGender(gender);
+			
+			int result=service.membermodify(list);
+			model.addAttribute("result",result);
+			model.addAttribute("user_id",user_id);
+			
+			return "member/modifyresult";
+			
+		}
+	*/
 }

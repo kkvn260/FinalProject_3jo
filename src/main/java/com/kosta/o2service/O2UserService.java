@@ -2,9 +2,6 @@ package com.kosta.o2service;
 
 import java.sql.SQLException;
 
-
-
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +42,17 @@ public class O2UserService {
 		
 		return userdao.login(userdto);
 		
+	}
+/*
+	public int membermodify(O2UserDTO list) {
+		// TODO Auto-generated method stub
+		int result=userdao.membermodify(list);
+		return result;
+		
+	}
+*/
+	public O2UserDTO membermdetail(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.memberdetail(user_id);
 	}	
 }
