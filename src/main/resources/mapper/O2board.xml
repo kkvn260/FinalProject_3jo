@@ -3,25 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosta.o2dao.O2WriteDAO">
-     <parameterMap type="java.util.HashMap" id="hashmap"/>	
- 
+	<parameterMap type="java.util.HashMap" id="hashmap" />
+
 	<insert id="twriteinsert"
 		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		insert into TradeBoard_3jo(user_id,title,content
 		,category1,category2,writedate
 		,map_x,map_y
 		,tradeaddr,sell_price,deal_price)
-		
+
 		values('test',#{title},#{content},#{category1},#{category2},sysdate()
 		,#{map_x},#{map_y}
 		,'서울 구로구',#{sell_price},#{deal_price})
-		
-		<selectKey keyProperty="tradeno" resultType="int" order="AFTER">
+
+		<selectKey keyProperty="tradeno" resultType="int"
+			order="AFTER">
 			select last_insert_id()
 		</selectKey>
 	</insert>
-	
-	<select id="twritedetail" parameterType="int" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+
+	<select id="twritedetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2WriteBoardDTO">
 		select title
 		,tradeno
 		,category1,category2
@@ -32,39 +34,44 @@
 		from TradeBoard_3jo
 		where tradeno=#{no}
 	</select>
-	
+
 	<delete id="twritedelete" parameterType="int">
-		delete from TradeBoard_3jo
+		delete from
+		TradeBoard_3jo
 		where tradeno=#{no}
 	</delete>
-	
-	<update id="twritemodifyresult" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
+
+	<update id="twritemodifyresult"
+		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		update TradeBoard_3jo
-			set category1=#{category1}
-				,category2=#{category2}
-				,title=#{title}
-				,content=#{content}
-				,map_x=#{map_x}
-				,map_y=#{map_y}
+		set category1=#{category1}
+		,category2=#{category2}
+		,title=#{title}
+		,content=#{content}
+		,map_x=#{map_x}
+		,map_y=#{map_y}
 		where tradeno=#{tradeno}
 	</update>
-	
-	<insert id="tinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
+
+	<insert id="tinsertfile"
+		parameterType="com.kosta.o2dto.O2FileDTO">
 		insert into File_3jo(temp_name,real_name,tradeno)
-		values (#{temp_name},#{real_name},#{tradeno})
+		values
+		(#{temp_name},#{real_name},#{tradeno})
 	</insert>
-	
-	<select id="tfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
+
+	<select id="tfiledetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2FileDTO">
 		select real_name
 		from File_3jo
 		where tradeno=#{no}
 	</select>
-	
+
 	<delete id="tfiledelete" parameterType="int">
 		delete from File_3jo
 		where tradeno=#{no}
 	</delete>
-	
+
 	<select id="getqlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
 		select qnano
 		,title
@@ -74,11 +81,12 @@
 	</select>
 
 
-	<select id="totalCount" parameterType="hashmap" resultType="int">
-		select count(*) from TradeBoard_3jo
+	<select id="sellCount" parameterType="hashmap" resultType="int">
+		SELECT count(*) from TradeBoard_3jo
+		WHERE deal_price IS NULL or
+		deal_price=''
 		<where>
-			<if
-				test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
+			<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 				<choose>
 					<when test="search=='user_id'">
 						and user_id=#{searchtxt}
@@ -94,42 +102,25 @@
 		</where>
 	</select>
 
-
-	<select id="list" parameterType="hashmap"
-		resultType="com.kosta.o2dto.O2MainBoardDTO">
-		select * from (
-		select rownum, b.*
-		from( select user_id, content, title
-		from TradeBoard_3jo
+	<select id="dealCount" parameterType="hashmap" resultType="int">
+		SELECT count(*) from TradeBoard_3jo
+		<![CDATA[
+		WHERE deal_price is not NULL
+		]]>
 		<where>
-			<if test="searchtxt!=null and searchtxt!=''">
+			<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 				<choose>
 					<when test="search=='user_id'">
-						and user_id = #{searchtxt}
+						and user_id=#{searchtxt}
 					</when>
 					<when test="search=='content'">
-						and content = #{searchtxt}
+						and content=#{searchtxt}
 					</when>
 					<when test="search=='title'">
-						and title = #{searchtxt}
+						and title=#{searchtxt}
 					</when>
 				</choose>
 			</if>
-		</where>
- 		<![CDATA[
- 			order by tradeno
- 			) e
- 		]]>
-		<where>
- 		<![CDATA[
- 		    rownum<=#{endRow}
- 		]]>
-		</where>
-		)
-		<where>
- 		<![CDATA[
- 			rnum>=#{startRow}
- 		]]>
 		</where>
 	</select>
 
@@ -141,150 +132,190 @@
 		,writedate
 		,viewno
 		,likeno
-		from TradeBoard_3jo
+		from
+		TradeBoard_3jo
 		order by viewno desc limit 10
 	</select>
-	
-	<select id="selllist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
-		select title
-		,tradeno
-		,user_id
-		,writedate
-		,viewno
-		,likeno
-		from TradeBoard_3jo
-		where deal_price is null or deal_price=''
+
+	<select id="sellList" parameterType="hashmap"
+		resultType="com.kosta.o2dto.O2MainBoardDTO">
+		SELECT title,tradeno,user_id,writedate,viewno,likeno
+		FROM TradeBoard_3jo
+		WHERE deal_price is null or deal_price=''
+		<if test="searchtxt!=null and searchtxt!=''">
+			<choose>
+				<when test="search=='user_id'">
+					and user_id = #{searchtxt}
+				</when>
+				<when test="search=='title'">
+					and title = #{searchtxt}
+				</when>
+				<when test="search=='content'">
+					and content = #{searchtxt}
+				</when>
+			</choose>
+		</if>
+
+		order by tradeno desc
+		limit #{startRow},#{pageSize}
 	</select>
-	
-	<select id="deallist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+
+
+	<select id="dealList"
+		resultType="com.kosta.o2dto.O2MainBoardDTO">
 	<![CDATA[
-		select title
-		,tradeno
+		SELECT title,tradeno,user_id,writedate,viewno,likeno,deal_price
+		FROM TradeBoard_3jo
+		WHERE deal_price REGEXP '^[0-9]+$'
+	]]>
+		<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
+			<choose>
+				<when test="search=='user_id'">
+					and user_id=#{searchtxt}
+				</when>
+				<when test="search=='content'">
+					and content=#{searchtxt}
+				</when>
+				<when test="search=='title'">
+					and title=#{searchtxt}
+				</when>
+			</choose>
+		</if>
+		order by tradeno desc
+		limit #{startRow},#{pageSize}
+	</select>
+
+	<select id="getdonglist"
+		resultType="com.kosta.o2dto.O2DongComDTO">
+		select chatno
+		,title
 		,user_id
 		,writedate
 		,viewno
 		,likeno
-		,deal_price
-		from TradeBoard_3jo
-		where deal_price REGEXP '^[0-9]+$'
-	]]>
+		from ChatBoard_3jo
 	</select>
-	
-	<select id="getdonglist" resultType="com.kosta.o2dto.O2DongComDTO">
-	  select chatno
-	         ,title
-	         ,user_id
-	         ,writedate
-	         ,viewno
-	         ,likeno
-	         from ChatBoard_3jo
-	</select>
-	
+
 	<insert id="dwriteinsert"
 		parameterType="com.kosta.o2dto.O2DongComDTO">
 		insert into ChatBoard_3jo(user_id,title,content
 		,category,writedate
 		,map_x,map_y)
-		
+
 		values('test',#{title},#{content},#{category},sysdate()
 		,#{map_x},#{map_y})
-		
-		<selectKey keyProperty="chatno" resultType="int" order="AFTER">
+
+		<selectKey keyProperty="chatno" resultType="int"
+			order="AFTER">
 			select last_insert_id()
 		</selectKey>
 	</insert>
-	
-	<select id="dwritedetail" parameterType="int" resultType="com.kosta.o2dto.O2DongComDTO">
+
+	<select id="dwritedetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2DongComDTO">
 		select title
 		,chatno
 		,category
 		,map_x,map_y
 		,content
-		from ChatBoard_3jo
+		from
+		ChatBoard_3jo
 		where chatno=#{no}
 	</select>
-	
+
 	<delete id="dwritedelete" parameterType="int">
-		delete from ChatBoard_3jo
+		delete from
+		ChatBoard_3jo
 		where chatno=#{no}
 	</delete>
-	
-	<update id="dwritemodifyresult" parameterType="com.kosta.o2dto.O2DongComDTO">
+
+	<update id="dwritemodifyresult"
+		parameterType="com.kosta.o2dto.O2DongComDTO">
 		update ChatBoard_3jo
-			set category=#{category}
-				,title=#{title}
-				,content=#{content}
-				,map_x=#{map_x}
-				,map_y=#{map_y}
+		set category=#{category}
+		,title=#{title}
+		,content=#{content}
+		,map_x=#{map_x}
+		,map_y=#{map_y}
 		where chatno=#{chatno}
 	</update>
-	
-	<insert id="dinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
+
+	<insert id="dinsertfile"
+		parameterType="com.kosta.o2dto.O2FileDTO">
 		insert into File_3jo(temp_name,real_name,chatno)
-		values (#{temp_name},#{real_name},#{chatno})
+		values
+		(#{temp_name},#{real_name},#{chatno})
 	</insert>
-	
-	<select id="dfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
+
+	<select id="dfiledetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2FileDTO">
 		select real_name
 		from File_3jo
 		where chatno=#{no}
 	</select>
-	
+
 	<delete id="dfiledelete" parameterType="int">
 		delete from File_3jo
 		where chatno=#{no}
 	</delete>
-	
+
 	<insert id="qwriteinsert"
 		parameterType="com.kosta.o2dto.O2QnaBoardDTO">
 		insert into QABoard_3jo(user_id,title,content
 		,category,writedate)
-		
+
 		values('test',#{title},#{content},#{category},sysdate())
-		
-		<selectKey keyProperty="qnano" resultType="int" order="AFTER">
+
+		<selectKey keyProperty="qnano" resultType="int"
+			order="AFTER">
 			select last_insert_id()
 		</selectKey>
 	</insert>
-	
-	<select id="qwritedetail" parameterType="int" resultType="com.kosta.o2dto.O2QnaBoardDTO">
+
+	<select id="qwritedetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2QnaBoardDTO">
 		select title
 		,qnano
 		,category
 		,content
 		from QABoard_3jo
-		where qnano=#{no}
+		where
+		qnano=#{no}
 	</select>
-	
+
 	<delete id="qwritedelete" parameterType="int">
 		delete from QABoard_3jo
 		where qnano=#{no}
 	</delete>
-	
-	<update id="qwritemodifyresult" parameterType="com.kosta.o2dto.O2QnaBoardDTO">
+
+	<update id="qwritemodifyresult"
+		parameterType="com.kosta.o2dto.O2QnaBoardDTO">
 		update QABoard_3jo
-			set category=#{category}
-				,title=#{title}
-				,content=#{content}
+		set category=#{category}
+		,title=#{title}
+		,content=#{content}
 		where qnano=#{qnano}
 	</update>
-	
-	<insert id="qinsertfile" parameterType="com.kosta.o2dto.O2FileDTO">
+
+	<insert id="qinsertfile"
+		parameterType="com.kosta.o2dto.O2FileDTO">
 		insert into File_3jo(temp_name,real_name,qnano)
-		values (#{temp_name},#{real_name},#{qnano})
+		values
+		(#{temp_name},#{real_name},#{qnano})
 	</insert>
-	
-	<select id="qfiledetail" parameterType="int" resultType="com.kosta.o2dto.O2FileDTO">
+
+	<select id="qfiledetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2FileDTO">
 		select real_name
 		from File_3jo
 		where qnano=#{no}
 	</select>
-	
+
 	<delete id="qfiledelete" parameterType="int">
 		delete from File_3jo
 		where qnano=#{no}
 	</delete>
-	
+
 	<select id="dongtopviewlist"
 		resultType="com.kosta.o2dto.O2DongComDTO">
 		select title
@@ -293,26 +324,31 @@
 		,writedate
 		,viewno
 		,likeno
-		from ChatBoard_3jo
+		from
+		ChatBoard_3jo
 		order by viewno desc limit 10
 	</select>
-	
-	<insert id="dealinsert" parameterType="com.kosta.o2dto.O2DealDTO">
-		insert into Deal_3jo(tradeno,deal_price,user_id)	
-		values(#{tradeno},#{deal_price},'test')
-	</insert>
-	
-	<insert id="dealinsert2" parameterType="com.kosta.o2dto.O2WriteBoardDTO">
+
+	<insert id="dealinsert"
+		parameterType="com.kosta.o2dto.O2DealDTO">
 		insert into Deal_3jo(tradeno,deal_price,user_id)
 		values(#{tradeno},#{deal_price},'test')
 	</insert>
-	
+
+	<insert id="dealinsert2"
+		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
+		insert into Deal_3jo(tradeno,deal_price,user_id)
+		values(#{tradeno},#{deal_price},'test')
+	</insert>
+
 	<select id="getprice" parameterType="int" resultType="String">
-		select deal_price
+		select
+		deal_price
 		from Deal_3jo
 		where tradeno=#{tradeno}
-		order by deal_price desc limit 1
+		order by deal_price
+		desc limit 1
 	</select>
-	
-	
+
+
 </mapper>

@@ -18,17 +18,18 @@ public class O2Page {
 	
 	
 	private void calRow() {
-		startRow = (currPage - 1) * pageSize + 1;
-		endRow = startRow + pageSize - 1;
-
-		if (endRow > totalCount)
-			endRow = totalCount;
+		startRow = (currPage - 1) * pageSize;  //1page :0,10  2page: 10,10  3page: 20, 10
+		
 	}
 
 	
 	private void calBlock() {
 		int totalPage = (int) Math.ceil(totalCount / (float) (pageSize));
 
+		//System.out.println("totalPage:" + totalPage);
+		startBlock = (currPage-1)/blockSize * blockSize + 1; // 1 2 3 4 5
+		endBlock = startBlock + blockSize - 1;
+				
 		if (endBlock > totalPage)
 			endBlock = totalPage;
 		

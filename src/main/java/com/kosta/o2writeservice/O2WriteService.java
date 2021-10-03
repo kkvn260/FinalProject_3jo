@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
+import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -15,10 +16,6 @@ public interface O2WriteService {
 	public void twriteinsert(O2WriteBoardDTO dto, List<MultipartFile> images);
 
 	public O2WriteBoardDTO twritedetail(int no);
-
-	public List<O2WriteBoardDTO> selllist();
-
-	public List<O2WriteBoardDTO> deallist();
 
 	public List<O2FileDTO> tfiledetail(int no);
 
@@ -49,5 +46,6 @@ public interface O2WriteService {
 	public void dealinsert(O2DealDTO dto);
 
 	public String getprice(int tradeno);
+
 
 }

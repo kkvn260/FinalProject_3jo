@@ -12,7 +12,8 @@ public class O2MainBoardDTO {
 	private String user_id;
 	private String category;
 	private int sell_price;
-	private int like;
+	private int deal_price;
+	private int likeno;
 	private String writedate;
 	private String file_name;
 	private String tradeaddr;

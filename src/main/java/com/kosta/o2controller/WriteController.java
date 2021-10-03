@@ -7,6 +7,8 @@ package com.kosta.o2controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,8 +28,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
+import com.kosta.o2dto.O2MainBoardDTO;
+import com.kosta.o2dto.O2Page;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
+import com.kosta.o2service.O2Service;
 import com.kosta.o2writeservice.O2WriteService;
 
 
@@ -36,6 +41,9 @@ public class WriteController {
 
 	@Autowired
 	private O2WriteService service;
+	
+	@Autowired
+	private O2Service o2service;
 
 	@RequestMapping("/write")
 	public String twrite() {
@@ -208,19 +216,72 @@ public class WriteController {
 	}
 	
 	@RequestMapping("/selllist")
-	public String selllist(Model model) {
+	public String sellList(@RequestParam(required = false, defaultValue = "1") int currPage,
+			@RequestParam(required = false, defaultValue = "") String search,
+			@RequestParam(required = false, defaultValue = "") String searchtxt,Model model) {
 		
-		List<O2WriteBoardDTO> list= service.selllist();
+		Pattern pattern = Pattern.compile("(^[0-9]*$)");
+
+		if (search == "user_id" || search.equals("user_id") || search == "title"
+			|| search.equals("title") || search == "content" || search.equals("content")) 
+		{
+			Matcher matcher = pattern.matcher(searchtxt);
+			if (matcher.find()) {
+				model.addAttribute("searchtxt", searchtxt);
+			} else {
+				model.addAttribute("searchtxt", "");
+			}
+		}
+		
+		int totalCount = o2service.sellCount(search, searchtxt);
+		int pageSize=10;
+		int blockSize=5;
+		
+		O2Page page = new O2Page(currPage, totalCount, pageSize, blockSize);
+		List<O2MainBoardDTO> list= o2service.sellList(search, searchtxt, page.getStartRow(), pageSize);
+		
 		model.addAttribute("list",list);
-		
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		 
 		return "writeboard/selllist";
 	}
+	
+	
+	
 	@RequestMapping("/deallist")
-	public String deallist(Model model) {
+	public String deallist(@RequestParam(required = false, defaultValue = "1") int currPage,
+			@RequestParam(required = false, defaultValue = "") String search,
+			@RequestParam(required = false, defaultValue = "") String searchtxt,
+			Model model) 
+	{
 		
-		List<O2WriteBoardDTO> list=service.deallist();
+		Pattern pattern = Pattern.compile("(^[0-9]*$)");
+
+		if (search == "user_id" || search.equals("user_id") || search == "title"
+			|| search.equals("title") || search == "content" || search.equals("content")) 
+		{
+			Matcher matcher = pattern.matcher(searchtxt);
+			if (matcher.find()) {
+				model.addAttribute("searchtxt", searchtxt);
+			} else {
+				model.addAttribute("searchtxt", "");
+			}
+		}
+		
+		int totalCount = o2service.dealCount(search, searchtxt);
+		int pageSize=10;
+		int blockSize=5;
+		
+		O2Page page = new O2Page(currPage, totalCount, pageSize, blockSize);
+		List<O2MainBoardDTO> list= o2service.dealList(search, searchtxt, page.getStartRow(), pageSize);
+		
 		model.addAttribute("list",list);
-		
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		 
 		return "writeboard/deallist";
 	}
 	

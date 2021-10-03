@@ -25,7 +25,7 @@ public interface O2WriteDAO {
 
 	List<O2QnaBoardDTO> getqlist();
 
-	int totalCount(HashMap<String, Object> hm);
+	int sellCount(HashMap<String, Object> hm);
 
 	List<O2MainBoardDTO> getmlist(HashMap<String, Object> hm);
 
@@ -79,7 +79,13 @@ public interface O2WriteDAO {
 
 	void dealinsert2(O2WriteBoardDTO dto);
 
-	String getprice(int tradeno);	
+	String getprice(int tradeno);
+
+	List<O2MainBoardDTO> sellList(HashMap<String, Object> hm);
+
+	int dealCount(HashMap<String, Object> hm);
+
+	List<O2MainBoardDTO> dealList(HashMap<String, Object> hm);	
 
 	
 }

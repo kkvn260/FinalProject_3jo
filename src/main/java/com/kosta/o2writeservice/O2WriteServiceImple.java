@@ -54,17 +54,6 @@ public class O2WriteServiceImple implements O2WriteService {
 		return dao.twritedetail(no);
 	}
 
-	@Override
-	public List<O2WriteBoardDTO> selllist() {
-		
-		return dao.selllist();
-	}
-
-	@Override
-	public List<O2WriteBoardDTO> deallist() {
-		// TODO Auto-generated method stub
-		return dao.deallist();
-	}
 
 	@Override
 	public List<O2FileDTO> tfiledetail(int no) {

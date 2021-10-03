@@ -42,7 +42,38 @@
 			</c:if>
 		</tbody>
 	</table>
+	<form method="get" action="selllist">
+		<select name="search">
+		  <option value="user_id">회원ID</option>
+		  <option value="title">제목</option>
+		  <option value="content">내용</option>
+		</select>
+		<input type="text"  name="searchtxt">
+		<input type="submit" value="검색">
+	  </form>
 	<a href="write" class="btn btn-success pull-right">글쓰기</a><br><br>
 
+	<c:if test="${page.prev}">
+  		<a href="deallist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">
+   		 <c:out value="이전"/>
+  		</a> 
+ 	</c:if>
+ 
+ 	<c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock }">
+   		 <c:if test="${index==page.currPage}">
+       	   	<c:out value="${index }"/>
+    	 </c:if>
+   		 <c:if test="${index!=page.currPage }">
+     		 <a href="deallist?currPage=${index }&search=${search}&searchtxt=${searchtxt}">
+     		 	<c:out value="${index }"/>
+     		 </a> 
+    	 </c:if>
+    </c:forEach>
+ 
+	<c:if test="${page.next}">
+	  <a href="deallist?currPage=${page.endBlock+1}&search=${search}&searchtxt=${searchtxt}">
+   		<c:out value="다음"></c:out>
+  	  </a>
+ 	</c:if>
 </body>
 </html>

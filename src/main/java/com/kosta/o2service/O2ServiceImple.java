@@ -29,27 +29,48 @@ public class O2ServiceImple implements O2Service {
 	}
 
 	@Override
-	public int totalCount(String search, String searchtxt) {
+	public int sellCount(String search, String searchtxt) {
+		
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
-		int result = dao.totalCount(hm);
+		int result = dao.sellCount(hm);
 		return result;
 	}
 
+	@Override
+	public List<O2MainBoardDTO> sellList(String search, String searchtxt, int startRow, int pageSize) {
+		    System.out.println(search);
+			System.out.println(searchtxt);
+			
+			HashMap<String, Object> hm = new HashMap<String, Object>();
+			hm.put("search", search);
+			hm.put("searchtxt", searchtxt);
+			hm.put("startRow", startRow);
+			hm.put("pageSize", pageSize);
+					
+			return dao.sellList(hm);
+	}
 
 	@Override
-	public List<O2MainBoardDTO> searchList(String search, String searchtxt, int startRow, int endRow) 
-	{
+	public int dealCount(String search, String searchtxt) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		return dao.dealCount(hm);
+		
+	}
+
+	@Override
+	public List<O2MainBoardDTO> dealList(String search, String searchtxt, int startRow, int pageSize) {
 		HashMap<String, Object> hm = new HashMap<String, Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
-		hm.put("startrow", startRow);
-		hm.put("endrow", endRow);
-		return dao.getmlist(hm);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+				
+		return dao.dealList(hm);
 	}
 
-	
-	
 	
 }

@@ -11,8 +11,12 @@ public interface O2Service {
 
 	O2WriteBoardDTO twritedetail(int no);
 	
-	int totalCount(String search, String searchtxt);
+	int sellCount(String search, String searchtxt);
 
-	List<O2MainBoardDTO> searchList(String search, String searchtxt, int startRow, int endRow);	
+	List<O2MainBoardDTO> sellList(String search, String searchtxt, int startRow, int pageSize);
+
+	int dealCount(String search, String searchtxt);
+
+	List<O2MainBoardDTO> dealList(String search, String searchtxt, int startRow, int pageSize);	
 
 }
