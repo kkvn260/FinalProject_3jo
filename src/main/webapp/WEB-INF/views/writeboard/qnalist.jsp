@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
     <h2>Q & A 게시판</h2><hr>
 	<table class="table table-striped">
 		<thead>
