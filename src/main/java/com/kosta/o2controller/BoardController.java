@@ -21,43 +21,9 @@ import com.kosta.o2service.O2ServiceOther;
 public class BoardController {
 	@Autowired
 	private O2Service service;
-	
+	 
 	@Autowired
 	private O2ServiceOther service2;
-
-	@RequestMapping("/main")
-	public String list(@RequestParam(required = false, defaultValue = "1") int currPage,
-			@RequestParam(required = false, defaultValue = "") String search,
-			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model) {
-
-		Pattern pattern = Pattern.compile("(^[0-9]*$)");
-
-		if (search == "user_id" || search.equals("user_id") || search == "title"
-			|| search.equals("title") || search == "content" || search.equals("content")) 
-		{
-			Matcher matcher = pattern.matcher(searchtxt);
-			if (matcher.find()) {
-				model.addAttribute("searchtxt", searchtxt);
-			} else {
-				model.addAttribute("searchtxt", "");
-			}
-		}
-		
-		int totalCount = service.totalCount(search, searchtxt);
-		int pageSize=10;
-		int blockSize=5;
-		
-		O2Page page = new O2Page(currPage, totalCount, pageSize, blockSize);
-		List<O2MainBoardDTO> getList = service.searchList(search, searchtxt, pageSize, blockSize);
-		
-		model.addAttribute("list",getList);
-		model.addAttribute("page",page);
-		model.addAttribute("search",search);
-		model.addAttribute("searchtxt",searchtxt);
-
-		//癰귣�沅� �⑨옙 筌욑옙占쎌젟
-		return "";
-	}
 	
 	@RequestMapping("/qnalist")
 	public String list(Model model) {
