@@ -14,7 +14,7 @@
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/twritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>
