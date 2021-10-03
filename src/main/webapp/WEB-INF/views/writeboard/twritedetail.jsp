@@ -13,6 +13,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
+<script>
+$(function () {
+	
+})
+</script>
 <body>
 <br><br><br><br>
 <ul>
@@ -54,6 +59,30 @@
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 		<input type="button" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
+		<br>
+	</li>
+	<li>
+	
+	</li>
+		<label>댓글</label>
+		<div id="replyarea">
+			<input type="hidden" value="replyno">
+			<span>ID</span>
+			<span>content</span>
+		</div>
+	<li>
+		<div>
+			
+		</div>
+		<div><br>
+			<form action="" method="post">
+			<div id="replydiv">
+				<input type="text" value="session아이디" readonly>
+				<textarea rows="4" cols="90"></textarea>
+				<input type="submit" value="등록"></button>
+			</div>
+			</form>
+		</div>
 	</li>
 </ul>	
 	<script>

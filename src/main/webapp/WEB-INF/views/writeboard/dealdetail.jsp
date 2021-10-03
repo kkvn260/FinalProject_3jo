@@ -19,9 +19,6 @@ $(function () {
 	$('#deal_btn').on('click',function(){
 		var before=Number($("#ndeal_price").val());
 		var after=Number($("#deal_price").val());
-		if(after<before){
-			alert("입력한 가격이 현재 입찰가 보다 낮습니다");
-		}
 		   let data1={tradeno:$("#tradeno").val(),deal_price:$("#deal_price").val()};
 		 $.ajax({
 			type:"post"
@@ -30,8 +27,12 @@ $(function () {
 			,data: JSON.stringify(data1)
 			,contentType:"application/json;charset=utf-8"
 			,success:function(data)
-			{
+			{	
+				if(after<before){
+					alert("입력한 가격이 현재 입찰가 보다 낮습니다");
+				}else
 				alert("입찰 성공!");
+				
 				$('#ndeal_price').val(data);
 				$('#deal_price').val(""); //초기화
 			},error:function(err){
@@ -86,6 +87,10 @@ $(function () {
 	<div class="clear"></div>
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+	</li>
+	<li>
+		<label for="reply">댓글</label><br>
+		<input type="text" id="reply" name="reply">
 	</li>
 </ul>	
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
