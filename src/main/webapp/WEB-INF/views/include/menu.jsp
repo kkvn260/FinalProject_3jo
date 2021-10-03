@@ -9,12 +9,12 @@
 </head>
 <body>
 <c:if test="${sessionScope.user_id==null}">
-           <a href="login">로그인</a>
-		   <a href="registerForm">회원가입</a>
+           <a href="${pageContext.request.contextPath }/login">로그인</a>
+		   <a href="${pageContext.request.contextPath }/registerForm">회원가입</a>
 </c:if>
 <c:if test="${sessionScope.user_id!=null }">
-	<a href="logout">로그아웃</a>
-	<a href="myinfo">마이페이지</a>
+	<a href="${pageContext.request.contextPath }/logout">로그아웃</a>
+	<a href="${pageContext.request.contextPath }/myinfo">마이페이지</a>
     </c:if>
 </body>
 </html>
