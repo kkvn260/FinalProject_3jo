@@ -24,6 +24,7 @@
 		<select name="category2" id="category2"></select>
 	</li>
 	<li>
+		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<label>제목</label>
 		<input type="text" id="title" name="title" placeholder="제목">
 	</li>

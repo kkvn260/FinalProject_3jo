@@ -51,7 +51,8 @@ $(function () {
 		<input type="text" id="detailcategory1" value="${list.category1 }" readonly>
 		<input type="text" id="detailcategory2" value="${list.category2 }" readonly>
 	</li>
-	<li>	
+	<li>
+		<input type="hidden" id="user_id" name="user_id" value="${id }">	
 		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>

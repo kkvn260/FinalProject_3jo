@@ -12,7 +12,7 @@
 		,map_x,map_y
 		,tradeaddr,sell_price,deal_price)
 
-		values('test',#{title},#{content},#{category1},#{category2},sysdate()
+		values(#{user_id},#{title},#{content},#{category1},#{category2},sysdate()
 		,#{map_x},#{map_y}
 		,'서울 구로구',#{sell_price},#{deal_price})
 
@@ -202,7 +202,7 @@
 		,category1,category2,writedate
 		,map_x,map_y)
 
-		values('test',#{title},#{content},#{category1},#{category2},sysdate()
+		values(#{user_id},#{title},#{content},#{category1},#{category2},sysdate()
 		,#{map_x},#{map_y})
 
 		<selectKey keyProperty="chatno" resultType="int"
@@ -266,7 +266,7 @@
 		insert into QABoard_3jo(user_id,title,content
 		,category,writedate)
 
-		values('test',#{title},#{content},#{category},sysdate())
+		values(#{user_id},#{title},#{content},#{category},sysdate())
 
 		<selectKey keyProperty="qnano" resultType="int"
 			order="AFTER">
@@ -334,13 +334,13 @@
 	<insert id="dealinsert"
 		parameterType="com.kosta.o2dto.O2DealDTO">
 		insert into Deal_3jo(tradeno,deal_price,user_id)
-		values(#{tradeno},#{deal_price},'test')
+		values(#{tradeno},#{deal_price},${user_id})
 	</insert>
 
 	<insert id="dealinsert2"
 		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		insert into Deal_3jo(tradeno,deal_price,user_id)
-		values(#{tradeno},#{deal_price},'test')
+		values(#{tradeno},#{deal_price},${user_id})
 	</insert>
 
 	<select id="getprice" parameterType="int" resultType="String">

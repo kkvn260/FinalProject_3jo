@@ -46,9 +46,10 @@ public class WriteController {
 	private O2Service o2service;
 
 	@RequestMapping("/write")
-	public String twrite() {
+	public String twrite(HttpSession session,Model model) {
 		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
-
+		String id=(String)session.getAttribute("user_id");
+		model.addAttribute("id",id);
 		return "writeboard/twrite";
 	}
 	@RequestMapping("/dwrite")
@@ -180,11 +181,13 @@ public class WriteController {
 	}
 
 	@RequestMapping("/twritedetail/{no}")
-	public String twritedetail(Model model,@PathVariable int no) {
+	public String twritedetail(Model model,@PathVariable int no,HttpSession session) {
 		
 		O2WriteBoardDTO list= service.twritedetail(no);
 		List<O2FileDTO> list2=service.tfiledetail(no);
+		String id=(String)session.getAttribute("user_id");
 		
+		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		
@@ -192,11 +195,13 @@ public class WriteController {
 	}
 	
 	@RequestMapping("/dwritedetail/{no}")
-	public String dwritedetail(Model model,@PathVariable int no) {
+	public String dwritedetail(Model model,@PathVariable int no,HttpSession session) {
 		
 		O2DongComDTO list= service.dwritedetail(no);
 		List<O2FileDTO> list2=service.dfiledetail(no);
+		String id=(String)session.getAttribute("user_id");
 		
+		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		
@@ -204,11 +209,13 @@ public class WriteController {
 	}
 	
 	@RequestMapping("/qwritedetail/{no}")
-	public String qwritedetail(Model model,@PathVariable int no) {
+	public String qwritedetail(Model model,@PathVariable int no,HttpSession session) {
 		
 		O2QnaBoardDTO list= service.qwritedetail(no);
 		List<O2FileDTO> list2=service.qfiledetail(no);
+		String id=(String)session.getAttribute("user_id");
 		
+		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		
@@ -286,12 +293,14 @@ public class WriteController {
 	}
 	
 	@RequestMapping("/tdealdetail/{no}")
-	public String tdealdetail(Model model,@PathVariable int no) {
+	public String tdealdetail(Model model,@PathVariable int no,HttpSession session) {
 
 		O2WriteBoardDTO list= service.twritedetail(no);
 		List<O2FileDTO> list2=service.tfiledetail(no);
 		String price=service.getprice(no);
+		String id=(String)session.getAttribute("user_id");
 		
+		model.addAttribute("id",id);
 		model.addAttribute("price",price);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);

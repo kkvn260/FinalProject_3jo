@@ -67,7 +67,7 @@ $(function () {
 		<label>댓글</label>
 		<div id="replyarea">
 			<input type="hidden" value="replyno">
-			<span>ID</span>
+			<span>작성자 id</span>
 			<span>content</span>
 		</div>
 	<li>
@@ -77,7 +77,7 @@ $(function () {
 		<div><br>
 			<form action="" method="post">
 			<div id="replydiv">
-				<input type="text" value="session아이디" readonly>
+				<input type="text" value="${id }" readonly>
 				<textarea rows="4" cols="90"></textarea>
 				<input type="submit" value="등록"></button>
 			</div>
