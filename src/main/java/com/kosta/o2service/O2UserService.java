@@ -43,14 +43,6 @@ public class O2UserService {
 		return userdao.login(userdto);
 		
 	}
-/*
-	public int membermodify(O2UserDTO list) {
-		// TODO Auto-generated method stub
-		int result=userdao.membermodify(list);
-		return result;
-		
-	}
-*/
 	public O2UserDTO membermdetail(String user_id) {
 		// TODO Auto-generated method stub
 		return userdao.memberdetail(user_id);
@@ -66,6 +58,11 @@ public class O2UserService {
 		userdao.modifyresult(list);
 	}
 
+	public int delete(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.delete(user_id);
+	}
 
+	
 
 }

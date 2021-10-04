@@ -32,7 +32,8 @@
        <th><c:out value="${list.grade }"/></th></tr>
 </table>
 
-<input type="submit" id="infomodifybtn" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
+<input type="submit" id="infomodify" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
+<input type="submit" id="infodelete" value="탈퇴"  onclick="location.href='${pageContext.request.contextPath }/deleteresult'"> 
 		
 
 </body>

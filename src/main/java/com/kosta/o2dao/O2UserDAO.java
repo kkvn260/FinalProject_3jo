@@ -16,6 +16,7 @@ public interface O2UserDAO {
 	int checkUserId(String user_id); //�븘�씠�뵒以묐났泥댄겕
 	O2UserDTO memberdetail(String user_id);
 	void modifyresult(O2UserDTO list);
+    int delete(String user_id);
 
-	
+
 }

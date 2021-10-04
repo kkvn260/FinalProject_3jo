@@ -56,6 +56,7 @@ public class UserController {
 			return "member/login";
 		}
 
+		//로그인
 		@RequestMapping(value = "/login", method = RequestMethod.POST )
 		public String login(O2UserDTO userdto ,HttpServletRequest request,HttpSession session, Model model) throws Exception{
 			
@@ -81,6 +82,7 @@ public class UserController {
         
         return path;
 		}
+		//로그아웃
 		@GetMapping(value = "/logout")
 		public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
 			HttpSession session=request.getSession();
@@ -88,6 +90,7 @@ public class UserController {
 			
 			return "member/logout";
 		}
+		// 디테일정보
 		@RequestMapping(value="/myinfo")
 		public String myinfo(HttpServletRequest request, HttpServletResponse response,Model model) {
 		
@@ -100,6 +103,7 @@ public class UserController {
 				
 			return "member/myinfo";
 		}
+		//회원정보수정
 		@RequestMapping(value = "/modify/{user_Id}")
 		public String modify(HttpServletRequest request,String user_id, Model model) {
 			HttpSession session=request.getSession();
@@ -114,6 +118,25 @@ public class UserController {
 				service.modifyresult(list);
 				
 				return "member/modifyresult";			
+		}
+		//회원탈퇴
+		@RequestMapping(value="/delete")
+		public String delete(HttpServletRequest request,Model model) {
+			HttpSession session=request.getSession();
+			String user_id=(String) session.getAttribute("user_id");
+			
+			int result=service.delete(user_id);
+			model.addAttribute("result",result);
+	
+			session.invalidate();
+		    
+			return "member/delete";
+
+		}
+		
+		@RequestMapping(value="/deleteresult")
+		public String deleteresult() {
+			return "member/deleteresult";
 		}
 	
 
