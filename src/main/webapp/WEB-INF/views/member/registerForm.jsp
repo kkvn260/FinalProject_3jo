@@ -218,7 +218,7 @@ $(document).ready(function(){
    		<!-- nick_name -->
    		<div class="form-group">
    			<label for="nink_name">닉네임</label>
-   				<input type="text" class="form-control" id="nick_name" name="nick_name" placeholder="NickName" value="nickname" required>
+   				<input type="text" class="form-control" id="nick_name" name="nick_name" placeholder="NickName" required>
    			<div class="check_font" id="nickname_check"></div>
    		</div>
    		<!-- phoneno -->
@@ -256,9 +256,9 @@ $(document).ready(function(){
    		<div class="form-group">
    			<label for="gender">성별</label><br>
    				<label for="man">남자</label>
-   				<input type="radio" class="form-control" id="gender" name="gender" value="남자" placeholder="Gender" required checked="checked">
+   				<input type="radio" class="form-control" id="man" name="gender" value="남자" placeholder="Gender" required>
    				<label for="woman">여자</label>
-   				<input type="radio" class="form-control" id="gender" name="gender" value="여자" placeholder="Gender" required>
+   				<input type="radio" class="form-control" id="woman" name="gender" value="여자" placeholder="Gender" required>
    			<div class="check_font" id="gender_check"></div>
    		</div>
    		

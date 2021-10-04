@@ -60,15 +60,14 @@
 	</select>
 	
 	<!-- 회원정보수정 -->
-	<update id="membermodify" parameterType="com.kosta.o2dto.O2UserDTO">
+	<update id="modifyresult" parameterType="com.kosta.o2dto.O2UserDTO">
 	     update User_3jo
 	     set
 	         nick_name=#{nick_name},
 	         phoneno=#{phoneno},
 	         email=#{email},
 	         user_name=#{user_name},
-	         addr=#{addr},
-	         gender=#{gender}
+	         addr=#{addr}
 	     where
 	         user_id=#{user_id}
 	</update>

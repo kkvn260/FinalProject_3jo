@@ -1,10 +1,7 @@
 package com.kosta.o2controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
-import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,19 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.kosta.o2dto.O2DongComDTO;
+
 import com.kosta.o2dto.O2UserDTO;
-import com.kosta.o2dto.O2WriteBoardDTO;
+
 import com.kosta.o2service.O2UserService;
 
 
@@ -107,28 +100,21 @@ public class UserController {
 				
 			return "member/myinfo";
 		}
-	/*
-		@RequestMapping(value="/modifyresult")
-		public String membermodify(@RequestParam(required = false) String user_id, @RequestParam(required = false) String nick_name 
-				                  ,@RequestParam(required = false) String phoneno,@RequestParam(required = false) String email
-				                  ,@RequestParam(required = false) String user_name, @RequestParam(required = false) String addr
-				                  ,@RequestParam(required = false) String gender,Model model) {
-		 	
-			O2UserDTO list=new O2UserDTO();
-			list.setUser_id(user_id);
-			list.setNick_name(nick_name);
-			list.setPhoneno(phoneno);
-			list.setEmail(email);
-			list.setUser_name(user_name);
-			list.setAddr(addr);
-			list.setGender(gender);
+		@RequestMapping(value = "/modify/{user_Id}")
+		public String modify(HttpServletRequest request,String user_id, Model model) {
+			HttpSession session=request.getSession();
+			user_id=(String) session.getAttribute("user_id");
 			
-			int result=service.membermodify(list);
-			model.addAttribute("result",result);
-			model.addAttribute("user_id",user_id);
-			
-			return "member/modifyresult";
-			
+			O2UserDTO list = service.modify(user_id);
+			model.addAttribute("list", list);
+			return "member/modify";
 		}
-	*/
+		@RequestMapping(value = "/modifyresult")
+		public String modifyresult(O2UserDTO list) {
+				service.modifyresult(list);
+				
+				return "member/modifyresult";			
+		}
+	
+
 }

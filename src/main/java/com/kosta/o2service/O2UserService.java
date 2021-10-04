@@ -54,5 +54,18 @@ public class O2UserService {
 	public O2UserDTO membermdetail(String user_id) {
 		// TODO Auto-generated method stub
 		return userdao.memberdetail(user_id);
-	}	
+	}
+
+	public O2UserDTO modify(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.memberdetail(user_id);
+	}
+
+	public void modifyresult(O2UserDTO list) {
+		// TODO Auto-generated method stub
+		userdao.modifyresult(list);
+	}
+
+
+
 }
