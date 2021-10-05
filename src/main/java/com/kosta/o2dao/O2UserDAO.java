@@ -1,10 +1,14 @@
 package com.kosta.o2dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kosta.o2dto.O2DongComDTO;
+import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2UserDTO;
+import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Mapper
 public interface O2UserDAO {
@@ -17,6 +21,9 @@ public interface O2UserDAO {
 	O2UserDTO memberdetail(String user_id);
 	void modifyresult(O2UserDTO list);
     int delete(String user_id);
+    List<O2WriteBoardDTO> mydboardlist(String user_id);
+	List<O2DongComDTO> mydongboardlist(String user_id);
+	List<O2QnaBoardDTO> myqnaboardlist(String user_id);
 
 
 }

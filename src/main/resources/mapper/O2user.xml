@@ -78,4 +78,36 @@
 	     where user_id=#{user_id}
 	</delete>
 	
+	<!-- 내가 쓴 판매 글 -->
+	<select id="mydboardlist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+	     select tradeno 
+	           ,title
+	           ,likeno
+	           ,viewno
+	           ,writedate
+	           ,user_id
+	     from TradeBoard_3jo
+	     where user_id=#{user_id}
+	</select>
+	
+	<select id="mydongboardlist" resultType="com.kosta.o2dto.O2DongComDTO">
+	     select chatno
+	           ,title
+	           ,likeno
+	           ,viewno
+	           ,writedate
+	           ,user_id
+	    from ChatBoard_3jo
+	    where user_id=#{user_id}
+	</select>
+	
+	<select id="myqnaboardlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
+	     select qnano
+	           ,title
+	           ,writedate
+	           ,user_id
+	     from QABoard_3jo
+	     where user_id=#{user_id}
+	</select>
+	
 </mapper>

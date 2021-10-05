@@ -1,12 +1,16 @@
 package com.kosta.o2service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2UserDAO;
+import com.kosta.o2dto.O2DongComDTO;
+import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2UserDTO;
+import com.kosta.o2dto.O2WriteBoardDTO;
 
 
 @Service
@@ -63,6 +67,23 @@ public class O2UserService {
 		return userdao.delete(user_id);
 	}
 
-	
+	public List<O2WriteBoardDTO> mydboardlist(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.mydboardlist(user_id);
+	}
+
+	public List<O2DongComDTO> mydongboardlist(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.mydongboardlist(user_id);
+	}
+
+	public List<O2QnaBoardDTO> myqnaboardlist(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.myqnaboardlist(user_id);
+	}
+
+
+
+
 
 }

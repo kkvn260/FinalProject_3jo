@@ -2,6 +2,8 @@ package com.kosta.o2controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.kosta.o2dto.O2DealDTO;
+import com.kosta.o2dto.O2DongComDTO;
+import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2UserDTO;
-
+import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2UserService;
 
 
@@ -138,6 +142,43 @@ public class UserController {
 		@RequestMapping(value="/deleteresult")
 		public String deleteresult() {
 			return "member/deleteresult";
+		}
+		
+		//내가 쓴 글
+		@RequestMapping(value="/mydboardlist")
+		public String mydboardlist(HttpServletRequest request, HttpServletResponse response,Model model) {
+         	HttpSession session=request.getSession();
+			String user_id=(String) session.getAttribute("user_id");
+
+			List<O2WriteBoardDTO> list=service.mydboardlist(user_id);
+	
+			model.addAttribute("list",list);
+			
+		return "member/mydboardlist";
+		}
+		
+		@RequestMapping(value="/mydongboardlist")
+		public String mydongboardlist(HttpServletRequest request, HttpServletResponse response,Model model) {
+         	HttpSession session=request.getSession();
+			String user_id=(String) session.getAttribute("user_id");
+
+			List<O2DongComDTO> list=service.mydongboardlist(user_id);
+	
+			model.addAttribute("list",list);
+			
+		return "member/mydongboardlist";
+		}
+		
+		@RequestMapping(value="/myqnaboardlist")
+		public String myqnaboardlist(HttpServletRequest request, HttpServletResponse response,Model model) {
+         	HttpSession session=request.getSession();
+			String user_id=(String) session.getAttribute("user_id");
+
+			List<O2QnaBoardDTO> list=service.myqnaboardlist(user_id);
+	
+			model.addAttribute("list",list);
+			
+		return "member/myqnaboardlist";
 		}
 	
 

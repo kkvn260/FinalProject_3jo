@@ -13,14 +13,10 @@
 <h3>회원 탈퇴</h3><hr>
 
 <form method="post" action="${pageContext.request.contextPath }/delete">
- 	
  	<div>
- 		<label for="pwd">비밀번호</label>
- 		<input type="password" id="pwd" name="pwd">
- 	</div>
- 	
- 	<div>
- 		<input type="submit" value="회원탈퇴">
+ 	    <label>정말 탈퇴 하시겠습니까?</label>
+ 		<input type="submit" value="탈퇴하기">
+ 		<input type="reset" value="취소">
  	</div>
  	
 </form>

@@ -10,8 +10,11 @@
 <body>
 <br><br><br><br>
 <h3>마이페이지</h3><hr>
+
+<%@ include file="../member/mypagemainlist.jsp" %>
+
 <table class="table table-striped">
-<thead>
+<thead id="myinfo">
    <tr><th>아이디</th>
        <th><c:out value="${list.user_id }"/></th></tr>
    <tr><th>닉네임</th>
@@ -30,6 +33,7 @@
        <th><c:out value="${list.gender }"/></th></tr>
    <tr><th>등급</th>
        <th><c:out value="${list.grade }"/></th></tr>
+</thead>
 </table>
 
 <input type="submit" id="infomodify" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
