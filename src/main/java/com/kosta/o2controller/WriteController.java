@@ -203,10 +203,12 @@ public class WriteController {
 		O2DongComDTO list= service.dwritedetail(no);
 		List<O2FileDTO> list2=service.dfiledetail(no);
 		String id=(String)session.getAttribute("user_id");
+		List<O2ReplyDTO> list3=service.dreplydetail(no);
 		
 		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
+		model.addAttribute("list3",list3);
 		
 		return "writeboard/dwritedetail";
 	}
@@ -217,10 +219,12 @@ public class WriteController {
 		O2QnaBoardDTO list= service.qwritedetail(no);
 		List<O2FileDTO> list2=service.qfiledetail(no);
 		String id=(String)session.getAttribute("user_id");
+		List<O2ReplyDTO> list3=service.qreplydetail(no);
 		
 		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
+		model.addAttribute("list3",list3);
 		
 		return "writeboard/qwritedetail";
 	}
@@ -503,13 +507,54 @@ public class WriteController {
 		
 		return result;
 	}
+	
 	@RequestMapping("treplychildinsert")
 	public String treplychildinsert(O2ReplyDTO dto) {
 		service.treplychildinsert(dto);
 		return "redirect:/twritedetail/"+dto.getTradeno();
 	}
 	
-
+	@RequestMapping("dreplyresult")
+	public String dreplyresult(O2ReplyDTO dto) {
+		service.dreplyinsert(dto);
+		
+		return "redirect:/dwritedetail/"+dto.getChatno();
+	}
+	
+	@RequestMapping("dreplychild")
+	@ResponseBody
+	public O2ReplyDTO dreplychild(@RequestBody O2ReplyDTO dto) {
+		O2ReplyDTO result=service.dreplychild(dto);
+		
+		return result;
+	}
+	
+	@RequestMapping("dreplychildinsert")
+	public String dreplychildinsert(O2ReplyDTO dto) {
+		service.dreplychildinsert(dto);
+		return "redirect:/dwritedetail/"+dto.getChatno();
+	}
+	
+	@RequestMapping("qreplyresult")
+	public String qreplyresult(O2ReplyDTO dto) {
+		service.qreplyinsert(dto);
+		
+		return "redirect:/qwritedetail/"+dto.getQnano();
+	}
+	
+	@RequestMapping("qreplychild")
+	@ResponseBody
+	public O2ReplyDTO qreplychild(@RequestBody O2ReplyDTO dto) {
+		O2ReplyDTO result=service.qreplychild(dto);
+		
+		return result;
+	}
+	
+	@RequestMapping("qreplychildinsert")
+	public String qreplychildinsert(O2ReplyDTO dto) {
+		service.qreplychildinsert(dto);
+		return "redirect:/qwritedetail/"+dto.getQnano();
+	}
 	
 }
 

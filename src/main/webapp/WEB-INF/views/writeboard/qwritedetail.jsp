@@ -47,6 +47,77 @@
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/qwritedelete/${list.qnano}'">
 		<input type="button" id="qlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/qnalist'">
 	</li>
+		<li>
+		<label>답변</label>
+		<div id="replyarea">
+		<c:forEach var="item" items="${list3 }">
+			<li value="${item.replyno }">
+				<input type="text" name="user_id" value="${item.user_id }" readonly>
+				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
+				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
+				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">
+				<input type="hidden" value="${item.dept }" name="dept" class="dept">
+				<input type="hidden" value="${item.reorder }" name="reorder" class="reorder">
+				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
+			</li>
+		</c:forEach>
+		</div>
+	</li>
+	<li>
+	<c:if test="${id ne null}">
+		<div><br>	
+			<div id="replydiv">
+				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
+				<input type="hidden" id="qnano" name="qnano" value="${list.qnano }">
+				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
+				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."></textarea>
+				<input type="submit" value="등록">
+				</form>
+			</div>
+		</div>
+	</c:if>
+	</li>
 </ul>	
+<script>
+//대댓글
+$(function () {
+	$(".replychild_btn").on("click",function(){
+		
+		let $this=$(this);
+		let no=$this.parent().val();
+		let data1={qnano:$("#qnano").val()
+					,replyno:no
+					};
+		let id="${id}";
+		console.log(no);
+ 	$.ajax({
+			type:'post'
+			,url:"${pageContext.request.contextPath }/qreplychild"
+			,dataType:'json'
+			,data: JSON.stringify(data1)
+			,contentType:"application/json;charset=utf-8"
+			,success:function(data)
+			{
+				console.log("성공");
+				let p="";
+				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/qreplychildinsert'>";
+	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
+				p+="<input type='hidden' name='qnano' value='"+${list.qnano }+"'>";
+				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.'></textarea>";
+				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
+				p+="<input type='hidden' name='reparent' value='"+no+"'>";
+				p+="<input type='submit' value='댓글달기'>";
+				p+="</form>";
+				
+				$('.replyform').remove();
+				$this.parent().append(p);
+			},error:function(err){
+				console.log("에러");
+			}
+		})  
+	})
+})
+
+</script>
 </body>
 </html>

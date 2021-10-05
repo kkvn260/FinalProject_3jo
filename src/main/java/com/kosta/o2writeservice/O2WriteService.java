@@ -55,5 +55,22 @@ public interface O2WriteService {
 
 	public void treplychildinsert(O2ReplyDTO dto);
 
+	public List<O2ReplyDTO> dreplydetail(int no);
+
+	public List<O2ReplyDTO> qreplydetail(int no);
+
+	public void dreplyinsert(O2ReplyDTO dto);
+
+	public O2ReplyDTO dreplychild(O2ReplyDTO dto);
+
+	public void dreplychildinsert(O2ReplyDTO dto);
+
+	public void qreplyinsert(O2ReplyDTO dto);
+
+	public O2ReplyDTO qreplychild(O2ReplyDTO dto);
+
+	public void qreplychildinsert(O2ReplyDTO dto);
+
+
 
 }

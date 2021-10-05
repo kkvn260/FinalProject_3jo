@@ -52,7 +52,13 @@
 		,map_y=#{map_y}
 		where tradeno=#{tradeno}
 	</update>
-
+	
+	<update id="twritecount" parameterType="int">
+		update TradeBoard_3jo
+			set viewno=ifnull(viewno,0)+1
+		where tradeno=#{no}
+	</update>
+	
 	<insert id="tinsertfile"
 		parameterType="com.kosta.o2dto.O2FileDTO">
 		insert into File_3jo(temp_name,real_name,tradeno)
@@ -366,18 +372,6 @@
 		where replyno=#{replyno}
 	</update>
 	
-	<select id="treplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
-		select replyno
-			  ,reply_content
-			  ,reply_writedate
-			  ,user_id
-			  ,dept
-			  ,reparent
-			  ,reorder
-		from Reply_3jo
-		where tradeno=#{no}
-		order by reparent asc, dept asc, reorder asc
-	</select>
 	
 	<select id="treplychild" parameterType="com.kosta.o2dto.O2ReplyDTO" resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno
@@ -394,6 +388,119 @@
 		insert into Reply_3jo(tradeno,user_id,reply_content,reply_writedate,reorder,reparent,dept)
 		values(#{tradeno},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent},1)
 	</insert>
+	
+	<select id="treplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
+		select replyno
+			  ,reply_content
+			  ,reply_writedate
+			  ,user_id
+			  ,dept
+			  ,reparent
+			  ,reorder
+		from Reply_3jo
+		where tradeno=#{no}
+		order by reparent asc, dept asc, reorder asc
+	</select>
+	
+	<select id="dreplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
+		select replyno
+			  ,reply_content
+			  ,reply_writedate
+			  ,user_id
+			  ,dept
+			  ,reparent
+			  ,reorder
+		from Reply_3jo
+		where chatno=#{no}
+		order by reparent asc, dept asc, reorder asc
+	</select>
+	
+	<select id="qreplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
+		select replyno
+			  ,reply_content
+			  ,reply_writedate
+			  ,user_id
+			  ,dept
+			  ,reparent
+			  ,reorder
+		from Reply_3jo
+		where qnano=#{no}
+		order by reparent asc, dept asc, reorder asc
+	</select>
+	
+	<insert id="dreplyinsert" parameterType="com.kosta.o2dto.O2ReplyDTO">
+	<selectKey keyProperty="replyno" order="AFTER" resultType="int">
+		select last_insert_id()
+	</selectKey>
+		insert into Reply_3jo(user_id,reply_content,reply_writedate,chatno)
+		values(#{user_id},#{reply_content},sysdate(),#{chatno})
+	</insert>
+	
+	<update id="dreplyupdate" parameterType="com.kosta.o2dto.O2ReplyDTO">
+		update Reply_3jo
+		set reparent=#{replyno}
+		where replyno=#{replyno}
+	</update>
+	
+	
+	<select id="dreplychild" parameterType="com.kosta.o2dto.O2ReplyDTO" resultType="com.kosta.o2dto.O2ReplyDTO">
+		select replyno
+				,reorder
+				,reparent
+		from Reply_3jo
+		where chatno=#{chatno} and replyno=${replyno} and dept=0
+	</select>
+	
+	<insert id="dreplychildinsert">
+		<selectKey keyProperty="reorder" order="BEFORE" resultType="int">
+			select ifnull(max(reorder),0)+1 from Reply_3jo where reparent=#{reparent} and chatno=#{chatno}
+		</selectKey>
+		insert into Reply_3jo(chatno,user_id,reply_content,reply_writedate,reorder,reparent,dept)
+		values(#{chatno},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent},1)
+	</insert>
+	
+	<insert id="qreplyinsert" parameterType="com.kosta.o2dto.O2ReplyDTO">
+	<selectKey keyProperty="replyno" order="AFTER" resultType="int">
+		select last_insert_id()
+	</selectKey>
+		insert into Reply_3jo(user_id,reply_content,reply_writedate,qnano)
+		values(#{user_id},#{reply_content},sysdate(),#{qnano})
+	</insert>
+	
+	<update id="qreplyupdate" parameterType="com.kosta.o2dto.O2ReplyDTO">
+		update Reply_3jo
+		set reparent=#{replyno}
+		where replyno=#{replyno}
+	</update>
+	
+	
+	<select id="qreplychild" parameterType="com.kosta.o2dto.O2ReplyDTO" resultType="com.kosta.o2dto.O2ReplyDTO">
+		select replyno
+				,reorder
+				,reparent
+		from Reply_3jo
+		where qnano=#{qnano} and replyno=${replyno} and dept=0
+	</select>
+	
+	<insert id="qreplychildinsert">
+		<selectKey keyProperty="reorder" order="BEFORE" resultType="int">
+			select ifnull(max(reorder),0)+1 from Reply_3jo where reparent=#{reparent} and qnano=#{qnano}
+		</selectKey>
+		insert into Reply_3jo(qnano,user_id,reply_content,reply_writedate,reorder,reparent,dept)
+		values(#{qnano},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent},1)
+	</insert>
+	
+	<update id="dwritecount" parameterType="int">
+		update ChatBoard_3jo
+			set viewno=ifnull(viewno,0)+1
+		where chatno=#{no}
+	</update>
+	
+	<update id="qwritecount" parameterType="int">
+		update QABoard_3jo
+			set viewno=ifnull(viewno,0)+1
+		where qnano=#{no}
+	</update>
 	
 
 </mapper>

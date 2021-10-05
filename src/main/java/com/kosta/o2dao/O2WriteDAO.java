@@ -96,7 +96,33 @@ public interface O2WriteDAO {
 
 	void treplychildinsert(O2ReplyDTO dto);
 
-	void treplyupdate(O2ReplyDTO dto);	
+	void treplyupdate(O2ReplyDTO dto);
+
+	void twritecount(int no);
+
+	List<O2ReplyDTO> dreplydetail(int no);
+
+	List<O2ReplyDTO> qreplydetail(int no);
+
+	void dreplyinsert(O2ReplyDTO dto);
+
+	void dreplyupdate(O2ReplyDTO dto);
+
+	O2ReplyDTO dreplychild(O2ReplyDTO dto);
+
+	void dreplychildinsert(O2ReplyDTO dto);
+
+	void qreplyinsert(O2ReplyDTO dto);
+
+	void qreplyupdate(O2ReplyDTO dto);
+
+	O2ReplyDTO qreplychild(O2ReplyDTO dto);
+
+	void qreplychildinsert(O2ReplyDTO dto);
+
+	void qwritecount(int no);
+
+	void dwritecount(int no);	
 
 	
 }

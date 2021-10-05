@@ -53,7 +53,7 @@ public class O2WriteServiceImple implements O2WriteService {
 
 	@Override
 	public O2WriteBoardDTO twritedetail(int no) {
-		
+		dao.twritecount(no);
 		return dao.twritedetail(no);
 	}
 
@@ -122,6 +122,7 @@ public class O2WriteServiceImple implements O2WriteService {
 	@Override
 	public O2DongComDTO dwritedetail(int no) {
 		// TODO Auto-generated method stub
+		dao.dwritecount(no);
 		return dao.dwritedetail(no);
 	}
 
@@ -189,6 +190,7 @@ public class O2WriteServiceImple implements O2WriteService {
 	@Override
 	public O2QnaBoardDTO qwritedetail(int no) {
 		// TODO Auto-generated method stub
+		dao.qwritecount(no);
 		return dao.qwritedetail(no);
 	}
 
@@ -266,6 +268,56 @@ public class O2WriteServiceImple implements O2WriteService {
 	public void treplychildinsert(O2ReplyDTO dto) {
 		// TODO Auto-generated method stub
 		dao.treplychildinsert(dto);
+	}
+
+	@Override
+	public List<O2ReplyDTO> dreplydetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.dreplydetail(no);
+	}
+
+	@Override
+	public List<O2ReplyDTO> qreplydetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.qreplydetail(no);
+	}
+
+	@Override
+	public void dreplyinsert(O2ReplyDTO dto) {
+		dao.dreplyinsert(dto);
+		dao.dreplyupdate(dto);
+		
+	}
+
+	@Override
+	public O2ReplyDTO dreplychild(O2ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.dreplychild(dto);
+	}
+
+	@Override
+	public void dreplychildinsert(O2ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		dao.dreplychildinsert(dto);
+	}
+
+	@Override
+	public void qreplyinsert(O2ReplyDTO dto) {
+		dao.qreplyinsert(dto);
+		dao.qreplyupdate(dto);
+		
+	}
+
+	@Override
+	public O2ReplyDTO qreplychild(O2ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.qreplychild(dto);
+	}
+
+	@Override
+	public void qreplychildinsert(O2ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		dao.qreplychildinsert(dto);
 	}
 
 }
