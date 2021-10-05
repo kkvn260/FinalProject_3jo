@@ -13,11 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-<script>
-$(function () {
-	
-})
-</script>
+
 <body>
 <br><br><br><br><br><br><br><br>
 <ul>
@@ -62,29 +58,82 @@ $(function () {
 		<br>
 	</li>
 	<li>
-	
-	</li>
 		<label>댓글</label>
 		<div id="replyarea">
-			<input type="hidden" value="replyno">
-			<span>작성자 id</span>
-			<span>content</span>
-		</div>
-	<li>
-		<div>
+		<c:forEach var="item" items="${list3 }">
+			<li value="${item.replyno }">
+				<input type="text" name="user_id" value="${item.user_id }" readonly>
+				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
+				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
+				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">
+				<input type="hidden" value="${item.dept }" name="dept" class="dept">
+				<input type="hidden" value="${item.reorder }" name="reorder" class="reorder">
+				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
+			</li>
+		</c:forEach>
+<%-- 		<c:forEach var="item2" items="">
+			<li>
 			
-		</div>
-		<div><br>
-			<form action="" method="post">
-			<div id="replydiv">
-				<input type="text" value="${id }" readonly>
-				<textarea rows="4" cols="90"></textarea>
-				<input type="submit" value="등록"></button>
-			</div>
-			</form>
+			</li>
+		</c:forEach> --%>
 		</div>
 	</li>
-</ul>	
+	<li>
+	<c:if test="${id ne null}">
+		<div><br>	
+			<div id="replydiv">
+				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
+				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
+				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
+				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."></textarea>
+				<input type="submit" value="등록">
+				</form>
+			</div>
+		</div>
+	</c:if>
+	</li>
+</ul>
+<script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
+<script>
+$(function () {
+	$(".replychild_btn").on("click",function(){
+		
+		let $this=$(this);
+		let no=$this.parent().val();
+		let data1={tradeno:$("#tradeno").val()
+					,replyno:no
+					};
+		let id="${id}";
+		console.log(no);
+ 	$.ajax({
+			type:'post'
+			,url:"${pageContext.request.contextPath }/treplychild"
+			,dataType:'json'
+			,data: JSON.stringify(data1)
+			,contentType:"application/json;charset=utf-8"
+			,success:function(data)
+			{
+				console.log("성공");
+				let p="";
+				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/treplychildinsert'>";
+	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
+				p+="<input type='hidden' name='tradeno' value='"+${list.tradeno }+"'>";
+				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.'></textarea>";
+				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
+				p+="<input type='hidden' name='reparent' value='"+no+"'>";
+				p+="<input type='submit' value='댓글달기'>";
+				p+="</form>";
+				
+				$('.replyform').remove();
+				$this.parent().append(p);
+			},error:function(err){
+				console.log("에러");
+			}
+		})  
+	})
+})
+</script>
+
 	<script>
 var mapOptions = {
 		center : new naver.maps.LatLng(${list.map_x},${list.map_y}),

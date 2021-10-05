@@ -7,8 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
-import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 public interface O2WriteService {
@@ -46,6 +46,14 @@ public interface O2WriteService {
 	public void dealinsert(O2DealDTO dto);
 
 	public String getprice(int tradeno);
+
+	public List<O2ReplyDTO> treplydetail(int no);
+
+	public void treplyinsert(O2ReplyDTO dto);
+
+	public O2ReplyDTO treplychild(O2ReplyDTO dto);
+
+	public void treplychildinsert(O2ReplyDTO dto);
 
 
 }

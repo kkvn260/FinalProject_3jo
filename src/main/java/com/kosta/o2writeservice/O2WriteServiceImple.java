@@ -18,6 +18,7 @@ import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Service
@@ -238,6 +239,30 @@ public class O2WriteServiceImple implements O2WriteService {
 	public String getprice(int tradeno) {
 		// TODO Auto-generated method stub
 		return dao.getprice(tradeno);
+	}
+
+	@Override
+	public List<O2ReplyDTO> treplydetail(int no) {
+		// TODO Auto-generated method stub
+		return dao.treplydetail(no);
+	}
+
+	@Override
+	public void treplyinsert(O2ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		dao.treplyinsert(dto);
+	}
+
+	@Override
+	public O2ReplyDTO treplychild(O2ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.treplychild(dto);
+	}
+
+	@Override
+	public void treplychildinsert(O2ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		dao.treplychildinsert(dto);
 	}
 
 }

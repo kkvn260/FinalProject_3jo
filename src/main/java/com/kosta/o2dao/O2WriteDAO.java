@@ -11,6 +11,7 @@ import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Mapper
@@ -85,7 +86,15 @@ public interface O2WriteDAO {
 
 	int dealCount(HashMap<String, Object> hm);
 
-	List<O2MainBoardDTO> dealList(HashMap<String, Object> hm);	
+	List<O2MainBoardDTO> dealList(HashMap<String, Object> hm);
+
+	List<O2ReplyDTO> treplydetail(int no);
+
+	void treplyinsert(O2ReplyDTO dto);
+
+	O2ReplyDTO treplychild(O2ReplyDTO dto);
+
+	void treplychildinsert(O2ReplyDTO dto);	
 
 	
 }

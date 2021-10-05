@@ -31,6 +31,7 @@ import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2Page;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2Service;
 import com.kosta.o2writeservice.O2WriteService;
@@ -186,10 +187,12 @@ public class WriteController {
 		O2WriteBoardDTO list= service.twritedetail(no);
 		List<O2FileDTO> list2=service.tfiledetail(no);
 		String id=(String)session.getAttribute("user_id");
+		List<O2ReplyDTO> list3=service.treplydetail(no);
 		
 		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
+		model.addAttribute("list3",list3);
 		
 		return "writeboard/twritedetail";
 	}
@@ -299,6 +302,7 @@ public class WriteController {
 		List<O2FileDTO> list2=service.tfiledetail(no);
 		String price=service.getprice(no);
 		String id=(String)session.getAttribute("user_id");
+		
 		
 		model.addAttribute("id",id);
 		model.addAttribute("price",price);
@@ -476,7 +480,7 @@ public class WriteController {
 	
 	@PostMapping("/deal")
 	@ResponseBody
-	public String test1(@RequestBody O2DealDTO dto) {
+	public String deal(@RequestBody O2DealDTO dto) {
 		int before=Integer.parseInt(service.getprice(dto.getTradeno()));
 		int after=Integer.parseInt(dto.getDeal_price());
 			if(after>before) {
@@ -485,6 +489,27 @@ public class WriteController {
 		String result=service.getprice(dto.getTradeno());
 		return result;
 	}
+	@RequestMapping("treplyresult")
+	public String treplyresult(O2ReplyDTO dto) {
+		service.treplyinsert(dto);
+		
+		return "redirect:/twritedetail/"+dto.getTradeno();
+	}
+	
+	@RequestMapping("treplychild")
+	@ResponseBody
+	public O2ReplyDTO treplychild(@RequestBody O2ReplyDTO dto) {
+		O2ReplyDTO result=service.treplychild(dto);
+		
+		return result;
+	}
+	@RequestMapping("treplychildinsert")
+	public String treplychildinsert(O2ReplyDTO dto) {
+		service.treplychildinsert(dto);
+		return "redirect:/twritedetail/"+dto.getTradeno();
+	}
+	
+	
 	
 	
 	
