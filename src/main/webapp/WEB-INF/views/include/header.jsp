@@ -25,7 +25,7 @@
       <ul>
          <li><a href="${pageContext.request.contextPath }/mainpage" class="w3-bar-item w3-button">전체</a></li>
 	     <li><a href="${pageContext.request.contextPath }/selllist" class="w3-bar-item w3-button">판매</a></li>
-	     <li><a href="${pageContext.request.contextPath }/dongcomlist" class="w3-bar-item w3-button">동네 커뮤니티</a></li>
+	     <li><a href="${pageContext.request.contextPath }/dongcomlist" class="w3-bar-item w3-button">동네커뮤니티</a></li>
 		 <li><a href="${pageContext.request.contextPath }/qnalist" class="w3-bar-item w3-button">Q&A</a></li>
       </ul>
     </div>

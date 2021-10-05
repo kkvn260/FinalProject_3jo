@@ -68,7 +68,7 @@ public class UserController {
 
 		session.removeAttribute("login");
         if(login==null) {
-           path="redirect:login";
+           path="member/loginresult";
         
         }else {
            session = request.getSession();
@@ -77,11 +77,12 @@ public class UserController {
            
            request.setAttribute("login", login); //로그인성공
 
-           path="redirect:mainpage";
+           path="member/loginresult";
         }   
         
         return path;
 		}
+		
 		//로그아웃
 		@GetMapping(value = "/logout")
 		public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
