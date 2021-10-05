@@ -509,9 +509,7 @@ public class WriteController {
 		return "redirect:/twritedetail/"+dto.getTradeno();
 	}
 	
-	
-	
-	
+
 	
 }
 

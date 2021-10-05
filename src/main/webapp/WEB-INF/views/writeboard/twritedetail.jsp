@@ -13,7 +13,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-
+<script>
+$(function () {
+	$.ajax({
+		url:"${pageContext.request.contextPath }/treplychildlist"
+	})
+})
+</script>
 <body>
 <br><br><br><br><br><br><br><br>
 <ul>
@@ -71,11 +77,6 @@
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
-<%-- 		<c:forEach var="item2" items="">
-			<li>
-			
-			</li>
-		</c:forEach> --%>
 		</div>
 	</li>
 	<li>
@@ -95,6 +96,7 @@
 </ul>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
+//대댓글
 $(function () {
 	$(".replychild_btn").on("click",function(){
 		
@@ -132,8 +134,8 @@ $(function () {
 		})  
 	})
 })
-</script>
 
+</script>
 	<script>
 var mapOptions = {
 		center : new naver.maps.LatLng(${list.map_x},${list.map_y}),

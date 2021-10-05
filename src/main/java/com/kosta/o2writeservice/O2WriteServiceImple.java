@@ -31,7 +31,9 @@ public class O2WriteServiceImple implements O2WriteService {
 	@Transactional
 	public void twriteinsert(O2WriteBoardDTO dto, List<MultipartFile> images) {
 		dao.twriteinsert(dto);
-		dao.dealinsert2(dto);
+		if(!dto.getDeal_price().equals("")) {
+			dao.dealinsert2(dto);
+		}
 		int no=dto.getTradeno();
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");

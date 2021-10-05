@@ -353,8 +353,11 @@
 	</select>
 	
 	<insert id="treplyinsert" parameterType="com.kosta.o2dto.O2ReplyDTO">
-		insert into Reply_3jo(user_id,reply_content,reply_writedate,tradeno)
-		values(#{user_id},#{reply_content},sysdate(),#{tradeno})
+	<selectKey keyProperty="replyno" order="BEFORE" resultType="int">
+			select max(replyno)	+1 from Reply_3jo
+	</selectKey>
+		insert into Reply_3jo(user_id,reply_content,reply_writedate,tradeno,reparent)
+		values(#{user_id},#{reply_content},sysdate(),#{tradeno},replyno)
 	</insert>
 	
 	<select id="treplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
@@ -366,7 +369,8 @@
 			  ,reparent
 			  ,reorder
 		from Reply_3jo
-		where tradeno=#{no} and dept=0 and reparent=0
+		where tradeno=#{no}
+		order by reparent asc, dept asc, reorder asc
 	</select>
 	
 	<select id="treplychild" parameterType="com.kosta.o2dto.O2ReplyDTO" resultType="com.kosta.o2dto.O2ReplyDTO">
@@ -381,8 +385,8 @@
 		<selectKey keyProperty="reorder" order="BEFORE" resultType="int">
 			select ifnull(max(reorder),0)+1 from Reply_3jo where reparent=#{reparent} and tradeno=#{tradeno}
 		</selectKey>
-		insert into Reply_3jo(tradeno,user_id,reply_content,reply_writedate,reorder,reparent)
-		values(#{tradeno},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent})
+		insert into Reply_3jo(tradeno,user_id,reply_content,reply_writedate,reorder,reparent,dept)
+		values(#{tradeno},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent},1)
 	</insert>
 	
 

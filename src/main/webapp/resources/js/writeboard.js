@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 //경매기능 사용 여부
 $(function() {
 	$('#deal').click(function () {
