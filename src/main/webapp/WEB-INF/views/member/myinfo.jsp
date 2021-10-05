@@ -9,7 +9,7 @@
 </head>
 <body>
 <br><br><br><br>
-<h3>마이페이지</h3><hr>
+<h3>내 정보</h3><hr>
 
 <%@ include file="../member/mypagemainlist.jsp" %>
 

@@ -12,7 +12,7 @@
      text-shadow: 2px 2px 2px pink;
    }
    #mypagemainlist{
-     float:left;
+     text-shadow: 2px 2px 2px pink;
    }
 </style>
 </head>
@@ -20,9 +20,11 @@
 
 	<div id="mypagemainlist">
 		<a href="${pageContext.request.contextPath }/myinfo">★ 내 정보</a><br><br>
-		<a href="${pageContext.request.contextPath }/mydboardlist">★  판매글</a><br><br> 
-	    <a href="${pageContext.request.contextPath }/mydongboardlist">★ 나의 동네커뮤니티글</a><br><br>
-	    <a href="${pageContext.request.contextPath }/myqnaboardlist">★ 나의 Q & A</a><br><br>
+		<p>★ 내가 쓴 글</p>
+		<a href="${pageContext.request.contextPath }/mysboardlist">&nbsp;&nbsp; - 판매글</a><br>
+		<a href="${pageContext.request.contextPath }/mydboardlist">&nbsp;&nbsp; - 경매글</a><br>
+	    <a href="${pageContext.request.contextPath }/mydongboardlist">&nbsp;&nbsp; - 동네커뮤니티글</a><br>
+	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
 	</div>
 </body>
 </html>

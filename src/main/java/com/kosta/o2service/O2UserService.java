@@ -67,6 +67,11 @@ public class O2UserService {
 		return userdao.delete(user_id);
 	}
 
+	public List<O2WriteBoardDTO> mysboardlist(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.mysboardlist(user_id);
+	}
+
 	public List<O2WriteBoardDTO> mydboardlist(String user_id) {
 		// TODO Auto-generated method stub
 		return userdao.mydboardlist(user_id);
@@ -81,9 +86,6 @@ public class O2UserService {
 		// TODO Auto-generated method stub
 		return userdao.myqnaboardlist(user_id);
 	}
-
-
-
 
 
 }

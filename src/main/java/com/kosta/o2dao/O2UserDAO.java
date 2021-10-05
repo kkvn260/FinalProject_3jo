@@ -21,9 +21,9 @@ public interface O2UserDAO {
 	O2UserDTO memberdetail(String user_id);
 	void modifyresult(O2UserDTO list);
     int delete(String user_id);
-    List<O2WriteBoardDTO> mydboardlist(String user_id);
+    List<O2WriteBoardDTO> mysboardlist(String user_id);
+	List<O2WriteBoardDTO> mydboardlist(String user_id);
 	List<O2DongComDTO> mydongboardlist(String user_id);
 	List<O2QnaBoardDTO> myqnaboardlist(String user_id);
-
 
 }

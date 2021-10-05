@@ -10,7 +10,7 @@
 </head>
 <body>
 <br><br><br><br>
-    <h2>나의 판매글</h2><hr>
+    <h3>나의 경매글</h3><hr>
     <%@ include file="../member/mypagemainlist.jsp" %>
 	<table class="table table-striped">
 		<thead>
@@ -29,7 +29,7 @@
 					<c:set var="number" value="${number+1 }" />
 					<tr>
 						<td><c:out value="${number }" /></td>
-						<td><c:out value="${item.title }"></c:out></td>
+						<td><a href="tdealdetail/${item.tradeno }"><c:out value="${item.title }"></c:out></td>
 						<td><c:out value="${item.likeno }"/></td>
 						<td><c:out value="${item.viewno }" /></td>
 						<td><c:out value="${item.writedate }" /></td>

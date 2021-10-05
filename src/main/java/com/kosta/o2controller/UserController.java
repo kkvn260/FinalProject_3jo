@@ -145,9 +145,21 @@ public class UserController {
 		}
 		
 		//내가 쓴 글
+		@RequestMapping(value="/mysboardlist")
+		public String mysboardlist(HttpServletRequest request, HttpServletResponse response,Model model) {
+         	HttpSession session=request.getSession();
+			String user_id=(String) session.getAttribute("user_id");
+
+			List<O2WriteBoardDTO> list=service.mysboardlist(user_id);
+	
+			model.addAttribute("list",list);
+			
+		return "member/mysboardlist";
+		}
+		
 		@RequestMapping(value="/mydboardlist")
 		public String mydboardlist(HttpServletRequest request, HttpServletResponse response,Model model) {
-         	HttpSession session=request.getSession();
+			HttpSession session=request.getSession();
 			String user_id=(String) session.getAttribute("user_id");
 
 			List<O2WriteBoardDTO> list=service.mydboardlist(user_id);

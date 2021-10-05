@@ -10,7 +10,7 @@
 </head>
 <body>
 <br><br><br><br>
-    <h2>나의 동네커뮤니티 글</h2><hr>
+    <h3>나의 동네커뮤니티 글</h3><hr>
     <%@ include file="../member/mypagemainlist.jsp" %>
 	<table class="table table-striped">
 		<thead>

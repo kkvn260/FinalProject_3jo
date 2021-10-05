@@ -10,13 +10,15 @@
 </head>
 <body>
 <br><br><br><br>
-    <h3>나의 Q & A 글</h3><hr>
+    <h3>나의 판매글</h3><hr>
     <%@ include file="../member/mypagemainlist.jsp" %>
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>글번호</th>
 				<th>제목</th>
+				<th>좋아요</th>
+				<th>조회수</th>
 				<th>작성일</th>
 				<th>작성자</th>
 			</tr>
@@ -27,7 +29,9 @@
 					<c:set var="number" value="${number+1 }" />
 					<tr>
 						<td><c:out value="${number }" /></td>
-						<td><a href="qwritedetail/${item.qnano }"><c:out value="${item.title }"></c:out></td>
+						<td><a href="twritedetail/${item.tradeno }"><c:out value="${item.title }"></c:out></td>
+						<td><c:out value="${item.likeno }"/></td>
+						<td><c:out value="${item.viewno }" /></td>
 						<td><c:out value="${item.writedate }" /></td>
 						<td><c:out value="${item.user_id }"/></td>
 					</tr>
