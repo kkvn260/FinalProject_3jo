@@ -253,6 +253,7 @@ public class O2WriteServiceImple implements O2WriteService {
 	public void treplyinsert(O2ReplyDTO dto) {
 		// TODO Auto-generated method stub
 		dao.treplyinsert(dto);
+		dao.treplyupdate(dto);
 	}
 
 	@Override

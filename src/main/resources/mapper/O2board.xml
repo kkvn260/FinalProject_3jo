@@ -353,12 +353,18 @@
 	</select>
 	
 	<insert id="treplyinsert" parameterType="com.kosta.o2dto.O2ReplyDTO">
-	<selectKey keyProperty="replyno" order="BEFORE" resultType="int">
-			select max(replyno)	+1 from Reply_3jo
+	<selectKey keyProperty="replyno" order="AFTER" resultType="int">
+		select last_insert_id()
 	</selectKey>
-		insert into Reply_3jo(user_id,reply_content,reply_writedate,tradeno,reparent)
-		values(#{user_id},#{reply_content},sysdate(),#{tradeno},replyno)
+		insert into Reply_3jo(user_id,reply_content,reply_writedate,tradeno)
+		values(#{user_id},#{reply_content},sysdate(),#{tradeno})
 	</insert>
+	
+	<update id="treplyupdate" parameterType="com.kosta.o2dto.O2ReplyDTO">
+		update Reply_3jo
+		set reparent=#{replyno}
+		where replyno=#{replyno}
+	</update>
 	
 	<select id="treplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno

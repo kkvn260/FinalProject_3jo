@@ -94,7 +94,9 @@ public interface O2WriteDAO {
 
 	O2ReplyDTO treplychild(O2ReplyDTO dto);
 
-	void treplychildinsert(O2ReplyDTO dto);	
+	void treplychildinsert(O2ReplyDTO dto);
+
+	void treplyupdate(O2ReplyDTO dto);	
 
 	
 }
