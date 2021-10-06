@@ -19,6 +19,7 @@ public class O2UserDTO {
 	private String email;
 	private String user_name;
 	private String birthday;
+	private String hint;
 	private String addr;
 	private String gender;
 	private int grade;

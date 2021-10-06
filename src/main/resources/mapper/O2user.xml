@@ -14,6 +14,7 @@
 			,email
 			,user_name
 			,birthday
+			,hint
 			,addr
 			,gender
 			,grade
@@ -25,6 +26,7 @@
 			,#{email}
 			,#{user_name}
 			,#{birthday}
+			,#{hint}
 			,#{addr}
 			,#{gender}
 			,0

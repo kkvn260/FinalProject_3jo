@@ -245,6 +245,12 @@ $(document).ready(function(){
    				<input type="date" class="form-control" id="birthday" name="birthday" placeholder="ex)1990-01-01" required>
    			<div class="check_font" id="birth_check"></div>
    		</div>
+   		<!-- hint -->
+   		<div class="form-group">
+   			<label for="hint">힌트</label>
+   				<input type="text" class="form-control" id="hint" name="hint" placeholder="Hint" required>
+   			<div class="check_font" id="hint_check"></div>
+   		</div>
    		<!-- addr -->
 		<div class="form-group">
 			<label for="addr">주소</label>
