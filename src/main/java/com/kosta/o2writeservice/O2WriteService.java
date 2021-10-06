@@ -73,6 +73,12 @@ public interface O2WriteService {
 
 	public void dealdelete(String user_id);
 
+	public void treplydelete(int no);
+
+	public void dreplydelete(int no);
+
+	public void qreplydelete(int no);
+
 
 
 }

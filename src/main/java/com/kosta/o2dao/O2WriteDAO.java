@@ -124,7 +124,13 @@ public interface O2WriteDAO {
 
 	void dwritecount(int no);
 
-	void dealdelete(String user_id);	
+	void dealdelete(String user_id);
+
+	void treplydelete(int no);
+
+	void dreplydelete(int no);
+
+	void qreplydelete(int no);	
 
 	
 }

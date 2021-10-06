@@ -558,5 +558,24 @@ public class WriteController {
 		return "redirect:/qwritedetail/"+dto.getQnano();
 	}
 	
+	@RequestMapping("treplydelete/{no}/{no2}")
+	public String treplydelete(@PathVariable int no,@PathVariable int no2) {
+		service.treplydelete(no);
+		return "redirect:/twritedetail/"+no2;
+	}
+	
+	@RequestMapping("dreplydelete/{no}/{no2}")
+	public String dreplydelete(@PathVariable int no,@PathVariable int no2) {
+		service.dreplydelete(no);
+		return "redirect:/twritedetail/"+no2;
+	}
+	
+	@RequestMapping("qreplydelete/{no}/{no2}")
+	public String qreplydelete(@PathVariable int no,@PathVariable int no2) {
+		service.qreplydelete(no);
+		return "redirect:/twritedetail/"+no2;
+	}
+	
+	
 }
 

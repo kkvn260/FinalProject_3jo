@@ -326,4 +326,22 @@ public class O2WriteServiceImple implements O2WriteService {
 		dao.dealdelete(user_id);
 	}
 
+	@Override
+	public void treplydelete(int no) {
+		// TODO Auto-generated method stub
+		dao.treplydelete(no);
+	}
+
+	@Override
+	public void dreplydelete(int no) {
+		// TODO Auto-generated method stub
+		dao.dreplydelete(no);
+	}
+
+	@Override
+	public void qreplydelete(int no) {
+		// TODO Auto-generated method stub
+		dao.qreplydelete(no);
+	}
+
 }

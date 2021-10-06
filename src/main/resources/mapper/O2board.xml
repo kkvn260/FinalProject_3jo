@@ -509,5 +509,20 @@
 		delete from Deal_3jo
 		where user_id=#{user_id}
 	</delete>
+	
+	<delete id="treplydelete" parameterType="int">
+		delete from Reply_3jo
+		where reparent=#{no}
+	</delete>
+		
+	<delete id="dreplydelete" parameterType="int">
+		delete from Reply_3jo
+		where reparent=#{no}
+	</delete>
+		
+	<delete id="qreplydelete" parameterType="int">
+		delete from Reply_3jo
+		where reparent=#{no}
+	</delete>
 
 </mapper>
