@@ -16,9 +16,13 @@
 <style>
 li input{
 	border:none;
+	outline: none;
 }
 hr{
 	border: 1px solid green;
+}
+.under{
+	border: 1px soild silver;
 }
 #replyarea input{
 	border-bottom: 1px solid silver;
@@ -35,12 +39,18 @@ hr{
 	<li>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
-		<label>작성일</label>
-		<span> : ${list.writedate }</span>
+		<div style="float: right;">
+		<label>작성자</label>
+		<span> : ${list.user_id }</span>
+		</div>
 	</li>
 	<li>
 		<label>판매 희망가격</label>
 		<input type="text" id="sell_price" value="${list.sell_price }" readonly>
+		<div style="float: right;">
+		<label>좋아요</label>
+		<span> : ${list.likeno }</span>
+		</div>
 	</li>
 	<li>
 		<c:if test="${list2!=null }">
@@ -79,13 +89,13 @@ hr{
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
+				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
 				<c:if test="${item.dept==1 }">
 					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
 				</c:if>
-				<input type="text" name="user_id" value="${item.user_id }" readonly>
-				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
-				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
-						${item.reply_content }
+				<input type="text" name="user_id" value="${item.user_id }" readonly style="flex-grow: 0;">
+				<span style="flex-grow: 1;">${item.reply_content }</span>
+				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly style="flex-grow: 0;">
 					<c:if test="${id eq item.user_id && item.dept==0}">
 						<a href="${pageContext.request.contextPath }/treplydelete/${item.replyno}/${list.tradeno}" style="color: red; font-size: 13px;">삭제</a>
 					</c:if>
@@ -111,8 +121,8 @@ hr{
 				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."></textarea>
-				<input type="submit" value="등록">
+				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
+				<input type="submit" value="등록" style="margin-bottom:5px;">
 				</form>
 			</div>
 		</div>

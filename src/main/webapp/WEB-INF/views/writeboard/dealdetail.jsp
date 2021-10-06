@@ -70,8 +70,10 @@ $(function () {
 		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
-		<label>작성일</label>
-		<span> : ${list.writedate }</span>
+		<div style="float: right;">
+		<label>작성자</label>
+		<span> : ${list.user_id }</span>
+		</div>
 	</li>
 	<li>
 		<label>현재 입찰가격</label>
@@ -79,6 +81,10 @@ $(function () {
 		<label>입찰 희망가격</label>
 		<input type="text" id="deal_price" name="deal_price" >
 		<button id="deal_btn" >입찰하기</button>
+		<div style="float: right;">
+		<label>좋아요</label>
+		<span> : ${list.likeno }</span>
+		</div>
 	</li>
 	<li>
 		<label>첨부 사진</label>
@@ -119,7 +125,6 @@ $(function () {
 					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
 				</c:if>
 				<input type="text" name="user_id" value="${item.user_id }" readonly>
-				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
 				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
 						${item.reply_content }
@@ -147,7 +152,7 @@ $(function () {
 				<form action="${pageContext.request.contextPath }/tdreplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."></textarea>
+				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록">
 				</form>
 			</div>

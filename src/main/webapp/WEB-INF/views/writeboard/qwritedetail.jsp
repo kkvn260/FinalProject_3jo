@@ -75,7 +75,6 @@ hr{
 				</c:if>
 				<input type="text" name="user_id" value="${item.user_id }" readonly>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
-				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
 				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
 						${item.reply_content }
 					<c:if test="${id eq item.user_id && item.dept==0}">
@@ -102,7 +101,7 @@ hr{
 				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
 				<input type="hidden" id="qnano" name="qnano" value="${list.qnano }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."></textarea>
+				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록">
 				</form>
 			</div>
