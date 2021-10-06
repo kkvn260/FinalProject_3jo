@@ -34,6 +34,9 @@ $(function () {
 		var before=Number($("#ndeal_price").val());
 		var after=Number($("#deal_price").val());
 		   let data1={tradeno:$("#tradeno").val(),deal_price:$("#deal_price").val(),user_id:$("#user_id").val()};
+		if($("#user_id").val()==null){
+			alert("로그인이 필요합니다.");
+		}else{
 		 $.ajax({
 			type:"post"
 			,url:'${pageContext.request.contextPath }/deal'
@@ -53,6 +56,7 @@ $(function () {
 				console.log(err);
 			} 
 		})
+		}
 	})
 })
 
@@ -66,7 +70,7 @@ $(function () {
 		<span>${list.category2}</span>
 	</li>
 	<li>
-		<input type="hidden" id="user_id" name="user_id" value="${id }">
+		<input type="hidden" name="user_id" value="${id }">
 		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
@@ -82,8 +86,12 @@ $(function () {
 		<input type="text" id="deal_price" name="deal_price" >
 		<button id="deal_btn" >입찰하기</button>
 		<div style="float: right;">
-		<label>좋아요</label>
-		<span> : ${list.likeno }</span>
+		<c:if test="${result ne null }">
+		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/하트.png" width="30px" height="30px">
+		</c:if>
+		<c:if test="${result eq null }">
+		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/빈하트.png" width="30px" height="30px">
+		</c:if>
 		</div>
 	</li>
 	<li>
@@ -162,6 +170,36 @@ $(function () {
 </ul>	
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
+//좋아요
+$(function () {
+	$(".like_btn").on("click",function(){
+		let id=$("#user_id").val();
+		let tradeno=${list.tradeno}
+		let data1={user_id:id,tradeno:tradeno};
+		if(id == null){
+			alert("로그인이 필요합니다.");
+		}else{
+			$.ajax({
+				type:"post"
+				,url:"${pageContext.request.contextPath}/tlike"
+				,dataType:'json'
+				,data: JSON.stringify(data1)
+				,contentType:"application/json;charset=utf-8"
+				,success:function(data){
+					if(data!=1){
+						alert("이 글을 좋아요 하였습니다.");
+						$(".like_btn").attr("src","${pageContext.request.contextPath}/resources/img/하트.png");
+					}else{
+						alert("좋아요를 취소하였습니다.");	
+						$(".like_btn").attr("src","${pageContext.request.contextPath}/resources/img/빈하트.png");
+					}
+				},error:function(err){
+					console.log("에러");
+				}
+			}) 
+		}
+	})
+})
 //대댓글
 $(function () {
 	$(".replychild_btn").on("click",function(){
@@ -203,6 +241,7 @@ $(function () {
 
 </script>
 <script>
+
 var mapOptions = {
 		center : new naver.maps.LatLng(${list.map_x},${list.map_y}),
 		zoom : 18

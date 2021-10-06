@@ -35,8 +35,20 @@ hr{
 	<li>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
-		<label>작성일</label>
-		<span> : ${list.writedate }</span>
+		<div style="float: right;">
+		<label>작성자</label>
+		<span> : ${list.user_id }</span>
+		</div>
+	</li>
+	<li>
+		<div style="float: right;">
+		<c:if test="${result ne null }">
+		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/하트.png" width="30px" height="30px">
+		</c:if>
+		<c:if test="${result eq null }">
+		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/빈하트.png" width="30px" height="30px">
+		</c:if>
+		</div>
 	</li>
 	<li>
 		<c:if test="${list2!=null }">
@@ -115,6 +127,36 @@ hr{
 </ul>	
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
+//좋아요
+$(function () {
+	$(".like_btn").on("click",function(){
+		let id=$("#user_id").val();
+		let chatno=${list.chatno}
+		let data1={user_id:id,chatno:chatno};
+		if(id == null){
+			alert("로그인이 필요합니다.");
+		}else{
+			$.ajax({
+				type:"post"
+				,url:"${pageContext.request.contextPath}/dlike"
+				,dataType:'json'
+				,data: JSON.stringify(data1)
+				,contentType:"application/json;charset=utf-8"
+				,success:function(data){
+					if(data!=1){
+						alert("이 글을 좋아요 하였습니다.");
+						$(".like_btn").attr("src","${pageContext.request.contextPath}/resources/img/하트.png");
+					}else{
+						alert("좋아요를 취소하였습니다.");	
+						$(".like_btn").attr("src","${pageContext.request.contextPath}/resources/img/빈하트.png");
+					}
+				},error:function(err){
+					console.log("에러");
+				}
+			}) 
+		}
+	})
+})
 //대댓글
 $(function () {
 	$(".replychild_btn").on("click",function(){

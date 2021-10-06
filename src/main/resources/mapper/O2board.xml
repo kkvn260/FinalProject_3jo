@@ -140,6 +140,8 @@
 		,writedate
 		,viewno
 		,likeno
+		,sell_price
+		,deal_price
 		from
 		TradeBoard_3jo
 		order by viewno desc limit 10
@@ -543,6 +545,73 @@
 		where replyno=#{no}
 	</delete>
 	
+	<insert id="tlikeinsert" parameterType="com.kosta.o2dto.O2LikeDTO">
+		insert into Like_3jo(user_id,tradeno)
+		values(#{user_id},#{tradeno})
+	</insert>
+	
+	<select id="tlikecheck" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+		select user_id,tradeno
+		from Like_3jo
+		where user_id=#{user_id} and tradeno=#{tradeno}
+	</select>
+	
+	<select id="tlikecheck2" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+		select user_id,tradeno
+		from Like_3jo
+		where user_id=#{user_id} and tradeno=#{tradeno}
+	</select>
+	
+	<delete id="tlikedelete" parameterType="com.kosta.o2dto.O2LikeDTO">
+		delete from Like_3jo
+		where user_id=#{user_id} and tradeno=#{tradeno}
+	</delete>
+	
+	<insert id="dlikeinsert" parameterType="com.kosta.o2dto.O2LikeDTO">
+		insert into Like_3jo(user_id,chatno)
+		values(#{user_id},#{chatno})
+	</insert>
+	
+	<select id="dlikecheck" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+		select user_id,chatno
+		from Like_3jo
+		where user_id=#{user_id} and chatno=#{chatno}
+	</select>
+	
+	<select id="dlikecheck2" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+		select user_id,chatno
+		from Like_3jo
+		where user_id=#{user_id} and chatno=#{chatno}
+	</select>
+	
+	<delete id="dlikedelete" parameterType="com.kosta.o2dto.O2LikeDTO">
+		delete from Like_3jo
+		where user_id=#{user_id} and chatno=#{chatno}
+	</delete>
+	
+	<update id="tlikecount" parameterType="com.kosta.o2dto.O2LikeDTO">
+		update TradeBoard_3jo
+		set likeno=ifnull(likeno,0)+1
+		where tradeno=#{tradeno}
+	</update>
+	
+	<update id="tlikecountdel" parameterType="com.kosta.o2dto.O2LikeDTO">
+		update TradeBoard_3jo
+		set likeno=likeno-1
+		where tradeno=#{tradeno}
+	</update>
+	
+	<update id="dlikecount" parameterType="com.kosta.o2dto.O2LikeDTO">
+		update ChatBoard_3jo
+		set likeno=ifnull(likeno,0)+1
+		where chatno=#{chatno}
+	</update>
+	
+	<update id="dlikecountdel" parameterType="com.kosta.o2dto.O2LikeDTO">
+		update ChatBoard_3jo
+		set likeno=likeno-1
+		where chatno=#{chatno}
+	</update>
 	
 
 </mapper>

@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
+import com.kosta.o2dto.O2LikeDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2Page;
 import com.kosta.o2dto.O2QnaBoardDTO;
@@ -190,11 +191,14 @@ public class WriteController {
 		List<O2FileDTO> list2=service.tfiledetail(no);
 		String id=(String)session.getAttribute("user_id");
 		List<O2ReplyDTO> list3=service.treplydetail(no);
+		O2LikeDTO check=new O2LikeDTO(id,no);
+		O2LikeDTO result=service.tlikecheck2(check);
 		
 		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
+		model.addAttribute("result",result);
 		
 		return "writeboard/twritedetail";
 	}
@@ -206,11 +210,14 @@ public class WriteController {
 		List<O2FileDTO> list2=service.dfiledetail(no);
 		String id=(String)session.getAttribute("user_id");
 		List<O2ReplyDTO> list3=service.dreplydetail(no);
+		O2LikeDTO check=new O2LikeDTO(id,no);
+		O2LikeDTO result=service.dlikecheck2(check);
 		
 		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
+		model.addAttribute("result",result);
 		
 		return "writeboard/dwritedetail";
 	}
@@ -227,6 +234,7 @@ public class WriteController {
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
+		
 		
 		return "writeboard/qwritedetail";
 	}
@@ -380,23 +388,14 @@ public class WriteController {
 				return "writboard/fail";
 			}
 		}
-//		System.out.println(dto.getCategory());
-//		System.out.println(dto.getContent());
-//		System.out.println(dto.getTitle());
-//		System.out.println(dto.getTradeno());
-//		System.out.println(dto.getSell_price());
-		
 		service.twritemodifyresult(dto,images);
 		
 		String root_path = request.getSession().getServletContext().getRealPath("/"); 
 		String attach_path = "resources/img/";
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
-
-//	            System.out.println("originFileName : " + fileName);
-
 	            String safeFile = root_path + attach_path + fileName;
-//	            System.out.println(safeFile);
+	            
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {
@@ -601,6 +600,37 @@ public class WriteController {
 		return "redirect:/qwritedetail/"+no2;
 	}
 	
+	@PostMapping("tlike")
+	@ResponseBody
+	public int tlike(@RequestBody O2LikeDTO dto) {
+		O2LikeDTO result=service.tlikecheck(dto);
+		int t = 1;
+		if(result==null) {
+			t=0;
+			service.tlikeinsert(dto);
+			service.tlikecount(dto);
+		}else {
+			service.tlikedelete(dto);
+			service.tlikecountdel(dto);
+		}
+		return t;
+	}
+	
+	@PostMapping("dlike")
+	@ResponseBody
+	public int dlike(@RequestBody O2LikeDTO dto) {
+		O2LikeDTO result=service.dlikecheck(dto);
+		int t = 1;
+		if(result==null) {
+			t=0;
+			service.dlikeinsert(dto);
+			service.dlikecount(dto);
+		}else {
+			service.dlikedelete(dto);
+			service.dlikecountdel(dto);
+		}
+		return t;
+	}
 	
 }
 
