@@ -71,6 +71,8 @@ public interface O2WriteService {
 
 	public void qreplychildinsert(O2ReplyDTO dto);
 
+	public void dealdelete(String user_id);
+
 
 
 }

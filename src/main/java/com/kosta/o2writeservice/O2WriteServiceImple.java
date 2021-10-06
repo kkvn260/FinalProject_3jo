@@ -320,4 +320,10 @@ public class O2WriteServiceImple implements O2WriteService {
 		dao.qreplychildinsert(dto);
 	}
 
+	@Override
+	public void dealdelete(String user_id) {
+		// TODO Auto-generated method stub
+		dao.dealdelete(user_id);
+	}
+
 }

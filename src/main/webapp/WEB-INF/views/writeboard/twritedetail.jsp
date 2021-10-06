@@ -66,7 +66,10 @@ li input{
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
-				<input type="text" name="user_id" value="${item.user_id }" readonly style="margin-left:${20*item.dept}px;">
+				<c:if test="${item.dept==1 }">
+					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
+				</c:if>
+				<input type="text" name="user_id" value="${item.user_id }" readonly>
 				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
 				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">

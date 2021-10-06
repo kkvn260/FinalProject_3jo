@@ -122,7 +122,9 @@ public interface O2WriteDAO {
 
 	void qwritecount(int no);
 
-	void dwritecount(int no);	
+	void dwritecount(int no);
+
+	void dealdelete(String user_id);	
 
 	
 }

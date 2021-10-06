@@ -25,6 +25,7 @@ import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2UserService;
+import com.kosta.o2writeservice.O2WriteService;
 
 
 @Controller
@@ -32,7 +33,9 @@ import com.kosta.o2service.O2UserService;
 public class UserController {
 
 
-		
+		@Autowired
+		private O2WriteService service2;
+	
 		@Autowired
 		private O2UserService service;
 		
@@ -130,9 +133,9 @@ public class UserController {
 			HttpSession session=request.getSession();
 			String user_id=(String) session.getAttribute("user_id");
 			
+			service2.dealdelete(user_id);
 			int result=service.delete(user_id);
 			model.addAttribute("result",result);
-	
 			session.invalidate();
 		    
 			return "member/delete";

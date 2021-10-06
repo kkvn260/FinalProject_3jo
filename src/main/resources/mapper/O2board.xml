@@ -502,5 +502,9 @@
 		where qnano=#{no}
 	</update>
 	
+	<delete id="dealdelete" parameterType="String">
+		delete from Deal_3jo
+		where user_id=#{user_id}
+	</delete>
 
 </mapper>
