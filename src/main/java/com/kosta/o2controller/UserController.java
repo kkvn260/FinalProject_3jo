@@ -13,7 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +29,8 @@ import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2UserService;
 import com.kosta.o2writeservice.O2WriteService;
 
+import oracle.jdbc.proxy.annotation.GetProxy;
+
 
 @Controller
 
@@ -40,18 +43,18 @@ public class UserController {
 		@Autowired
 		private O2UserService service;
 		
-		// 占쎌돳占쎌뜚揶쏉옙占쎌뿯
-		@GetMapping(value = "/registerForm")
+		// 
+		@RequestMapping(value = "/registerForm")
 		public String usersign() {
 			
 			return "member/registerForm";
 		}
-		@RequestMapping(value = "/registersucess")
+		@PostMapping(value = "/registersucess")
 		public String usersign(O2UserDTO userdto) {
 			service.signUser(userdto);
 			return "member/registersucess";
 		}
-		@RequestMapping(value = "/member/idCheck",method = RequestMethod.GET)
+		@GetMapping(value = "/member/idCheck")
 		@ResponseBody
 		public int idCheck(@RequestParam(required = false) String user_id) {
 			
@@ -64,7 +67,7 @@ public class UserController {
 			return "member/login";
 		}
 
-		//濡쒓렇�씤
+		//로그인
 		@RequestMapping(value = "/login", method = RequestMethod.POST )
 		public String login(O2UserDTO userdto ,HttpServletRequest request,HttpSession session, Model model) throws Exception{
 			
@@ -83,7 +86,7 @@ public class UserController {
            session.setAttribute("user_id", user_id);
            session.setAttribute("pwd", pwd);
            
-           request.setAttribute("login", login); //濡쒓렇�씤�꽦怨�
+           request.setAttribute("login", login); 
 
            path="member/loginresult";
         }   
@@ -91,15 +94,46 @@ public class UserController {
         return path;
 		}
 		
-		//濡쒓렇�븘�썐
+		//로그아웃
 		@GetMapping(value = "/logout")
 		public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
 			HttpSession session=request.getSession();
-			session.invalidate(); // �꽭�뀡�걹
+			session.invalidate(); 
 			
 			return "member/logout";
 		}
-		// �뵒�뀒�씪�젙蹂�
+		//아이디찾기
+		@RequestMapping(value = "/member/findid", method = RequestMethod.GET)
+		public String findidpage() {
+			return "member/findid";
+		}
+		@PostMapping(value = "/member/findidresult" )
+		@ResponseBody
+		public String findid(@RequestBody  O2UserDTO dto) {
+			System.out.println("user_name!!"+dto.getUser_name());
+			System.out.println("birthday!!"+dto.getBirthday());
+			System.out.println("phoneno!!"+dto.getPhoneno());
+			String result= service.findidcheck(dto.getUser_name(), dto.getBirthday(),dto.getPhoneno());
+		 
+			System.out.println("result : "+result);
+			return result;
+		}
+		//pwd
+		@RequestMapping(value = "member/findpwd", method = RequestMethod.GET)
+		public String findpwdpage() {
+			return "member/findpwd";
+		}
+		@PostMapping(value = "member/findpwdresult")
+		public String findpwd(@RequestBody O2UserDTO dto) {
+			System.out.println("user_id!!"+dto.getUser_id());
+			System.out.println("hint!!"+dto.getHint());
+			String result=service.findpwd(dto.getUser_id(),dto.getHint());
+			System.out.println("result:"+result);
+			return result;
+		}
+		
+
+		//마이페이지
 		@RequestMapping(value="/myinfo")
 		public String myinfo(HttpServletRequest request, HttpServletResponse response,Model model) {
 		
@@ -112,7 +146,7 @@ public class UserController {
 				
 			return "member/myinfo";
 		}
-		//�쉶�썝�젙蹂댁닔�젙
+		//마이페이지 수정
 		@RequestMapping(value = "/modify/{user_Id}")
 		public String modify(HttpServletRequest request,String user_id, Model model) {
 			HttpSession session=request.getSession();
@@ -128,7 +162,7 @@ public class UserController {
 				
 				return "member/modifyresult";			
 		}
-		//�쉶�썝�깉�눜
+		//계정삭제
 		@RequestMapping(value="/delete")
 		public String delete(HttpServletRequest request,Model model) {
 			HttpSession session=request.getSession();
@@ -148,7 +182,7 @@ public class UserController {
 			return "member/deleteresult";
 		}
 		
-		//�궡媛� �벖 湲�
+		
 		@RequestMapping(value="/mysboardlist")
 		public String mysboardlist(HttpServletRequest request, HttpServletResponse response,Model model) {
          	HttpSession session=request.getSession();

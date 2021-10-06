@@ -1,6 +1,7 @@
 package com.kosta.o2dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -19,6 +20,9 @@ public interface O2UserDAO {
 	// int searchPassword(String user_id, String email,String key);//�쉶�썝�엫�떆 鍮꾨�踰덊샇
 	O2UserDTO login(O2UserDTO userdto) throws Exception;
 	int checkUserId(String user_id); //�븘�씠�뵒以묐났泥댄겕
+	//아이디 비밀번호 찾기
+	String findidcheck(HashMap<String, String> hm);
+	String findpwdcheck(HashMap<String, String> hm);
 	O2UserDTO memberdetail(String user_id);
 	void modifyresult(O2UserDTO list);
     int delete(String user_id);

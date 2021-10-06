@@ -41,9 +41,9 @@ $(document).ready(function(){
 	$("#user_id").blur(function() {
 		var user_id = $('#user_id').val();
 		$.ajax({
-			url : '${pageContext.request.contextPath}/member/idCheck?user_id='+ user_id,
-			type : 'get',
-			success : function(data) {
+			type : 'get'
+			,url : '${pageContext.request.contextPath}/member/idCheck?user_id='+ user_id
+			,success : function(data) {
 				console.log("1 = 중복o / 0 = 중복x : "+ data);							
 				
 				if (data == 1) {
@@ -77,6 +77,22 @@ $(document).ready(function(){
 				}
 			});
 		});
+		
+		//hint 설정
+		var hint=$('#hint').val();
+			$('#hint').blur(function(){
+				
+				if(!document.registerForm.hint.value) { //empty: null
+					alert("힌트를 입력해주세요");
+					document.getElementById('#hint').focus();
+					return false; //submit전송이 안됨
+				}
+				
+			});
+			
+	
+
+
 		
 		// 이름에 특수문자 들어가지 않도록 설정
 	 	$("#user_name").blur(function() {
@@ -182,6 +198,7 @@ $(document).ready(function(){
 				
 			} else{
 				alert('입력한 정보들을 다시 한번 확인해주세요 :)')
+				location.href="${pageContext.request.contextPath}/member/registerForm"
 				
 			}
 		});
@@ -196,7 +213,7 @@ $(document).ready(function(){
    	<div class="titlestyle" align="center">
    		<hi>O2.market</hi>
    	</div>
-   	<form method="post" id="registerForm">
+   	<form method="POST" id="registerForm">
    		<!-- user_id -->
    		<div class="form-group">
    			<label for="user_id" >아이디</label>
@@ -248,6 +265,30 @@ $(document).ready(function(){
    		<!-- hint -->
    		<div class="form-group">
    			<label for="hint">비밀번호 찾기 힌트</label>
+   				<label for="hint">질문</label><br>
+   			<select id="hint" name="hint" size="1" >
+			<option value="선택" selected>-- 선택 --</option>
+			<option value="h2">가장 기억에 남는 장소는?</option>
+			<option value="h3">나의 좌우명은?</option>
+			<option value="h4">나의 보물 제1호는?</option>
+			<option value="h5">가장 기억에 남는 선생님 성함은?</option>
+			<option value="h6">다른 사람은 모르는 나만의 신체비밀은?</option>
+			<option value="h7">오래도록 기억하고 싶은 날짜는?</option>
+			<option value="h8">받았던 선물 중 기억에 남는 독특한 선물?</option>
+			<option value="h9">가장 생각나는 친구 이름은?</option>
+			<option value="h10">인상 깊게 읽은 책 이름은?</option>
+			<option value="h11">읽은 책 중에서 좋아하는 구절은?</option>
+			<option value="h12">내가 존경하는 인물은?</option>
+			<option value="h13">다시 태어나면 되고 싶은 것은?</option>
+			<option value="h14">내가 좋아하는 만화 캐릭터는?</option>
+			<option value="h15">초등학교 시절 나의 꿈은?</option>
+			<option value="h16">나의 출신 초등학교는?</option>
+			<option value="h17">우리집 애완동물 이름은?</option>
+			<option value="h18">나의 노래방 애창곡은?</option>
+			<option value="h19">가장 감명깊게 본 영화는?</option>
+			<option value="h20">좋아하는 스포츠 팀 이름은?</option>
+			<option value="h21">본인의 출생지는?</option>
+			</select><br>
    				<input type="text" class="form-control" id="hint" name="hint" placeholder="Hint" required>
    			<div class="check_font" id="hint_check"></div>
    		</div>
@@ -270,7 +311,7 @@ $(document).ready(function(){
    		
 		<!-- 가입버튼 -->
 		<div class="sign_button" align="right">
-			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }">
+			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }/">
 				<i class="fa fa-rotate-right pr-2" aria-hidden="true"></i>취소하기
 			</a>&emsp;&emsp;
 			<button class="btn btn-primary px-3" id="sign_submit">

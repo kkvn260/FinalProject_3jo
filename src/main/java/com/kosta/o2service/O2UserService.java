@@ -1,6 +1,7 @@
 package com.kosta.o2service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class O2UserService {
 		
 		try {
 			resultcount = userdao.signUser(userdto);
-			System.out.println("dto �솗�씤" +userdto.getUser_id()); 
+			System.out.println("dto 확인" +userdto.getUser_id()); 
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -47,6 +48,24 @@ public class O2UserService {
 		
 		return userdao.login(userdto);
 		
+	}
+	public String findidcheck(String user_name, String birthday ,String phoneno) {
+		// TODO Auto-generated method stub
+		
+		
+		HashMap<String, String> hm=new HashMap<String, String>();
+		hm.put("user_name", user_name);
+		hm.put("birthday", birthday);
+		hm.put("phoneno", phoneno);
+		return userdao.findidcheck(hm);
+		
+	}
+	public String findpwd(String user_id, String hint) {
+		// TODO Auto-generated method stub
+		HashMap<String, String> hm=new HashMap<String, String>();
+		hm.put("user_id", user_id);
+		hm.put("hint", hint);
+		return userdao.findpwdcheck(hm);
 	}
 	public O2UserDTO membermdetail(String user_id) {
 		// TODO Auto-generated method stub

@@ -55,10 +55,20 @@
    #reoe{
        color:white;
    }
+   #loginfind{
+   		color: white;
+   		font-weight: bold;
+   }
+   #register{
+   		color: yellow;
+   		font-weight: bold;
+   }
    .border a{
        color:black;
        text-decoration:none;
    }
+   #idfind{color: yellow; font-weight: bold;}
+   #pwfind{color: yellow; font-weight: bold;}
 	</style>
 	</head>
 	<body>
@@ -73,8 +83,10 @@
             	<input type="submit" value="로그인"><br>
             	
             	<label id="reoe">아직 오이마켓 회원이 아니신가요?</label>
-                <a href="${pageContext.request.contextPath }/registerForm">회원가입</a>
-
+                <a href="${pageContext.request.contextPath }/registerForm" id="register">회원가입</a>
+				<label id="loginfind">아이디와 비밀번호를 잊어버리셨습니까?</label><br>
+				<a href="${pageContext.request.contextPath }/member/findid" id="idfind">ID찾기</a>
+				<a href="${pageContext.request.contextPath }/member/findpwd" id="pwfind"> | PW찾기</a>
         	</div> 
     	</form>
     	</div>
