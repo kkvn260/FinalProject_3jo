@@ -340,13 +340,13 @@
 	<insert id="dealinsert"
 		parameterType="com.kosta.o2dto.O2DealDTO">
 		insert into Deal_3jo(tradeno,deal_price,user_id)
-		values(#{tradeno},#{deal_price},${user_id})
+		values(#{tradeno},#{deal_price},#{user_id})
 	</insert>
 
 	<insert id="dealinsert2"
 		parameterType="com.kosta.o2dto.O2WriteBoardDTO">
 		insert into Deal_3jo(tradeno,deal_price,user_id)
-		values(#{tradeno},#{deal_price},${user_id})
+		values(#{tradeno},#{deal_price},#{user_id})
 	</insert>
 
 	<select id="getprice" parameterType="int" resultType="String">
@@ -378,7 +378,7 @@
 				,reorder
 				,reparent
 		from Reply_3jo
-		where tradeno=#{tradeno} and replyno=${replyno} and dept=0
+		where tradeno=#{tradeno} and replyno=#{replyno} and dept=0
 	</select>
 	
 	<insert id="treplychildinsert">
@@ -448,7 +448,7 @@
 				,reorder
 				,reparent
 		from Reply_3jo
-		where chatno=#{chatno} and replyno=${replyno} and dept=0
+		where chatno=#{chatno} and replyno=#{replyno} and dept=0
 	</select>
 	
 	<insert id="dreplychildinsert">
@@ -479,7 +479,7 @@
 				,reorder
 				,reparent
 		from Reply_3jo
-		where qnano=#{qnano} and replyno=${replyno} and dept=0
+		where qnano=#{qnano} and replyno=#{replyno} and dept=0
 	</select>
 	
 	<insert id="qreplychildinsert">
