@@ -13,13 +13,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-<script>
-$(function () {
-	$.ajax({
-		url:"${pageContext.request.contextPath }/treplychildlist"
-	})
-})
-</script>
+<style>
+li input{
+	border:none;
+}
+</style>
 <body>
 <br><br><br><br><br><br><br><br>
 <ul>
@@ -68,7 +66,7 @@ $(function () {
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
-				<input type="text" name="user_id" value="${item.user_id }" readonly>
+				<input type="text" name="user_id" value="${item.user_id }" readonly style="margin-left:${20*item.dept}px;">
 				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
 				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">

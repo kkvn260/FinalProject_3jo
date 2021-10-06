@@ -54,16 +54,18 @@ public class WriteController {
 		return "writeboard/twrite";
 	}
 	@RequestMapping("/dwrite")
-	public String dwrite() {
+	public String dwrite(HttpSession session,Model model) {
 		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
-
+		String id=(String)session.getAttribute("user_id");
+		model.addAttribute("id",id);
 		return "writeboard/dwrite";
 	}
 	
 	@RequestMapping("/qwrite")
-	public String qwrite() {
+	public String qwrite(HttpSession session,Model model) {
 		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
-
+		String id=(String)session.getAttribute("user_id");
+		model.addAttribute("id",id);
 		return "writeboard/qwrite";
 	}
 
