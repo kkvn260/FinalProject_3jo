@@ -17,6 +17,9 @@
 li input{
 	border:none;
 }
+#deal_price{
+	border-bottom: 1px solid silver;
+}
 hr{
 	border: 1px solid green;
 }
@@ -30,7 +33,7 @@ $(function () {
 	$('#deal_btn').on('click',function(){
 		var before=Number($("#ndeal_price").val());
 		var after=Number($("#deal_price").val());
-		   let data1={tradeno:$("#tradeno").val(),deal_price:$("#deal_price").val()};
+		   let data1={tradeno:$("#tradeno").val(),deal_price:$("#deal_price").val(),user_id:$("#user_id").val()};
 		 $.ajax({
 			type:"post"
 			,url:'${pageContext.request.contextPath }/deal'
@@ -59,14 +62,16 @@ $(function () {
 <ul>
 	<li>
 		<label>카테고리</label>
-		<input type="text" id="detailcategory1" value="${list.category1 }" readonly>
-		<input type="text" id="detailcategory2" value="${list.category2 }" readonly>
+		<span>${list.category1} > </span>
+		<span>${list.category2}</span>
 	</li>
 	<li>
-		<input type="hidden" id="user_id" name="user_id" value="${id }">	
+		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
+		<label>작성일</label>
+		<span> : ${list.writedate }</span>
 	</li>
 	<li>
 		<label>현재 입찰가격</label>
@@ -133,7 +138,7 @@ $(function () {
 	<c:if test="${id ne null}">
 		<div><br>	
 			<div id="replydiv">
-				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
+				<form action="${pageContext.request.contextPath }/tdreplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
 				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."></textarea>

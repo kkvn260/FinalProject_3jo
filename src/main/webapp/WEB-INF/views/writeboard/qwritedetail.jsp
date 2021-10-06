@@ -34,6 +34,8 @@ hr{
 	<li>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
+		<label>작성일</label>
+		<span> : ${list.writedate }</span>
 	</li>
 	<li>
 		<c:if test="${list2!=null  }">

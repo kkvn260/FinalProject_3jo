@@ -308,13 +308,14 @@ public class WriteController {
 		List<O2FileDTO> list2=service.tfiledetail(no);
 		String price=service.getprice(no);
 		String id=(String)session.getAttribute("user_id");
-		
+		List<O2ReplyDTO> list3=service.treplydetail(no);
 		
 		model.addAttribute("id",id);
 		model.addAttribute("price",price);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
-
+		model.addAttribute("list3",list3);
+		
 		return "writeboard/dealdetail";
 	}
 	
@@ -500,6 +501,12 @@ public class WriteController {
 		service.treplyinsert(dto);
 		
 		return "redirect:/twritedetail/"+dto.getTradeno();
+	}
+	@RequestMapping("tdreplyresult")
+	public String tdreplyresult(O2ReplyDTO dto) {
+		service.treplyinsert(dto);
+		
+		return "redirect:/tdealdetail/"+dto.getTradeno();
 	}
 	
 	@RequestMapping("treplychild")

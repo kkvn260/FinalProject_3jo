@@ -29,12 +29,14 @@ hr{
 <ul>
 	<li>
 		<label>카테고리</label>
-		<input type="text" id="category1" value="${list.category1 }" readonly>
-		<input type="text" id="category2" value="${list.category2 }" readonly>
+		<span>${list.category1} > </span>
+		<span>${list.category2}</span>
 	</li>
 	<li>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
+		<label>작성일</label>
+		<span> : ${list.writedate }</span>
 	</li>
 	<li>
 		<label>판매 희망가격</label>

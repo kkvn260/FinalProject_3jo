@@ -13,7 +13,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-
+<script>
+$(function () {
+	$("#deal").on("click",function(){
+		if($('#sell_price').css("display")=='none'){
+			$('#sell_price').show();
+		}else{
+			$('#sell_price').hide();
+		}
+	})
+})
+</script>
 <body>
 <br><br><br><br><br><br><br><br>
 

@@ -32,6 +32,7 @@
 		,sell_price
 		,deal_price
 		,user_id
+		,writedate
 		from TradeBoard_3jo
 		where tradeno=#{no}
 	</select>
@@ -227,6 +228,7 @@
 		,map_x,map_y
 		,content
 		,user_id
+		,writedate
 		from
 		ChatBoard_3jo
 		where chatno=#{no}
@@ -289,6 +291,7 @@
 		,category
 		,content
 		,user_id
+		,writedate
 		from QABoard_3jo
 		where
 		qnano=#{no}
