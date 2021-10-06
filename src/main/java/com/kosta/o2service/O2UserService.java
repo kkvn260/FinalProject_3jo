@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kosta.o2dao.O2UserDAO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -85,6 +86,11 @@ public class O2UserService {
 	public List<O2QnaBoardDTO> myqnaboardlist(String user_id) {
 		// TODO Auto-generated method stub
 		return userdao.myqnaboardlist(user_id);
+	}
+
+	public List<O2ReplyDTO> myreplylist(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.myreplylist(user_id);
 	}
 
 

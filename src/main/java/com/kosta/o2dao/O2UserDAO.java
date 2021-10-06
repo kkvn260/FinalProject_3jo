@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -25,5 +26,6 @@ public interface O2UserDAO {
 	List<O2WriteBoardDTO> mydboardlist(String user_id);
 	List<O2DongComDTO> mydongboardlist(String user_id);
 	List<O2QnaBoardDTO> myqnaboardlist(String user_id);
+	List<O2ReplyDTO> myreplylist(String user_id);
 
 }

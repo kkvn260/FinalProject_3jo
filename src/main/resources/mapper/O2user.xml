@@ -123,4 +123,14 @@
 	     where user_id=#{user_id}
 	</select>
 	
+	
+	<select id="myreplylist" resultType="com.kosta.o2dto.O2ReplyDTO">
+	    select replyno
+	          , reply_content
+	          , reply_writedate
+	          , user_id
+	    from Reply_3jo
+	    where user_id=#{user_id}
+	</select>
+	
 </mapper>

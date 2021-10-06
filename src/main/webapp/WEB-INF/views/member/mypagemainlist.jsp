@@ -25,6 +25,7 @@
 		<a href="${pageContext.request.contextPath }/mydboardlist">&nbsp;&nbsp; - 경매글</a><br>
 	    <a href="${pageContext.request.contextPath }/mydongboardlist">&nbsp;&nbsp; - 동네커뮤니티글</a><br>
 	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
+	    <a href="${pageContext.request.contextPath }/myreplylist">★ 내가 쓴 댓글</a>
 	</div>
 </body>
 </html>

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
+import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2UserService;
@@ -39,7 +40,7 @@ public class UserController {
 		@Autowired
 		private O2UserService service;
 		
-		// �쉶�썝媛��엯
+		// 占쎌돳占쎌뜚揶쏉옙占쎌뿯
 		@GetMapping(value = "/registerForm")
 		public String usersign() {
 			
@@ -63,7 +64,7 @@ public class UserController {
 			return "member/login";
 		}
 
-		//로그인
+		//濡쒓렇�씤
 		@RequestMapping(value = "/login", method = RequestMethod.POST )
 		public String login(O2UserDTO userdto ,HttpServletRequest request,HttpSession session, Model model) throws Exception{
 			
@@ -82,7 +83,7 @@ public class UserController {
            session.setAttribute("user_id", user_id);
            session.setAttribute("pwd", pwd);
            
-           request.setAttribute("login", login); //로그인성공
+           request.setAttribute("login", login); //濡쒓렇�씤�꽦怨�
 
            path="member/loginresult";
         }   
@@ -90,15 +91,15 @@ public class UserController {
         return path;
 		}
 		
-		//로그아웃
+		//濡쒓렇�븘�썐
 		@GetMapping(value = "/logout")
 		public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
 			HttpSession session=request.getSession();
-			session.invalidate(); // 세션끝
+			session.invalidate(); // �꽭�뀡�걹
 			
 			return "member/logout";
 		}
-		// 디테일정보
+		// �뵒�뀒�씪�젙蹂�
 		@RequestMapping(value="/myinfo")
 		public String myinfo(HttpServletRequest request, HttpServletResponse response,Model model) {
 		
@@ -111,7 +112,7 @@ public class UserController {
 				
 			return "member/myinfo";
 		}
-		//회원정보수정
+		//�쉶�썝�젙蹂댁닔�젙
 		@RequestMapping(value = "/modify/{user_Id}")
 		public String modify(HttpServletRequest request,String user_id, Model model) {
 			HttpSession session=request.getSession();
@@ -127,7 +128,7 @@ public class UserController {
 				
 				return "member/modifyresult";			
 		}
-		//회원탈퇴
+		//�쉶�썝�깉�눜
 		@RequestMapping(value="/delete")
 		public String delete(HttpServletRequest request,Model model) {
 			HttpSession session=request.getSession();
@@ -147,7 +148,7 @@ public class UserController {
 			return "member/deleteresult";
 		}
 		
-		//내가 쓴 글
+		//�궡媛� �벖 湲�
 		@RequestMapping(value="/mysboardlist")
 		public String mysboardlist(HttpServletRequest request, HttpServletResponse response,Model model) {
          	HttpSession session=request.getSession();
@@ -194,6 +195,17 @@ public class UserController {
 			model.addAttribute("list",list);
 			
 		return "member/myqnaboardlist";
+		}
+		
+		@RequestMapping(value="/myreplylist")
+		public String myreplylist(HttpServletRequest request, HttpServletResponse response,Model model) {
+			HttpSession session=request.getSession();
+			String user_id=(String)session.getAttribute("user_id");
+			
+			List<O2ReplyDTO> list=service.myreplylist(user_id);
+			model.addAttribute("list",list);
+			
+		return "member/myreplylist";
 		}
 	
 
