@@ -524,5 +524,22 @@
 		delete from Reply_3jo
 		where reparent=#{no}
 	</delete>
+	
+	<delete id="treplydelete2" parameterType="int">
+		delete from Reply_3jo
+		where replyno=#{no}
+	</delete>
+	
+	<delete id="dreplydelete2" parameterType="int">
+		delete from Reply_3jo
+		where replyno=#{no}
+	</delete>
+	
+	<delete id="qreplydelete2" parameterType="int">
+		delete from Reply_3jo
+		where replyno=#{no}
+	</delete>
+	
+	
 
 </mapper>

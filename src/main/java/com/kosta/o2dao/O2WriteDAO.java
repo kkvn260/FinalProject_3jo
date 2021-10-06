@@ -130,7 +130,13 @@ public interface O2WriteDAO {
 
 	void dreplydelete(int no);
 
-	void qreplydelete(int no);	
+	void qreplydelete(int no);
+
+	void treplydelete2(int no);
+
+	void dreplydelete2(int no);
+
+	void qreplydelete2(int no);	
 
 	
 }

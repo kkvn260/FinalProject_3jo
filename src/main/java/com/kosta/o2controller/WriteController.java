@@ -567,13 +567,31 @@ public class WriteController {
 	@RequestMapping("dreplydelete/{no}/{no2}")
 	public String dreplydelete(@PathVariable int no,@PathVariable int no2) {
 		service.dreplydelete(no);
-		return "redirect:/twritedetail/"+no2;
+		return "redirect:/dwritedetail/"+no2;
 	}
 	
 	@RequestMapping("qreplydelete/{no}/{no2}")
 	public String qreplydelete(@PathVariable int no,@PathVariable int no2) {
 		service.qreplydelete(no);
+		return "redirect:/qwritedetail/"+no2;
+	}
+	
+	@RequestMapping("treplydelete2/{no}/{no2}")
+	public String treplydelete2(@PathVariable int no,@PathVariable int no2) {
+		service.treplydelete2(no);
 		return "redirect:/twritedetail/"+no2;
+	}
+	
+	@RequestMapping("dreplydelete2/{no}/{no2}")
+	public String dreplydelete2(@PathVariable int no,@PathVariable int no2) {
+		service.dreplydelete2(no);
+		return "redirect:/dwritedetail/"+no2;
+	}
+	
+	@RequestMapping("qreplydelete2/{no}/{no2}")
+	public String qreplydelete2(@PathVariable int no,@PathVariable int no2) {
+		service.qreplydelete2(no);
+		return "redirect:/qwritedetail/"+no2;
 	}
 	
 	

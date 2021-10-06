@@ -79,6 +79,12 @@ public interface O2WriteService {
 
 	public void qreplydelete(int no);
 
+	public void treplydelete2(int no);
+
+	public void dreplydelete2(int no);
+
+	public void qreplydelete2(int no);
+
 
 
 }
