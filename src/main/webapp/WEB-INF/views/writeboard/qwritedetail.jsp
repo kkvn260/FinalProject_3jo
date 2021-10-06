@@ -13,6 +13,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
+	<style>
+li input{
+	border:none;
+}
+hr{
+	border: 1px solid green;
+}
+#replyarea input{
+	border-bottom: 1px solid silver;
+}
+</style>
 <body>
 <br><br><br><br><br><br><br><br>
 <ul>
@@ -43,12 +54,17 @@
 	</li>
 	<li>
 	<div class="clear"></div>
+		<c:if test="${id == list.user_id }">
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/qwritemodify/${list.qnano}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/qwritedelete/${list.qnano}'">
+		</c:if>
 		<input type="button" id="qlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/qnalist'">
+	<br><br>
 	</li>
-		<li>
+	<c:if test="${not empty list3}">
+	<li>
 		<label>답변</label>
+		<hr>
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
@@ -66,6 +82,8 @@
 		</c:forEach>
 		</div>
 	</li>
+	<hr>
+	</c:if>
 	<li>
 	<c:if test="${id ne null}">
 		<div><br>	
@@ -106,7 +124,7 @@ $(function () {
 				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/qreplychildinsert'>";
 	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
 				p+="<input type='hidden' name='qnano' value='"+${list.qnano }+"'>";
-				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.'></textarea>";
+				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px;'></textarea>";
 				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
 				p+="<input type='hidden' name='reparent' value='"+no+"'>";
 				p+="<input type='submit' value='댓글달기'>";

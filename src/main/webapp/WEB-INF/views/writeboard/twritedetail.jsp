@@ -17,6 +17,12 @@
 li input{
 	border:none;
 }
+hr{
+	border: 1px solid green;
+}
+#replyarea input{
+	border-bottom: 1px solid silver;
+}
 </style>
 <body>
 <br><br><br><br><br><br><br><br>
@@ -56,13 +62,18 @@ li input{
 	</li>
 	<li>
 	<div class="clear"></div>
+		<c:if test="${id == list.user_id }">
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		</c:if>
 		<input type="button" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
 		<br>
+		<br>
 	</li>
+	<c:if test="${not empty list3}">
 	<li>
 		<label>댓글</label>
+		<hr>
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
@@ -80,13 +91,16 @@ li input{
 		</c:forEach>
 		</div>
 	</li>
+	<hr>
+	</c:if>
 	<li>
 	<c:if test="${id ne null}">
 		<div><br>	
 			<div id="replydiv">
+				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
+				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>
 				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."></textarea>
 				<input type="submit" value="등록">
 				</form>
@@ -121,7 +135,7 @@ $(function () {
 				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/treplychildinsert'>";
 	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
 				p+="<input type='hidden' name='tradeno' value='"+${list.tradeno }+"'>";
-				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.'></textarea>";
+				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px;'></textarea>";
 				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
 				p+="<input type='hidden' name='reparent' value='"+no+"'>";
 				p+="<input type='submit' value='댓글달기'>";

@@ -247,7 +247,7 @@ $(document).ready(function(){
    		</div>
    		<!-- hint -->
    		<div class="form-group">
-   			<label for="hint">힌트</label>
+   			<label for="hint">비밀번호 찾기 힌트</label>
    				<input type="text" class="form-control" id="hint" name="hint" placeholder="Hint" required>
    			<div class="check_font" id="hint_check"></div>
    		</div>
