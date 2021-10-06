@@ -78,11 +78,17 @@ hr{
 					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
 				</c:if>
 				<input type="text" name="user_id" value="${item.user_id }" readonly>
-				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
-				<c:if test="${id eq item.user_id }">
-				<a href="${pageContext.request.contextPath }/treplydelete/${item.replyno}/${list.qnano}" style="color: red; font-size: 13px;">삭제</a>
-				</c:if>
+				<input type="text" class="replychild_btn" name="reply_content" value="${item.reply_content }" readonly>
+				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
+						${item.reply_content }
+					<c:if test="${id eq item.user_id && item.dept==0}">
+						<a href="${pageContext.request.contextPath }/dreplydelete/${item.replyno}/${list.chatno}" style="color: red; font-size: 13px;">삭제</a>
+					</c:if>
+					<c:if test="${id eq item.user_id && item.dept==1}">
+						<a href="${pageContext.request.contextPath }/dreplydelete2/${item.replyno}/${list.chatno}" style="color: red; font-size: 13px;">삭제</a>
+					</c:if>
+				</div>
 				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">
 				<input type="hidden" value="${item.dept }" name="dept" class="dept">
 				<input type="hidden" value="${item.reorder }" name="reorder" class="reorder">
