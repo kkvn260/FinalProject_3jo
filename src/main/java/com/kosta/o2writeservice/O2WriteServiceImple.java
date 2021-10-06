@@ -17,6 +17,7 @@ import com.kosta.o2dao.O2WriteDAO;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
+import com.kosta.o2dto.O2LikeDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
@@ -360,6 +361,78 @@ public class O2WriteServiceImple implements O2WriteService {
 	public void qreplydelete2(int no) {
 		// TODO Auto-generated method stub
 		dao.qreplydelete2(no);
+	}
+
+	@Override
+	public void tlikeinsert(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.tlikeinsert(dto);
+	}
+
+	@Override
+	public O2LikeDTO tlikecheck(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.tlikecheck(dto);
+	}
+
+	@Override
+	public O2LikeDTO tlikecheck2(O2LikeDTO check) {
+		// TODO Auto-generated method stub
+		return dao.tlikecheck2(check);
+	}
+
+	@Override
+	public void tlikedelete(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.tlikedelete(dto);
+	}
+	
+	@Override
+	public O2LikeDTO dlikecheck(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.dlikecheck(dto);
+	}
+	
+	@Override
+	public O2LikeDTO dlikecheck2(O2LikeDTO check) {
+		// TODO Auto-generated method stub
+		return dao.dlikecheck2(check);
+	}
+
+	@Override
+	public void dlikeinsert(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.dlikeinsert(dto);
+	}
+
+	@Override
+	public void dlikedelete(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.dlikedelete(dto);
+	}
+
+	@Override
+	public void tlikecount(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.tlikecount(dto);
+	}
+
+	@Override
+	public void tlikecountdel(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.tlikecountdel(dto);
+	}
+
+	@Override
+	public void dlikecount(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.dlikecount(dto);
+	}
+
+	@Override
+	public void dlikecountdel(O2LikeDTO dto) {
+		// TODO Auto-generated method stub
+		dao.dlikecountdel(dto);
 	}
 
 }

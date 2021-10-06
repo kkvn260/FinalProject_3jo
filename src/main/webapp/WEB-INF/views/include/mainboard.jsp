@@ -42,7 +42,12 @@
 			      <c:forEach var="item" items="${list}">
 			        <c:set var="number" value="${number+1 }" />
 						<tr><td>&nbsp;<c:out value="${number }" /></td>
+							<c:if test="${empty item.deal_price}">
 						    <td><a href="twritedetail/${item.tradeno }"><c:out value="${item.title }"></c:out></a>
+							</c:if>
+							<c:if test="${empty item.sell_price }">
+							<td><a href="tdealdetail/${item.tradeno }"><c:out value="${item.title }"></c:out></a>
+							</c:if>
 							<td><c:out value="${item.likeno }"></c:out></td>
 							<td><c:out value="${item.viewno }"></c:out></td>
 							<td><c:out value="${item.user_id }"></c:out></td>

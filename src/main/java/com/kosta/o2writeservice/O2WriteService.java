@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
+import com.kosta.o2dto.O2LikeDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
@@ -84,6 +85,30 @@ public interface O2WriteService {
 	public void dreplydelete2(int no);
 
 	public void qreplydelete2(int no);
+
+	public void tlikeinsert(O2LikeDTO dto);
+
+	public O2LikeDTO tlikecheck(O2LikeDTO dto);
+
+	public void tlikedelete(O2LikeDTO dto);
+
+	public O2LikeDTO tlikecheck2(O2LikeDTO check);
+
+	public O2LikeDTO dlikecheck2(O2LikeDTO check);
+
+	public O2LikeDTO dlikecheck(O2LikeDTO dto);
+
+	public void dlikeinsert(O2LikeDTO dto);
+
+	public void dlikedelete(O2LikeDTO dto);
+
+	public void tlikecount(O2LikeDTO dto);
+
+	public void tlikecountdel(O2LikeDTO dto);
+
+	public void dlikecount(O2LikeDTO dto);
+
+	public void dlikecountdel(O2LikeDTO dto);
 
 
 
