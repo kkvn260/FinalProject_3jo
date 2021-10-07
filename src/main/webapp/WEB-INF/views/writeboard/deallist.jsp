@@ -11,6 +11,11 @@
    h2{color:blue;}
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
+  td a{
+ 	font-size : 15px;
+	color: green;
+    font-family: 'Sunflower', sans-serif;
+ }
 </style>
 </head>
 <body>
