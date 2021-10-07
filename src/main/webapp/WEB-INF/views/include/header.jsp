@@ -12,6 +12,13 @@
 </head>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+
+span{
+	font-size : 25px;
+	color: green;
+    text-shadow: 1px 1px 1px pink;
+    font-family: 'Sunflower', sans-serif;
+}
 </style>
 <body>
 <div class="w3-top">

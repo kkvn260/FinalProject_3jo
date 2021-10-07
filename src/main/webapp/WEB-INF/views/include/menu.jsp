@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+a{
+	font-size : 25px;
+	color: green;
+    text-shadow: 1px 1px 1px pink;
+    font-family: 'Sunflower', sans-serif;
+}
+</style>
 </head>
 <body>
 <c:if test="${sessionScope.user_id==null}">
