@@ -40,8 +40,6 @@ public class O2ServiceImple implements O2Service {
 
 	@Override
 	public List<O2MainBoardDTO> sellList(String search, String searchtxt, int startRow, int pageSize) {
-		    System.out.println(search);
-			System.out.println(searchtxt);
 			
 			HashMap<String, Object> hm = new HashMap<String, Object>();
 			hm.put("search", search);

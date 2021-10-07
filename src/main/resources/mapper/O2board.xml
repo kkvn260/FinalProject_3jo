@@ -195,6 +195,13 @@
 	 		(#{item},NOW())
 	 	</foreach>
 	</insert>
+	
+	<select id="getTopSearch" resultType="java.util.List">
+	    SELECT searchtxt FROM TopSearch_3jo 
+		GROUP BY searchtxt 
+		ORDER BY count(*) desc
+		LIMIT 4;
+	</select>
  
 
 
