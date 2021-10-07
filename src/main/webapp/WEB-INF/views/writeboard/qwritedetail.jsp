@@ -16,6 +16,7 @@
 	<style>
 li input{
 	border:none;
+	outline: none;
 }
 hr{
 	border: 1px solid green;

@@ -16,6 +16,7 @@
 	<style>
 li input{
 	border:none;
+	outline: none;
 }
 #deal_price{
 	border-bottom: 1px solid silver;
@@ -28,6 +29,45 @@ hr{
 }
 </style>
 <script>
+//경매 시간
+function remaindTime() {
+    var date = '${list.writedate}';
+    var day=date.substr(0,10);
+    var hour=date.substr(11,2);
+    var min=date.substr(14,2);
+    var sec=date.substr(17,2);
+    var day2=new Date(day);
+    var now=new Date();
+    var start = new Date(day2.getFullYear(),day2.getMonth(),day2.getDate(),hour,min,sec);
+    var end = new Date(day2.getFullYear(),day2.getMonth(),day2.getDate()+2,hour,min,sec);
+    
+    var nt = now.getTime();
+    var st = start.getTime(); 
+    var et = end.getTime(); 
+
+   if(nt>et){ 
+    $(".lefttime").text("금일 마감");
+    $(".time").fadeOut();
+   }else{
+     $(".time").fadeIn();
+     $(".lefttime").text("입찰 마감까지 남은 시간");
+     sec =parseInt(et - nt) / 1000;
+     day  = parseInt(sec/60/60/24);
+     sec = (sec - (day * 60 * 60 * 24));
+     hour = parseInt(sec/60/60);
+     sec = (sec - (hour*60*60));
+     min = parseInt(sec/60);
+     sec = parseInt(sec-(min*60));
+     if(hour<10){hour="0"+hour;}
+     if(min<10){min="0"+min;}
+     if(sec<10){sec="0"+sec;}
+     
+      $(".hour").text(hour+"시간");
+      $(".min").text(min+"분");
+      $(".sec").text(sec+"초");
+   }
+ } 
+ setInterval(remaindTime,1000);
 //경매 기능
 $(function () {
 	$('#deal_btn').on('click',function(){
@@ -63,6 +103,13 @@ $(function () {
 </script>
 <body>
 <br><br><br><br><br><br><br><br>
+<h3 class="lefttime" style="text-align: center;"></h3>
+<div class="time" style="text-align: center;">
+<span class="hour"></span>
+<span class="min"></span>
+<span class="sec"></span>
+</div>
+<br>
 <ul>
 	<li>
 		<label>카테고리</label>
