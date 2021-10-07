@@ -68,7 +68,7 @@ $(function () {
 		<input type="hidden" name="map_y" id="map_y" >
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
-		<input type="text" id="deal_price" name="deal_price" hidden="" placeholder="경매 시작가격">
+		<input type="text" id="deal_price" name="deal_price" hidden="" placeholder="경매는 48시간 동안 진행됩니다.">
 	</li>
 	<li>
 		<input type="submit" value="등록">
