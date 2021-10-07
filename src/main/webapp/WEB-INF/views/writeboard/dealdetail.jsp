@@ -50,7 +50,7 @@ function remaindTime() {
     $(".time").fadeOut();
    }else{
      $(".time").fadeIn();
-     $(".lefttime").text("입찰 마감까지 남은 시간");
+     $(".lefttime").text("입찰 마감까지");
      sec =parseInt(et - nt) / 1000;
      day  = parseInt(sec/60/60/24);
      sec = (sec - (day * 60 * 60 * 24));
