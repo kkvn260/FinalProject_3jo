@@ -79,10 +79,10 @@ hr{
 				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
 						${item.reply_content }
 					<c:if test="${id eq item.user_id && item.dept==0}">
-						<a href="${pageContext.request.contextPath }/qreplydelete/${item.replyno}/${list.qnano}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/qreplydelete/${item.replyno}/${list.qnano}" style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
 					<c:if test="${id eq item.user_id && item.dept==1}">
-						<a href="${pageContext.request.contextPath }/qreplydelete2/${item.replyno}/${list.qnano}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/qreplydelete2/${item.replyno}/${list.qnano}" style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
 				</div>
 				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">
@@ -99,6 +99,7 @@ hr{
 	<c:if test="${id ne null}">
 		<div><br>	
 			<div id="replydiv">
+				<label>답변 쓰기</label>
 				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
 				<input type="hidden" id="qnano" name="qnano" value="${list.qnano }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>

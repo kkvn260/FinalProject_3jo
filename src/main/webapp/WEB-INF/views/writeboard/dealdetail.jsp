@@ -204,6 +204,7 @@ $(function () {
 	<c:if test="${id ne null}">
 		<div><br>	
 			<div id="replydiv">
+				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/tdreplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 

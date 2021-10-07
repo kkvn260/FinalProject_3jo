@@ -108,10 +108,12 @@ hr{
 				<span style="flex-grow: 1;">${item.reply_content }</span>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly style="flex-grow: 0;">
 					<c:if test="${id eq item.user_id && item.dept==0}">
-						<a href="${pageContext.request.contextPath }/treplydelete/${item.replyno}/${list.tradeno}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/treplydelete/${item.replyno}/${list.tradeno}" 
+							style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
 					<c:if test="${id eq item.user_id && item.dept==1}">
-						<a href="${pageContext.request.contextPath }/treplydelete2/${item.replyno}/${list.tradeno}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/treplydelete2/${item.replyno}/${list.tradeno}" 
+							style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
 				</div>
 				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">
