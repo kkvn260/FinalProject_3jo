@@ -39,6 +39,8 @@
 	
 	<context:component-scan base-package="com.kosta.o2controller" />
 	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 --> 
+	<beans:bean id="naverLoginBO" class="com.kosta.o2controller.NaverLoginBO" />
 	
 	
 </beans:beans>

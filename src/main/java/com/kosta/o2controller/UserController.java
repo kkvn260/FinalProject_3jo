@@ -2,16 +2,23 @@ package com.kosta.o2controller;
 
 
 
+import java.io.IOException;
 import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +27,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kosta.o2dto.O2DealDTO;
+import com.github.scribejava.core.model.OAuth2AccessToken;
+
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
@@ -28,8 +36,6 @@ import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2UserService;
 import com.kosta.o2writeservice.O2WriteService;
-
-import oracle.jdbc.proxy.annotation.GetProxy;
 
 
 @Controller
@@ -76,6 +82,7 @@ public class UserController {
         
         O2UserDTO login=service.login(userdto);
         String path="";
+        
 
 		session.removeAttribute("login");
         if(login==null) {
@@ -241,6 +248,67 @@ public class UserController {
 			
 		return "member/myreplylist";
 		}
-	
+		
+       private NaverLoginBO naverLoginBO;
+       private String apiResult = null;
+       
+       @Autowired 
+       private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+    	   this.naverLoginBO = naverLoginBO; 
+    	   }
+       
+       @RequestMapping(value = "/naverlogin", method = { RequestMethod.GET, RequestMethod.POST }) 
+       public String naverlogin(Model model, HttpSession session) { 
+
+    	   String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session); 
+    	   System.out.println("네이버:" + naverAuthUrl); 
+    	   model.addAttribute("url", naverAuthUrl); 
+    	   return "member/naverlogin"; 
+    	   } 
+  
+       @RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+       public String insertnaver(HttpServletRequest request,O2UserDTO userdto,HttpSession session, Model model,@RequestParam String code, @RequestParam String state)throws IOException, ParseException  {
+    	 
+    	   
+    	   OAuth2AccessToken oauthToken;
+    	   oauthToken = naverLoginBO.getAccessToken(session, code, state); 
+    	   apiResult = naverLoginBO.getUserProfile(oauthToken); 
+    	   JSONParser parser = new JSONParser(); 
+    	   Object obj = parser.parse(apiResult);
+    	   
+    	   JSONObject jsonObj = (JSONObject) obj; 
+    	   
+    	   JSONObject response_obj = (JSONObject)jsonObj.get("response"); 
+    	   
+    	   String email=(String) response_obj.get("email");
+    	   String user_id=email.substring(0,email.indexOf("@"));
+    	   String user_name=(String)response_obj.get("name");
+    	   String gender=(String)response_obj.get("gender");
+    	   String phoneno=(String)response_obj.get("mobile");
+    	   String nick_name=(String)response_obj.get("nickname");
+    	   String birthday=(String)response_obj.get("birthday");
+    
+    	   session=request.getSession();
+    	   session.setAttribute("user_id", user_id);
+    	
+           userdto.setUser_id(user_id);
+           userdto.setGender(gender);
+           userdto.setPhoneno(phoneno);
+           userdto.setUser_name(user_name);
+           userdto.setNick_name(nick_name);
+           userdto.setEmail(email);
+           userdto.setBirthday(birthday);
+           int result= service.userIdCheck(user_id);
+         
+           if(result==0) {
+              service.insertnaver(userdto);
+           }
+    	   model.addAttribute("result", apiResult);
+    	 
+    	
+    	   return "member/naverloginresult";
+    	
+       }
+       
 
 }

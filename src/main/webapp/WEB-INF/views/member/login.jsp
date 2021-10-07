@@ -19,7 +19,7 @@
    .border{
        margin:200px;
        width:400px;
-       height:500px;
+       height:600px;
        border:3px solid #555555;
        border-radius: 10%;
        background-color: #336633;
@@ -36,10 +36,9 @@
        margin-bottom:20px; 
    }
 
-	h1{
+	h2{
 		color: white;
-		margin-top:5px;
-		padding: 15px;
+		margin-top:20px;
 	
 	}
    input{
@@ -52,7 +51,7 @@
    		border-top-left-radius:5px;
         background-color: white;
    }
-   #reoe{
+   #reoe,#or{
        color:white;
    }
    #loginfind{
@@ -69,22 +68,28 @@
    }
    #idfind{color: yellow; font-weight: bold;}
    #pwfind{color: yellow; font-weight: bold;}
-	</style>
+   </style>
 	</head>
 	<body>
 	<div id="loginform">
     	<form action ="${pageContext.request.contextPath }/login" method="post">
         	<div class="border">
-            	<h1>login</h1>
+            	<h2>Login</h2>
             	<img src ="${pageContext.request.contextPath}/resources/img/52.png" id="loginoe"><br>
             	
-                <input type="text"  name="user_id" id="user_id" placeholder="아이디"><br>
-            	<input type="password" name="pwd" id="pwd" placeholder="비밀번호"><br><br>
+                <input type="text"  name="user_id" id="user_id" placeholder=" 아이디"><br>
+            	<input type="password" name="pwd" id="pwd" placeholder=" 비밀번호"><br><br>
             	<input type="submit" value="로그인"><br>
-            	
+            <label id="or">or</label>
+            <!-- 네이버 로그인 창으로 이동 --> 
+             <div id="naver_id_login" style="text-align:center">
+             <a href="${pageContext.request.contextPath }/naverlogin"> 
+                <img width="300" height="50" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+             </div> <br>
+
             	<label id="reoe">아직 오이마켓 회원이 아니신가요?</label>
                 <a href="${pageContext.request.contextPath }/registerForm" id="register">회원가입</a>
-				<label id="loginfind">아이디와 비밀번호를 잊어버리셨습니까?</label><br>
+				<label id="loginfind">아이디와 비밀번호가 기억나지 않으십니까?</label><br>
 				<a href="${pageContext.request.contextPath }/member/findid" id="idfind">ID찾기</a>
 				<a href="${pageContext.request.contextPath }/member/findpwd" id="pwfind"> | PW찾기</a>
         	</div> 

@@ -31,5 +31,5 @@ public interface O2UserDAO {
 	List<O2DongComDTO> mydongboardlist(String user_id);
 	List<O2QnaBoardDTO> myqnaboardlist(String user_id);
 	List<O2ReplyDTO> myreplylist(String user_id);
-
+	void insertnaver(O2UserDTO userdto);
 }

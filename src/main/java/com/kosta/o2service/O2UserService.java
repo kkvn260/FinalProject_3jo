@@ -112,5 +112,10 @@ public class O2UserService {
 		return userdao.myreplylist(user_id);
 	}
 
+	public void insertnaver(O2UserDTO userdto) {
+		// TODO Auto-generated method stub
+		userdao.insertnaver(userdto);
+	}
+
 
 }

@@ -151,4 +151,34 @@
 	    where user_id=#{user_id}
 	</select>
 	
+	<insert id="insertnaver" parameterType="com.kosta.o2dto.O2UserDTO">
+	
+		INSERT INTO User_3jo (
+			user_id
+			,pwd
+			,nick_name
+			,phoneno
+			,email
+			,user_name
+			,birthday
+			,hint
+			,hintanswer
+			,addr
+			,gender
+			,grade
+		) VALUES (
+			#{user_id}
+			,0
+			,#{nick_name}
+			,#{phoneno}
+			,#{email}
+			,#{user_name}
+			,#{birthday}
+			,0
+			,0
+			,0
+			,#{gender}
+			,0
+		)
+	</insert>
 </mapper>
