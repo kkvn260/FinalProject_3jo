@@ -43,7 +43,12 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
+                            <c:if test="${not empty item.real_name }">
                             <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
+                            </c:if>
+                            <c:if test="${empty item.real_name }">
+                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
+                            </c:if>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -72,7 +77,12 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
+                            <c:if test="${not empty item.real_name }">
                             <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
+                            </c:if>
+                            <c:if test="${empty item.real_name }">
+                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
+                            </c:if>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">

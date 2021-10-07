@@ -24,8 +24,8 @@ li{
 	clear: both;
 }
 #attach label:hover{
-	color: green;
-	text-decoration: underline;
+	color: white;
+	background-color: black;
 }
 .right{
 	float: right;
