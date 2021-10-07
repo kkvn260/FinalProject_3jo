@@ -161,7 +161,13 @@ public interface O2WriteDAO {
 
 	void dlikecount(O2LikeDTO dto);
 
-	void dlikecountdel(O2LikeDTO dto);	
+	void dlikecountdel(O2LikeDTO dto);
+
+	List<String> searchSellCount(HashMap<String, Object> hm);
+
+	List<String> searchDealCount(HashMap<String, Object> hm);
+
+	void addSearchData(List<String> category);	
 
 	
 }

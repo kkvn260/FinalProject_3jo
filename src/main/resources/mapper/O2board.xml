@@ -155,44 +155,92 @@
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
 				<when test="search=='user_id'">
-					and user_id = #{searchtxt}
+					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='title'">
-					and title = #{searchtxt}
+					and title like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='content'">
-					and content = #{searchtxt}
+					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
 		</if>
-
 		order by tradeno desc
 		limit #{startRow},#{pageSize}
 	</select>
-
-
-	<select id="dealList"
-		resultType="com.kosta.o2dto.O2MainBoardDTO">
-	<![CDATA[
-		SELECT title,tradeno,user_id,writedate,viewno,likeno,deal_price
-		FROM TradeBoard_3jo
-		WHERE deal_price REGEXP '^[0-9]+$'
-	]]>
-		<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
-			<choose>
+	
+	
+    <select id="searchSellCount" parameterType="hashmap" resultType="String">
+      SELECT DISTINCT category2 FROM TradeBoard_3jo
+	  WHERE deal_price is null or deal_price=''
+			<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
 				<when test="search=='user_id'">
-					and user_id=#{searchtxt}
-				</when>
-				<when test="search=='content'">
-					and content=#{searchtxt}
+					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='title'">
-					and title=#{searchtxt}
+					and title like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='content'">
+					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
+			</choose>
+			</if>
+	</select>
+	
+	<insert id="addSearchData" parameterType="java.util.List">
+		INSERT INTO TopSearch_3jo(searchtxt,search_date)
+		VALUES
+	 	<foreach collection="list" item="item" separator=",">
+	 		(#{item},NOW())
+	 	</foreach>
+	</insert>
+ 
+
+
+	<select id="dealList" parameterType="hashmap"
+		resultType="com.kosta.o2dto.O2MainBoardDTO" >
+		SELECT title,tradeno,user_id,writedate,viewno,likeno,deal_price
+		FROM TradeBoard_3jo
+	<![CDATA[
+		WHERE deal_price REGEXP '^[0-9]+$'
+	]]>
+		<if test="searchtxt!=null and searchtxt!=''">
+			<choose>
+				<when test="search=='user_id'">
+					and user_id like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='title'">
+					and title like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='content'">
+					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
 		</if>
 		order by tradeno desc
 		limit #{startRow},#{pageSize}
+	</select>
+	
+	
+	<select id="searchDealCount" parameterType="hashmap" resultType="String">
+      SELECT DISTINCT category2 FROM TradeBoard_3jo
+    <![CDATA[  
+		WHERE deal_price REGEXP '^[0-9]+$'
+	]]>
+			<if test="searchtxt!=null and searchtxt!=''">
+				<choose>
+				<when test="search=='user_id'">
+					and user_id like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='title'">
+					and title like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='content'">
+					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
+			</choose>
+			</if>
 	</select>
 
 	<select id="getdonglist"

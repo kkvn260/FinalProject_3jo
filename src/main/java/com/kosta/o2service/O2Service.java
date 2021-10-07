@@ -1,5 +1,6 @@
 package com.kosta.o2service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kosta.o2dto.O2MainBoardDTO;
@@ -18,5 +19,10 @@ public interface O2Service {
 	int dealCount(String search, String searchtxt);
 
 	List<O2MainBoardDTO> dealList(String search, String searchtxt, int startRow, int pageSize);	
+		
+	void searchSellData(String search, String searchtxt);
+
+	void searchDealData(String search, String searchtxt);
+
 
 }

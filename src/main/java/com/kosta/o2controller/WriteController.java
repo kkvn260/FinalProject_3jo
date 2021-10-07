@@ -239,6 +239,7 @@ public class WriteController {
 		return "writeboard/qwritedetail";
 	}
 	
+
 	@RequestMapping("/selllist")
 	public String sellList(@RequestParam(required = false, defaultValue = "1") int currPage,
 			@RequestParam(required = false, defaultValue = "") String search,
@@ -260,15 +261,22 @@ public class WriteController {
 		int totalCount = o2service.sellCount(search, searchtxt);
 		int pageSize=10;
 		int blockSize=5;
+
+		
+		//판매게시글 검색 시 db로 저장
+		if(!search.equals("") && !searchtxt.equals(""))
+			o2service.searchSellData(search,searchtxt);
 		
 		O2Page page = new O2Page(currPage, totalCount, pageSize, blockSize);
 		List<O2MainBoardDTO> list= o2service.sellList(search, searchtxt, page.getStartRow(), pageSize);
-		
+	
+	    
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
-		 
+				
+		
 		return "writeboard/selllist";
 	}
 	
@@ -298,6 +306,11 @@ public class WriteController {
 		int pageSize=10;
 		int blockSize=5;
 		
+		
+		//경매게시글 검색 시 db로 저장
+		if(!search.equals("") && !searchtxt.equals(""))
+			o2service.searchDealData(search,searchtxt);
+		
 		O2Page page = new O2Page(currPage, totalCount, pageSize, blockSize);
 		List<O2MainBoardDTO> list= o2service.dealList(search, searchtxt, page.getStartRow(), pageSize);
 		
@@ -305,9 +318,13 @@ public class WriteController {
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
-		 
+		
 		return "writeboard/deallist";
 	}
+	
+	
+	
+	
 	
 	@RequestMapping("/tdealdetail/{no}")
 	public String tdealdetail(Model model,@PathVariable int no,HttpSession session) {

@@ -71,6 +71,35 @@ public class O2ServiceImple implements O2Service {
 				
 		return dao.dealList(hm);
 	}
+	
+	@Override
+	public void searchSellData(String search, String searchtxt) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+
+		//검색글에서 카테고리 출력
+	    List<String> category = dao.searchSellCount(hm);
+	    
+	    //db에 카테고리 추가
+	    if(category.isEmpty() == false)
+	    	dao.addSearchData(category);
+	}
+
+	@Override
+	public void searchDealData(String search, String searchtxt) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+
+		//검색글에서 카테고리 출력
+	    List<String> category = dao.searchDealCount(hm);
+	    
+	    //db에 카테고리 추가
+	    if(category.isEmpty() == false)
+	    	dao.addSearchData(category);
+				
+	}
 
 	
 }

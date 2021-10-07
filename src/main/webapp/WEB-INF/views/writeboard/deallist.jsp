@@ -34,7 +34,7 @@
 					<tr>
 						<td><c:out value="${number }" /></td>
 						<td><c:out value="${item.user_id }" /></td>
-						<td><a href="tdealdetail/${item.tradeno }"><c:out
+						<td class="url"><a href="tdealdetail/${item.tradeno }"><c:out
 									value="${item.title }" /></a></td>
 						<td><c:out value="${item.writedate }" /></td>
 					</tr>
@@ -42,7 +42,7 @@
 			</c:if>
 		</tbody>
 	</table>
-	<form method="get" action="selllist">
+	<form method="get" action="deallist">
 		<select name="search">
 		  <option value="user_id">회원ID</option>
 		  <option value="title">제목</option>
