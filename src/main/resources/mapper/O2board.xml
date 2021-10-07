@@ -135,15 +135,16 @@
 	<select id="topviewlist"
 		resultType="com.kosta.o2dto.O2WriteBoardDTO">
 		select title
-		,tradeno
+		,a1.tradeno
+        ,a2.real_name
 		,user_id
 		,writedate
 		,viewno
 		,likeno
 		,sell_price
 		,deal_price
-		from
-		TradeBoard_3jo
+		from TradeBoard_3jo a1 left join File_3jo a2
+		on a1.tradeno=a2.tradeno
 		order by viewno desc limit 10
 	</select>
 

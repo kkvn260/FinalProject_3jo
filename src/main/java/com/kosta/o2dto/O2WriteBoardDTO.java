@@ -21,4 +21,5 @@ public class O2WriteBoardDTO {
 	private String map_y;
 	private String tradeaddr;
 	private int viewno;
+	private String real_name;
 }

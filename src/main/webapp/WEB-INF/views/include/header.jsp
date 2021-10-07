@@ -15,19 +15,17 @@
 </style>
 <body>
 <div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding">
+  <div class="w3-bar w3-white w3-wide w3-padding" style="width: 1200px;">
    <a href="${pageContext.request.contextPath }/mainpage"><img src="${pageContext.request.contextPath }/resources/img/52.png" width="45px" height="65px">&nbsp;&nbsp;</a>         
      <%@ include file="../include/menu.jsp" %>      
         <c:if test="${msg =='success' }">
          <h2>${sessionScope.nick_name }(${sessionScope.user_id })님 환영합니다</h2>
          </c:if>     
-   <div class="w3-right w3-hide-small">
-      <ul>
-         <li><a href="${pageContext.request.contextPath }/mainpage" class="w3-bar-item w3-button">전체</a></li>
-	     <li><a href="${pageContext.request.contextPath }/selllist" class="w3-bar-item w3-button">판매</a></li>
-	     <li><a href="${pageContext.request.contextPath }/dongcomlist" class="w3-bar-item w3-button">동네커뮤니티</a></li>
-		 <li><a href="${pageContext.request.contextPath }/qnalist" class="w3-bar-item w3-button">Q&A</a></li>
-      </ul>
+   <div class="w3-right w3-hide-small" style="float: left;">
+         <span><a href="${pageContext.request.contextPath }/mainpage" class="w3-bar-item w3-button">전체</a></span>
+	     <span><a href="${pageContext.request.contextPath }/selllist" class="w3-bar-item w3-button">판매</a></span>
+	     <span><a href="${pageContext.request.contextPath }/dongcomlist" class="w3-bar-item w3-button">동네커뮤니티</a></span>
+		 <span><a href="${pageContext.request.contextPath }/qnalist" class="w3-bar-item w3-button">Q&A</a></span>
     </div>
   </div>
 </div>

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mainstyles.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
@@ -23,16 +24,41 @@
 <br><br><br><br>
 <div class="main">
 		<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-           <img class="w3-image" src="${pageContext.request.contextPath }/resources/img/test.jpg" width="1200" height="600">
+           <img src="${pageContext.request.contextPath }/resources/img/test.jpg" width="1200" height="400"/>
            <div class="w3-display-middle w3-margin-top w3-center">
              <h1><a href="${pageContext.request.contextPath }/mainpage">오이마켓</a></h1>
              <h4>오늘도 이웃과 거래하는 <span id="oe">오이마켓</span></h4>
            </div>
        </header>
-    </div>
-<section id="content" >
+</div>
+<section id="content" class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+            	<h3 style="margin: 10px 0px;">판매 인기글 TOP10 미리보기</h3>
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="padding-top: 10px;">
+                <c:forEach var="item" items="${list }">
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">${item.title }</h5>
+                                    <!-- Product price-->
+                                    ${item.sell_price }원
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+                    </div>
+                </div>
  <div id="topview" style="float:left; margin-left:30px;"><br>
-	<h3>판매 인기글 TOP10 미리보기</h3>
 		<div>
 		   <table class="table table-striped">
 			  <thead>
