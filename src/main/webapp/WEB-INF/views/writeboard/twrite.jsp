@@ -20,6 +20,7 @@ $(function () {
 			$('#sell_price').show();
 		}else{
 			$('#sell_price').hide();
+			$("#sell_price").val("");
 		}
 	})
 })
@@ -68,7 +69,10 @@ $(function () {
 		<input type="hidden" name="map_y" id="map_y" >
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
-		<input type="text" id="deal_price" name="deal_price" hidden="" placeholder="경매는 48시간 동안 진행됩니다.">
+		<div class="deal_price" style="display: none;">
+		<label>경매시작 가격</label>
+		<input type="text" class="deal_price" name="deal_price" hidden="" placeholder="경매는 48시간 동안 진행됩니다." size="23">
+		</div>
 	</li>
 	<li>
 		<input type="submit" value="등록">

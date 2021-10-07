@@ -5,13 +5,14 @@
 //경매기능 사용 여부
 $(function() {
 	$('#deal').click(function () {
-		if($('#deal_price').css("display")=='none'){
-			$('#deal_price').show();
+		if($('.deal_price').css("display")=='none'){
+			$('.deal_price').show();
 		}else{
-			$('#deal_price').hide();
+			$('.deal_price').hide();
 		}
 	})
 })
+
 
 
 //카테고리 기능
