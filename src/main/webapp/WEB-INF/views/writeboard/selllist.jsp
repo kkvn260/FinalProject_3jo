@@ -11,16 +11,11 @@
    h2{color:blue;}
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
-   
- td a{
- 	font-size : 15px;
-	color: green;
-    font-family: 'Sunflower', sans-serif;
- }
+   h2 a{text-shadow: none;}
 </style>
 </head>
 <body>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <div>
 <h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>
 </div>

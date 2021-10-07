@@ -27,9 +27,16 @@ hr{
 #replyarea input{
 	border-bottom: 1px solid silver;
 }
+.btn1{
+	background-color: white;
+}
+.btn1:hover{
+	color: green;
+	text-decoration: underline;
+}
 </style>
 <body>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <ul>
 	<li>
 		<label>카테고리</label>
@@ -70,19 +77,19 @@ hr{
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="19" cols="68" class="left" readonly>${list.content }</textarea>
+		<textarea rows="14" cols="68" class="left" readonly>${list.content }</textarea>
 		<div class="right">
-		<label>장소</label>
+		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px"> 장소</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
 		</div>
 	</li>
 	<li>
 	<div class="clear"></div>
 		<c:if test="${id == list.user_id }">
-		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
-		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 		</c:if>
-		<input type="button" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
+		<input type="button" class="btn1" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
 		<br>
 		<br>
 	</li>

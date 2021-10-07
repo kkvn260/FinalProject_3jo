@@ -102,7 +102,7 @@ $(function () {
 
 </script>
 <body>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <h3 class="lefttime" style="text-align: center;"></h3>
 <div class="time" style="text-align: center;">
 <span class="hour"></span>
@@ -155,7 +155,7 @@ $(function () {
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="19" cols="68" class="left" readonly>${list.content }</textarea>
+		<textarea rows="14" cols="68" class="left" readonly>${list.content }</textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
@@ -206,7 +206,7 @@ $(function () {
 			<div id="replydiv">
 				<form action="${pageContext.request.contextPath }/tdreplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
+				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 
 				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록">
 				</form>

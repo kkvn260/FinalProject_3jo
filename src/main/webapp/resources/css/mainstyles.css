@@ -4565,8 +4565,8 @@ textarea.form-control-lg {
 
 .card-footer {
   padding: 0.5rem 1rem;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
+/*   background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125); */
 }
 .card-footer:last-child {
   border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
@@ -7409,10 +7409,6 @@ textarea.form-control-lg {
 
 .p-3 {
   padding: 1rem !important;
-}
-
-.p-4 {
-  padding: 1.5rem !important;
 }
 
 .p-5 {

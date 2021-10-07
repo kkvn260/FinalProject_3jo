@@ -11,7 +11,8 @@
    h2{color:blue;}
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
-  td a{
+   h2 a{text-shadow: none;}
+ td a{
  	font-size : 15px;
 	color: green;
     font-family: 'Sunflower', sans-serif;
@@ -19,7 +20,7 @@
 </style>
 </head>
 <body>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <div>
 <h2><a href="${pageContext.request.contextPath }/selllist">판매글 게시판 / </a> 경매글 게시판</h2><hr>
 </div>

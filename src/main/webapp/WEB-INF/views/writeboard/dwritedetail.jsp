@@ -26,7 +26,7 @@ hr{
 }
 </style>
 <body>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <ul>
 	<li>
 		<label>카테고리</label>
@@ -65,7 +65,7 @@ hr{
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="19" cols="68" class="left" readonly>${list.content }</textarea>
+		<textarea rows="14" cols="68" class="left" readonly>${list.content }</textarea>
 		<div class="right">
 		<label>장소</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
@@ -117,7 +117,7 @@ hr{
 			<div id="replydiv">
 				<form action="${pageContext.request.contextPath }/dreplyresult" method="post">
 				<input type="hidden" id="chatno" name="chatno" value="${list.chatno }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
+				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 
 				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록">
 				</form>

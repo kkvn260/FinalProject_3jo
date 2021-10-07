@@ -19,15 +19,15 @@ $(function () {
 		if($('#sell_price').css("display")=='none'){
 			$('#sell_price').show();
 		}else{
-			$('#sell_price').hide();
 			$("#sell_price").val("");
+			$('#sell_price').hide();
 		}
 	})
 })
+
 </script>
 <body>
-<br><br><br><br><br><br><br><br>
-
+<br><br><br><br>
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
 	<li>
@@ -42,12 +42,12 @@ $(function () {
 	</li>
 	<li>
 		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" name="sell_price" placeholder="판매 희망 가격">
+		<input type="text" id="sell_price" name="sell_price" placeholder="판매 희망 가격" onkeyup="numberWithCommas(this.value)"><span>원</span>
 	</li>
 		<li>
 			<div class="filebody">
 				<div id="attach">
-					<label class="upload" for="filedata">사진첨부</label>
+					<label class="upload" for="filedata">사진첨부</label><span style="font-size: 15px;"> << 클릭</span>
 					<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 				</div>
 				
@@ -57,7 +57,7 @@ $(function () {
 			</div>
 		</li>
 	<li>
-		<textarea rows="19" cols="68" name="content" id="content" class="left"></textarea>
+		<textarea rows="14" cols="68" name="content" id="content" class="left"></textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px"> 장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
@@ -71,7 +71,7 @@ $(function () {
 		<input type="checkbox" id="deal">
 		<div class="deal_price" style="display: none;">
 		<label>경매시작 가격</label>
-		<input type="text" class="deal_price" name="deal_price" hidden="" placeholder="경매는 48시간 동안 진행됩니다." size="23">
+		<input type="text" class="deal_price" name="deal_price" hidden="" placeholder="경매는 48시간 동안 진행됩니다." size="30" onkeyup="numberWithCommas2(this.value)"><span>원</span>
 		</div>
 	</li>
 	<li>

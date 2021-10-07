@@ -19,4 +19,5 @@ public class O2DongComDTO {
 	private String map_x;
 	private String map_y;
 	private int viewno;
+	private String real_name;
 }

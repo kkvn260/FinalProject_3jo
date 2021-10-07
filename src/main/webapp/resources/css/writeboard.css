@@ -23,8 +23,9 @@ li{
 .clear{
 	clear: both;
 }
-#attach label{
-	background-color: aqua;
+#attach label:hover{
+	color: green;
+	text-decoration: underline;
 }
 .right{
 	float: right;

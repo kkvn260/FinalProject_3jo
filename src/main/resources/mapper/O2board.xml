@@ -145,7 +145,7 @@
 		,deal_price
 		from TradeBoard_3jo a1 left join File_3jo a2
 		on a1.tradeno=a2.tradeno
-		order by viewno desc limit 10
+		order by viewno desc limit 8
 	</select>
 
 	<select id="sellList" parameterType="hashmap"
@@ -391,14 +391,16 @@
 	<select id="dongtopviewlist"
 		resultType="com.kosta.o2dto.O2DongComDTO">
 		select title
-		,chatno
+		,b1.chatno
+		,b2.real_name
 		,user_id
 		,writedate
 		,viewno
 		,likeno
 		from
-		ChatBoard_3jo
-		order by viewno desc limit 10
+		ChatBoard_3jo b1 left join File_3jo b2
+		on b1.chatno=b2.chatno
+		order by viewno desc limit 8
 	</select>
 
 	<insert id="dealinsert"

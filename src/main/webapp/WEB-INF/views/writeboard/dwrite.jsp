@@ -15,7 +15,7 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 
 <body>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <form method="post" action="dwriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
 	<li>
@@ -41,7 +41,7 @@
 			</div>
 		</li>
 	<li>
-		<textarea rows="19" cols="68" name="content" id="content" class="left"></textarea>
+		<textarea rows="14" cols="68" name="content" id="content" class="left"></textarea>
 		<div class="right">
 		<label>장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>

@@ -13,13 +13,17 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
 
-span{
-	font-size : 25px;
+.spanbig{
+	font-size : 30px;
 	color: green;
     text-shadow: 1px 1px 1px pink;
     font-family: 'Sunflower', sans-serif;
     margin: 10px;
    
+}
+a{
+    text-shadow: 1px 1px 1px pink;
+    font-size: 20px;
 }
 </style>
 <body>
@@ -31,10 +35,10 @@ span{
          <h2>${sessionScope.nick_name }(${sessionScope.user_id })님 환영합니다</h2>
          </c:if>     
    <div class="w3-right w3-hide-small" style="float: left;">
-         <span><a href="${pageContext.request.contextPath }/mainpage" >전체</a></span>
-	     <span><a href="${pageContext.request.contextPath }/selllist" >판매</a></span>
-	     <span><a href="${pageContext.request.contextPath }/dongcomlist" >동네커뮤니티</a></span>
-		 <span><a href="${pageContext.request.contextPath }/qnalist" >Q&A</a></span>
+         <span><a href="${pageContext.request.contextPath }/mainpage" class="spanbig">전체</a></span>
+	     <span><a href="${pageContext.request.contextPath }/selllist" class="spanbig">판매</a></span>
+	     <span><a href="${pageContext.request.contextPath }/dongcomlist" class="spanbig">동네커뮤니티</a></span>
+		 <span><a href="${pageContext.request.contextPath }/qnalist" class="spanbig">Q&A</a></span>
     </div>
   </div>
 </div>

@@ -26,7 +26,7 @@ hr{
 }
 </style>
 <body>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <ul>
 	<li>
 		<label>카테고리</label>
@@ -53,7 +53,7 @@ hr{
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="30" cols="100"  readonly>${list.content }</textarea>
+		<textarea rows="20" cols="100"  readonly>${list.content }</textarea>
 	</li>
 	<li>
 	<div class="clear"></div>
@@ -79,10 +79,10 @@ hr{
 				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
 						${item.reply_content }
 					<c:if test="${id eq item.user_id && item.dept==0}">
-						<a href="${pageContext.request.contextPath }/qreplydelete/${item.replyno}/${list.chatno}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/qreplydelete/${item.replyno}/${list.qnano}" style="color: red; font-size: 13px;">삭제</a>
 					</c:if>
 					<c:if test="${id eq item.user_id && item.dept==1}">
-						<a href="${pageContext.request.contextPath }/qreplydelete2/${item.replyno}/${list.chatno}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/qreplydelete2/${item.replyno}/${list.qnano}" style="color: red; font-size: 13px;">삭제</a>
 					</c:if>
 				</div>
 				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">
@@ -101,7 +101,7 @@ hr{
 			<div id="replydiv">
 				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
 				<input type="hidden" id="qnano" name="qnano" value="${list.qnano }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly>
+				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>
 				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록">
 				</form>

@@ -1,6 +1,17 @@
 /**
  * 
  */
+//가격 , 찍기
+function numberWithCommas(x) {
+  x = x.replace(/[^0-9]/g,'');  
+  x = x.replace(/,/g,'');          
+  $("#sell_price").val(x.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); 
+}
+function numberWithCommas2(x) {
+	  x = x.replace(/[^0-9]/g,'');  
+	  x = x.replace(/,/g,'');          
+	  $(".deal_price").val(x.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); 
+}
 
 //경매기능 사용 여부
 $(function() {
@@ -8,6 +19,7 @@ $(function() {
 		if($('.deal_price').css("display")=='none'){
 			$('.deal_price').show();
 		}else{
+			$('.deal_price').val("");
 			$('.deal_price').hide();
 		}
 	})
