@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-a{
+.abig{
 	font-size : 25px;
 	color: green;
     text-shadow: 1px 1px 1px pink;
