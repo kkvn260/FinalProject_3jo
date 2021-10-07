@@ -54,13 +54,14 @@
 		,map_y=#{map_y}
 		where tradeno=#{tradeno}
 	</update>
-	
+
 	<update id="twritecount" parameterType="int">
 		update TradeBoard_3jo
-			set viewno=ifnull(viewno,0)+1
+		set
+		viewno=ifnull(viewno,0)+1
 		where tradeno=#{no}
 	</update>
-	
+
 	<insert id="tinsertfile"
 		parameterType="com.kosta.o2dto.O2FileDTO">
 		insert into File_3jo(temp_name,real_name,tradeno)
@@ -91,23 +92,27 @@
 
 	<select id="sellCount" parameterType="hashmap" resultType="int">
 		SELECT count(*) from TradeBoard_3jo
-		WHERE deal_price IS NULL or
-		deal_price=''
-		<where>
+		WHERE deal_price IS NULL or deal_price=''
 			<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 				<choose>
+					<when test="search=='total'">
+						and (user_id like CONCAT ('%',#{searchtxt},'%')
+						or
+						title like CONCAT ('%',#{searchtxt},'%')
+						or content like CONCAT
+						('%',#{searchtxt},'%'))
+					</when>
 					<when test="search=='user_id'">
-						and user_id=#{searchtxt}
+						and user_id like CONCAT ('%',#{searchtxt},'%')
 					</when>
 					<when test="search=='content'">
-						and content=#{searchtxt}
+						and content like CONCAT ('%',#{searchtxt},'%')
 					</when>
 					<when test="search=='title'">
-						and title=#{searchtxt}
+						and title like CONCAT ('%',#{searchtxt},'%')
 					</when>
 				</choose>
 			</if>
-		</where>
 	</select>
 
 	<select id="dealCount" parameterType="hashmap" resultType="int">
@@ -115,46 +120,62 @@
 		<![CDATA[
 		WHERE deal_price is not NULL
 		]]>
-		<where>
 			<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 				<choose>
+					<when test="search=='total'">
+						and (user_id like CONCAT ('%',#{searchtxt},'%')
+						or
+						title like CONCAT ('%',#{searchtxt},'%')
+						or content like CONCAT
+						('%',#{searchtxt},'%'))
+					</when>
 					<when test="search=='user_id'">
-						and user_id=#{searchtxt}
+						and user_id like CONCAT ('%',#{searchtxt},'%')
 					</when>
 					<when test="search=='content'">
-						and content=#{searchtxt}
+						and content like CONCAT ('%',#{searchtxt},'%')
 					</when>
 					<when test="search=='title'">
-						and title=#{searchtxt}
+						and title like CONCAT ('%',#{searchtxt},'%')
 					</when>
 				</choose>
 			</if>
-		</where>
 	</select>
 
 	<select id="topviewlist"
 		resultType="com.kosta.o2dto.O2WriteBoardDTO">
 		select title
 		,a1.tradeno
-        ,a2.real_name
+		,a2.real_name
 		,user_id
 		,writedate
 		,viewno
 		,likeno
 		,sell_price
 		,deal_price
-		from TradeBoard_3jo a1 left join File_3jo a2
+		from
+		TradeBoard_3jo a1 left join
+		File_3jo a2
 		on a1.tradeno=a2.tradeno
-		order by viewno desc limit 8
+		order
+		by viewno desc limit 8
 	</select>
 
 	<select id="sellList" parameterType="hashmap"
 		resultType="com.kosta.o2dto.O2MainBoardDTO">
 		SELECT title,tradeno,user_id,writedate,viewno,likeno
-		FROM TradeBoard_3jo
+		FROM
+		TradeBoard_3jo
 		WHERE deal_price is null or deal_price=''
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
+				<when test="search=='total'">
+					and (user_id like CONCAT ('%',#{searchtxt},'%')
+					or
+					title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT
+					('%',#{searchtxt},'%'))
+				</when>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
@@ -169,13 +190,15 @@
 		order by tradeno desc
 		limit #{startRow},#{pageSize}
 	</select>
-	
-	
-    <select id="searchSellCount" parameterType="hashmap" resultType="String">
-      SELECT DISTINCT category2 FROM TradeBoard_3jo
-	  WHERE deal_price is null or deal_price=''
-			<if test="searchtxt!=null and searchtxt!=''">
-				<choose>
+
+
+	<select id="searchSellCount" parameterType="hashmap"
+		resultType="String">
+		SELECT DISTINCT category2 FROM TradeBoard_3jo
+		WHERE deal_price is null
+		or deal_price=''
+		<if test="searchtxt!=null and searchtxt!=''">
+			<choose>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
@@ -186,35 +209,44 @@
 					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
-			</if>
+		</if>
 	</select>
-	
+
 	<insert id="addSearchData" parameterType="java.util.List">
 		INSERT INTO TopSearch_3jo(searchtxt,search_date)
 		VALUES
-	 	<foreach collection="list" item="item" separator=",">
-	 		(#{item},NOW())
-	 	</foreach>
+		<foreach collection="list" item="item" separator=",">
+			(#{item},NOW())
+		</foreach>
 	</insert>
-	
-	<select id="getTopSearch" resultType="java.util.List">
-	    SELECT searchtxt FROM TopSearch_3jo 
-		GROUP BY searchtxt 
+
+	<select id="getTopSearch" resultType="String">
+		SELECT searchtxt FROM
+		TopSearch_3jo
+		GROUP BY searchtxt
 		ORDER BY count(*) desc
-		LIMIT 4;
+		LIMIT 4
 	</select>
- 
+
 
 
 	<select id="dealList" parameterType="hashmap"
-		resultType="com.kosta.o2dto.O2MainBoardDTO" >
+		resultType="com.kosta.o2dto.O2MainBoardDTO">
 		SELECT title,tradeno,user_id,writedate,viewno,likeno,deal_price
-		FROM TradeBoard_3jo
+		FROM
+		TradeBoard_3jo
 	<![CDATA[
 		WHERE deal_price REGEXP '^[0-9]+$'
 	]]>
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
+				<when test="search=='total'">
+					and (user_id like CONCAT ('%',#{searchtxt},'%')
+					or
+					title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT
+					('%',#{searchtxt},'%'))
+				</when>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
@@ -229,15 +261,16 @@
 		order by tradeno desc
 		limit #{startRow},#{pageSize}
 	</select>
-	
-	
-	<select id="searchDealCount" parameterType="hashmap" resultType="String">
-      SELECT DISTINCT category2 FROM TradeBoard_3jo
+
+
+	<select id="searchDealCount" parameterType="hashmap"
+		resultType="String">
+		SELECT DISTINCT category2 FROM TradeBoard_3jo
     <![CDATA[  
 		WHERE deal_price REGEXP '^[0-9]+$'
 	]]>
-			<if test="searchtxt!=null and searchtxt!=''">
-				<choose>
+		<if test="searchtxt!=null and searchtxt!=''">
+			<choose>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
@@ -248,7 +281,7 @@
 					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
-			</if>
+		</if>
 	</select>
 
 	<select id="getdonglist"
@@ -259,7 +292,8 @@
 		,writedate
 		,viewno
 		,likeno
-		from ChatBoard_3jo
+		from
+		ChatBoard_3jo
 	</select>
 
 	<insert id="dwriteinsert"
@@ -350,7 +384,8 @@
 		,content
 		,user_id
 		,writedate
-		from QABoard_3jo
+		from
+		QABoard_3jo
 		where
 		qnano=#{no}
 	</select>
@@ -399,7 +434,8 @@
 		,likeno
 		from
 		ChatBoard_3jo b1 left join File_3jo b2
-		on b1.chatno=b2.chatno
+		on
+		b1.chatno=b2.chatno
 		order by viewno desc limit 8
 	</select>
 
@@ -423,253 +459,322 @@
 		order by deal_price
 		desc limit 1
 	</select>
-	
-	<insert id="treplyinsert" parameterType="com.kosta.o2dto.O2ReplyDTO">
-	<selectKey keyProperty="replyno" order="AFTER" resultType="int">
-		select last_insert_id()
-	</selectKey>
+
+	<insert id="treplyinsert"
+		parameterType="com.kosta.o2dto.O2ReplyDTO">
+		<selectKey keyProperty="replyno" order="AFTER"
+			resultType="int">
+			select last_insert_id()
+		</selectKey>
 		insert into Reply_3jo(user_id,reply_content,reply_writedate,tradeno)
 		values(#{user_id},#{reply_content},sysdate(),#{tradeno})
 	</insert>
-	
-	<update id="treplyupdate" parameterType="com.kosta.o2dto.O2ReplyDTO">
+
+	<update id="treplyupdate"
+		parameterType="com.kosta.o2dto.O2ReplyDTO">
 		update Reply_3jo
 		set reparent=#{replyno}
-		where replyno=#{replyno}
+		where
+		replyno=#{replyno}
 	</update>
-	
-	
-	<select id="treplychild" parameterType="com.kosta.o2dto.O2ReplyDTO" resultType="com.kosta.o2dto.O2ReplyDTO">
+
+
+	<select id="treplychild"
+		parameterType="com.kosta.o2dto.O2ReplyDTO"
+		resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno
-				,reorder
-				,reparent
+		,reorder
+		,reparent
 		from Reply_3jo
-		where tradeno=#{tradeno} and replyno=#{replyno} and dept=0
+		where
+		tradeno=#{tradeno} and replyno=#{replyno} and
+		dept=0
 	</select>
-	
+
 	<insert id="treplychildinsert">
-		<selectKey keyProperty="reorder" order="BEFORE" resultType="int">
-			select ifnull(max(reorder),0)+1 from Reply_3jo where reparent=#{reparent} and tradeno=#{tradeno}
+		<selectKey keyProperty="reorder" order="BEFORE"
+			resultType="int">
+			select ifnull(max(reorder),0)+1 from Reply_3jo where
+			reparent=#{reparent} and tradeno=#{tradeno}
 		</selectKey>
-		insert into Reply_3jo(tradeno,user_id,reply_content,reply_writedate,reorder,reparent,dept)
+		insert into
+		Reply_3jo(tradeno,user_id,reply_content,reply_writedate,reorder,reparent,dept)
 		values(#{tradeno},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent},1)
 	</insert>
-	
-	<select id="treplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
+
+	<select id="treplydetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno
-			  ,reply_content
-			  ,reply_writedate
-			  ,user_id
-			  ,dept
-			  ,reparent
-			  ,reorder
+		,reply_content
+		,reply_writedate
+		,user_id
+		,dept
+		,reparent
+		,reorder
 		from Reply_3jo
 		where tradeno=#{no}
-		order by reparent asc, dept asc, reorder asc
+		order by reparent
+		asc, dept asc,
+		reorder asc
 	</select>
-	
-	<select id="dreplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
+
+	<select id="dreplydetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno
-			  ,reply_content
-			  ,reply_writedate
-			  ,user_id
-			  ,dept
-			  ,reparent
-			  ,reorder
+		,reply_content
+		,reply_writedate
+		,user_id
+		,dept
+		,reparent
+		,reorder
 		from Reply_3jo
 		where chatno=#{no}
-		order by reparent asc, dept asc, reorder asc
+		order by reparent
+		asc, dept asc,
+		reorder asc
 	</select>
-	
-	<select id="qreplydetail" parameterType="int" resultType="com.kosta.o2dto.O2ReplyDTO">
+
+	<select id="qreplydetail" parameterType="int"
+		resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno
-			  ,reply_content
-			  ,reply_writedate
-			  ,user_id
-			  ,dept
-			  ,reparent
-			  ,reorder
+		,reply_content
+		,reply_writedate
+		,user_id
+		,dept
+		,reparent
+		,reorder
 		from Reply_3jo
 		where qnano=#{no}
-		order by reparent asc, dept asc, reorder asc
+		order by reparent asc,
+		dept asc,
+		reorder asc
 	</select>
-	
-	<insert id="dreplyinsert" parameterType="com.kosta.o2dto.O2ReplyDTO">
-	<selectKey keyProperty="replyno" order="AFTER" resultType="int">
-		select last_insert_id()
-	</selectKey>
+
+	<insert id="dreplyinsert"
+		parameterType="com.kosta.o2dto.O2ReplyDTO">
+		<selectKey keyProperty="replyno" order="AFTER"
+			resultType="int">
+			select last_insert_id()
+		</selectKey>
 		insert into Reply_3jo(user_id,reply_content,reply_writedate,chatno)
 		values(#{user_id},#{reply_content},sysdate(),#{chatno})
 	</insert>
-	
-	<update id="dreplyupdate" parameterType="com.kosta.o2dto.O2ReplyDTO">
+
+	<update id="dreplyupdate"
+		parameterType="com.kosta.o2dto.O2ReplyDTO">
 		update Reply_3jo
 		set reparent=#{replyno}
-		where replyno=#{replyno}
+		where
+		replyno=#{replyno}
 	</update>
-	
-	
-	<select id="dreplychild" parameterType="com.kosta.o2dto.O2ReplyDTO" resultType="com.kosta.o2dto.O2ReplyDTO">
+
+
+	<select id="dreplychild"
+		parameterType="com.kosta.o2dto.O2ReplyDTO"
+		resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno
-				,reorder
-				,reparent
+		,reorder
+		,reparent
 		from Reply_3jo
-		where chatno=#{chatno} and replyno=#{replyno} and dept=0
+		where
+		chatno=#{chatno} and replyno=#{replyno} and dept=0
 	</select>
-	
+
 	<insert id="dreplychildinsert">
-		<selectKey keyProperty="reorder" order="BEFORE" resultType="int">
-			select ifnull(max(reorder),0)+1 from Reply_3jo where reparent=#{reparent} and chatno=#{chatno}
+		<selectKey keyProperty="reorder" order="BEFORE"
+			resultType="int">
+			select ifnull(max(reorder),0)+1 from Reply_3jo where
+			reparent=#{reparent} and chatno=#{chatno}
 		</selectKey>
-		insert into Reply_3jo(chatno,user_id,reply_content,reply_writedate,reorder,reparent,dept)
+		insert into
+		Reply_3jo(chatno,user_id,reply_content,reply_writedate,reorder,reparent,dept)
 		values(#{chatno},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent},1)
 	</insert>
-	
-	<insert id="qreplyinsert" parameterType="com.kosta.o2dto.O2ReplyDTO">
-	<selectKey keyProperty="replyno" order="AFTER" resultType="int">
-		select last_insert_id()
-	</selectKey>
+
+	<insert id="qreplyinsert"
+		parameterType="com.kosta.o2dto.O2ReplyDTO">
+		<selectKey keyProperty="replyno" order="AFTER"
+			resultType="int">
+			select last_insert_id()
+		</selectKey>
 		insert into Reply_3jo(user_id,reply_content,reply_writedate,qnano)
 		values(#{user_id},#{reply_content},sysdate(),#{qnano})
 	</insert>
-	
-	<update id="qreplyupdate" parameterType="com.kosta.o2dto.O2ReplyDTO">
+
+	<update id="qreplyupdate"
+		parameterType="com.kosta.o2dto.O2ReplyDTO">
 		update Reply_3jo
 		set reparent=#{replyno}
-		where replyno=#{replyno}
+		where
+		replyno=#{replyno}
 	</update>
-	
-	
-	<select id="qreplychild" parameterType="com.kosta.o2dto.O2ReplyDTO" resultType="com.kosta.o2dto.O2ReplyDTO">
+
+
+	<select id="qreplychild"
+		parameterType="com.kosta.o2dto.O2ReplyDTO"
+		resultType="com.kosta.o2dto.O2ReplyDTO">
 		select replyno
-				,reorder
-				,reparent
+		,reorder
+		,reparent
 		from Reply_3jo
-		where qnano=#{qnano} and replyno=#{replyno} and dept=0
+		where
+		qnano=#{qnano} and replyno=#{replyno} and dept=0
 	</select>
-	
+
 	<insert id="qreplychildinsert">
-		<selectKey keyProperty="reorder" order="BEFORE" resultType="int">
-			select ifnull(max(reorder),0)+1 from Reply_3jo where reparent=#{reparent} and qnano=#{qnano}
+		<selectKey keyProperty="reorder" order="BEFORE"
+			resultType="int">
+			select ifnull(max(reorder),0)+1 from Reply_3jo where
+			reparent=#{reparent} and qnano=#{qnano}
 		</selectKey>
-		insert into Reply_3jo(qnano,user_id,reply_content,reply_writedate,reorder,reparent,dept)
+		insert into
+		Reply_3jo(qnano,user_id,reply_content,reply_writedate,reorder,reparent,dept)
 		values(#{qnano},#{user_id},#{reply_content},sysdate(),#{reorder},#{reparent},1)
 	</insert>
-	
+
 	<update id="dwritecount" parameterType="int">
 		update ChatBoard_3jo
-			set viewno=ifnull(viewno,0)+1
+		set
+		viewno=ifnull(viewno,0)+1
 		where chatno=#{no}
 	</update>
-	
+
 	<update id="qwritecount" parameterType="int">
 		update QABoard_3jo
-			set viewno=ifnull(viewno,0)+1
+		set
+		viewno=ifnull(viewno,0)+1
 		where qnano=#{no}
 	</update>
-	
+
 	<delete id="dealdelete" parameterType="String">
 		delete from Deal_3jo
-		where user_id=#{user_id}
+		where
+		user_id=#{user_id}
 	</delete>
-	
+
 	<delete id="treplydelete" parameterType="int">
 		delete from Reply_3jo
 		where reparent=#{no}
 	</delete>
-		
+
 	<delete id="dreplydelete" parameterType="int">
 		delete from Reply_3jo
 		where reparent=#{no}
 	</delete>
-		
+
 	<delete id="qreplydelete" parameterType="int">
 		delete from Reply_3jo
 		where reparent=#{no}
 	</delete>
-	
+
 	<delete id="treplydelete2" parameterType="int">
 		delete from Reply_3jo
 		where replyno=#{no}
 	</delete>
-	
+
 	<delete id="dreplydelete2" parameterType="int">
 		delete from Reply_3jo
 		where replyno=#{no}
 	</delete>
-	
+
 	<delete id="qreplydelete2" parameterType="int">
 		delete from Reply_3jo
 		where replyno=#{no}
 	</delete>
-	
-	<insert id="tlikeinsert" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<insert id="tlikeinsert"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		insert into Like_3jo(user_id,tradeno)
 		values(#{user_id},#{tradeno})
 	</insert>
-	
-	<select id="tlikecheck" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+
+	<select id="tlikecheck"
+		parameterType="com.kosta.o2dto.O2LikeDTO"
+		resultType="com.kosta.o2dto.O2LikeDTO">
 		select user_id,tradeno
 		from Like_3jo
-		where user_id=#{user_id} and tradeno=#{tradeno}
+		where user_id=#{user_id}
+		and tradeno=#{tradeno}
 	</select>
-	
-	<select id="tlikecheck2" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+
+	<select id="tlikecheck2"
+		parameterType="com.kosta.o2dto.O2LikeDTO"
+		resultType="com.kosta.o2dto.O2LikeDTO">
 		select user_id,tradeno
 		from Like_3jo
-		where user_id=#{user_id} and tradeno=#{tradeno}
+		where user_id=#{user_id}
+		and tradeno=#{tradeno}
 	</select>
-	
-	<delete id="tlikedelete" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<delete id="tlikedelete"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		delete from Like_3jo
-		where user_id=#{user_id} and tradeno=#{tradeno}
+		where user_id=#{user_id} and
+		tradeno=#{tradeno}
 	</delete>
-	
-	<insert id="dlikeinsert" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<insert id="dlikeinsert"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		insert into Like_3jo(user_id,chatno)
 		values(#{user_id},#{chatno})
 	</insert>
-	
-	<select id="dlikecheck" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+
+	<select id="dlikecheck"
+		parameterType="com.kosta.o2dto.O2LikeDTO"
+		resultType="com.kosta.o2dto.O2LikeDTO">
 		select user_id,chatno
 		from Like_3jo
-		where user_id=#{user_id} and chatno=#{chatno}
+		where user_id=#{user_id}
+		and chatno=#{chatno}
 	</select>
-	
-	<select id="dlikecheck2" parameterType="com.kosta.o2dto.O2LikeDTO" resultType="com.kosta.o2dto.O2LikeDTO">
+
+	<select id="dlikecheck2"
+		parameterType="com.kosta.o2dto.O2LikeDTO"
+		resultType="com.kosta.o2dto.O2LikeDTO">
 		select user_id,chatno
 		from Like_3jo
-		where user_id=#{user_id} and chatno=#{chatno}
+		where user_id=#{user_id}
+		and chatno=#{chatno}
 	</select>
-	
-	<delete id="dlikedelete" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<delete id="dlikedelete"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		delete from Like_3jo
-		where user_id=#{user_id} and chatno=#{chatno}
+		where user_id=#{user_id} and
+		chatno=#{chatno}
 	</delete>
-	
-	<update id="tlikecount" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<update id="tlikecount"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		update TradeBoard_3jo
 		set likeno=ifnull(likeno,0)+1
-		where tradeno=#{tradeno}
+		where
+		tradeno=#{tradeno}
 	</update>
-	
-	<update id="tlikecountdel" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<update id="tlikecountdel"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		update TradeBoard_3jo
 		set likeno=likeno-1
-		where tradeno=#{tradeno}
+		where
+		tradeno=#{tradeno}
 	</update>
-	
-	<update id="dlikecount" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<update id="dlikecount"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		update ChatBoard_3jo
 		set likeno=ifnull(likeno,0)+1
-		where chatno=#{chatno}
+		where
+		chatno=#{chatno}
 	</update>
-	
-	<update id="dlikecountdel" parameterType="com.kosta.o2dto.O2LikeDTO">
+
+	<update id="dlikecountdel"
+		parameterType="com.kosta.o2dto.O2LikeDTO">
 		update ChatBoard_3jo
 		set likeno=likeno-1
-		where chatno=#{chatno}
+		where
+		chatno=#{chatno}
 	</update>
-	
+
 
 </mapper>

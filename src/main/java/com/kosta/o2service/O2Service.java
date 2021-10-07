@@ -24,5 +24,7 @@ public interface O2Service {
 
 	void searchDealData(String search, String searchtxt);
 
+	List<String> getTopSearch();
+
 
 }

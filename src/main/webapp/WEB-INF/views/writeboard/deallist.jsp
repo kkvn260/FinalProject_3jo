@@ -50,6 +50,7 @@
 	</table>
 	<form method="get" action="deallist">
 		<select name="search">
+		  <option value="total">전체</option>
 		  <option value="user_id">회원ID</option>
 		  <option value="title">제목</option>
 		  <option value="content">내용</option>
@@ -57,6 +58,16 @@
 		<input type="text"  name="searchtxt">
 		<input type="submit" value="검색">
 	  </form>
+
+	  <span>
+		&emsp;&emsp;&emsp;&emsp;
+		<h4 style="display: inline">인기</h4>
+			<c:forEach items="${topSearch}" var="index">
+				<a href="deallist?search=total&searchtxt=${index}"><c:out value="${index}"/> &nbsp;</a>
+			</c:forEach>
+	 </span>
+
+
 	<a href="write" class="btn btn-success pull-right">글쓰기</a><br><br>
 
 	<c:if test="${page.prev}">

@@ -11,11 +11,10 @@
    h2{color:blue;}
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
-   h2 a{text-shadow: none;}
 </style>
 </head>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 <div>
 <h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>
 </div>
@@ -47,6 +46,7 @@
 
 	  <form method="get" action="selllist">
 		<select name="search">
+		  <option value="total">전체</option>
 		  <option value="user_id">회원ID</option>
 		  <option value="title">제목</option>
 		  <option value="content">내용</option>
@@ -54,7 +54,19 @@
 		<input type="text"  name="searchtxt">
 		<input type="submit" value="검색">
 	  </form>
-	<a href="write" class="btn btn-success pull-right">글쓰기</a><br><br>
+
+	  <span>
+		&emsp;&emsp;&emsp;&emsp;
+		<h4 style="display: inline">인기</h4>
+			<c:forEach items="${topSearch}" var="index">
+				<a href="selllist?search=total&searchtxt=${index}"><c:out value="${index}"/> &nbsp;</a>
+			</c:forEach>
+	</span>
+ 
+  <a href="write" class="btn btn-success pull-right">글쓰기</a><br><br>
+	
+
+
 
 	<c:if test="${page.prev}">
   		<a href="selllist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">

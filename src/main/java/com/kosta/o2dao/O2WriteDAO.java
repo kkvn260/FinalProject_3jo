@@ -167,7 +167,9 @@ public interface O2WriteDAO {
 
 	List<String> searchDealCount(HashMap<String, Object> hm);
 
-	void addSearchData(List<String> category);	
+	void addSearchData(List<String> category);
+
+	List<String> getTopSearch();	
 
 	
 }

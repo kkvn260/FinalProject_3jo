@@ -95,9 +95,15 @@ public class O2ServiceImple implements O2Service {
 	    
 	    //db에 카테고리 추가
 	    if(category.isEmpty() == false)
-	    	dao.addSearchData(category);
-				
+	    	dao.addSearchData(category);	
 	}
+
+	@Override
+	public List<String> getTopSearch() {
+		return dao.getTopSearch();
+	}
+	
+	
 
 	
 }
