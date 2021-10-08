@@ -21,7 +21,7 @@ li input{
 #deal_price{
 	border-bottom: 1px solid silver;
 }
-hr{
+#hr{
 	border: 1px solid green;
 }
 #replyarea input{
@@ -200,7 +200,7 @@ $(function () {
 	<c:if test="${not empty list3}">
 	<li>
 		<label>댓글</label>
-		<hr>
+		<hr id="hr">
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
@@ -224,11 +224,11 @@ $(function () {
 				<input type="hidden" value="${item.dept }" name="dept" class="dept">
 				<input type="hidden" value="${item.reorder }" name="reorder" class="reorder">
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
-			</li><br><br><br><br>
+			</li>
 		</c:forEach>
 		</div>
 	</li>
-	<hr>
+	<hr id="hr"><br><br><br><br>
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">

@@ -18,7 +18,7 @@ li input{
 	border:none;
 	outline: none;
 }
-hr{
+#hr{
 	border: 1px solid green;
 }
 #replyarea input{
@@ -75,7 +75,7 @@ hr{
 	<c:if test="${not empty list3}">
 	<li>
 		<label>답변</label>
-		<hr>
+		<hr id="hr">
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
@@ -103,7 +103,7 @@ hr{
 		</c:forEach>
 		</div>
 	</li>
-	<hr>
+	<hr id="hr"><br><br><br><br>
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">
