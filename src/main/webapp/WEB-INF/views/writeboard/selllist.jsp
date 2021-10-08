@@ -14,7 +14,11 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 <br><br><br><br>
+=======
+<br><br><br><br><br><br>
+>>>>>>> branch 'master' of https://github.com/kkvn260/FinalProject_3jo.git
 <div>
 <h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>
 </div>

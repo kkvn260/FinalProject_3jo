@@ -790,6 +790,13 @@
 		where
 		chatno=#{chatno}
 	</update>
+	
+	<delete id="removeSearchData" parameterType="int">
+	 <![CDATA[
+	 	DELETE from TopSearch_3jo
+	 	where DATE(search_date) <= DATE_SUB(NOW(), INTERVAL 1 DAY);
+	 ]]>
+	</delete>
 
 
 </mapper>

@@ -169,7 +169,8 @@ public interface O2WriteDAO {
 
 	void addSearchData(List<String> category);
 
-	List<String> getTopSearch();	
+	List<String> getTopSearch();
 
+	void removeSearchData();	
 	
 }
