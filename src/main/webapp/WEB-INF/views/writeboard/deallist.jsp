@@ -13,7 +13,6 @@
    h2 a:link{text-decoration:none;}
    h2 a{text-shadow: none;}
  td a{
- 	font-size : 15px;
 	color: green;
     font-family: 'Sunflower', sans-serif;
  }

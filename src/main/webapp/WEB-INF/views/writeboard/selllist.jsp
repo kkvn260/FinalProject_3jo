@@ -11,6 +11,7 @@
    h2{color:blue;}
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
+   h2 a{text-shadow: none;}
 </style>
 </head>
 <body>
