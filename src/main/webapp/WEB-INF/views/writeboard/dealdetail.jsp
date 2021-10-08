@@ -46,8 +46,10 @@ function remaindTime() {
     var et = end.getTime(); 
 
    if(nt>et){ 
-    $(".lefttime").text("금일 마감");
+    $(".lefttime").text("입찰 마감");
     $(".time").fadeOut();
+    $("#deal_price").hide();
+    $("#deal_btn").hide();
    }else{
      $(".time").fadeIn();
      $(".lefttime").text("입찰 마감까지");
@@ -62,12 +64,14 @@ function remaindTime() {
      if(min<10){min="0"+min;}
      if(sec<10){sec="0"+sec;}
      
+      $(".day").text(day+"일");
       $(".hour").text(hour+"시간");
       $(".min").text(min+"분");
       $(".sec").text(sec+"초");
    }
- } 
- setInterval(remaindTime,1000);
+ }
+setInterval(remaindTime,100);
+
 //경매 기능
 $(function () {
 	$('#deal_btn').on('click',function(){
@@ -105,6 +109,7 @@ $(function () {
 <br><br><br><br>
 <h3 class="lefttime" style="text-align: center;"></h3>
 <div class="time" style="text-align: center;">
+<span class="day"></span>
 <span class="hour"></span>
 <span class="min"></span>
 <span class="sec"></span>

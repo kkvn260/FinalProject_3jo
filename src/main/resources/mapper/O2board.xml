@@ -244,12 +244,10 @@
 
 	<select id="dealList" parameterType="hashmap"
 		resultType="com.kosta.o2dto.O2MainBoardDTO">
-		SELECT title,tradeno,user_id,writedate,viewno,likeno,deal_price
+		SELECT title,tradeno,user_id,writedate,viewno,likeno
 		FROM
 		TradeBoard_3jo
-	<![CDATA[
-		WHERE deal_price REGEXP '^[0-9]+$'
-	]]>
+		WHERE sell_price is null or sell_price=''
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
 				<when test="search=='total'">

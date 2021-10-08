@@ -171,6 +171,8 @@ public interface O2WriteDAO {
 
 	List<String> getTopSearch();
 
-	void removeSearchData();	
+	void removeSearchData();
+
+	void dealdelete(int no);	
 	
 }
