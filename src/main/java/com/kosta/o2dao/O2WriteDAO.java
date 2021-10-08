@@ -173,6 +173,6 @@ public interface O2WriteDAO {
 
 	void removeSearchData();
 
-	void dealdelete(int no);	
+	void dealdelete2(int no);	
 	
 }
