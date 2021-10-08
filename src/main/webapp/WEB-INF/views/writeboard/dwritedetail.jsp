@@ -114,7 +114,7 @@ hr{
 				<input type="hidden" value="${item.dept }" name="dept" class="dept">
 				<input type="hidden" value="${item.reorder }" name="reorder" class="reorder">
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
-			</li>
+			</li><br><br><br><br>
 		</c:forEach>
 		</div>
 	</li>
