@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+  <div class = "footercb">
 	<!-- 챗봇 -->
 	<div id="cb">
 		<a
@@ -21,5 +22,6 @@
 		<p id="f1">주식회사 | 오이마켓 | 대표 오이</p>
 	</div>
 	<hr>
+	</div>
 </body>
 </html>

@@ -121,7 +121,7 @@ hr{
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 
 				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록">
-				</form>
+				</form><br><br><br><br>
 			</div>
 		</div>
 	</c:if>

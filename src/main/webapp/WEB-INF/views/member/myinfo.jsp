@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+   #myinfo{
+      float:right;
+      position:absolute;
+      right:830px;
+      top:250px;
+   }
+</style>
 <body>
 <br><br><br><br>
 <h3>내 정보</h3><hr>
@@ -35,10 +43,11 @@
        <th><c:out value="${list.grade }"/></th></tr>
 </thead>
 </table>
-
-<input type="submit" id="infomodify" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
-<input type="submit" id="infodelete" value="탈퇴"  onclick="location.href='${pageContext.request.contextPath }/deleteresult'"> 
-		
+<center>
+<br><br><br><br>
+ <input type="submit" id="infomodify" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
+ <input type="submit" id="infodelete" value="탈퇴"  onclick="location.href='${pageContext.request.contextPath }/deleteresult'"> 
+</center>
 
 </body>
 </html>

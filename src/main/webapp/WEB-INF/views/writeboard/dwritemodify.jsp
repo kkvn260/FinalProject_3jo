@@ -70,7 +70,7 @@
 		<input type="submit" value="등록">
 		<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath }/dwritedetail/${list.chatno}'">
 	</li>
-</ul>	
+</ul><br><br><br><br>
 
 </form>
 

@@ -13,11 +13,12 @@
    }
    #mypagemainlist{
      text-shadow: 2px 2px 2px pink;
+     position:relative;
    }
 </style>
 </head>
 <body>
-
+<br><br><br>
 	<div id="mypagemainlist">
 		<a href="${pageContext.request.contextPath }/myinfo">★ 내 정보</a><br><br>
 		<p>★ 내가 쓴 글</p>

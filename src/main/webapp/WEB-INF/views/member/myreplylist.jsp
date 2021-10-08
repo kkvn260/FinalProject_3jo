@@ -7,12 +7,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+   #myreplylist{
+      float:right;
+      position:absolute;
+      right:360px;
+      top:220px;
+      width:950px;
+   }
+</style>
 </head>
 <body>
 <br><br><br><br>
     <h3>내가 쓴 댓글</h3><hr>
     <%@ include file="../member/mypagemainlist.jsp" %>
-	<table class="table table-striped">
+	<table class="table table-striped" id="myreplylist">
 		<thead>
 			<tr>
 				<th>댓글번호</th>

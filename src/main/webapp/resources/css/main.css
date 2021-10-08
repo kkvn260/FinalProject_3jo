@@ -71,13 +71,17 @@ html{
     color:green; 
 }
 .footer{
-	margin-left:20px;
 	text-shadow: 2px 2px 2px pink;
     font-size:15px;
     color:green; 
 }
 #cb{
    float:right;
+}
+.footercb{
+	 width:1200px;
+	 position: absolute;
+	 bottom: 0px;
 }
 
 

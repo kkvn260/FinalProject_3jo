@@ -56,7 +56,7 @@
 		<input type="submit" value="등록">
 		<input type="button" value="취소">
 	</li>
-</ul>
+</ul><br><br><br><br>
 
 </form>
 
