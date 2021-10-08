@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<br><br><br><br><br><br>
+<br><br><br>
     <h2>Q & A 게시판</h2><hr>
 	<table class="table table-striped">
 		<thead>
@@ -34,7 +34,7 @@
 			</c:if>
 		</tbody>
 	</table>
-	<a href="qwrite" class="btn btn-success pull-right">글쓰기</a><br><br>
+	<a href="qwrite" class="btn btn-success pull-right">글쓰기</a><br>
 
 </body>
 </html>

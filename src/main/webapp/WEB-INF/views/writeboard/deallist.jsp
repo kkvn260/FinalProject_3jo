@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-<br><br><br><br><br><br>
+<br><br><br>
 <div>
 <h2><a href="${pageContext.request.contextPath }/selllist">판매글 게시판 / </a> 경매글 게시판</h2><hr>
 </div>
@@ -68,7 +68,7 @@
 	 </span>
 
 
-	<a href="write" class="btn btn-success pull-right">글쓰기</a><br><br>
+	<a href="write" class="btn btn-success pull-right">글쓰기</a><br>
 
 	<c:if test="${page.prev}">
   		<a href="deallist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">
@@ -91,6 +91,6 @@
 	  <a href="deallist?currPage=${page.endBlock+1}&search=${search}&searchtxt=${searchtxt}">
    		<c:out value="다음"></c:out>
   	  </a>
- 	</c:if>
+ 	</c:if><br><br>
 </body>
 </html>

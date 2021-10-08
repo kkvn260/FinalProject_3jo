@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-<br><br><br><br>
+<br><br><br>
 <div>
 <h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>
 </div>
@@ -63,7 +63,7 @@
 			</c:forEach>
 	</span>
  
-  <a href="write" class="btn btn-success pull-right">글쓰기</a><br><br>
+  <a href="write" class="btn btn-success pull-right">글쓰기</a><br>
 	
 
 
@@ -90,6 +90,5 @@
    		<c:out value="다음"></c:out>
   	  </a>
  	</c:if>
-
 </body>
 </html>
