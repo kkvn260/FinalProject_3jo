@@ -24,6 +24,14 @@ hr{
 #replyarea input{
 	border-bottom: 1px solid silver;
 }
+.btn1{
+	background-color: white;
+}
+.btn1:hover{
+	color: green;
+	text-decoration: underline;
+}
+
 </style>
 <body>
 <br><br><br><br>
@@ -58,10 +66,10 @@ hr{
 	<li>
 	<div class="clear"></div>
 		<c:if test="${id == list.user_id }">
-		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/qwritemodify/${list.qnano}'">
-		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/qwritedelete/${list.qnano}'">
+		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/qwritemodify/${list.qnano}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/qwritedelete/${list.qnano}'">
 		</c:if>
-		<input type="button" id="qlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/qnalist'">
+		<input type="button" class="btn1" id="qlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/qnalist'">
 	<br><br><br><br>
 	</li>
 	<c:if test="${not empty list3}">

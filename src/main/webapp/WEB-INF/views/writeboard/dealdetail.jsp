@@ -27,6 +27,13 @@ hr{
 #replyarea input{
 	border-bottom: 1px solid silver;
 }
+.btn1{
+	background-color: white;
+}
+.btn1:hover{
+	color: green;
+	text-decoration: underline;
+}
 </style>
 <script>
 //경매 시간
@@ -176,8 +183,8 @@ $(function () {
 	<li>
 	<div class="clear"></div>
 		<c:if test="${id == list.user_id }">
-		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
-		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 		</c:if>
 		<input type="button" class="btn1" id="dlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/deallist'">
 		<br><br><br><br>

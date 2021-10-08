@@ -24,6 +24,13 @@ hr{
 #replyarea input{
 	border-bottom: 1px solid silver;
 }
+.btn1{
+	background-color: white;
+}
+.btn1:hover{
+	color: green;
+	text-decoration: underline;
+}
 </style>
 <body>
 <br><br><br><br>
@@ -74,10 +81,10 @@ hr{
 	<li>
 	<div class="clear"></div>
 		<c:if test="${id == list.user_id }">
-		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/dwritemodify/${list.chatno}'">
-		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/dwritedelete/${list.chatno}'">
+		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/dwritemodify/${list.chatno}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/dwritedelete/${list.chatno}'">
 		</c:if>
-		<input type="button" id="donglist" value="목록" onclick="location.href='${pageContext.request.contextPath }/dongcomlist'">
+		<input type="button" class="btn1" id="donglist" value="목록" onclick="location.href='${pageContext.request.contextPath }/dongcomlist'">
 		<br><br><br><br>
 	</li>
 	<c:if test="${not empty list3}">

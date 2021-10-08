@@ -25,7 +25,7 @@
 				<th>글번호</th>
 				<th>아이디</th>
 				<th>제목</th>
-				<th>날짜</th>
+				<th>작성일</th>
 			</tr>
 		</thead>
 		<tbody>
