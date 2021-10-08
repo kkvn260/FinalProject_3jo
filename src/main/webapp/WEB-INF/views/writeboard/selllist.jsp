@@ -25,6 +25,7 @@
 				<th>글번호</th>
 				<th>아이디</th>
 				<th>제목</th>
+				<th>조회수</th>
 				<th>작성일</th>
 			</tr>
 		</thead>
@@ -37,6 +38,7 @@
 						<td><c:out value="${item.user_id }" /></td>
 						<td><a href="twritedetail/${item.tradeno }"><c:out
 									value="${item.title }" /></a></td>
+					    <td><c:out value="${item.viewno }"/></td>
 						<td><c:out value="${item.writedate }" /></td>
 					</tr>
 				</c:forEach>
