@@ -7,8 +7,9 @@ import org.springframework.stereotype.Component;
 import com.kosta.o2service.O2ServiceOther;
 
 import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
-@Log
+@Slf4j
 @Component
 public class SearchFilter {
 
@@ -18,7 +19,15 @@ public class SearchFilter {
 	//12시간마다 하루 전 검색데이터들 삭제
 	@Scheduled(cron = "0 0 0/12 * * ")
 	public void removeSearch() {
-		log.warning("removeSearchData.............");
+		log.warn("removeSearchData.............");
 		serviceOther.removeSearchData();
 	}
+	
+	
+	//@Scheduled(cron = "0 * * * * ")
+	public int scrapMobileData() {
+		log.warn("insertMobileData.................");
+		return serviceOther.getMobileData();
+	}
+	
 }

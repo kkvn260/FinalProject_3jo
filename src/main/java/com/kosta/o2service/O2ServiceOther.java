@@ -19,6 +19,8 @@ public interface O2ServiceOther {
 
 	public void removeSearchData();
 
+	public int getMobileData();
+
 
 
 	

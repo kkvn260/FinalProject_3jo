@@ -804,5 +804,12 @@
 		tradeno=#{no}
 	</delete>
 
+	<insert id="getMobileData" parameterType="java.util.List">
+		INSERT INTO AvgPrice_3jo(item_name, price, product_no, writedate)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+		( #{item.item_name}, #{item.price}, #{item.product_no} ,sysdate())
+		</foreach>
+    </insert>
 
 </mapper>

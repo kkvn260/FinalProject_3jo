@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.o2dto.MobileVo;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
@@ -173,6 +174,8 @@ public interface O2WriteDAO {
 
 	void removeSearchData();
 
-	void dealdelete2(int no);	
+	void dealdelete2(int no);
+
+	int getMobileData(List<MobileVo> mobileList);	
 	
 }
