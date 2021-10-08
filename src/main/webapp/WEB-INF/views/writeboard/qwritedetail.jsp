@@ -62,7 +62,7 @@ hr{
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/qwritedelete/${list.qnano}'">
 		</c:if>
 		<input type="button" id="qlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/qnalist'">
-	<br><br>
+	<br><br><br><br>
 	</li>
 	<c:if test="${not empty list3}">
 	<li>

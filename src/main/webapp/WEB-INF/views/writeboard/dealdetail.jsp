@@ -172,7 +172,8 @@ $(function () {
 		<input type="button" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
 		<input type="button" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 		</c:if>
-		<Br><br>
+		<input type="button" class="btn1" id="dlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/deallist'">
+		<br><br><br><br>
 	</li>
 	<c:if test="${not empty list3}">
 	<li>

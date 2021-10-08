@@ -90,8 +90,7 @@ hr{
 		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 		</c:if>
 		<input type="button" class="btn1" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
-		<br>
-		<br>
+		<br><br><br><br>
 	</li>
 	<c:if test="${not empty list3}">
 	<li>
