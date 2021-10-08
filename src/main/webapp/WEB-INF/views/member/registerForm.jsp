@@ -318,7 +318,7 @@ $(document).ready(function(){
 				<i class="fa fa-heart pr-2" aria-hidden="true"></i>가입하기
 			</button>
 		</div>   		
-   	</form>
-   </div>
+   	</form><br>
+   </div><br><br><br>
 </body>
 </html>
