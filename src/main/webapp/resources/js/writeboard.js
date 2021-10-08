@@ -1,6 +1,17 @@
 /**
  * 
  */
+//사진 모달
+$(function() {
+	$('.moimg').click(function() {
+		$(".modal").fadeIn();
+		$(".modalimg").attr("src",$(this).attr("src"));
+	})
+	$(".modal_content").click(function(){
+		$(".modal").fadeOut();
+	});
+})
+
 //가격 , 찍기
 function numberWithCommas(x) {
   x = x.replace(/[^0-9]/g,'');  

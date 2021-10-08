@@ -18,7 +18,7 @@ li input{
 	border:none;
 	outline: none;
 }
-hr{
+#hr{
 	border: 1px solid green;
 }
 #replyarea input{
@@ -90,7 +90,7 @@ hr{
 	<c:if test="${not empty list3}">
 	<li>
 		<label>댓글</label>
-		<hr>
+		<hr id="hr">
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
@@ -114,11 +114,11 @@ hr{
 				<input type="hidden" value="${item.dept }" name="dept" class="dept">
 				<input type="hidden" value="${item.reorder }" name="reorder" class="reorder">
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
-			</li><br><br><br><br>
+			</li>
 		</c:forEach>
 		</div>
 	</li>
-	<hr>
+	<hr id="hr"><br><br><br><br>
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">
@@ -206,7 +206,6 @@ $(function () {
 		})  
 	})
 })
-
 </script>
 	<script>
 var mapOptions = {
@@ -214,7 +213,6 @@ var mapOptions = {
 		zoom : 18
 	};
 var map = new naver.maps.Map('map', mapOptions);
-
 var markerList = [];
 var marker = new naver.maps.Marker({
     position: new naver.maps.LatLng(${list.map_x}, ${list.map_y}),
