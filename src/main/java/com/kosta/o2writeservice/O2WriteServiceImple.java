@@ -67,7 +67,6 @@ public class O2WriteServiceImple implements O2WriteService {
 
 	@Override
 	public void twritedelete(int no) {
-		dao.dealdelete(no);
 		dao.twritedelete(no);
 	}
 
