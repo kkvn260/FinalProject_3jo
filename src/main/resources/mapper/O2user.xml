@@ -107,6 +107,7 @@
 	     from TradeBoard_3jo
 	     where user_id=#{user_id} 
 	           and  (deal_price is null or deal_price='')
+	     order by tradeno desc
 	</select>
 	
 	<select id="mydboardlist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
@@ -119,6 +120,7 @@
 	     from TradeBoard_3jo
 	     where user_id=#{user_id} 
 	           and deal_price REGEXP '^[0-9]+$'
+	     order by tradeno desc      
 	</select>
 	
 	<select id="mydongboardlist" resultType="com.kosta.o2dto.O2DongComDTO">
@@ -130,6 +132,7 @@
 	           ,user_id
 	    from ChatBoard_3jo
 	    where user_id=#{user_id}
+	    order by chatno desc
 	</select>
 	
 	<select id="myqnaboardlist" resultType="com.kosta.o2dto.O2QnaBoardDTO">
@@ -139,6 +142,7 @@
 	           ,user_id
 	     from QABoard_3jo
 	     where user_id=#{user_id}
+	     order by qnano desc
 	</select>
 	
 	
@@ -149,6 +153,7 @@
 	          , user_id
 	    from Reply_3jo
 	    where user_id=#{user_id}
+	    order by replyno desc
 	</select>
 	
 	<insert id="insertnaver" parameterType="com.kosta.o2dto.O2UserDTO">
