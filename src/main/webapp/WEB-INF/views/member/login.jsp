@@ -22,22 +22,22 @@
        height:600px;
        border:3px solid #555555;
        border-radius: 10%;
-       background-color: #336633;
+       background-color: #CCFF99;
    }
-
+   
+   #loginoew{
+      color:#336600;
+      text-shadow: 1px 1px 1px yellow;
+      width:300px;
+      margin-bottom:20px; 
+   }
    #loginoe{
-   width:60px;
-   height:70px;
-   border-bottom-left-radius:20px;
-   border-bottom-right-radius:20px;
-   border-top-right-radius:20px;
-   border-top-left-radius:20px;
-    margin-top:20px;
-       margin-bottom:20px; 
+      height:100px;
+      margin-top:20px;
    }
 
 	h2{
-		color: white;
+		color: #336600;
 		margin-top:20px;
 	
 	}
@@ -51,31 +51,26 @@
    		border-top-left-radius:5px;
         background-color: white;
    }
-   #reoe,#or{
-       color:white;
+   #reoe,#or, #loginfind{
+       color: #336600;
    }
-   #loginfind{
-   		color: white;
-   		font-weight: bold;
-   }
-   #register{
-   		color: yellow;
-   		font-weight: bold;
+   #register, #idfind , #pwfind{
+   		color: #336600;
+   		
    }
    .border a{
        color:black;
        text-decoration:none;
    }
-   #idfind{color: yellow; font-weight: bold;}
-   #pwfind{color: yellow; font-weight: bold;}
+
    </style>
 	</head>
 	<body>
 	<div id="loginform">
     	<form action ="${pageContext.request.contextPath }/login" method="post">
         	<div class="border">
-            	<h2>Login</h2>
-            	<img src ="${pageContext.request.contextPath}/resources/img/52.png" id="loginoe"><br>
+                <img src ="${pageContext.request.contextPath}/resources/img/greenoe.jpg" id="loginoe"><br>
+            	<label id="loginoew">&nbsp;오이마켓 방문을 환영합니다</label><br><br>
             	
                 <input type="text"  name="user_id" id="user_id" placeholder=" 아이디"><br>
             	<input type="password" name="pwd" id="pwd" placeholder=" 비밀번호"><br><br>
@@ -87,11 +82,12 @@
                 <img width="300" height="50" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
              </div> <br>
 
-            	<label id="reoe">아직 오이마켓 회원이 아니신가요?</label>
+            	
                 <a href="${pageContext.request.contextPath }/registerForm" id="register">회원가입</a>
-				<label id="loginfind">아이디와 비밀번호가 기억나지 않으십니까?</label><br>
+                <span id="reoe">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 				<a href="${pageContext.request.contextPath }/member/findid" id="idfind">ID찾기</a>
-				<a href="${pageContext.request.contextPath }/member/findpwd" id="pwfind"> | PW찾기</a>
+				<span id="reoe">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+				<a href="${pageContext.request.contextPath }/member/findpwd" id="pwfind">PW찾기</a>
         	</div> 
     	</form>
     	</div>
