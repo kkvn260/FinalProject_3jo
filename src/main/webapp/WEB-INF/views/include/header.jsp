@@ -22,6 +22,7 @@
    
 }
 a{
+	color: green;
     text-shadow: 1px 1px 1px pink;
     font-size: 20px;
 }
