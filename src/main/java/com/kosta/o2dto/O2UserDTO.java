@@ -20,6 +20,7 @@ public class O2UserDTO {
 	private String user_name;
 	private String birthday;
 	private String hint;
+	private String hintanswer;
 	private String addr;
 	private String gender;
 	private int grade;

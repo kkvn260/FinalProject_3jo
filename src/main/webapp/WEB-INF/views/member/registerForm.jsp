@@ -289,7 +289,7 @@ $(document).ready(function(){
 			<option value="h20">좋아하는 스포츠 팀 이름은?</option>
 			<option value="h21">본인의 출생지는?</option>
 			</select><br>
-   				<input type="text" class="form-control" id="hint" name="hint" placeholder="Hint" required>
+   				<input type="text" class="form-control" id="hintanswer" name="hintanswer" placeholder="Hint" required>
    			<div class="check_font" id="hint_check"></div>
    		</div>
    		<!-- addr -->
