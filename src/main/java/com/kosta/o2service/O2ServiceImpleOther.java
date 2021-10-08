@@ -45,5 +45,13 @@ public class O2ServiceImpleOther implements O2ServiceOther {
 	}
 
 
+	@Override
+	public void removeSearchData() {
+		dao.removeSearchData();
+	}
+	
+	
+
+
 	
 }

@@ -17,6 +17,8 @@ public interface O2ServiceOther {
 
 	public List<O2DongComDTO> dongtopview();
 
+	public void removeSearchData();
+
 
 
 	
