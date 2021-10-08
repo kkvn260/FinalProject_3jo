@@ -125,6 +125,11 @@ $(function () {
 </script>
 <body>
 <br><br><br><br>
+<div class="modal">
+	<div class="modal_content" title="클릭하면 닫기!.">
+		<img class="modalimg" src="">
+	</div>
+</div>
 <h3 class="lefttime" style="text-align: center;"></h3>
 <div class="time" style="text-align: center;">
 <span class="day"></span>
@@ -170,7 +175,7 @@ $(function () {
 		<div class="preview">
 			<c:forEach var="item" items="${list2 }">
 				<div class="preview-box">
-					<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
+					<img class="moimg" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
 				</div>
 			</c:forEach>
 		</div>

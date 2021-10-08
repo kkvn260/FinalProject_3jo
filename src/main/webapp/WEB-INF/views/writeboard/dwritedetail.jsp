@@ -34,6 +34,11 @@ li input{
 </style>
 <body>
 <br><br><br><br>
+<div class="modal">
+	<div class="modal_content" title="클릭하면 닫기!.">
+		<img class="modalimg" src="">
+	</div>
+</div>
 <ul>
 	<li>
 		<label>카테고리</label>
@@ -64,7 +69,7 @@ li input{
 		<div class="preview">
 			<c:forEach var="item" items="${list2 }">
 				<div class="preview-box">
-					<img src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
+					<img class="moimg" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" width="100px" height="100px">
 				</div>
 			</c:forEach>
 		</div>
