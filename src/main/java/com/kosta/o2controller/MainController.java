@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 import com.kosta.o2service.O2ServiceOther;
+import com.kosta.o2writeservice.O2WriteService;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private O2ServiceOther service;
-
+	@Autowired
+	private O2WriteService service2;
 	
 	@RequestMapping("/mainpage")
 	public String main(Model model) {
@@ -27,7 +29,7 @@ public class MainController {
 		  
 		  List<O2DongComDTO> list2=service.dongtopview();
 			 model.addAttribute("list2",list2);
-
+			 
 		return "include/mainboard";
 	}
 }

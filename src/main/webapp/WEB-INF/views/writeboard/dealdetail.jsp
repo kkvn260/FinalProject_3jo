@@ -84,39 +84,47 @@ $(function () {
 	$('#deal_btn').on('click',function(){
 		var b=$("#ndeal_price").text();
 		var b2=b.split(",");
-		var br=0;
+		var br="";
 		var i;
 		for(i=0; i<b2.length; i++){
 			br+=b2[i];
 		}
 		var before=Number(br);
-		var after=Number($("#deal_price").val());
-		   let data1={tradeno:$("#tradeno").val(),deal_price:$("#deal_price").val(),user_id:$("#user_id").val()};
+		
+		var a=$("#deal_price").val();
+		var a2=a.split(",");
+		var ar="";
+		var j;
+		for(j=0; j<a2.length; j++){
+			ar+=a2[j];
+		}
+		var after=Number(ar);
+		   let data1={tradeno:$("#tradeno").val(),deal_price:a,user_id:$("#user_id").val()};
 		if($("#user_id").val()==null){
 			alert("로그인이 필요합니다.");
-		}else{
+		}else if(after<=before){
+			alert("입찰 가격은 현재 입찰가 보다 높아야 합니다.");
+		}
+		else{
 		 $.ajax({
 			type:"post"
-			,url:'${pageContext.request.contextPath }/deal'
-		    ,dataType:"json"
+			,url:'${pageContext.request.contextPath }/deal/'+before+"/"+after
 			,data: JSON.stringify(data1)
-			,contentType:"application/json;charset=utf-8"
+		    ,dataType:"text"
+			,contentType:"application/json"
 			,success:function(data)
 			{	
-				if(after<before){
-					alert("입력한 가격이 현재 입찰가 보다 낮습니다");
-				}else
 				alert("입찰 성공!");
-				
 				$('#ndeal_price').text(data);
 				$('#deal_price').val(""); //초기화
 			},error:function(err){
-				console.log("에러");
+				console.log(err);
 			} 
 		})
 		}
 	})
 })
+
 
 </script>
 <body>
@@ -196,18 +204,20 @@ $(function () {
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
+				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
+				<div>
 				<c:if test="${item.dept==1 }">
 					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
 				</c:if>
-				<input type="text" name="user_id" value="${item.user_id }" readonly>
+				<span>${item.user_id }</span>&ensp;
+				</div>
+				<span style="flex-grow: 1;"> >> ${item.reply_content }</span>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
-				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
-						${item.reply_content }
 					<c:if test="${id eq item.user_id && item.dept==0}">
-						<a href="${pageContext.request.contextPath }/treplydelete/${item.replyno}/${list.tradeno}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/treplydelete/${item.replyno}/${list.tradeno}" style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
 					<c:if test="${id eq item.user_id && item.dept==1}">
-						<a href="${pageContext.request.contextPath }/treplydelete2/${item.replyno}/${list.tradeno}" style="color: red; font-size: 13px;">삭제</a>
+						<a href="${pageContext.request.contextPath }/treplydelete2/${item.replyno}/${list.tradeno}" style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
 				</div>
 				<input type="hidden" value="${item.replyno }" name="replyno" class="replyno">

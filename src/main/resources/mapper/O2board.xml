@@ -471,7 +471,7 @@
 		deal_price
 		from Deal_3jo
 		where tradeno=#{tradeno}
-		order by deal_price
+		order by dealno
 		desc limit 1
 	</select>
 

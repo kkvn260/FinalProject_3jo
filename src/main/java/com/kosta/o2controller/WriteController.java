@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -416,17 +417,17 @@ public class WriteController {
 		return "writeboard/fail";
 	}
 	
-	@PostMapping("/deal")
 	@ResponseBody
-	public String deal(@RequestBody O2DealDTO dto) {
-		int before=Integer.parseInt(service.getprice(dto.getTradeno()));
-		int after=Integer.parseInt(dto.getDeal_price());
-			if(after>before) {
+	@PostMapping("/deal/{no}/{no2}")
+	public Object deal(@RequestBody O2DealDTO dto,@PathVariable int no,@PathVariable int no2) {
+		
+		if(no2>no) {
 				service.dealinsert(dto);
 		}
-		String result=service.getprice(dto.getTradeno());
+		Object result=service.getprice(dto.getTradeno());
 		return result;
 	}
+	
 	@RequestMapping("treplyresult")
 	public String treplyresult(O2ReplyDTO dto) {
 		service.treplyinsert(dto);

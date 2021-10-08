@@ -104,9 +104,9 @@ hr{
 				<c:if test="${item.dept==1 }">
 					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
 				</c:if>
-				<span>${item.user_id }</span>
+				<span>${item.user_id }</span>&ensp;
 				</div>
-				<span style="flex-grow: 1;">${item.reply_content }</span>
+				<span style="flex-grow: 1;"> >> ${item.reply_content }</span>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly style="flex-grow: 0;">
 					<c:if test="${id eq item.user_id && item.dept==0}">
 						<a href="${pageContext.request.contextPath }/treplydelete/${item.replyno}/${list.tradeno}" 

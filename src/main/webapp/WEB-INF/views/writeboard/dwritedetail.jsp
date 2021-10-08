@@ -94,13 +94,15 @@ hr{
 		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
+				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
+				<div>
 				<c:if test="${item.dept==1 }">
 					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
 				</c:if>
-				<input type="text" name="user_id" value="${item.user_id }" readonly>
+				<span>${item.user_id }</span>&ensp;
+				</div>
+				<span style="flex-grow: 1;"> >> ${item.reply_content }</span>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
-				<div class="replychild_btn" style="margin-left:${60*item.dept}px;">
-						${item.reply_content }
 					<c:if test="${id eq item.user_id && item.dept==0}">
 						<a href="${pageContext.request.contextPath }/dreplydelete/${item.replyno}/${list.chatno}" style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
