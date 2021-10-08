@@ -55,7 +55,12 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">${item.title }</h5>
                                     <!-- Product price-->
-                                    ${item.sell_price }원
+                                    <c:if test="${empty item.sell_price }">
+                                    	${item.deal_price }원 <Br>입찰중!
+                                    </c:if>
+                                    <c:if test="${empty item.deal_price }">
+                                   		${item.sell_price }원
+                                    </c:if>
                                 </div>
                             </div>
                             <!-- Product actions-->

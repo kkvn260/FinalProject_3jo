@@ -75,7 +75,14 @@ setInterval(remaindTime,100);
 //경매 기능
 $(function () {
 	$('#deal_btn').on('click',function(){
-		var before=Number($("#ndeal_price").val());
+		var b=$("#ndeal_price").text();
+		var b2=b.split(",");
+		var br=0;
+		var i;
+		for(i=0; i<b2.length; i++){
+			br+=b2[i];
+		}
+		var before=Number(br);
 		var after=Number($("#deal_price").val());
 		   let data1={tradeno:$("#tradeno").val(),deal_price:$("#deal_price").val(),user_id:$("#user_id").val()};
 		if($("#user_id").val()==null){
@@ -94,10 +101,10 @@ $(function () {
 				}else
 				alert("입찰 성공!");
 				
-				$('#ndeal_price').val(data);
+				$('#ndeal_price').text(data);
 				$('#deal_price').val(""); //초기화
 			},error:function(err){
-				console.log(err);
+				console.log("에러");
 			} 
 		})
 		}
@@ -133,9 +140,9 @@ $(function () {
 	</li>
 	<li>
 		<label>현재 입찰가격</label>
-		<input type="text" id="ndeal_price" value="${price }" readonly>
+		<span id="ndeal_price">${price }</span><span>원</span>&ensp;
 		<label>입찰 희망가격</label>
-		<input type="text" id="deal_price" name="deal_price" >
+		<input type="text" id="deal_price" class="deal_price" name="deal_price" onkeyup="numberWithCommas2(this.value)">원
 		<button id="deal_btn" >입찰하기</button>
 		<div style="float: right;">
 		<c:if test="${result ne null }">
