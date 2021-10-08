@@ -92,27 +92,32 @@
 
 	<select id="sellCount" parameterType="hashmap" resultType="int">
 		SELECT count(*) from TradeBoard_3jo
-		WHERE deal_price IS NULL or deal_price=''
-			<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
-				<choose>
-					<when test="search=='total'">
-						and (user_id like CONCAT ('%',#{searchtxt},'%')
-						or
-						title like CONCAT ('%',#{searchtxt},'%')
-						or content like CONCAT
-						('%',#{searchtxt},'%'))
-					</when>
-					<when test="search=='user_id'">
-						and user_id like CONCAT ('%',#{searchtxt},'%')
-					</when>
-					<when test="search=='content'">
-						and content like CONCAT ('%',#{searchtxt},'%')
-					</when>
-					<when test="search=='title'">
-						and title like CONCAT ('%',#{searchtxt},'%')
-					</when>
-				</choose>
-			</if>
+		WHERE deal_price IS NULL or
+		deal_price=''
+		<if
+			test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
+			<choose>
+				<when test="search=='total'">
+					and (user_id like CONCAT ('%',#{searchtxt},'%')
+					or
+					title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT
+					('%',#{searchtxt},'%'))
+				</when>
+				<when test="search=='user_id'">
+					and user_id like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='content'">
+					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='title'">
+					and title like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='cat'">
+					and category2 like CONCAT ('%',#{searchtxt},'%')
+				</when>
+			</choose>
+		</if>
 	</select>
 
 	<select id="dealCount" parameterType="hashmap" resultType="int">
@@ -120,26 +125,30 @@
 		<![CDATA[
 		WHERE deal_price is not NULL
 		]]>
-			<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
-				<choose>
-					<when test="search=='total'">
-						and (user_id like CONCAT ('%',#{searchtxt},'%')
-						or
-						title like CONCAT ('%',#{searchtxt},'%')
-						or content like CONCAT
-						('%',#{searchtxt},'%'))
-					</when>
-					<when test="search=='user_id'">
-						and user_id like CONCAT ('%',#{searchtxt},'%')
-					</when>
-					<when test="search=='content'">
-						and content like CONCAT ('%',#{searchtxt},'%')
-					</when>
-					<when test="search=='title'">
-						and title like CONCAT ('%',#{searchtxt},'%')
-					</when>
-				</choose>
-			</if>
+		<if
+			test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
+			<choose>
+				<when test="search=='total'">
+					and (user_id like CONCAT ('%',#{searchtxt},'%')
+					or
+					title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT
+					('%',#{searchtxt},'%'))
+				</when>
+				<when test="search=='user_id'">
+					and user_id like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='content'">
+					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='title'">
+					and title like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='cat'">
+					and category2 like CONCAT ('%',#{searchtxt},'%')
+				</when>
+			</choose>
+		</if>
 	</select>
 
 	<select id="topviewlist"
@@ -184,6 +193,9 @@
 				</when>
 				<when test="search=='content'">
 					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='cat'">
+					and category2 like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
 		</if>
@@ -255,6 +267,9 @@
 				</when>
 				<when test="search=='content'">
 					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='cat'">
+					and category2 like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
 		</if>

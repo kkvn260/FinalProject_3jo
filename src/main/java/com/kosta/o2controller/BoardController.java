@@ -33,9 +33,8 @@ public class BoardController {
 		Pattern pattern = Pattern.compile("(^[0-9]*$)");
 
 		if (search == "total" || search.equals("total") || search == "user_id" || search.equals("user_id")
-			|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
-		    ) 
-		{
+				|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
+				|| search == "cat" || search.equals("cat")) {
 			Matcher matcher = pattern.matcher(searchtxt);
 			if (matcher.find()) {
 				model.addAttribute("searchtxt", searchtxt);
@@ -73,8 +72,9 @@ public class BoardController {
 
 		Pattern pattern = Pattern.compile("(^[0-9]*$)");
 
-		if (search == "user_id" || search.equals("user_id") || search == "title" || search.equals("title")
-				|| search == "content" || search.equals("content")) {
+		if (search == "total" || search.equals("total") || search == "user_id" || search.equals("user_id")
+				|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
+				|| search == "cat" || search.equals("cat")) {
 			Matcher matcher = pattern.matcher(searchtxt);
 			if (matcher.find()) {
 				model.addAttribute("searchtxt", searchtxt);
