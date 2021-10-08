@@ -59,7 +59,7 @@
 		&emsp;&emsp;&emsp;&emsp;
 		<h4 style="display: inline">인기</h4>
 			<c:forEach items="${topSearch}" var="index">
-				<a href="selllist?search=total&searchtxt=${index}"><c:out value="${index}"/> &nbsp;</a>
+				<a href="selllist?search=cat&searchtxt=${index}"><c:out value="${index}"/> &nbsp;</a>
 			</c:forEach>
 	</span>
  
