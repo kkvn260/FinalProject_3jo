@@ -101,10 +101,12 @@ hr{
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
 				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
+				<div>
 				<c:if test="${item.dept==1 }">
 					<img  src="${pageContext.request.contextPath }/resources/img/화살표.jfif" width="40px" height="25px" style="margin-left:${20*item.dept}px;"> 
 				</c:if>
-				<input type="text" name="user_id" value="${item.user_id }" readonly style="flex-grow: 0;">
+				<span>${item.user_id }</span>
+				</div>
 				<span style="flex-grow: 1;">${item.reply_content }</span>
 				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly style="flex-grow: 0;">
 					<c:if test="${id eq item.user_id && item.dept==0}">
