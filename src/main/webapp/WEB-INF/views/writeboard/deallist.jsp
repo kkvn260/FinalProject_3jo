@@ -66,9 +66,9 @@
 			</c:forEach>
 	 </span>
 
-
+	<c:if test="${id!=null }">
 	<a href="write" class="btn btn-success pull-right">글쓰기</a><br>
-
+	</c:if>
 	<c:if test="${page.prev}">
   		<a href="deallist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">
    		 <c:out value="이전"/>

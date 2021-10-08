@@ -34,7 +34,8 @@
 			</c:if>
 		</tbody>
 	</table>
+	<c:if test="${id!=null }">
 	<a href="qwrite" class="btn btn-success pull-right">글쓰기</a><br>
-
+	</c:if>
 </body>
 </html>

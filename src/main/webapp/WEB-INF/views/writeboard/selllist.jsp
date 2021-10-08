@@ -63,9 +63,9 @@
 				<a href="selllist?search=cat&searchtxt=${index}"><c:out value="${index}"/> &nbsp;</a>
 			</c:forEach>
 	</span>
- 
+  <c:if test="${id!=null }">
   <a href="write" class="btn btn-success pull-right">글쓰기</a><br>
-	
+  </c:if>
 
 
 

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,7 @@ public class BoardController {
 	@RequestMapping("/selllist")
 	public String sellList(@RequestParam(required = false, defaultValue = "1") int currPage,
 			@RequestParam(required = false, defaultValue = "") String search,
-			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model) {
+			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model,HttpSession session) {
 
 		Pattern pattern = Pattern.compile("(^[0-9]*$)");
 
@@ -55,7 +57,9 @@ public class BoardController {
 		List<O2MainBoardDTO> list = service.sellList(search, searchtxt, page.getStartRow(), pageSize);
 
 		List<String> topSearch = service.getTopSearch();
-
+		String id=(String)session.getAttribute("user_id");
+		
+		model.addAttribute("id",id);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
@@ -68,7 +72,7 @@ public class BoardController {
 	@RequestMapping("/deallist")
 	public String deallist(@RequestParam(required = false, defaultValue = "1") int currPage,
 			@RequestParam(required = false, defaultValue = "") String search,
-			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model) {
+			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model,HttpSession session) {
 
 		Pattern pattern = Pattern.compile("(^[0-9]*$)");
 
@@ -95,7 +99,9 @@ public class BoardController {
 		List<O2MainBoardDTO> list = service.dealList(search, searchtxt, page.getStartRow(), pageSize);
 
 		List<String> topSearch = service.getTopSearch();
-
+		String id=(String)session.getAttribute("user_id");
+		
+		model.addAttribute("id",id);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
@@ -106,16 +112,22 @@ public class BoardController {
 	}
 
 	@RequestMapping("/qnalist")
-	public String list(Model model) {
+	public String list(Model model,HttpSession session) {
 		List<O2QnaBoardDTO> list = service2.qnalist();
+		String id=(String)session.getAttribute("user_id");
+		
+		model.addAttribute("id",id);
 		model.addAttribute("list", list);
 
 		return "writeboard/qnalist";
 	}
 
 	@RequestMapping("/dongcomlist")
-	public String donglist(Model model) {
+	public String donglist(Model model,HttpSession session) {
 		List<O2DongComDTO> list = service2.dongcomlist();
+		String id=(String)session.getAttribute("user_id");
+		
+		model.addAttribute("id",id);
 		model.addAttribute("list", list);
 
 		return "writeboard/dongcomlist";
