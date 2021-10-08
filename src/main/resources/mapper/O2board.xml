@@ -87,6 +87,7 @@
 		,user_id
 		,writedate
 		from QABoard_3jo
+		order by qnano desc
 	</select>
 
 
@@ -307,6 +308,7 @@
 		,likeno
 		from
 		ChatBoard_3jo
+		order by chatno desc
 	</select>
 
 	<insert id="dwriteinsert"
