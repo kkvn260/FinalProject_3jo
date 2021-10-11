@@ -36,7 +36,7 @@
    <tr><th>생년월일</th>
        <th><c:out value="${list.birthday }"/></th></tr>
    <tr><th>주소</th>
-       <th><c:out value="${list.addr }"/></th></tr>
+       <th><c:out value="${list.addr1 }/${list.addr2 }"/></th></tr>
    <tr><th>성별</th>
        <th><c:out value="${list.gender }"/></th></tr>
    <tr><th>등급</th>

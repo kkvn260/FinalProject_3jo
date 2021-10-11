@@ -295,7 +295,8 @@ $(document).ready(function(){
    		<!-- addr -->
 		<div class="form-group">
 			<label for="addr">주소</label>
-				<input type="text" class="form-control" id="addr" name="addr" placeholder="ex)서울시 구로구" required>
+				<select name="addr1" id="addr1"></select>
+   				<select name="addr2" id="addr2"></select>
 			<div class="check_font" id="addr_check"></div>	
 		</div>
    		
@@ -320,5 +321,6 @@ $(document).ready(function(){
 		</div>   		
    	</form><br>
    </div><br><br><br>
+   <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 </body>
 </html>

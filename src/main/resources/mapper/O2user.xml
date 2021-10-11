@@ -16,7 +16,8 @@
 			,birthday
 			,hint
 			,hintanswer
-			,addr
+			,addr1
+			,addr2
 			,gender
 			,grade
 		) VALUES (
@@ -29,7 +30,8 @@
 			,#{birthday}
 			,#{hint}
 			,#{hintanswer}
-			,#{addr}
+			,#{addr1}
+			,#{addr2}
 			,#{gender}
 			,0
 		)
@@ -71,7 +73,8 @@
 	           email,
 	           user_name,
 	           birthday,
-	           addr,
+	           addr1,
+	           addr2,
 	           hint,
 	           gender,
 	           grade
@@ -87,7 +90,8 @@
 	         phoneno=#{phoneno},
 	         email=#{email},
 	         user_name=#{user_name},
-	         addr=#{addr}
+	         addr1=#{addr1}
+	         addr2=#{addr2}
 	     where
 	         user_id=#{user_id}
 	</update>

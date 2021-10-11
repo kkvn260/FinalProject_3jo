@@ -69,6 +69,35 @@ $("select[name=category1]").change(function() {
   }
  });
 
+//주소 기능
+var area0 = ["시/도 선택","서울특별시","인천광역시","경기도"];
+var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+ var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
+ var area3 = ["고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","여주군","연천군"];
+
+ $("select[name=addr1]").each(function() {
+  $sido1 = $(this);
+  $.each(eval(area0), function() {
+   $sido1.append("<option value='"+this+"'>"+this+"</option>");
+  });
+  $sido1.next().append("<option value=''>군/구 선택</option>");
+ });
+
+$("select[name=addr1]").change(function() {
+  var sido = "area"+$("option",$(this)).index($("option:selected",$(this))); 
+  var $gungu = $(this).next(); 
+  $("option",$gungu).remove(); 
+
+  if(sido == "addr0")
+   $gungu.append("<option value=''>군/구 선택</option>");
+  else {
+   $.each(eval(sido), function() {
+    $gungu.append("<option value='"+this+"'>"+this+"</option>");
+   });
+  }
+ });
+
+
 
 
 //image preview 기능 구현
