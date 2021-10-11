@@ -27,7 +27,9 @@
    <tr><th>생년월일</th>
        <th><input type="text" name="birthday" value="${list.birthday }" readonly="readonly"/></th></tr>
    <tr><th>주소</th>
-       <th><input type="text" name="addr" value="${list.addr }"/></th></tr>
+       <th><input type="text" value="${list.addr1 }/${list.addr2 }" readonly/></th></tr>
+   <tr><th></th><th><select name="addr1" id="addr1"></select>
+   				<select name="addr2" id="addr2"></select><th></tr>
    <tr><th>성별</th>
        <th><c:out value="${list.gender }"/></th></tr>
    <tr><th>등급</th>
@@ -36,7 +38,7 @@
 <input type="submit" value="수정">
 <input type="reset" value="취소">
 </form>
-
+<script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 		
 
 </body>

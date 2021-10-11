@@ -18,4 +18,6 @@ public class O2ReplyDTO {
 	private int dept;
 	private int reparent;
 	private int reorder;
+	private String sell_price;
+	private String deal_price;
 }

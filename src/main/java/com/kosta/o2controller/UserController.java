@@ -245,7 +245,6 @@ public class UserController {
 			
 			List<O2ReplyDTO> list=service.myreplylist(user_id);
 			model.addAttribute("list",list);
-			
 		return "member/myreplylist";
 		}
 		

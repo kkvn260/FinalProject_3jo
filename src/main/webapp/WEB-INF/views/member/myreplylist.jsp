@@ -36,7 +36,18 @@
 					<c:set var="number" value="${number+1 }" />
 					<tr>
 						<td><c:out value="${number }" /></td>
-						<td><a href="tdealdetail/${item.replyno }"><c:out value="${item.reply_content }"></c:out></td>
+						<c:if test="${item.qnano==0 && item.chatno==0 && empty item.deal_price}">
+						<td><a href="twritedetail/${item.tradeno }"><c:out value="${item.reply_content }"></c:out></a></td>
+						</c:if>
+						<c:if test="${item.qnano==0 && item.chatno==0 && empty item.sell_price}">
+						<td><a href="tdealdetail/${item.tradeno }"><c:out value="${item.reply_content }"></c:out></a></td>
+						</c:if>
+						<c:if test="${item.chatno==0 && item.tradeno==0}">
+						<td><a href="qwritedetail/${item.qnano }"><c:out value="${item.reply_content }"></c:out></a></td>
+						</c:if>
+						<c:if test="${item.qnano==0 && item.tradeno==0}">
+						<td><a href="dwritedetail/${item.chatno }"><c:out value="${item.reply_content }"></c:out></a></td>
+						</c:if>
 						<td><c:out value="${item.reply_writedate }"/></td>
 						<td><c:out value="${item.user_id }"/></td>
 					</tr>

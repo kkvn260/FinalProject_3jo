@@ -90,10 +90,9 @@
 	         phoneno=#{phoneno},
 	         email=#{email},
 	         user_name=#{user_name},
-	         addr1=#{addr1}
+	         addr1=#{addr1},
 	         addr2=#{addr2}
-	     where
-	         user_id=#{user_id}
+	     where user_id=#{user_id}
 	</update>
 	
 	<!-- 회원탈퇴 -->
@@ -156,9 +155,15 @@
 	    select replyno
 	          , reply_content
 	          , reply_writedate
-	          , user_id
-	    from Reply_3jo
-	    where user_id=#{user_id}
+	          , r1.user_id
+	          , r1.tradeno
+	          , r2.sell_price
+	          , r2.deal_price
+	          , chatno
+	          , qnano
+	    from Reply_3jo r1 left join TradeBoard_3jo r2
+	    on r1.tradeno = r2.tradeno
+	    where r1.user_id=#{user_id}
 	    order by replyno desc
 	</select>
 	

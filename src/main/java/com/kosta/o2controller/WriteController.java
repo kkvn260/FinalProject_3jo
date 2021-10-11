@@ -1,22 +1,15 @@
 package com.kosta.o2controller;
 
 
-
-
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,12 +23,9 @@ import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
 import com.kosta.o2dto.O2LikeDTO;
-import com.kosta.o2dto.O2MainBoardDTO;
-import com.kosta.o2dto.O2Page;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
-import com.kosta.o2service.O2Service;
 import com.kosta.o2writeservice.O2WriteService;
 
 
@@ -44,9 +34,6 @@ public class WriteController {
 
 	@Autowired
 	private O2WriteService service;
-	
-	@Autowired
-	private O2Service o2service;
 
 	@RequestMapping("/write")
 	public String twrite(HttpSession session,Model model) {
@@ -55,6 +42,7 @@ public class WriteController {
 		model.addAttribute("id",id);
 		return "writeboard/twrite";
 	}
+	
 	@RequestMapping("/dwrite")
 	public String dwrite(HttpSession session,Model model) {
 		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
