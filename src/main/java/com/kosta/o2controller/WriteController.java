@@ -37,7 +37,6 @@ public class WriteController {
 
 	@RequestMapping("/write")
 	public String twrite(HttpSession session,Model model) {
-		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
 		String id=(String)session.getAttribute("user_id");
 		model.addAttribute("id",id);
 		return "writeboard/twrite";
@@ -45,7 +44,6 @@ public class WriteController {
 	
 	@RequestMapping("/dwrite")
 	public String dwrite(HttpSession session,Model model) {
-		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
 		String id=(String)session.getAttribute("user_id");
 		model.addAttribute("id",id);
 		return "writeboard/dwrite";
@@ -53,7 +51,6 @@ public class WriteController {
 	
 	@RequestMapping("/qwrite")
 	public String qwrite(HttpSession session,Model model) {
-		//아이디 가져와서 가입할때 주소 받기 >> 지도에 뿌림
 		String id=(String)session.getAttribute("user_id");
 		model.addAttribute("id",id);
 		return "writeboard/qwrite";

@@ -54,7 +54,6 @@ function remaindTime() {
    if(nt>et){ 
     $(".lefttime").text("입찰 마감");
     $(".time").fadeOut();
-    $("#deal_price").hide();
     $("#deal_btn").hide();
    }else{
      $(".time").fadeIn();
@@ -157,7 +156,7 @@ $(function () {
 	<li>
 		<label>현재 입찰가격</label>
 		<span id="ndeal_price">${price }</span><span>원</span>&ensp;
-		<label>입찰 희망가격</label>
+		<label >입찰 희망가격</label>
 		<input type="text" id="deal_price" class="deal_price" name="deal_price" onkeyup="numberWithCommas2(this.value)">원
 		<button id="deal_btn" >입찰하기</button>
 		<div style="float: right;">

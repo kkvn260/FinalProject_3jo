@@ -124,7 +124,7 @@
 	           ,user_id
 	     from TradeBoard_3jo
 	     where user_id=#{user_id} 
-	           and deal_price REGEXP '^[0-9]+$'
+	           and sell_price=""
 	     order by tradeno desc      
 	</select>
 	

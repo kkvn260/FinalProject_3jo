@@ -87,8 +87,8 @@ $(function () {
 	  
 	    //naver Map
 		var mapOptions = {
-			center : new naver.maps.LatLng(37.5088702, 126.8395384),
-			zoom : 15
+			center : new naver.maps.LatLng(37.5273873, 126.9789274),
+			zoom : 10
 		};
 
 		var map = new naver.maps.Map('map', mapOptions);
