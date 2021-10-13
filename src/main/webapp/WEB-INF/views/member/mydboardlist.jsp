@@ -8,19 +8,35 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
+   #mypagemainlist a:link{
+     text-decoration:none;
+     text-shadow: 2px 2px 2px pink;
+   }
+   #mypagemainlist{
+     text-shadow: 2px 2px 2px pink;
+     float:left;
+     width:950px;
+   }
    #mydboardlist{
-      float:right;
-      position:absolute;
-      right:360px;
-      top:220px;
-      width:950px;
+      margin-top:-300px;
+      margin-left:250px;
+      text-shadow: none;
    }
 </style>
 </head>
 <body>
 <br><br><br><br>
     <h3>나의 경매글</h3><hr>
-    <%@ include file="../member/mypagemainlist.jsp" %>
+    <br><br><br>
+	<div id="mypagemainlist">
+		<a href="${pageContext.request.contextPath }/myinfo">★ 내 정보</a><br><br>
+		<p>★ 내가 쓴 글</p>
+		<a href="${pageContext.request.contextPath }/mysboardlist">&nbsp;&nbsp; - 판매글</a><br>
+		<a href="${pageContext.request.contextPath }/mydboardlist">&nbsp;&nbsp; - 경매글</a><br>
+	    <a href="${pageContext.request.contextPath }/mydongboardlist">&nbsp;&nbsp; - 동네커뮤니티글</a><br>
+	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
+	    <a href="${pageContext.request.contextPath }/myreplylist">★ 내가 쓴 댓글</a>
+	    
 	<table class="table table-striped" id="mydboardlist">
 		<thead>
 			<tr>
@@ -48,5 +64,6 @@
 			</c:if>
 		</tbody>
 	</table>
+  </div>
 </body>
 </html>

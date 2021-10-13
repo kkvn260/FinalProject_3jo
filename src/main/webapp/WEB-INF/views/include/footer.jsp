@@ -11,7 +11,7 @@
 	<!-- 챗봇 -->
 	<div id="cb">
 		<a
-			href="https://console.dialogflow.com/api-client/demo/embedded/a20bbc1d-bc2d-42d1-9423-d5df37b93a4a"
+			href="https://console.dialogflow.com/api-client/demo/embedded/327796d1-e549-4a03-8bf1-c5992699a718"
 			target="_blank"> <img
 			src="${pageContext.request.contextPath }/resources/img/52cb.png"
 			width="70px" height="70px"></a>
