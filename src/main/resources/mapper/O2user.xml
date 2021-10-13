@@ -179,7 +179,8 @@
 			,birthday
 			,hint
 			,hintanswer
-			,addr
+			,addr1
+			,addr2
 			,gender
 			,grade
 		) VALUES (
@@ -190,6 +191,7 @@
 			,#{email}
 			,#{user_name}
 			,#{birthday}
+			,0
 			,0
 			,0
 			,0
