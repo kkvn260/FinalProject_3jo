@@ -232,12 +232,6 @@ $(document).ready(function(){
    				<input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="Confirm Password" required>
    			<div class="check_font" id="pw2_check"></div>
    		</div>
-   		<!-- nick_name -->
-   		<div class="form-group">
-   			<label for="nink_name">닉네임</label>
-   				<input type="text" class="form-control" id="nick_name" name="nick_name" placeholder="NickName" required>
-   			<div class="check_font" id="nickname_check"></div>
-   		</div>
    		<!-- phoneno -->
    		<div class="form-group">
    			<label for="phoneno">휴대폰번호 ('-' 없이 번호만 입력)</label>

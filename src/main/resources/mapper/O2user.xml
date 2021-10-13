@@ -9,7 +9,6 @@
 		INSERT INTO User_3jo (
 			user_id
 			,pwd
-			,nick_name
 			,phoneno
 			,email
 			,user_name
@@ -23,7 +22,6 @@
 		) VALUES (
 			#{user_id}
 			,#{pwd}
-			,#{nick_name}
 			,#{phoneno}
 			,#{email}
 			,#{user_name}
@@ -69,7 +67,6 @@
 	<!-- 마이페이지 리스트 -->
 	<select id="memberdetail" resultType="com.kosta.o2dto.O2UserDTO">
 	    select user_id,
-	           nick_name,
 	           phoneno,
 	           email,
 	           user_name,
@@ -87,7 +84,6 @@
 	<update id="modifyresult" parameterType="com.kosta.o2dto.O2UserDTO">
 	     update User_3jo
 	     set
-	         nick_name=#{nick_name},
 	         phoneno=#{phoneno},
 	         email=#{email},
 	         user_name=#{user_name},
@@ -173,7 +169,6 @@
 		INSERT INTO User_3jo (
 			user_id
 			,pwd
-			,nick_name
 			,phoneno
 			,email
 			,user_name
@@ -187,7 +182,6 @@
 		) VALUES (
 			#{user_id}
 			,0
-			,#{nick_name}
 			,#{phoneno}
 			,#{email}
 			,#{user_name}

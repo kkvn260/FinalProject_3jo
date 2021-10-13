@@ -284,7 +284,6 @@ public class UserController {
     	   String user_name=(String)response_obj.get("name");
     	   String gender=(String)response_obj.get("gender");
     	   String phoneno=(String)response_obj.get("mobile");
-    	   String nick_name=(String)response_obj.get("nickname");
     	   String birthday=(String)response_obj.get("birthday");
     
     	   session=request.getSession();
@@ -294,7 +293,6 @@ public class UserController {
            userdto.setGender(gender);
            userdto.setPhoneno(phoneno);
            userdto.setUser_name(user_name);
-           userdto.setNick_name(nick_name);
            userdto.setEmail(email);
            userdto.setBirthday(birthday);
            int result= service.userIdCheck(user_id);

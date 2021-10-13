@@ -16,8 +16,6 @@
 <thead>
    <tr><th>아이디</th>
        <th><input type="text" name="user_id" value="${list.user_id }" readonly="readonly"/></th></tr>
-   <tr><th>닉네임</th>
-       <th><input type="text" name="nick_name" value="${list.nick_name }"/></th></tr>
    <tr><th>핸드폰 번호</th>
        <th><input type="text" name="phoneno" value="${list.phoneno }"/></th></tr>
    <tr><th>이메일</th>

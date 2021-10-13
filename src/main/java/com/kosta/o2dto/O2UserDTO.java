@@ -14,7 +14,6 @@ public class O2UserDTO {
 
 	private String user_id;
 	private String pwd;
-	private String nick_name;
 	private String phoneno;
 	private String email;
 	private String user_name;
