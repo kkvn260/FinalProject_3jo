@@ -303,10 +303,19 @@ public class UserController {
               service.insertnaver(userdto);
            }
     	   model.addAttribute("result", apiResult);
-    	 
-    	
+    	   model.addAttribute("id",user_id);
+    	   int addrcheck=service.addrcheck(user_id);
+    	   if(addrcheck==1) {
+    		   model.addAttribute("login",user_id);
+    		   return "member/loginresult";
+    	   }
     	   return "member/naverloginresult";
     	
+       }
+       @RequestMapping("modiaddr")
+       public String modiaddr(O2UserDTO dto) {
+    	   	service.modiaddr(dto);
+    	   return "redirect:mainpage";
        }
        
 

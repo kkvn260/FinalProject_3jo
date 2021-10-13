@@ -49,6 +49,7 @@
 		 where user_id = #{user_id}
 		 and pwd = #{pwd}   
 	</select>
+	
 	<!-- 아이디찾기 -->
 	<select id="findidcheck" parameterType="java.util.HashMap" resultType="string">
 		select user_id
@@ -199,4 +200,19 @@
 			,0
 		)
 	</insert>
+	
+	<update id="modiaddr" parameterType="com.kosta.o2dto.O2UserDTO">
+	     update User_3jo
+	     set
+	         addr1=#{addr1},
+	         addr2=#{addr2}
+	     where user_id=#{user_id}
+	</update>
+	
+	<select id="addrcheck" parameterType="String" resultType="String">
+		select addr1
+		from User_3jo
+		where user_id=#{user_id}
+	</select>
+	
 </mapper>

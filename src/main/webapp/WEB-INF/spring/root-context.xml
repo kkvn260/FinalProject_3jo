@@ -20,6 +20,8 @@
      <property name="password" value="${pwd}"></property>
   </bean>
   
+  
+  
   <bean name="ds" class="com.zaxxer.hikari.HikariDataSource" 
             destroy-method="close">
        <constructor-arg ref="dbconf"></constructor-arg>

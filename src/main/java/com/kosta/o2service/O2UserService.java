@@ -117,5 +117,20 @@ public class O2UserService {
 		userdao.insertnaver(userdto);
 	}
 
+	public void modiaddr(O2UserDTO dto) {
+		// TODO Auto-generated method stub
+		userdao.modiaddr(dto);
+	}
+
+	public int addrcheck(String user_id) {
+		// TODO Auto-generated method stub
+		String check=userdao.addrcheck(user_id);
+		int result=0;
+		if(!check.equals("0")) {
+			result=1;
+		}
+		return result;
+	}
+
 
 }
