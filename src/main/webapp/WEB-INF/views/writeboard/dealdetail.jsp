@@ -166,6 +166,7 @@ $(function () {
 		<c:if test="${result eq null }">
 		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/빈하트.png" width="30px" height="30px">
 		</c:if>
+		<span class="likeno">좋아요 수 : ${list.likeno }</span>
 		</div>
 	</li>
 	<li>
@@ -264,12 +265,14 @@ $(function () {
 				,data: JSON.stringify(data1)
 				,contentType:"application/json;charset=utf-8"
 				,success:function(data){
-					if(data!=1){
+					if(data[0]==0){
 						alert("이 글을 좋아요 하였습니다.");
 						$(".like_btn").attr("src","${pageContext.request.contextPath}/resources/img/하트.png");
+						$(".likeno").text("좋아요 수 : "+data[1]);
 					}else{
 						alert("좋아요를 취소하였습니다.");	
 						$(".like_btn").attr("src","${pageContext.request.contextPath}/resources/img/빈하트.png");
+						$(".likeno").text("좋아요 수 : "+data[1]);
 					}
 				},error:function(err){
 					console.log("에러");

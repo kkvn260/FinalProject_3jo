@@ -3,6 +3,7 @@ package com.kosta.o2controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -235,12 +236,15 @@ public class WriteController {
 		String price=service.getprice(no);
 		String id=(String)session.getAttribute("user_id");
 		List<O2ReplyDTO> list3=service.treplydetail(no);
+		O2LikeDTO check=new O2LikeDTO(id,no);
+		O2LikeDTO result=service.tlikecheck2(check);
 		
 		model.addAttribute("id",id);
 		model.addAttribute("price",price);
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
+		model.addAttribute("result",result);
 		
 		return "writeboard/dealdetail";
 	}
@@ -520,9 +524,9 @@ public class WriteController {
 	
 	@PostMapping("tlike")
 	@ResponseBody
-	public int tlike(@RequestBody O2LikeDTO dto) {
+	public List<Integer> tlike(@RequestBody O2LikeDTO dto) {
 		O2LikeDTO result=service.tlikecheck(dto);
-		int t = 1;
+		int t=1;
 		if(result==null) {
 			t=0;
 			service.tlikeinsert(dto);
@@ -531,7 +535,11 @@ public class WriteController {
 			service.tlikedelete(dto);
 			service.tlikecountdel(dto);
 		}
-		return t;
+		int total=service.tliketotal(dto.getTradeno());
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(t);
+		list.add(total);
+		return list;
 	}
 	
 	@PostMapping("dlike")

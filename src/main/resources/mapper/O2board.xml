@@ -32,6 +32,7 @@
 		,sell_price
 		,deal_price
 		,user_id
+		,likeno
 		,writedate
 		from TradeBoard_3jo
 		where tradeno=#{no}
@@ -334,6 +335,7 @@
 		,category2
 		,map_x,map_y
 		,content
+		,likeno
 		,user_id
 		,writedate
 		from
@@ -811,5 +813,11 @@
 		( #{item.item_name}, #{item.price}, #{item.product_no} ,sysdate())
 		</foreach>
     </insert>
+    
+    <select id="tliketotal" parameterType="int" resultType="int">
+    	select count(*)
+    	from Like_3jo
+    	where tradeno=#{tradeno}
+    </select>
 
 </mapper>

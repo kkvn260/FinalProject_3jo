@@ -176,6 +176,8 @@ public interface O2WriteDAO {
 
 	void dealdelete2(int no);
 
-	int getMobileData(List<MobileVo> mobileList);	
+	int getMobileData(List<MobileVo> mobileList);
+
+	int tliketotal(int tradeno);	
 	
 }

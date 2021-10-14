@@ -110,6 +110,8 @@ public interface O2WriteService {
 
 	public void dlikecountdel(O2LikeDTO dto);
 
+	public int tliketotal(int tradeno);
+
 
 
 }

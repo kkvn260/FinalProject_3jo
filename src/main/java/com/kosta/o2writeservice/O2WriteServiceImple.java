@@ -435,4 +435,10 @@ public class O2WriteServiceImple implements O2WriteService {
 		dao.dlikecountdel(dto);
 	}
 
+	@Override
+	public int tliketotal(int tradeno) {
+		// TODO Auto-generated method stub
+		return dao.tliketotal(tradeno);
+	}
+
 }
