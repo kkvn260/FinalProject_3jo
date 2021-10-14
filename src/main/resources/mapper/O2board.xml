@@ -819,5 +819,11 @@
     	from Like_3jo
     	where tradeno=#{tradeno}
     </select>
+    
+    <select id="dliketotal" parameterType="int" resultType="int">
+    	select count(*)
+    	from Like_3jo
+    	where chatno=#{chatno}
+    </select>
 
 </mapper>

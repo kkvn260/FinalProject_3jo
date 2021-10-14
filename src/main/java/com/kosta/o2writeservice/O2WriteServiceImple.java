@@ -441,4 +441,10 @@ public class O2WriteServiceImple implements O2WriteService {
 		return dao.tliketotal(tradeno);
 	}
 
+	@Override
+	public int dliketotal(int chatno) {
+		// TODO Auto-generated method stub
+		return dao.dliketotal(chatno);
+	}
+
 }

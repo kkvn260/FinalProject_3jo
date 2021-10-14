@@ -112,6 +112,8 @@ public interface O2WriteService {
 
 	public int tliketotal(int tradeno);
 
+	public int dliketotal(int chatno);
+
 
 
 }

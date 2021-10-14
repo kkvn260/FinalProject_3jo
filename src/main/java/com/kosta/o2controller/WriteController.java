@@ -555,6 +555,10 @@ public class WriteController {
 			service.dlikedelete(dto);
 			service.dlikecountdel(dto);
 		}
+		int total=service.dliketotal(dto.getChatno());
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(t);
+		list.add(total);
 		return t;
 	}
 	

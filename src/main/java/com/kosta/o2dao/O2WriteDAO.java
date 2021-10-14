@@ -178,6 +178,8 @@ public interface O2WriteDAO {
 
 	int getMobileData(List<MobileVo> mobileList);
 
-	int tliketotal(int tradeno);	
+	int tliketotal(int tradeno);
+
+	int dliketotal(int chatno);	
 	
 }
