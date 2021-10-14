@@ -447,4 +447,10 @@ public class O2WriteServiceImple implements O2WriteService {
 		return dao.dliketotal(chatno);
 	}
 
+	@Override
+	public O2DealDTO dealresult(int tradeno) {
+		// TODO Auto-generated method stub
+		return dao.dealresult(tradeno);
+	}
+
 }

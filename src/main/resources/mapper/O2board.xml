@@ -825,5 +825,19 @@
     	from Like_3jo
     	where chatno=#{chatno}
     </select>
+    
+    <select id="maillist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
+    	select writedate
+    			,tradeno
+    	from TradeBoard_3jo
+    	where sell_price = ''
+    </select>
+    
+    <select id="dealresult" resultType="com.kosta.o2dto.O2DealDTO" parameterType="int">
+    	select user_id 
+    	from Deal_3jo
+    	where tradeno=#{tradeno}
+    	order by dealno desc limit 1
+    </select>
 
 </mapper>

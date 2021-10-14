@@ -26,5 +26,7 @@ public interface O2Service {
 
 	List<String> getTopSearch();
 
+	List<O2WriteBoardDTO> maillist();
+
 
 }

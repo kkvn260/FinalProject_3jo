@@ -102,6 +102,12 @@ public class O2ServiceImple implements O2Service {
 	public List<String> getTopSearch() {
 		return dao.getTopSearch();
 	}
+
+	@Override
+	public List<O2WriteBoardDTO> maillist() {
+		// TODO Auto-generated method stub
+		return dao.maillist();
+	}
 	
 	
 

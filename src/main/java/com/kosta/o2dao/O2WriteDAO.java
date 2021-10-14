@@ -180,6 +180,10 @@ public interface O2WriteDAO {
 
 	int tliketotal(int tradeno);
 
-	int dliketotal(int chatno);	
+	int dliketotal(int chatno);
+
+	List<O2WriteBoardDTO> maillist();
+
+	O2DealDTO dealresult(int tradeno);	
 	
 }

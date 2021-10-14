@@ -114,6 +114,8 @@ public interface O2WriteService {
 
 	public int dliketotal(int chatno);
 
+	public O2DealDTO dealresult(int tradeno);
+
 
 
 }
