@@ -26,7 +26,7 @@
 	<li>
 		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<label>제목</label>
-		<input type="text" id="title" name="title" placeholder="제목">
+		<input type="text" id="title" name="title" placeholder="제목" required>
 	</li>
 		<li>
 			<div class="filebody">

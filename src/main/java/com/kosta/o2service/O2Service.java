@@ -28,5 +28,9 @@ public interface O2Service {
 
 	List<O2WriteBoardDTO> maillist();
 
+	String getmail(String user_id);
+
+	void dealmail(String getmail, String title);
+
 
 }

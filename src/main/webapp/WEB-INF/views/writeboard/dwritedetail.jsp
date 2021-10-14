@@ -66,7 +66,7 @@ li input{
 	</li>
 	<li>
 		<c:if test="${list2!=null }">
-		<label>첨부 사진</label>
+		<label>첨부 사진</label><span style="font-size: 15px;">사진 클릭시 확대해서 볼 수 있습니다.</span>
 		<div class="preview">
 			<c:forEach var="item" items="${list2 }">
 				<div class="preview-box">
@@ -148,8 +148,8 @@ li input{
 $(function () {
 	$(".like_btn").on("click",function(){
 		let id=$("#user_id").val();
-		let tradeno=${list.tradeno}
-		let data1={user_id:id,tradeno:tradeno};
+		let chatno=${list.chatno}
+		let data1={user_id:id,chatno:chatno};
 		if(id == null){
 			alert("로그인이 필요합니다.");
 		}else{

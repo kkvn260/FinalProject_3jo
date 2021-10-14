@@ -184,6 +184,8 @@ public interface O2WriteDAO {
 
 	List<O2WriteBoardDTO> maillist();
 
-	O2DealDTO dealresult(int tradeno);	
+	O2DealDTO dealresult(int tradeno);
+
+	String getmail(String user_id);	
 	
 }

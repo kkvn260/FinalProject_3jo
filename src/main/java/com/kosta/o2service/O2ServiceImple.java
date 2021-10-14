@@ -1,10 +1,16 @@
 package com.kosta.o2service;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2WriteDAO;
@@ -15,6 +21,12 @@ import com.kosta.o2dto.O2WriteBoardDTO;
 public class O2ServiceImple implements O2Service {
 	@Resource(name = "o2WriteDAO")
 	private O2WriteDAO dao;
+	
+	@Autowired
+	private JavaMailSender javamailSender;
+	public void setJavaMailSender(JavaMailSender javaMailSender) {
+		this.javamailSender = javaMailSender;
+	}
 
 	@Override
 	public void twriteinsert(O2WriteBoardDTO dto) {
@@ -107,6 +119,30 @@ public class O2ServiceImple implements O2Service {
 	public List<O2WriteBoardDTO> maillist() {
 		// TODO Auto-generated method stub
 		return dao.maillist();
+	}
+
+	@Override
+	public String getmail(String user_id) {
+		// TODO Auto-generated method stub
+		return dao.getmail(user_id);
+	}
+
+	@Override
+	public void dealmail(String getmail, String title) {
+		// TODO Auto-generated method stub
+		MimeMessage message = javamailSender.createMimeMessage();
+		try
+		{
+			MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
+			helper.setSubject("오이마켓 입찰완료 안내입니다.");
+			helper.setText("경매글 '"+title+"' 입찰에 성공하셨습니다. 판매자와 연락을 취해주세요!",true);
+			helper.setFrom("02o252@naver.com");
+			helper.setTo(getmail);
+			javamailSender.send(message);
+			
+		}catch(MessagingException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

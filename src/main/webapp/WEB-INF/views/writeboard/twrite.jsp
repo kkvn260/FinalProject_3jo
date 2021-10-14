@@ -26,6 +26,16 @@ $(function () {
 })
 
 </script>
+<style>
+.btn1{
+	background-color: white;
+	border: none;
+}
+.btn1:hover{
+	color: green;
+	text-decoration: underline;
+}
+</style>
 <body>
 <br><br><br><br>
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
@@ -38,7 +48,7 @@ $(function () {
 	<li>
 		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<label>제목</label>
-		<input type="text" id="title" name="title" placeholder="제목">
+		<input type="text" id="title" name="title" placeholder="제목" required>
 	</li>
 	<li>
 		<label>판매 희망가격</label>
@@ -75,8 +85,8 @@ $(function () {
 		</div>
 	</li>
 	<li>
-		<input type="submit" value="등록">
-		<input type="button" value="취소">
+		<input type="submit" value="등록" class="btn1">
+		<input type="button" value="취소" class="btn1">
 	</li>
 </ul><br><br><br><br>
 

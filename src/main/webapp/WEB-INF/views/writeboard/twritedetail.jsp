@@ -71,7 +71,7 @@ li input{
 	</li>
 	<li>
 		<c:if test="${list2!=null }">
-		<label>첨부 사진</label>
+		<label>첨부 사진</label><span style="font-size: 15px;"> (사진 클릭시 확대해서 볼 수 있습니다.)</span>
 		<div class="preview">
 			<c:forEach var="item" items="${list2 }">
 				<div class="preview-box">

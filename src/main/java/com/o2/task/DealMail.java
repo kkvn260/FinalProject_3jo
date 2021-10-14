@@ -32,22 +32,19 @@ public class DealMail {
 //	int min=date.getMinutes();
 //	int sec=date.getSeconds();
 	
-	@Scheduled(cron = "* 0/1 * * * *")
+	@Scheduled(cron = "0 0/1 * * * *")
 	public void dealresult() throws ParseException {
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		List<O2WriteBoardDTO> dto=service.maillist();
 		Date date=new Date();
-//		System.out.println(dto.size());
 		for(O2WriteBoardDTO list:dto) {
 			Date listdate = sdFormat.parse(list.getWritedate());
 			long r1 = date.getTime();
 			long r2=listdate.getTime();
 			O2DealDTO dto2=service2.dealresult(list.getTradeno());
-//			System.out.println(dto2.getUser_id());
+			String getmail=service.getmail(dto2.getUser_id());
 			if(r1==r2) {
-				 
-			}else {
-//				System.out.println("다름");
+				service.dealmail(getmail,list.getTitle());
 			}
 		}
 		

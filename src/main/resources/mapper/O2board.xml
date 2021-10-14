@@ -829,6 +829,7 @@
     <select id="maillist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
     	select writedate
     			,tradeno
+    			,title
     	from TradeBoard_3jo
     	where sell_price = ''
     </select>
@@ -839,5 +840,11 @@
     	where tradeno=#{tradeno}
     	order by dealno desc limit 1
     </select>
-
+	
+	<select id="getmail" parameterType="String" resultType="String">
+		select email
+		from User_3jo
+		where user_id=#{user_id}
+	</select>
+	
 </mapper>
