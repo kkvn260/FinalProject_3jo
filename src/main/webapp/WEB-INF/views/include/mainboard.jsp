@@ -97,7 +97,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top--transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">보러가기</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="dwritedetail/${item.chatno }">보러가기</a></div>
                             </div>
                         </div>
                     </div>
