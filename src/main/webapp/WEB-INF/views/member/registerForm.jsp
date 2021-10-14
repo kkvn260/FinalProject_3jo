@@ -188,7 +188,7 @@ $(document).ready(function(){
 				
 			} else{
 				alert('입력한 정보들을 다시 한번 확인해주세요 :)')
-				location.href="${pageContext.request.contextPath}/member/registerForm"
+				location.href="${pageContext.request.contextPath}/registerForm"
 				
 			}
 		});
