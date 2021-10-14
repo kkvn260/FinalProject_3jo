@@ -14,15 +14,13 @@ import com.kosta.o2dto.O2WriteBoardDTO;
 
 @Mapper
 public interface O2UserDAO {
-		
-
 	int signUser(O2UserDTO userdto) throws SQLException;//�쉶�썝媛��엯
 	// int searchPassword(String user_id, String email,String key);//�쉶�썝�엫�떆 鍮꾨�踰덊샇
 	O2UserDTO login(O2UserDTO userdto) throws Exception;
 	int checkUserId(String user_id); //�븘�씠�뵒以묐났泥댄겕
 	//아이디 비밀번호 찾기
 	String findidcheck(HashMap<String, String> hm);
-	String findpwdcheck(HashMap<String, String> hm);
+	O2UserDTO findAccount(String email);
 	O2UserDTO memberdetail(String user_id);
 	void modifyresult(O2UserDTO list);
     int delete(String user_id);
@@ -34,4 +32,11 @@ public interface O2UserDAO {
 	void insertnaver(O2UserDTO userdto);
 	void modiaddr(O2UserDTO dto);
 	String addrcheck(String user_id);
+	void findpwdupdate(HashMap<String, String> hm);
+	
+	
+
+	
+	
+	
 }

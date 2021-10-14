@@ -4,7 +4,7 @@ package com.kosta.o2controller;
 
 import java.io.IOException;
 import java.util.List;
-
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
@@ -126,19 +127,36 @@ public class UserController {
 			return result;
 		}
 		//pwd
-		@RequestMapping(value = "member/findpwd", method = RequestMethod.GET)
+		
+		@GetMapping(value = "/findpwd")
 		public String findpwdpage() {
 			return "member/findpwd";
 		}
-		@PostMapping(value = "member/findpwdresult")
-		public String findpwd(@RequestBody O2UserDTO dto) {
-			System.out.println("user_id!!"+dto.getUser_id());
-			System.out.println("hint!!"+dto.getHint());
-			String result=service.findpwd(dto.getUser_id(),dto.getHint());
-			System.out.println("result:"+result);
-			return result;
-		}
+		@PostMapping(value = "/findpwd")
+		public String findpwdSend(HttpSession session,@RequestParam (required=false)String email,RedirectAttributes ra) {
+			O2UserDTO member = service.findAccount(email);
+			System.out.println("email"+email);
+			String path="";
+			if(member ==null) {
+				ra.addFlashAttribute("resultMsg","입력하신 이메일로 가입된 정보가 없습니다.");
+				path= "member/findpwd";
+			}else {
+			
+			int ran = new Random().nextInt(100000)+10000;
+			String pwd=  String.valueOf(ran);
+			
+			service.findpwdupdate(email,pwd);
+			String subject = "임시 비밀번호 발급 안내입니다.";
+			StringBuilder sb = new StringBuilder();
+			sb.append("귀하의 임시 비밀번호는"+pwd+"입니다.");
+			service.send(subject, sb.toString(), "02o252@naver.com",email, null);
+			ra.addFlashAttribute("resultMsg","귀하의 이메일 주소로 새로운 임시 비밀번호를 발송하였습니다.");
 		
+		path= "member/findpwdresult";
+			
+		}
+			return path;
+		}
 
 		//마이페이지
 		@RequestMapping(value="/myinfo")

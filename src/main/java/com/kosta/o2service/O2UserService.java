@@ -1,10 +1,20 @@
 package com.kosta.o2service;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
+
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2UserDAO;
@@ -13,6 +23,7 @@ import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2UserDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
+import com.mchange.net.MailSender;
 
 
 @Service
@@ -21,7 +32,36 @@ public class O2UserService {
 	
 	@Autowired
 	private O2UserDAO userdao;
-	
+	//mail
+	@Autowired
+	private JavaMailSender javamailSender;
+	public void setJavaMailSender(JavaMailSender javaMailSender) {
+		this.javamailSender = javaMailSender;
+	}
+	public boolean send(String subject,String text, String from,String to, String filePath) {
+		MimeMessage message = javamailSender.createMimeMessage();
+		try
+		{
+			MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
+			helper.setSubject(subject);
+			helper.setText(text,true);
+			helper.setFrom(from);
+			helper.setTo(to);
+			
+			if(filePath !=null) {
+				File file =new File(filePath);
+				if(file.exists()) {
+					helper.addAttachment(file.getName(), new File(filePath));
+					
+				}
+			}
+			javamailSender.send(message);
+			return true;
+		}catch(MessagingException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	//�쉶�썝媛��엯
 	public int signUser(O2UserDTO userdto) {
 		int resultcount =0;
@@ -60,13 +100,7 @@ public class O2UserService {
 		return userdao.findidcheck(hm);
 		
 	}
-	public String findpwd(String user_id, String hint) {
-		// TODO Auto-generated method stub
-		HashMap<String, String> hm=new HashMap<String, String>();
-		hm.put("user_id", user_id);
-		hm.put("hint", hint);
-		return userdao.findpwdcheck(hm);
-	}
+	
 	public O2UserDTO membermdetail(String user_id) {
 		// TODO Auto-generated method stub
 		return userdao.memberdetail(user_id);
@@ -132,5 +166,32 @@ public class O2UserService {
 		return result;
 	}
 
+	
+	public O2UserDTO findAccount(String email) {
+		// TODO Auto-generated method stub
+		return userdao.findAccount(email);
+	}
+	public void findpwdupdate(String email, String pwd) {
+		// TODO Auto-generated method stub
+		HashMap<String,String> hm = new HashMap<String, String>();
+		hm.put("email", email);
+		hm.put("pwd", pwd);
+		 userdao.findpwdupdate(hm);
+		
+	}
+	
+		
+	
+
 
 }
+	
+
+	
+
+
+			
+		
+	
+
+

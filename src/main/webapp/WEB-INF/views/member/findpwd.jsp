@@ -12,11 +12,7 @@ h2{
 	font-weight: bold;
 	color: darkgreen;
 	}
-#line{
-	margin:100px;
-	
-	width: 1000px;
-}
+
 input{
 	width: 300px;
 	height: 50px;
@@ -26,8 +22,16 @@ input{
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
-selection{
-	border-bottom-right-radius: 5px;
+#pwdfindbtn{
+	width: 360px;
+	background-color: #f1db90;
+	border: 2px solid #576d64;
+	color: black;
+	font-weight: bold;
+}
+#content{
+ 	width: 600px;
+ 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -35,51 +39,37 @@ selection{
 
 </style>
 
-<script>
-$(document).ready(function(){
-$('#cancel').click(function(){
-	var url = "${pageContext.request.contextPath}/login";
-	$(location).attr('href',url);
-});
 
-
-
-});
-</script>
 </head>
 <body>
 <br><br><br><br>
-<div id= "container">
-<div id="title" align="center">
-<h2>비밀번호 찾기</h2>
-</div>
-<div id="line" align="center" style="border: 2px solid darkgreen"></div>
-<div id="findpwd_form" align="center">
-<div class="form-group" align="center">
-<label for="user_id">아이디</label>
-<input type="text" id="user_id" name="user_id" placeholder="ID" required><br>
-</div>
-<div class="form-group" align="center">
-<label for="hint">비밀번호 질문</label>
-<div id="result"></div>
-</div>
-<div class="form-group" align="center">
-<label for="answer">답변</label>
-<input type="text" id="hint" name="hint" placeholder="answer" required><br>
-</div>
-<div id="searchbtn" align="center">
-<button type="button" id="cancel" style="width: 200px; height: 50px; background-color:darkgreen; color: white" >취소</button>
-<button type="button" id="pwsearchbtn" style="width: 200px; height: 50px; background-color:darkgreen; color: white" >확인</button>
-</div>
+<div id= "container" align="center" >
+<br><br>
+
+<form id="content" action="findpwd" method="post" style="border: 2px solid silver">
+	<div class="subtitle" align="center" style="font-weight: bold;">
+		<h2>로그인에 문제가 있나요?</h2>
+		<p>가입한 이메일을 입력하면 다시 계정에 로그인 할 수 있는 임시 비밀번호를 보내드립니다.</p>
+	</div>
+	<div class="input" align="center">
+	<label for="email">이메일</label>
+		<input type="email" id="email" name="email" required="">
+		
+	   
+	</div><br><br>
+	<div id="btn" align="center">
+	<input type="submit" id="pwdfindbtn" value="비밀번호찾기">
+	</div>
+	<br>
+	<div id="loginbtn" align="center" style="font-weight: bold">
+		<a href="${pageContext.request.contextPath }/login">로그인으로 돌아가기</a>
+	</div>
+</form>
+
 </div>
 
 
 
-
-
-
-
-</div>
 
 </body>
 </html>

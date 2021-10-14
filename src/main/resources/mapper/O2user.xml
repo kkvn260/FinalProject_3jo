@@ -13,8 +13,6 @@
 			,email
 			,user_name
 			,birthday
-			,hint
-			,hintanswer
 			,addr1
 			,addr2
 			,gender
@@ -26,8 +24,6 @@
 			,#{email}
 			,#{user_name}
 			,#{birthday}
-			,#{hint}
-			,#{hintanswer}
 			,#{addr1}
 			,#{addr2}
 			,#{gender}
@@ -58,11 +54,15 @@
 		
 	</select>
 	<!-- 비밀번호 찾기 -->
-	<update id="findpwdcheck" parameterType="java.util.HashMap">
-		update frome User_3jo
-		set pwd=#{pwd}
-		where user_id=#{user_id}
-		and   hint=#{hint}
+	<select id="findAccount" resultType="com.kosta.o2dto.O2UserDTO">
+		select email
+		from User_3jo
+		where email=#{email}
+	</select>
+	<update id="findpwdupdate" parameterType="java.util.HashMap">
+	update User_3jo
+	set pwd=#{pwd}
+	where email=#{email}
 	</update>
 	<!-- 마이페이지 리스트 -->
 	<select id="memberdetail" resultType="com.kosta.o2dto.O2UserDTO">
@@ -73,7 +73,6 @@
 	           birthday,
 	           addr1,
 	           addr2,
-	           hint,
 	           gender,
 	           grade
 	    from User_3jo
@@ -173,8 +172,6 @@
 			,email
 			,user_name
 			,birthday
-			,hint
-			,hintanswer
 			,addr1
 			,addr2
 			,gender

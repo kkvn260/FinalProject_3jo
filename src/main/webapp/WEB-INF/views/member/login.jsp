@@ -80,14 +80,17 @@
              <div id="naver_id_login" style="text-align:center">
              <a href="${pageContext.request.contextPath }/naverlogin"> 
                 <img width="300" height="50" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
-             </div> <br>
-
+             </div> 
+			<div id="kakao_id_login" style="text-align:center">
+             <a href="${pageContext.request.contextPath }/kakaologin"> 
+                <img width="250" height="38" style="margin-top: 5px" src="${pageContext.request.contextPath}/resources/img/kakao_login_medium_narrow.png"/></a>
+             </div>
             	
                 <a href="${pageContext.request.contextPath }/registerForm" id="register">회원가입</a>
                 <span id="reoe">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 				<a href="${pageContext.request.contextPath }/member/findid" id="idfind">ID찾기</a>
 				<span id="reoe">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-				<a href="${pageContext.request.contextPath }/member/findpwd" id="pwfind">PW찾기</a>
+				<a href="${pageContext.request.contextPath }/findpwd" id="pwfind">PW찾기</a>
         	</div> 
     	</form>
     	</div>
