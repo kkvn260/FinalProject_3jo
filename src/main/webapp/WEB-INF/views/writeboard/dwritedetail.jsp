@@ -78,7 +78,7 @@ li input{
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="14" cols="68" class="left" readonly>${list.content }</textarea>
+		<textarea rows="14" cols="68" class="left" readonly style="resize: none;">${list.content }</textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px">장소</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>
@@ -134,7 +134,7 @@ li input{
 				<form action="${pageContext.request.contextPath }/dreplyresult" method="post">
 				<input type="hidden" id="chatno" name="chatno" value="${list.chatno }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
+				<textarea style="resize: none;" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록">
 				</form><br><br><br><br>
 			</div>
@@ -200,7 +200,7 @@ $(function () {
 				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/dreplychildinsert'>";
 	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
 				p+="<input type='hidden' name='chatno' value='"+${list.chatno }+"'>";
-				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px;'></textarea>";
+				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px; resize: none;'></textarea>";
 				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
 				p+="<input type='hidden' name='reparent' value='"+no+"'>";
 				p+="<input type='submit' value='댓글달기'>";

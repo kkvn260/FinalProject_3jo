@@ -62,7 +62,7 @@
 			<div class="clear"></div>
 		</li>
 	<li>
-		<textarea rows="20" cols="100" name="content">${list.content }</textarea>
+		<textarea rows="20" cols="100" name="content" style="resize: none;">${list.content }</textarea>
 	</li>
 	<li>
 		<input type="submit" value="등록">

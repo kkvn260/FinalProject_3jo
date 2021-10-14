@@ -44,7 +44,7 @@
 			</div>
 		</li>
 	<li>
-		<textarea rows="20" cols="100" name="content" id="content"></textarea>
+		<textarea rows="20" cols="100" name="content" id="content" style="resize: none;" required></textarea>
 	</li>
 	<li>
 		<input type="submit" value="등록">

@@ -55,7 +55,7 @@
 			<div class="clear"></div>
 		</li>
 	<li>
-		<textarea rows="14" cols="68" class="left" name="content">${list.content }</textarea>
+		<textarea rows="14" cols="68" class="left" name="content" style="resize: none;">${list.content }</textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px">장소 설정</label>
 		<p id="map" style="width: 500px; height: 400px;"></p>

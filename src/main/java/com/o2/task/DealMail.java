@@ -37,17 +37,17 @@ public class DealMail {
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		List<O2WriteBoardDTO> dto=service.maillist();
 		Date date=new Date();
-		System.out.println(dto.size());
+//		System.out.println(dto.size());
 		for(O2WriteBoardDTO list:dto) {
 			Date listdate = sdFormat.parse(list.getWritedate());
 			long r1 = date.getTime();
 			long r2=listdate.getTime();
 			O2DealDTO dto2=service2.dealresult(list.getTradeno());
-			System.out.println(dto2.getUser_id());
+//			System.out.println(dto2.getUser_id());
 			if(r1==r2) {
 				 
 			}else {
-				System.out.println("다름");
+//				System.out.println("다름");
 			}
 		}
 		
