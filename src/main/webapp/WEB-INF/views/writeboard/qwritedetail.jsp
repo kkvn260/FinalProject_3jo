@@ -65,7 +65,7 @@ li input{
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="20" cols="100"  readonly>${list.content }</textarea>
+		<textarea rows="20" cols="100"  readonly style="resize: none;">${list.content }</textarea>
 	</li>
 	<li>
 	<div class="clear"></div>
@@ -117,7 +117,7 @@ li input{
 				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
 				<input type="hidden" id="qnano" name="qnano" value="${list.qnano }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
+				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
 				<input type="submit" value="등록">
 				</form><br><br><br><br>
 			</div>
@@ -150,7 +150,7 @@ $(function () {
 				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/qreplychildinsert'>";
 	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
 				p+="<input type='hidden' name='qnano' value='"+${list.qnano }+"'>";
-				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px;'></textarea>";
+				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px; resize: none;'></textarea>";
 				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
 				p+="<input type='hidden' name='reparent' value='"+no+"'>";
 				p+="<input type='submit' value='댓글달기'>";
