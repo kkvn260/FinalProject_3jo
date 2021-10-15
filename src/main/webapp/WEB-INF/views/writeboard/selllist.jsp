@@ -72,7 +72,7 @@
 	</span>
   <c:if test="${id!=null }">
   <a href="write" class="btn btn-success pull-right">글쓰기</a><br>
-  
+  <select name="addr2" id="addr2"></select><th>
   </c:if>
 
 

@@ -10,7 +10,7 @@
 <style>
  #login{
    font-size:20px;
-   color:#FFCC00;
+   color:blue;
  }
 </style>
 <body>

@@ -6,11 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
   #myinfo2{
       align:center;
       margin:0 auto;
       width:1400px;
+    
+    }
 </style>
 </head>
 <body>
@@ -33,7 +36,7 @@
        <th><input type="text" name="birthday" value="${list.birthday }" readonly="readonly"/></th></tr>
    <tr><th>주소</th>
        <th><input type="text" value="${list.addr1 }/${list.addr2 }" readonly/></th></tr>
-   <tr><th></th><th><select name="addr1" id="addr1"></select>
+   <tr><th></th><th>	<select name="addr1" id="addr1"></select>
    				<select name="addr2" id="addr2"></select><th></tr>
    <tr><th>성별</th>
        <th><c:out value="${list.gender }"/></th></tr>

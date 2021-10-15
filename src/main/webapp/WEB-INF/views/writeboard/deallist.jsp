@@ -12,10 +12,6 @@
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
    h2 a{text-shadow: none;}
- td a{
-	color: green;
-    font-family: 'Sunflower', sans-serif;
- }
  #deallist{
       align:center;
       margin:0 auto;

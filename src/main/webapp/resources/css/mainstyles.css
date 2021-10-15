@@ -338,7 +338,6 @@ button:focus:not(:focus-visible) {
 
 input,
 button,
-select,
 optgroup,
 textarea {
   margin: 0;
@@ -347,8 +346,7 @@ textarea {
   line-height: inherit;
 }
 
-button,
-select {
+button {
   text-transform: none;
 }
 
@@ -356,12 +354,6 @@ select {
   cursor: pointer;
 }
 
-select {
-  word-wrap: normal;
-}
-select:disabled {
-  opacity: 1;
-}
 
 [list]::-webkit-calendar-picker-indicator {
   display: none;

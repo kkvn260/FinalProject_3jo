@@ -31,9 +31,16 @@ h1{
 		padding-left: 30px;
 
 }
+ #reg2{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    
+    }
 </style>
 </head>
 <body>
+<div id="reg2">
 <br><br><br><br>
 
  
@@ -47,6 +54,7 @@ h1{
 
  
  <a href="${pageContext.request.contextPath }/login" id="loginpg">로그인페이지로 </a>
+ </div>
  </div>
 </body>
 </html>

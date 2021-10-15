@@ -349,29 +349,20 @@ button:focus:not(:focus-visible) {
 
 input,
 button,
-select,
 optgroup,
 textarea {
-  margin: 0;
+  
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
 
-button,
-select {
+button{
   text-transform: none;
 }
 
 [role=button] {
   cursor: pointer;
-}
-
-select {
-  word-wrap: normal;
-}
-select:disabled {
-  opacity: 1;
 }
 
 [list]::-webkit-calendar-picker-indicator {
@@ -7070,12 +7061,6 @@ progress {
           user-select: auto !important;
 }
 
-.user-select-none {
-  -webkit-user-select: none !important;
-     -moz-user-select: none !important;
-      -ms-user-select: none !important;
-          user-select: none !important;
-}
 
 .pe-none {
   pointer-events: none !important;

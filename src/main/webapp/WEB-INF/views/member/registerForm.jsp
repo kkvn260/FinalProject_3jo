@@ -198,7 +198,7 @@ $(document).ready(function(){
 			}
 			
 			if(validAll){ // 유효성 모두 통과
-				 $("#registerForm").attr("action", "registersucess");
+				 $("#registerForm").attr("action", "registersuccess");
 		            $("#registerForm").submit();
 				
 			} else{
