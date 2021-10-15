@@ -9,8 +9,8 @@
 <style>
 .container{
 	margin: 60px;
-	border: 3px solid #336633;
-	background-color: #ffff99;
+	
+	
 	width: 1000px;
 	
 }
@@ -18,6 +18,21 @@ hi{
 	font-size: 30px;
 	margin-top: 50px;
 }
+
+#gender{
+	widows: 100px;
+	height: 20px;
+}
+.form-control{
+	width: 350px;
+	height: 50px;
+	margin-top: 5px;
+}
+.birthday{
+	width: 350px;
+	height: 50px;
+}
+
 
 
 </style>
@@ -74,7 +89,7 @@ $(document).ready(function(){
 					}
 				}, error : function() {
 						console.log("실패");
-				}
+				} 
 			});
 		});
 		
@@ -199,51 +214,51 @@ $(document).ready(function(){
 </head>
 <body>
 <br><br><br><br><br>
-   <div class="container" >
-   	<div class="titlestyle" align="center">
-   		<hi>O2.market</hi>
+   <div class="container" align="center">
+   	<div class="titlestyle" align="center" style="font-weight: bold;">
+   		<hi>sign up</hi>
    	</div>
    	<form method="POST" id="registerForm">
    		<!-- user_id -->
-   		<div class="form-group">
-   			<label for="user_id" >아이디</label>
-   				<input type="text" class="form-control" id="user_id" name="user_id" placeholder="ID" required>
+   		<div class="form-group" align="center">
+   			
+   				<input type="text" class="form-control" id="user_id" name="user_id" placeholder="아이디" required>
    			<div class="check_font" id="id_check"></div>
    		</div>
    		<!-- pwd -->
-   		<div class="form-group">
-   			<label for="pwd">비밀번호</label>
-   				<input type="password" class="form-control" id="pwd" name="pwd" placeholder="PASSWORD" required>
+   		<div class="form-group" align="center">
+   			
+   				<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호 " required>
    			<div class="check_font" id="pw_check"></div>
    		</div>
    		<!-- password confirm -->
    		<div class="form-group">
-   			<label for="user_pwd">비밀번호 확인</label>
-   				<input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="Confirm Password" required>
+   			
+   				<input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="비밀번호 확인" required>
    			<div class="check_font" id="pw2_check"></div>
    		</div>
    		<!-- phoneno -->
    		<div class="form-group">
-   			<label for="phoneno">휴대폰번호 ('-' 없이 번호만 입력)</label>
-   				<input type="text" class="form-control" id="phoneno" name="phoneno" placeholder="Phone Number" required>
+   			
+   				<input type="text" class="form-control" id="phoneno" name="phoneno" placeholder="휴대폰번호('-'없이 번호만 입력)" required>
    			<div class="check_font" id="phone_check"></div>
    		</div>
    		<!-- email -->
    		<div class="form-group">
-   			<label for="email">이메일</label>
+   			
    				<input type="text" class="form-control" id="email" name="email" placeholder="E-mail" required >
    			<div class="check_font" id="email_check"></div>
    		</div>
    		<!-- user_name -->
    		<div class="form-group">
-   			<label for="user_name">이름</label>
-   				<input type="text" class="form-control" id="user_name" name="user_name" placeholder="Name" required>
+   			
+   				<input type="text" class="form-control" id="user_name" name="user_name" placeholder="이름" required>
    			<div class="check_font" id="name_check"></div>
    		</div>
    		<!-- birthday -->
-   		<div class="form-group required">
-   			<label for="birthday">생년월일</label>
-   				<input type="date" class="form-control" id="birthday" name="birthday" placeholder="ex)1990-01-01" required>
+   		<div class="form-group">
+   			<p>생년월일 선택</p>
+   				<input type="date" class="birthday" id="birthday" name="birthday" placeholder="ex)1990-01-01" required>
    			<div class="check_font" id="birth_check"></div>
    		</div>
    		
@@ -256,17 +271,17 @@ $(document).ready(function(){
 		</div>
    		
    		<!-- gender -->
-   		<div class="form-group">
+   		<div class="gender">
    			<label for="gender">성별</label><br>
    				<label for="man">남자</label>
-   				<input type="radio" class="form-control" id="man" name="gender" value="남자" placeholder="Gender" required>
+   				<input type="radio" class="gender" id="man" name="gender" value="남자" placeholder="Gender" required>
    				<label for="woman">여자</label>
-   				<input type="radio" class="form-control" id="woman" name="gender" value="여자" placeholder="Gender" required>
+   				<input type="radio" class="gender" id="woman" name="gender" value="여자" placeholder="Gender" required>
    			<div class="check_font" id="gender_check"></div>
    		</div>
    		
 		<!-- 가입버튼 -->
-		<div class="sign_button" align="right">
+		<div class="sign_button" align="center">
 			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }/">
 				<i class="fa fa-rotate-right pr-2" aria-hidden="true"></i>취소하기
 			</a>&emsp;&emsp;
