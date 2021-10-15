@@ -577,14 +577,14 @@ public class WriteController {
 	
 	@RequestMapping("/getPriceData")
 	@ResponseBody
-	public List<E> getPriceData(@RequestParam  HashMap<String, String>  hm) {
+	public List<String> getPriceData(@RequestParam  HashMap<String, String>  hm) {
 	
 		String category = (String)hm.get("category");
 		String itemProd = (String)hm.get("itemProd");
 		
-		service.getPriceData(category,itemProd);
+		List<String> priceList = service.getPriceData(category,itemProd);
 		
-		return "hello";
+		return priceList;
 	}
 	
 }

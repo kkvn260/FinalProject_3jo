@@ -139,4 +139,3 @@ function setPreviewForm(file, img){
 	$('#attach input[type=file]').change(function() {
 		addPreview($(this)); //preview form 추가하기
 	});
-

@@ -116,6 +116,8 @@ public interface O2WriteService {
 
 	public O2DealDTO dealresult(int tradeno);
 
+	public List<String> getPriceData(String category, String itemProd);
+
 
 
 }
