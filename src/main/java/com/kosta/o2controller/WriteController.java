@@ -4,6 +4,7 @@ package com.kosta.o2controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -572,6 +573,18 @@ public class WriteController {
 		list.add(t);
 		list.add(total);
 		return t;
+	}
+	
+	@RequestMapping("/getPriceData")
+	@ResponseBody
+	public List<E> getPriceData(@RequestParam  HashMap<String, String>  hm) {
+	
+		String category = (String)hm.get("category");
+		String itemProd = (String)hm.get("itemProd");
+		
+		service.getPriceData(category,itemProd);
+		
+		return "hello";
 	}
 	
 }

@@ -72,7 +72,6 @@ li input{
 		<c:if test="${result eq null }">
 		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/빈하트.png" width="30px" height="30px">
 		</c:if>
-		<span class="likeno">좋아요 수 : ${list.likeno }</span>
 		</div>
 	</li>
 	<li>
@@ -102,8 +101,32 @@ li input{
 		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 		</c:if>
 		<input type="button" class="btn1" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
-		<br><br><br><br>
 	</li>
+	<li>
+	<div>
+	 <form class="priceSearch" id="priceSearch">
+		<select id="searchKeyword">
+		  <option value="item_name">제품명</option>
+		  <option value="product_no">제품모델명</option>
+		</select>
+		<input type="text" id="itemProd" placeholder="검색어를 입력하세요" name="searchtxt">
+		<button type="button" id="btn_search">시세조회</button>
+	</form>
+	</div>
+	<br><br><br><br>
+    </li>
+
+
+	<div>
+		<canvas id="myChart"></canvas>
+	</div>
+	
+	<div class="priceChart">
+		
+	</div>
+
+
+
 	<c:if test="${not empty list3}">
 	<li>
 		<label>댓글</label>
@@ -147,7 +170,7 @@ li input{
 				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
+				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록" style="margin-bottom:5px;">
 				</form><br><br><br><br>
 			</div>
@@ -227,6 +250,9 @@ $(function () {
 		})  
 	})
 })
+
+ 
+
 </script>
 	<script>
 var mapOptions = {
@@ -240,6 +266,111 @@ var marker = new naver.maps.Marker({
     map: map
 });
 </script>
-</div>
+
+
+<script>
+//가격비교 
+	$(function(){
+		const chartLabels = [];
+		const chartData = [];
+		const itemName="";
+
+		const cooContractNo = '<c:out value="${no}"/>';
+
+		function createChart(){
+
+			let ctx = document.getElementById('myChart').getContext('2d'); 
+			LineChartDemo = Chart.Line(ctx, {
+				data : lineChartData,
+				options : {
+					scales : {
+						yAxes : [ {
+							ticks : {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});  
+		}
+	
+
+	$('#btn_search').click(function(){
+		let category = $('#searchKeyword option:selected').val();
+		let itemProd= $('#itemProd').val();
+		console.log(category);
+		console.log(itemProd);
+	
+	$.ajax({
+		method:'post'
+		,url:"${pageContext.request.contextPath }/getPriceData"
+		,dataType: 'text'
+		,data:{'category': category, 'itemProd':itemProd}
+		,success:function(data){
+			console.log("test.............");
+            console.log(data,'hello');
+
+			// var ctx = document.getElementById('myChart').getContext('2d'); 
+			// var chart = new Chart(ctx, { 
+			// // 챠트 종류
+			// type: 'line', 
+		
+			// // 챠트 데이터
+			// data: { 
+			// 	labels: ['월평균가격', '주평균가격', '현재가격' ], 
+			// 	datasets: [{ 
+			// 		label: 'My First dataset', 
+			// 		backgroundColor: 'transparent', 
+			// 		borderColor: 'red', 
+			// 		data: Object.values(data)
+			// 	}] 
+			// }, 
+			// // 옵션 
+			// options: {} 
+			// });
+		}
+		,error:function(err)
+		{
+			console.log(err);
+		}
+	})
+      
+
+
+
+
+		// chartLabels = [];
+		// chartData = [];
+
+		// $.getJSON("./getPriceData",{
+		// 	  cooContractNo : cooContractNo,
+		// 	  itemName : itemName
+		// }),
+		// function(data){
+		// 	$.each(data,function(key, value){
+		// 		//DTO에서 데이터 넣기
+		// 		chartLabels.push(value.stateDate);
+		// 		chartData.push(value.stataAmount);
+		// 	});
+
+		// 	lineChartData = {
+		// 		labels: ['월평균가격', '주평균가격', '현재가격' ],
+		// 		backgroundColor: 'transparent', 
+		// 		borderColor: 'red', 
+		// 		data : chartData
+
+		// 	}
+
+		// 	createChart();
+		// }
+
+
+	});
+
+
+
+});
+</script>
+
 </body>
 </html>
