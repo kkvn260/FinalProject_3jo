@@ -56,10 +56,10 @@ public class UserController {
 			
 			return "member/registerForm";
 		}
-		@PostMapping(value = "/registersucess")
+		@PostMapping(value = "/registersuccess")
 		public String usersign(O2UserDTO userdto) {
 			service.signUser(userdto);
-			return "member/registersucess";
+			return "member/registersuccess";
 		}
 		@GetMapping(value = "/member/idCheck")
 		@ResponseBody
