@@ -277,6 +277,18 @@ public class WriteController {
 		return "writeboard/twritemodify";
 	}
 	
+	@RequestMapping("tdealmodify/{no}")
+	public String tdealmodfiy(@PathVariable int no,Model model) {
+		O2WriteBoardDTO list= service.twritedetail(no);
+		List<O2FileDTO> list2=service.tfiledetail(no);
+		String price=service.getprice(no);
+		
+		model.addAttribute("price",price);
+		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
+		return "writeboard/tdealmodify";
+	}
+	
 	@RequestMapping("dwritemodify/{no}")
 	public String dwritemodfiy(@PathVariable int no,Model model) {
 		O2DongComDTO list= service.dwritedetail(no);

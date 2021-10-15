@@ -192,7 +192,7 @@ $(function () {
 	<li>
 	<div class="clear"></div>
 		<c:if test="${id == list.user_id }">
-		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
+		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/tdealmodify/${list.tradeno}'">
 		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
 		</c:if>
 		<input type="button" class="btn1" id="dlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/deallist'">

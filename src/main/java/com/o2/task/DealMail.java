@@ -25,26 +25,24 @@ public class DealMail {
 	@Autowired
 	private O2WriteService service2;
 	
-//	Date date=new Date();
-//	int month=date.getMonth()+1;
-//	int day=date.getDate();
-//	int hour=date.getHours();
-//	int min=date.getMinutes();
-//	int sec=date.getSeconds();
-	
-	@Scheduled(cron = "0 0/1 * * * *")
+	@Scheduled(cron = "0/1 * * * * *")
 	public void dealresult() throws ParseException {
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		List<O2WriteBoardDTO> dto=service.maillist();
 		Date date=new Date();
 		for(O2WriteBoardDTO list:dto) {
 			Date listdate = sdFormat.parse(list.getWritedate());
-			long r1 = date.getTime();
-			long r2=listdate.getTime();
+			Double r1 = Math.floor(date.getTime()/1000);
+			Double r2 = Math.floor((listdate.getTime()+172800000)/1000);
 			O2DealDTO dto2=service2.dealresult(list.getTradeno());
 			String getmail=service.getmail(dto2.getUser_id());
-			if(r1==r2) {
-				service.dealmail(getmail,list.getTitle());
+			String mailcate=getmail.substring(getmail.lastIndexOf("@")+1);
+			if((r1-r2)==0.0) {
+				if(mailcate=="naver.com") {
+					service.dealmail(getmail,list.getTitle());					
+				}else if(mailcate=="gmail.com") {
+					service.dealmail2(getmail,list.getTitle());
+				}
 			}
 		}
 		

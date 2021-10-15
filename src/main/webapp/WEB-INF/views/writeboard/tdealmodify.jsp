@@ -38,8 +38,8 @@
 		<input type="text" id="title" name="title" value="${list.title }">
 	</li>
 	<li>
-		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" name="sell_price" value="${list.sell_price }">
+		<label>현재 입찰가격</label>
+		<span id="ndeal_price">${price }</span><span>원 (입찰 가격은 수정 불가)</span>&ensp;
 	</li>
 	<li>
 		<li>
@@ -82,7 +82,7 @@
 	</li>
 	<li>
 		<input type="submit" value="등록" class="btn1">
-		<input type="button" value="취소" class="btn1" onclick="location.href='${pageContext.request.contextPath }/twritedetail/${list.tradeno}'">
+		<input type="button" value="취소" class="btn1" onclick="location.href='${pageContext.request.contextPath }/tdealdetail/${list.tradeno}'">
 	</li>
 </ul><br><br><br><br>	
 

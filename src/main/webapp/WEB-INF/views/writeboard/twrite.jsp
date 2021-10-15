@@ -75,8 +75,8 @@ $(function () {
 	</li>
 	<li>
 		<div class="clear"></div>
-		<input type="hidden" name="map_x" id="map_x" >
-		<input type="hidden" name="map_y" id="map_y" >
+		<input type="hidden" name="map_x" id="map_x" required>
+		<input type="hidden" name="map_y" id="map_y" required>
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
 		<div class="deal_price" style="display: none;">

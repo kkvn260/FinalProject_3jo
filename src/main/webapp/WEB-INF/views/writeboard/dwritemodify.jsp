@@ -13,6 +13,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
+<style>
+.btn1{
+	background-color: white;
+	border: none;
+}
+.btn1:hover{
+	color: green;
+	text-decoration: underline;
+}
+</style>
 <body>
 <br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/dwritemodifyresult" enctype="multipart/form-data">
@@ -67,8 +77,8 @@
 		<input type="hidden" name="map_y" id="map_y" value="${list.map_y }">
 	</li>
 	<li>
-		<input type="submit" value="등록">
-		<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath }/dwritedetail/${list.chatno}'">
+		<input type="submit" value="등록" class="btn1">
+		<input type="button" value="취소" class="btn1" onclick="location.href='${pageContext.request.contextPath }/dwritedetail/${list.chatno}'">
 	</li>
 </ul><br><br><br><br>
 
