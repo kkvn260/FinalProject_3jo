@@ -56,7 +56,7 @@
 	<tx:annotation-driven />
 	
 	<!-- 이메일 관련 -->
-	<bean id="javaMailSender"
+	<bean id="javaMailSender" name="javaMailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.naver.com" />
 		<property name="port" value="587" />

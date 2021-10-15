@@ -83,7 +83,7 @@ $(function () {
 		<label>경매시작 가격</label>
 		<input type="text" class="deal_price" name="deal_price" hidden="" placeholder="경매는 48시간 동안 진행됩니다." size="30" onkeyup="numberWithCommas2(this.value)"><span>원</span>
 		</div>
-	</li>
+	</li> 
 	<li>
 		<input type="submit" value="등록" class="btn1">
 		<input type="button" value="취소" class="btn1">

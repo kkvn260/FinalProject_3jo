@@ -32,7 +32,6 @@ public interface O2Service {
 
 	void dealmail(String getmail, String title);
 
-	void dealmail2(String getmail, String title);
 
 
 }

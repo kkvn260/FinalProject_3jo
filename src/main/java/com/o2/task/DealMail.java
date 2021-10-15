@@ -36,13 +36,8 @@ public class DealMail {
 			Double r2 = Math.floor((listdate.getTime()+172800000)/1000);
 			O2DealDTO dto2=service2.dealresult(list.getTradeno());
 			String getmail=service.getmail(dto2.getUser_id());
-			String mailcate=getmail.substring(getmail.lastIndexOf("@")+1);
 			if((r1-r2)==0.0) {
-				if(mailcate=="naver.com") {
 					service.dealmail(getmail,list.getTitle());					
-				}else if(mailcate=="gmail.com") {
-					service.dealmail2(getmail,list.getTitle());
-				}
 			}
 		}
 		
