@@ -25,9 +25,17 @@
    #center{
      margin-top:420px;
    }
+    #myinfo2{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 <body>
+
+<div id="myinfo2">
 <br><br><br><br>
+
 <h3>내 정보</h3><hr>
 
  <br><br><br>
@@ -65,6 +73,6 @@
   <input type="submit" id="infomodify" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
   <input type="submit" id="infodelete" value="탈퇴"  onclick="location.href='${pageContext.request.contextPath }/deleteresult'"> 
 </center>
-
+</div>
 </body>
 </html>

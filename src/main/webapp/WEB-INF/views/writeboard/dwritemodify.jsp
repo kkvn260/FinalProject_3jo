@@ -22,8 +22,14 @@
 	color: green;
 	text-decoration: underline;
 }
+  #dwritemodi{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 <body>
+<div id="dwritemodi">
 <br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/dwritemodifyresult" enctype="multipart/form-data">
 <ul>
@@ -120,5 +126,6 @@
 
 	  	
 	</script>
+	</div>
 </body>
 </html>

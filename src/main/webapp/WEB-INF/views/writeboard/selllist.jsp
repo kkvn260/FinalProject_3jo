@@ -8,16 +8,21 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-   h2{color:blue;}
+   #h2{color:blue;}
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
-   h2 a{text-shadow: none;}
+   #selllist{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 </head>
 <body>
-<br><br><br>
+<br><br><br><br>
+<div id="selllist">
 <div>
-<h2> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>
+<h2 id="h2"> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>
 </div>
 	<table class="table table-striped">
 		<thead>
@@ -67,6 +72,7 @@
 	</span>
   <c:if test="${id!=null }">
   <a href="write" class="btn btn-success pull-right">글쓰기</a><br>
+  
   </c:if>
 
 
@@ -92,6 +98,7 @@
 	  <a href="selllist?currPage=${page.endBlock+1}&search=${search}&searchtxt=${searchtxt}">
    		<c:out value="다음"></c:out>
   	  </a>
- 	</c:if>
+ 	</c:if><br><br>
+ 	</div>
 </body>
 </html>

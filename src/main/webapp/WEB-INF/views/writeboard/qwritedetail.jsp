@@ -31,8 +31,14 @@ li input{
 	color: green;
 	text-decoration: underline;
 }
+ #qwritedetail ,  #replydiv{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 <body>
+<div id="qwritedetail">
 <br><br><br><br>
 <div class="modal">
 	<div class="modal_content" title="클릭하면 닫기!.">
@@ -107,11 +113,11 @@ li input{
 		</c:forEach>
 		</div>
 	</li>
-	<hr id="hr"><br><br><br><br>
+	<hr id="hr" style="width:1375px; margin-left:268px;">
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">
-		<div><br>	
+		<<div style="margin-left:55px;"><br>	
 			<div id="replydiv">
 				<label>답변 쓰기</label>
 				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
@@ -165,5 +171,6 @@ $(function () {
 	})
 })
 </script>
+</div>
 </body>
 </html>

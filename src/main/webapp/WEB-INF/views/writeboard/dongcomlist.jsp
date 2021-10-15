@@ -7,9 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+#dongcomlist{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
+</style>
 </head>
 <body>
-<br><br><br>
+<br><br><br><br>
+<div id="dongcomlist">
     <h2>동네 커뮤니티</h2><hr>
 	<table class="table table-striped">
 		<thead>
@@ -39,5 +47,6 @@
 	<c:if test="${id!=null }">
 	<a href="dwrite" class="btn btn-success pull-right">글쓰기</a><br>
 	</c:if>
+	</div>
 </body>
 </html>

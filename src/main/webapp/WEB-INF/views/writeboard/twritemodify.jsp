@@ -22,8 +22,14 @@
 	color: green;
 	text-decoration: underline;
 }
+   #twritemodi{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 <body>
+<div id="twritemodi">
 <br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/twritemodifyresult" enctype="multipart/form-data">
 <ul>
@@ -124,5 +130,6 @@
 
 	  	
 	</script>
+	</div>
 </body>
 </html>

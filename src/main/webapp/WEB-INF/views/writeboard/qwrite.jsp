@@ -13,8 +13,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-
+<style>
+ #qwrite{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
+</style>
 <body>
+<div id="qwrite">
 <br><br><br><br>
 <form method="post" action="qwriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
@@ -55,5 +62,6 @@
 </form>
 
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
+</div>
 </body>
 </html>

@@ -22,10 +22,14 @@
       margin-left:250px;
       text-shadow: none;
    }
-   
+     #myinfo2{
+      align:center;
+      margin:0 auto;
+      width:1400px;
 </style>
 </head>
 <body>
+<div id="myinfo2">
 <br><br><br><br>
     <h3>내가 쓴 댓글</h3><hr>
     <br><br><br>
@@ -72,5 +76,6 @@
 		</tbody>
 	</table>
   </div>
+ </div>
 </body>
 </html>
