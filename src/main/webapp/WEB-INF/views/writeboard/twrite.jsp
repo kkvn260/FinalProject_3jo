@@ -35,8 +35,14 @@ $(function () {
 	color: green;
 	text-decoration: underline;
 }
+ #twrite{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 <body>
+<div id="twrite">
 <br><br><br><br>
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
@@ -148,5 +154,6 @@ $(function () {
 
 	  	
 	</script>
+	</div>
 </body>
 </html>

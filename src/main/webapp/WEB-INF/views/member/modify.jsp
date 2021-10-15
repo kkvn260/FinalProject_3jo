@@ -6,8 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+  #myinfo2{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+</style>
 </head>
 <body>
+<div id="myinfo2">
 <br><br><br><br>
 <h3>내정보 수정</h3><hr>
 <form method="post" action="${pageContext.request.contextPath }/modifyresult" >
@@ -37,7 +44,7 @@
 <input type="reset" value="취소">
 </form>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
-		
+</div>
 
 </body>
 </html>

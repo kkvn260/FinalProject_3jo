@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-   h2{color:blue;}
+   #h2{color:blue;}
    h2 a{color:black;}
    h2 a:link{text-decoration:none;}
    h2 a{text-shadow: none;}
@@ -16,12 +16,18 @@
 	color: green;
     font-family: 'Sunflower', sans-serif;
  }
+ #deallist{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 </head>
 <body>
-<br><br><br>
+<br><br><br><br>
+<div id="deallist">
 <div>
-<h2><a href="${pageContext.request.contextPath }/selllist">판매글 게시판 / </a> 경매글 게시판</h2><hr>
+<h2 id="h2"><a href="${pageContext.request.contextPath }/selllist">판매글 게시판 / </a> 경매글 게시판</h2><hr>
 </div>
 	<table class="table table-striped">
 		<thead>
@@ -93,5 +99,6 @@
    		<c:out value="다음"></c:out>
   	  </a>
  	</c:if><br><br>
+ 	</div>
 </body>
 </html>

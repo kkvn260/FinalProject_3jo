@@ -6,14 +6,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오이마켓</title>
+<!-- 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+ -->
+<link href="${pageContext.request.contextPath }/resources/startbootstrap/css/styles.css" rel="stylesheet" />
 </head>
 <body>
+
+<div id="mainjsp" class="container-fluid">
 <header id="header">
     <tiles:insertAttribute name="header"/>
 </header>
@@ -25,6 +30,6 @@
 <footer id="footer">
    <tiles:insertAttribute name="footer"/>
 </footer>
-
+</div>
 </body>
 </html>

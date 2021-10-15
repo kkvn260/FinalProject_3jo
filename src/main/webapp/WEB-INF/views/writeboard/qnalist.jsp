@@ -7,9 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+#qnalist{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
+</style>
 </head>
 <body>
-<br><br><br>
+<br><br><br><br>
+<div id="qnalist">   
     <h2>Q & A 게시판</h2><hr>
 	<table class="table table-striped">
 		<thead>
@@ -37,5 +45,6 @@
 	<c:if test="${id!=null }">
 	<a href="qwrite" class="btn btn-success pull-right">글쓰기</a><br>
 	</c:if>
+</div>
 </body>
 </html>

@@ -22,8 +22,14 @@
 	color: green;
 	text-decoration: underline;
 }
+#qwritemodi{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 </style>
 <body>
+<div id="qwritemodi">
 <br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/qwritemodifyresult" enctype="multipart/form-data">
 <ul>
@@ -82,5 +88,6 @@
 </form>
 
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
+</div>
 </body>
 </html>

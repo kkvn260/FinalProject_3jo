@@ -7,14 +7,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+ #login{
+   font-size:20px;
+   color:#FFCC00;
+ }
+</style>
 <body>
 <c:if test="${sessionScope.user_id==null}">
-           <a href="${pageContext.request.contextPath }/login">로그인</a>
-		   <a href="${pageContext.request.contextPath }/registerForm">회원가입</a>
+           <a href="${pageContext.request.contextPath }/login" id="login">로그인</a>&nbsp;&nbsp;
+		   <a href="${pageContext.request.contextPath }/registerForm" id="login">회원가입</a>
 </c:if>
 <c:if test="${sessionScope.user_id!=null }">
-	<a href="${pageContext.request.contextPath }/logout">로그아웃</a>
-	<a href="${pageContext.request.contextPath }/myinfo">마이페이지</a>
+	<a href="${pageContext.request.contextPath }/logout"  id="login">로그아웃</a>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath }/myinfo"  id="login">마이페이지</a>
     </c:if>
 </body>
 </html>
