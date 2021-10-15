@@ -183,33 +183,17 @@ $(document).ready(function(){
 			}
 			
 			if(validAll){ // 유효성 모두 통과
-				let captcha = $('#captcha').val();
-				$.ajax({
-					type:'get'
-					,url: "${pageContext.request.contextPath}/captcha/isRight?captcha="+captcha
-					,success:function(data){
-						console.log(data);
-						if(data==1){
-							$("#registerForm").attr("action", "registersuccess");
-				            $("#registerForm").submit();
-						}else{
-							alert('입력한 값이 캡차문자와 다릅니다')
-							location.href="${pageContext.request.contextPath}/registerForm"
-						}
-					}	
-					
-				});
-			}else{
+				 $("#registerForm").attr("action", "registersucess");
+		            $("#registerForm").submit();
+				
+			} else{
 				alert('입력한 정보들을 다시 한번 확인해주세요 :)')
 				location.href="${pageContext.request.contextPath}/registerForm"
+				
 			}
-				
-				
-				
-			
 		});
 	 
-});
+});	
 
 </script>
 </head>
@@ -280,13 +264,7 @@ $(document).ready(function(){
    				<input type="radio" class="form-control" id="woman" name="gender" value="여자" placeholder="Gender" required>
    			<div class="check_font" id="gender_check"></div>
    		</div>
-   		<!-- captcha -->
-   		<div class="form-group">
-   			<label for="captchacheck">자동가입 방지 확인</label>
-   			<img src="${pageContext.request.contextPath}/captcha/index" id="imgCaptcha" style="cursor: pointer">
-   			<input type="text" id="captcha" name="captcha" placeholder="이미지문자입력" style="width: 265px" required/>
-   			
-   		</div>
+   		
 		<!-- 가입버튼 -->
 		<div class="sign_button" align="right">
 			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }/">
