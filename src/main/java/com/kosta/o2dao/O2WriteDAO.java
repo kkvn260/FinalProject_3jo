@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosta.o2dto.ItemPriceVO;
 import com.kosta.o2dto.MobileVo;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
@@ -186,6 +187,8 @@ public interface O2WriteDAO {
 
 	O2DealDTO dealresult(int tradeno);
 
-	String getmail(String user_id);	
+	String getmail(String user_id);
+
+	List<ItemPriceVO> getPriceData(HashMap<String, Object> hm);	
 	
 }

@@ -2,6 +2,7 @@ package com.kosta.o2writeservice;
 
 import java.lang.annotation.Target;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.o2dao.O2WriteDAO;
+import com.kosta.o2dto.ItemPriceVO;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
@@ -452,5 +454,20 @@ public class O2WriteServiceImple implements O2WriteService {
 		// TODO Auto-generated method stub
 		return dao.dealresult(tradeno);
 	}
+
+	@Override
+	public List<ItemPriceVO> getPriceData(String category, String itemProd) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put(itemProd, "itemProd");
+		hm.put(category, "category");
+		
+		
+		List<ItemPriceVO> listData = new ArrayList<>();
+				
+		
+		
+		return listData;
+	}
+	
 
 }
