@@ -144,6 +144,12 @@ public class O2ServiceImple implements O2Service {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void dealmail2(String getmail, String title) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 
