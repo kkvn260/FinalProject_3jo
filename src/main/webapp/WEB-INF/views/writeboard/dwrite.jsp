@@ -22,7 +22,7 @@
     </style>
 <body>
 <div id="dwrite">
-<br><br><br><br>
+<br><br><br><br><br><br>
 <form method="post" action="dwriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
 	<li>

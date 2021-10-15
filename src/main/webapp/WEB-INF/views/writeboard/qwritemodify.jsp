@@ -30,7 +30,7 @@
 </style>
 <body>
 <div id="qwritemodi">
-<br><br><br><br>
+<br><br><br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/qwritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>

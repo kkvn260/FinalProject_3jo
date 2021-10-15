@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br>
 <div id="qnalist">   
     <h2>Q & A 게시판</h2><hr>
 	<table class="table table-striped">

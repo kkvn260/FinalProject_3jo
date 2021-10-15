@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="myinfo2">
-<br><br><br><br>
+<br><br><br><br><br><br>
 <h3>내정보 수정</h3><hr>
 <form method="post" action="${pageContext.request.contextPath }/modifyresult" >
 
@@ -40,8 +40,6 @@
    				<select name="addr2" id="addr2"></select><th></tr>
    <tr><th>성별</th>
        <th><c:out value="${list.gender }"/></th></tr>
-   <tr><th>등급</th>
-       <th><c:out value="${list.grade }"/></th></tr>
 </table>
 <input type="submit" value="수정">
 <input type="reset" value="취소">

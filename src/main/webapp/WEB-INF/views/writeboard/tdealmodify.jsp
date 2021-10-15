@@ -30,7 +30,7 @@
 </style>
 <body>
 <div id="tdwritemodi">
-<br><br><br><br>
+<br><br><br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/twritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>

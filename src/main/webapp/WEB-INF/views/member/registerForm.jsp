@@ -7,13 +7,6 @@
 <title>ReigsterForm</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-.container{
-	margin: 60px;
-	
-	
-	width: 1000px;
-	
-}
 hi{
 	font-size: 30px;
 	margin-top: 50px;
@@ -32,7 +25,11 @@ hi{
 	width: 350px;
 	height: 50px;
 }
-
+  #regi{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 
 
 </style>
@@ -213,8 +210,9 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<br><br><br><br><br>
-   <div class="container" align="center">
+<div id="regi">
+<br><br><br><br><br><br>
+<div align="center">
    	<div class="titlestyle" align="center" style="font-weight: bold;">
    		<hi>sign up</hi>
    	</div>
@@ -292,5 +290,6 @@ $(document).ready(function(){
    	</form><br>
    </div><br><br><br>
    <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
+   </div>
 </body>
 </html>

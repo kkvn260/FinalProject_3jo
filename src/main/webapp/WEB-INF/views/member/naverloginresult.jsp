@@ -18,7 +18,7 @@
  }
 </style>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br>
        <script type="text/javascript">
               alert("로그인 되셨습니다. 환영합니다.");
               alert("최초 네이버 로그인일 경우 주소 설정이 '필수' 입니다.");

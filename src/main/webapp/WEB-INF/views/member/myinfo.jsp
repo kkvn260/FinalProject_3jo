@@ -34,7 +34,7 @@
 <body>
 
 <div id="myinfo2">
-<br><br><br><br>
+<br><br><br><br><br><br>
 
 <h3>내 정보</h3><hr>
 
@@ -49,6 +49,7 @@
 	    <a href="${pageContext.request.contextPath }/myreplylist">★ 내가 쓴 댓글</a>
 
 <table class="table table-striped"  id="myinfo">
+ <br><br><br>
 <thead>
    <tr><th>아이디</th>
        <th><c:out value="${list.user_id }"/></th></tr>
@@ -64,8 +65,6 @@
        <th><c:out value="${list.addr1 }/${list.addr2 }"/></th></tr>
    <tr><th>성별</th>
        <th><c:out value="${list.gender }"/></th></tr>
-   <tr><th>등급</th>
-       <th><c:out value="${list.grade }"/></th></tr>
 </thead>
 </table>
 </div>

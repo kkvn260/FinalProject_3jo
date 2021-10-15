@@ -129,7 +129,7 @@ $(function () {
 </script>
 <body>
 <div id="dealdetail">
-<br><br><br><br>
+<br><br><br><br><br><br>
 <div class="modal">
 	<div class="modal_content" title="클릭하면 닫기!.">
 		<img class="modalimg" src="">

@@ -74,7 +74,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br>
 <div id= "container">
 <div id="title" align="center">
 <h2>아이디 찾기</h2>

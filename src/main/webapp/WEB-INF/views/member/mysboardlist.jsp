@@ -26,11 +26,12 @@
       align:center;
       margin:0 auto;
       width:1400px;
+      margin-bottom:1000px;
 </style>
 </head>
 <body>
 <div id="myinfo2">
-<br><br><br><br>
+<br><br><br><br><br><br>
     <h3>나의 판매글</h3><hr>
     <br><br><br>
 	<div id="mypagemainlist">
@@ -42,6 +43,7 @@
 	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
 	    <a href="${pageContext.request.contextPath }/myreplylist">★ 내가 쓴 댓글</a>
 	<table class="table table-striped" id="mysboardlist">
+	<br><br><br>
 		<thead>
 			<tr>
 				<th>글번호</th>

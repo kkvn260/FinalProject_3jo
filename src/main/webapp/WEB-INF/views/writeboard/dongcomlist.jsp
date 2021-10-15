@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br>
 <div id="dongcomlist">
     <h2>동네 커뮤니티</h2><hr>
 	<table class="table table-striped">

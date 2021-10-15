@@ -30,7 +30,7 @@
 </style>
 <body>
 <div id="dwritemodi">
-<br><br><br><br>
+<br><br><br><br><br><br>
 <form method="post" action="${pageContext.request.contextPath }/dwritemodifyresult" enctype="multipart/form-data">
 <ul>
 	<li>

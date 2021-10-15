@@ -41,7 +41,7 @@ li input{
     }
 </style>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br>
 <div id="tdetail">
 <div class="modal">
 	<div class="modal_content" title="클릭하면 닫기!.">

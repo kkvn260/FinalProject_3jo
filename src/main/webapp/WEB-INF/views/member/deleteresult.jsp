@@ -6,10 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<style>
+  #delmember{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    
+    }
+</style>
 </head>
 <body>
-<br><br><br><br>
+<div id="delmember">
+<br><br><br><br><br><br>
 <h3>회원 탈퇴</h3><hr>
 
 <form method="post" action="${pageContext.request.contextPath }/delete">
@@ -20,6 +28,7 @@
  	</div>
  	
 </form>
+</div>
 
 </body>
 </html>

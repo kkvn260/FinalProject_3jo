@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-<br><br><br><br>
+<br><br><br><br><br><br>
 <div id="selllist">
 <div>
 <h2 id="h2"> 판매글 게시판<a href="${pageContext.request.contextPath }/deallist"> / 경매글 게시판</a></h2><hr>

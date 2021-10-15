@@ -33,7 +33,7 @@ h1{
 }
  #reg2{
       align:center;
-      margin:0 auto;
+      margin-left:450px;
       width:1400px;
     
     }
@@ -41,7 +41,7 @@ h1{
 </head>
 <body>
 <div id="reg2">
-<br><br><br><br>
+<br><br><br><br><br><br>
 
  
 
