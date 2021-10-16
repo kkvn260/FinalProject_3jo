@@ -24,7 +24,7 @@ public class SearchFilter {
 	}
 	
 		//매일 새벽1시에 중고시세 받아옴
-	//@Scheduled(cron = "0 * * * * *")
+	@Scheduled(cron = "0 0 1 * * *")
 	public int scrapMobileData() {
 		log.warn("insertMobileData.................");
 		return serviceOther.getMobileData();
