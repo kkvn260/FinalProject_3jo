@@ -10,21 +10,21 @@ import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//@Component
+@Component
 public class SearchFilter {
 
 	@Autowired
 	O2ServiceOther serviceOther;
 
-	//12시간마다 하루 전 검색데이터들 삭제
-	@Scheduled(cron = "0 0 0/12 * * ")
+		//12시간마다 하루 전 검색데이터들 삭제
+	@Scheduled(cron = "0 0 0/12 * * *")
 	public void removeSearch() {
 		log.warn("removeSearchData.............");
 		serviceOther.removeSearchData();
 	}
 	
-	
-	//@Scheduled(cron = "0 * * * * ")
+		//매일 새벽1시에 중고시세 받아옴
+	//@Scheduled(cron = "0 * * * * *")
 	public int scrapMobileData() {
 		log.warn("insertMobileData.................");
 		return serviceOther.getMobileData();

@@ -15,7 +15,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2WriteDAO;
-import com.kosta.o2dto.MobileVo;
+import com.kosta.o2dto.MobileVO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
@@ -69,16 +69,16 @@ public class O2ServiceImpleOther implements O2ServiceOther {
 			Iterator<Element> productNums = element.select(".gray.ls-0.w-20").iterator();
 			Iterator<Element> productPrices = element.select(".text-right").iterator();
 
-			List<MobileVo> mobileList = new ArrayList<>();
+			List<MobileVO> mobileList = new ArrayList<>();
 
 			while (productNums.hasNext()) {
 
-				MobileVo mobileVo = new MobileVo();
+				MobileVO mobileVo = new MobileVO();
 
 				String item_name = phoneNames.next().text();
 				String product_no = productNums.next().text();
-				int price = (Integer.parseInt(productPrices.next().text()));
-
+				int price = (Integer.parseInt(productPrices.next().text().replaceAll(",", "")));
+				
 				mobileVo.setItem_name(item_name);
 				mobileVo.setProduct_no(product_no);
 				mobileVo.setPrice(price);

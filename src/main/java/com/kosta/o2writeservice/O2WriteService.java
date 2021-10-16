@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kosta.o2dto.ItemPriceVO;
+import com.kosta.o2dto.MobileVO;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
@@ -117,7 +117,7 @@ public interface O2WriteService {
 
 	public O2DealDTO dealresult(int tradeno);
 
-	public List<ItemPriceVO> getPriceData(String category, String itemProd);
+	public List<MobileVO> getPriceData(String category, String itemProd);
 
 
 

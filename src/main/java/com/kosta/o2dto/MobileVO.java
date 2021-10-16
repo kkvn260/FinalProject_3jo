@@ -5,10 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MobileVo {
+public class MobileVO {
 
 	private String item_name;
 	private String product_no;
 	private int price;
+	private String writedate;
 	
 }

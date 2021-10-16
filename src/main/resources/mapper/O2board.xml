@@ -34,7 +34,8 @@
 		,user_id
 		,likeno
 		,writedate
-		from TradeBoard_3jo
+		from
+		TradeBoard_3jo
 		where tradeno=#{no}
 	</select>
 
@@ -96,8 +97,7 @@
 		SELECT count(*) from TradeBoard_3jo
 		WHERE deal_price IS NULL or
 		deal_price=''
-		<if
-			test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
+		<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 			<choose>
 				<when test="search=='total'">
 					and (user_id like CONCAT ('%',#{searchtxt},'%')
@@ -127,8 +127,7 @@
 		<![CDATA[
 		WHERE deal_price is not NULL
 		]]>
-		<if
-			test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
+		<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 			<choose>
 				<when test="search=='total'">
 					and (user_id like CONCAT ('%',#{searchtxt},'%')
@@ -474,7 +473,8 @@
 		from Deal_3jo
 		where tradeno=#{tradeno}
 		order by dealno
-		desc limit 1
+		desc
+		limit 1
 	</select>
 
 	<insert id="treplyinsert"
@@ -792,14 +792,14 @@
 		where
 		chatno=#{chatno}
 	</update>
-	
+
 	<delete id="removeSearchData" parameterType="int">
 	 <![CDATA[
 	 	DELETE from TopSearch_3jo
 	 	where DATE(search_date) <= DATE_SUB(NOW(), INTERVAL 1 DAY);
 	 ]]>
 	</delete>
-	
+
 	<delete id="dealdelete2" parameterType="int">
 		delete from Deal_3jo
 		where
@@ -810,41 +810,108 @@
 		INSERT INTO AvgPrice_3jo(item_name, price, product_no, writedate)
 		VALUES
 		<foreach collection="list" item="item" separator=",">
-		( #{item.item_name}, #{item.price}, #{item.product_no} ,sysdate())
+			( #{item.item_name}, #{item.price}, #{item.product_no} ,sysdate())
 		</foreach>
-    </insert>
-    
-    <select id="tliketotal" parameterType="int" resultType="int">
-    	select count(*)
-    	from Like_3jo
-    	where tradeno=#{tradeno}
-    </select>
-    
-    <select id="dliketotal" parameterType="int" resultType="int">
-    	select count(*)
-    	from Like_3jo
-    	where chatno=#{chatno}
-    </select>
-    
-    <select id="maillist" resultType="com.kosta.o2dto.O2WriteBoardDTO">
-    	select writedate
-    			,tradeno
-    			,title
-    	from TradeBoard_3jo
-    	where sell_price = ''
-    </select>
-    
-    <select id="dealresult" resultType="com.kosta.o2dto.O2DealDTO" parameterType="int">
-    	select user_id 
-    	from Deal_3jo
-    	where tradeno=#{tradeno}
-    	order by dealno desc limit 1
-    </select>
-	
+	</insert>
+
+	<select id="tliketotal" parameterType="int" resultType="int">
+		select count(*)
+		from Like_3jo
+		where tradeno=#{tradeno}
+	</select>
+
+	<select id="dliketotal" parameterType="int" resultType="int">
+		select count(*)
+		from Like_3jo
+		where chatno=#{chatno}
+	</select>
+
+	<select id="maillist"
+		resultType="com.kosta.o2dto.O2WriteBoardDTO">
+		select writedate
+		,tradeno
+		,title
+		from TradeBoard_3jo
+		where sell_price = ''
+	</select>
+
+	<select id="dealresult" resultType="com.kosta.o2dto.O2DealDTO"
+		parameterType="int">
+		select user_id
+		from Deal_3jo
+		where tradeno=#{tradeno}
+		order by dealno desc limit 1
+	</select>
+
 	<select id="getmail" parameterType="String" resultType="String">
-		select email
+		select
+		email
 		from User_3jo
 		where user_id=#{user_id}
 	</select>
-	
+
+
+	<select id="getDayPrice" parameterType="hashmap"
+		resultType="com.kosta.o2dto.MobileVO">
+		SELECT item_name, round((price),-1), product_no
+		FROM AvgPrice_3jo
+		WHERE writedate = date_format(now(),'%Y-%m-%d')
+		<if test="itemProd != null and itemProd=''">
+			<choose>
+				<when test="category=='item_name'">
+				and item_name like CONCAT ('%',#{itemProd},'%')
+				</when>
+				<when test="category=='product_no'">
+				and product_no like CONCAT ('%',#{itemProd},'%')
+				</when>
+			</choose>
+		</if>
+		GROUP BY item_name, writedate
+	</select>
+
+	<select id="getWeekPrice" parameterType="hashmap"
+		resultType="com.kosta.o2dto.MobileVO">
+		select b.*
+		from (
+		select item_name, round(avg(price),-1), product_no, writedate
+		from AvgPrice_3jo
+		<if test="itemProd != null and itemProd=''">
+			<choose>
+				<when test="category=='item_name'">
+				Where item_name like CONCAT ('%',#{itemProd},'%')
+				</when>
+				<when test="category=='product_no'">
+				Where product_no like CONCAT ('%',#{itemProd},'%')
+				</when>
+			</choose>
+		</if>
+		group by item_name
+		)b
+		where writedate between date_add(now(),interval-1 Week) and now()
+	</select>
+
+	<select id="getMonthPrice" parameterType="hashmap"
+		resultType="com.kosta.o2dto.MobileVO">
+		select b.*
+		from (
+		select item_name, round(avg(price),-1), product_no, writedate
+		from AvgPrice_3jo
+		<if test="itemProd != null and itemProd=''">
+			<choose>
+				<when test="category=='item_name'">
+				Where item_name like CONCAT ('%',#{itemProd},'%')
+				</when>
+				<when test="category=='product_no'">
+				Where product_no like CONCAT ('%',#{itemProd},'%')
+				</when>
+			</choose>
+		</if>
+		group by item_name
+		)b
+		where writedate between date_add(now(),interval-1 Month) and now()
+		
+	</select>
+
+
+
 </mapper>

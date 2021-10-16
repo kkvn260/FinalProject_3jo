@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kosta.o2dao.O2WriteDAO;
-import com.kosta.o2dto.ItemPriceVO;
+import com.kosta.o2dto.MobileVO;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
@@ -456,17 +456,18 @@ public class O2WriteServiceImple implements O2WriteService {
 	}
 
 	@Override
-	public List<ItemPriceVO> getPriceData(String category, String itemProd) {
+	public List<MobileVO> getPriceData(String category, String itemProd) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put(itemProd, "itemProd");
 		hm.put(category, "category");
 		
-		
-		List<ItemPriceVO> listData = new ArrayList<>();
+		List<MobileVO> priceData = new ArrayList<>();
 				
-		
-		
-		return listData;
+		priceData.add(dao.getDayPrice(hm));
+		priceData.add(dao.getWeekPrice(hm));
+		priceData.add(dao.getMonthPrice(hm));
+						
+		return priceData;
 	}
 	
 
