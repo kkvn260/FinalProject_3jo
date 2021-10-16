@@ -13,6 +13,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
+<script>
+$(function() {
+	$('#delbtn').click(function() {
+		$(".modal2").fadeIn();
+	})
+	$("#delbtn2").click(function(){
+		$(".modal2").fadeOut();
+	});
+})
+</script>
 <style>
 li input{
 	border:none;
@@ -34,11 +44,40 @@ li input{
 	color: green;
 	text-decoration: underline;
 }
- #tdetail ,  #replydiv{
+ #tdetail {
       align:center;
       margin:0 auto;
       width:1400px;
     }
+ul li,label{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+hr{
+	color: green;
+}
+option,select {
+	font-size: 22px;
+	font-family: 'Gaegu', cursive;
+}
+input {
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+}
+.replytext{
+	border: 1px solid silver;
+}
 </style>
 <body>
 <br><br><br><br><br><br>
@@ -50,21 +89,10 @@ li input{
 </div>
 <ul>
 	<li>
-		<label>카테고리</label>
-		<span>${list.category1} > </span>
-		<span>${list.category2}</span>
-	</li>
-	<li>
-		<label>제목</label>
-		<input type="text" id="title" value="${list.title }" readonly>
-		<div style="float: right;">
+		<div>
 		<label>작성자</label>
 		<span> : ${list.user_id }</span>
 		</div>
-	</li>
-	<li>
-		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" value="${list.sell_price }" readonly>
 		<div style="float: right;">
 		<c:if test="${result ne null }">
 		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/하트.png" width="30px" height="30px">
@@ -72,7 +100,22 @@ li input{
 		<c:if test="${result eq null }">
 		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/빈하트.png" width="30px" height="30px">
 		</c:if>
+		<span class="likeno">좋아요 수 : ${list.likeno }</span>
 		</div>
+		<label>카테고리</label>
+		<span>${list.category1} > </span>
+		<span>${list.category2}</span>
+		<hr id="hr">
+	</li>
+	<li>
+		<label>제목</label>
+		<input type="text" id="title" value="${list.title }" readonly>
+		<hr id="hr">
+	</li>
+	<li>
+		<label>판매 희망가격</label>
+		<input type="text" id="sell_price" value="${list.sell_price }" readonly>
+		<hr id="hr">
 	</li>
 	<li>
 		<c:if test="${list2!=null }">
@@ -87,18 +130,25 @@ li input{
 		</c:if>
 	<div class="clear"></div>
 	</li>
-	<li>
-		<textarea rows="14" cols="68" class="left" readonly style="resize: none;">${list.content }</textarea>
+	<li><hr id="hr">
+		<textarea rows="15" cols="65" class="left" readonly style="resize: none;">${list.content }</textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px"> 장소</label>
-		<p id="map" style="width: 500px; height: 400px;"></p>
+		<p id="map" style="width: 650px; height: 470px;"></p>
 		</div>
 	</li>
 	<li>
-	<div class="clear"></div>
+	<div class="clear"></div><hr id="hr">
 		<c:if test="${id == list.user_id }">
 		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
-		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제">
+		<div class="modal2">
+	<div class="modal_content2" title="클릭하면 닫기!.">
+		<label>정말 삭제 하시겠습니까?</label><br>
+		<input type="button" class="btn1"  value="예" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		<input type="button" class="btn1" id="delbtn2" value="아니오" >
+	</div>
+</div>
 		</c:if>
 		<input type="button" class="btn1" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
 	</li>
@@ -110,7 +160,7 @@ li input{
 		  <option value="product_no">제품모델명</option>
 		</select>
 		<input type="text" id="itemProd" placeholder="검색어를 입력하세요" name="searchtxt">
-		<button type="button" id="btn_search">시세조회</button>
+		<button type="button" id="btn_search" class="btn1" style="border:0;">시세조회</button>
 	</form>
 	</div>
 	<br><br><br><br>
@@ -158,26 +208,26 @@ li input{
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
-		</div>
 	</li>
-	<hr id="hr" style="width:1375px; margin-left:268px;">
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">
-		<div style="margin-left:55px;"><br>	
+		<div><br>	
 			<div id="replydiv">
+			<hr id="hr">
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
-				<input type="submit" value="등록" style="margin-bottom:5px;">
+				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."
+						 required style="resize: none;"></textarea>
+				<input type="submit" value="등록" style="margin-bottom:5px;" class="btn1">
 				</form><br><br><br><br>
 			</div>
 		</div>
 	</c:if>
 	</li>
 </ul>
+		</div>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
 //좋아요
@@ -236,10 +286,10 @@ $(function () {
 				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/treplychildinsert'>";
 	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
 				p+="<input type='hidden' name='tradeno' value='"+${list.tradeno }+"'>";
-				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px; resize: none;'></textarea>";
+				p+="<textarea class='replytext' rows='4' cols='90' name='reply_content' placeholder='대댓글을 입력하세요.' style='margin-left:25px; resize: none;'></textarea>";
 				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
 				p+="<input type='hidden' name='reparent' value='"+no+"'>";
-				p+="<input type='submit' value='댓글달기'>";
+				p+="<input type='submit' class='btn1' value='댓글달기'>";
 				p+="</form>";
 				
 				$('.replyform').remove();

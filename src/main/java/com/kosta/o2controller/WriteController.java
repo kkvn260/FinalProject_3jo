@@ -557,7 +557,7 @@ public class WriteController {
 	
 	@PostMapping("dlike")
 	@ResponseBody
-	public int dlike(@RequestBody O2LikeDTO dto) {
+	public List<Integer> dlike(@RequestBody O2LikeDTO dto) {
 		O2LikeDTO result=service.dlikecheck(dto);
 		int t = 1;
 		if(result==null) {
@@ -572,7 +572,7 @@ public class WriteController {
 		List<Integer> list=new ArrayList<Integer>();
 		list.add(t);
 		list.add(total);
-		return t;
+		return list;
 	}
 	
 	@RequestMapping("/getPriceData")

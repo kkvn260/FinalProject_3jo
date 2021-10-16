@@ -112,23 +112,20 @@ function addPreview(input) {
 			setPreviewForm(file);
 		}
 	} else
-		alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
+		alert('invalid file input'); 
 }
 
 function setPreviewForm(file, img){
 	var reader = new FileReader();
 
-	//div id="preview" 내에 동적코드추가.
-	//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
 	reader.onload = function(img) {
 		var imgNum = previewIndex++;
 		$("#preview").append(
 				"<div class=\"preview-box\" value=\"" + imgNum +"\">" +
-				"<img class=\"thumbnail\" src=\"" + img.target.result + "\"\/>" +
+				"<img class=\"moimg\" src=\"" + img.target.result + "\"\/>" +
 				"<p>" + file.name + "</p>"
 				+ "</div>"
 		);
-		resizeHeight();
 		files[imgNum] = file;            
 	};
 
@@ -137,5 +134,5 @@ function setPreviewForm(file, img){
 
 
 	$('#attach input[type=file]').change(function() {
-		addPreview($(this)); //preview form 추가하기
+		addPreview($(this)); 
 	});

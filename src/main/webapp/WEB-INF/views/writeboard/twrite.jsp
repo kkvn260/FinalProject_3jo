@@ -24,9 +24,10 @@ $(function () {
 		}
 	})
 })
-
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+
 .btn1{
 	background-color: white;
 	border: none;
@@ -40,25 +41,58 @@ $(function () {
       margin:0 auto;
       width:1400px;
     }
+ul li{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+hr{
+	color: green;
+}
+option,select {
+	font-size: 22px;
+	font-family: 'Gaegu', cursive;
+}
+input {
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+}
 </style>
 <body>
 <div id="twrite">
 <br><br><br><br><br><br>
+<div class="modal">
+	<div class="modal_content" title="클릭하면 닫기!.">
+		<img class="modalimg" src="">
+	</div>
+</div>
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
 	<li>
 		<label for="category">카테고리</label>
-		<select name="category1" id="category1"></select>
-		<select name="category2" id="category2"></select>
+		<select name="category1" id="category1" required></select>
+		<select name="category2" id="category2" required></select>
+		<hr class="hr1">
 	</li>
 	<li>
 		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<label>제목</label>
 		<input type="text" id="title" name="title" placeholder="제목" required>
+		<hr class="hr1">
 	</li>
 	<li>
 		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" name="sell_price" placeholder="판매 희망 가격" onkeyup="numberWithCommas(this.value)"><span>원</span>
+		<input type="text" id="sell_price" name="sell_price" placeholder="판매 희망 가격" 
+				onkeyup="numberWithCommas(this.value)" style="text-align: right;"><span>원</span>
+		<hr class="hr1">
 	</li>
 		<li>
 			<div class="filebody">
@@ -66,29 +100,32 @@ $(function () {
 					<label class="upload" for="filedata">사진첨부</label><span style="font-size: 15px;"> << 클릭</span>
 					<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 				</div>
-				
-				<label>미리보기</label>
+				<hr class="hr1">
 				<div id="preview" class="filecontent"></div>
 				<div class="clear"></div>
 			</div>
 		</li>
 	<li>
-		<textarea rows="14" cols="68" name="content" id="content" class="left" style="resize: none;" required></textarea>
+		<label>내용</label><br><hr class="hr1">
+		<textarea rows="15" cols="65" name="content" class="left" 
+				style="resize: none;" required placeholder="가품 및 판매와 관련되지 않은 게시글을 경우 제재가 가해질 수 있습니다."></textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px"> 장소 설정</label>
-		<p id="map" style="width: 500px; height: 400px;"></p>
+		<p id="map" style="width: 650px; height: 470px;"></p>
 		</div>
 	</li>
 	<li>
-		<div class="clear"></div>
+		<div class="clear"></div><hr class="hr1">
 		<input type="hidden" name="map_x" id="map_x" required>
 		<input type="hidden" name="map_y" id="map_y" required>
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
 		<div class="deal_price" style="display: none;">
 		<label>경매시작 가격</label>
-		<input type="text" class="deal_price" name="deal_price" placeholder="경매는 48시간 동안 진행됩니다." size="30" onkeyup="numberWithCommas2(this.value)" ><span>원</span>
+		<input type="text" class="deal_price" name="deal_price" placeholder="경매는 48시간 동안 진행됩니다."
+			 size="30" onkeyup="numberWithCommas2(this.value)" style="text-align: right;" ><span>원</span>
 		</div>
+		<hr class="hr1">
 	</li> 
 	<li>
 		<input type="submit" value="등록" class="btn1">
