@@ -13,7 +13,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-	<style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+
+ #qwritedetail{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+    }
 li input{
 	border:none;
 	outline: none;
@@ -31,11 +38,35 @@ li input{
 	color: green;
 	text-decoration: underline;
 }
- #qwritedetail ,  #replydiv{
-      align:center;
-      margin:0 auto;
-      width:1400px;
-    }
+ ul li,label{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+hr{
+	color: green;
+}
+option,select {
+	font-size: 22px;
+	font-family: 'Gaegu', cursive;
+}
+input {
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+}
+.replytext{
+	border: 1px solid silver;
+}
 </style>
 <body>
 <div id="qwritedetail">
@@ -47,14 +78,18 @@ li input{
 </div>
 <ul>
 	<li>
+		<div>
+		<label>작성자</label>
+		<span> : ${list.user_id }</span>
+		</div>
 		<label>카테고리</label>
-		<input type="text" id="detailcategory" value="${list.category }" readonly>
+		<span>${list.category}</span>
+		<hr id="hr">
 	</li>
 	<li>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
-		<label>작성일</label>
-		<span> : ${list.writedate }</span>
+		<hr id="hr">
 	</li>
 	<li>
 		<c:if test="${list2!=null  }">
@@ -71,13 +106,14 @@ li input{
 	<div class="clear"></div>
 	</li>
 	<li>
+		<label>내용</label><br><hr id="hr">
 		<textarea rows="20" cols="100"  readonly style="resize: none;">${list.content }</textarea>
 	</li>
 	<li>
-	<div class="clear"></div>
+	<div class="clear"></div><hr id="hr">
 		<c:if test="${id == list.user_id }">
 		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/qwritemodify/${list.qnano}'">
-		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/qwritedelete/${list.qnano}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="del()">
 		</c:if>
 		<input type="button" class="btn1" id="qlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/qnalist'">
 	<br><br><br><br>
@@ -86,7 +122,6 @@ li input{
 	<li>
 		<label>답변</label>
 		<hr id="hr">
-		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
 				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
@@ -111,27 +146,34 @@ li input{
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
-		</div>
 	</li>
-	<hr id="hr" style="width:1375px; margin-left:268px;">
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">
-		<<div style="margin-left:55px;"><br>	
+		<div><br>	
 			<div id="replydiv">
+			<hr id="hr">
 				<label>답변 쓰기</label>
 				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
 				<input type="hidden" id="qnano" name="qnano" value="${list.qnano }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br>
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
-				<input type="submit" value="등록">
+				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
+				<input type="submit" value="등록" style="margin-bottom:5px;" class="btn1">
 				</form><br><br><br><br>
 			</div>
 		</div>
 	</c:if>
 	</li>
 </ul>	
+</div>
 <script>
+function del() {
+    if (!confirm("정말 삭제 하시겠습니까?")) {
+        
+    } else {
+        alert("삭제하셨습니다.");
+        location.href="${pageContext.request.contextPath }/qwritedelete/${list.qnano}";
+    }
+}
 //대댓글
 $(function () {
 	$(".replychild_btn").on("click",function(){

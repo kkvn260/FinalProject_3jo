@@ -13,16 +13,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-<script>
-$(function() {
-	$('#delbtn').click(function() {
-		$(".modal2").fadeIn();
-	})
-	$("#delbtn2").click(function(){
-		$(".modal2").fadeOut();
-	});
-})
-</script>
 <style>
 li input{
 	border:none;
@@ -39,6 +29,7 @@ li input{
 }
 .btn1{
 	background-color: white;
+	border: none;
 }
 .btn1:hover{
 	color: green;
@@ -79,6 +70,16 @@ textarea{
 	border: 1px solid silver;
 }
 </style>
+<script>
+    function del() {
+        if (!confirm("정말 삭제 하시겠습니까?")) {
+            
+        } else {
+            alert("삭제하셨습니다.");
+            location.href="${pageContext.request.contextPath }/twritedelete/${list.tradeno}";
+        }
+    }
+</script>
 <body>
 <br><br><br><br><br><br>
 <div id="tdetail">
@@ -130,7 +131,8 @@ textarea{
 		</c:if>
 	<div class="clear"></div>
 	</li>
-	<li><hr id="hr">
+	<li>
+		<label>내용</label><br><hr id="hr">
 		<textarea rows="15" cols="65" class="left" readonly style="resize: none;">${list.content }</textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px"> 장소</label>
@@ -141,14 +143,7 @@ textarea{
 	<div class="clear"></div><hr id="hr">
 		<c:if test="${id == list.user_id }">
 		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/twritemodify/${list.tradeno}'">
-		<input type="button" class="btn1" id="delbtn" value="삭제">
-		<div class="modal2">
-	<div class="modal_content2" title="클릭하면 닫기!.">
-		<label>정말 삭제 하시겠습니까?</label><br>
-		<input type="button" class="btn1"  value="예" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
-		<input type="button" class="btn1" id="delbtn2" value="아니오" >
-	</div>
-</div>
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="del()">
 		</c:if>
 		<input type="button" class="btn1" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
 	</li>
@@ -208,6 +203,7 @@ textarea{
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
+		</div>
 	</li>
 	</c:if>
 	<li>

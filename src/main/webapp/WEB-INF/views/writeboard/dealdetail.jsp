@@ -34,11 +34,40 @@ li input{
 	color: green;
 	text-decoration: underline;
 }
- #dealdetail ,  #replydiv{
+ #dealdetail{
       align:center;
       margin:0 auto;
       width:1400px;
     }
+ul li,label{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+hr{
+	color: green;
+}
+option,select {
+	font-size: 22px;
+	font-family: 'Gaegu', cursive;
+}
+input {
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+}
+.replytext{
+	border: 1px solid silver;
+}
 </style>
 <script>
 //경매 시간
@@ -126,6 +155,15 @@ $(function () {
 		}
 	})
 })
+
+function del() {
+    if (!confirm("정말 삭제 하시겠습니까?")) {
+        
+    } else {
+        alert("삭제하셨습니다.");
+        location.href="${pageContext.request.contextPath }/twritedelete/${list.tradeno}";
+    }
+}
 </script>
 <body>
 <div id="dealdetail">
@@ -145,26 +183,10 @@ $(function () {
 <br>
 <ul>
 	<li>
-		<label>카테고리</label>
-		<span>${list.category1} > </span>
-		<span>${list.category2}</span>
-	</li>
-	<li>
-		<input type="hidden" name="user_id" value="${id }">
-		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
-		<label>제목</label>
-		<input type="text" id="title" value="${list.title }" readonly>
-		<div style="float: right;">
+		<div>
 		<label>작성자</label>
 		<span> : ${list.user_id }</span>
 		</div>
-	</li>
-	<li>
-		<label>현재 입찰가격</label>
-		<span id="ndeal_price">${price }</span><span>원</span>&ensp;
-		<label >입찰 희망가격</label>
-		<input type="text" id="deal_price" class="deal_price" name="deal_price" onkeyup="numberWithCommas2(this.value)">원
-		<button id="deal_btn" >입찰하기</button>
 		<div style="float: right;">
 		<c:if test="${result ne null }">
 		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/하트.png" width="30px" height="30px">
@@ -174,6 +196,24 @@ $(function () {
 		</c:if>
 		<span class="likeno">좋아요 수 : ${list.likeno }</span>
 		</div>
+		<label>카테고리</label>
+		<span>${list.category1} > </span>
+		<span>${list.category2}</span>
+		<input type="hidden" name="user_id" value="${id }">
+		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
+			<hr id="hr">
+	<li>
+		<label>제목</label>
+		<input type="text" id="title" value="${list.title }" readonly>
+			<hr id="hr">
+	</li>
+	<li>
+		<label>현재 입찰가격</label>
+		<span id="ndeal_price">${price }</span><span>원</span>&ensp;
+		<label >입찰 희망가격</label>
+		<input type="text" id="deal_price" class="deal_price" name="deal_price" onkeyup="numberWithCommas2(this.value)">원
+		<button id="deal_btn" >입찰하기</button>
+		<hr id="hr">
 	</li>
 	<li>
 		<label>첨부 사진</label>
@@ -189,17 +229,18 @@ $(function () {
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="14" cols="68" class="left" readonly style="resize: none;">${list.content }</textarea>
+		<label>내용</label><br><hr id="hr">
+		<textarea rows="15" cols="65" class="left" readonly style="resize: none;">${list.content }</textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px">장소</label>
-		<p id="map" style="width: 500px; height: 400px;"></p>
+		<p id="map" style="width: 650px; height: 470px;"></p>
 		</div>
 	</li>
 	<li>
-	<div class="clear"></div>
+	<div class="clear"></div><hr id="hr">
 		<c:if test="${id == list.user_id }">
 		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/tdealmodify/${list.tradeno}'">
-		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/twritedelete/${list.tradeno}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="del()">
 		</c:if>
 		<input type="button" class="btn1" id="dlist" value="목록" onclick="location.href='${pageContext.request.contextPath }/deallist'">
 		<br><br><br><br>
@@ -239,13 +280,14 @@ $(function () {
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">
-		<div style="margin-left:55px;"><br>
+		<div><br>
 			<div id="replydiv">
+			<hr id="hr">
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/tdreplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 
-				<textarea rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
+				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
 				<input type="submit" value="등록">
 				</form><br><br><br><br>
 			</div>
@@ -311,7 +353,7 @@ $(function () {
 				p+="<form method='post' class='replyform' action='${pageContext.request.contextPath }/treplychildinsert'>";
 	 			p+="<input type='hidden' name='user_id' value='"+id+"'>";
 				p+="<input type='hidden' name='tradeno' value='"+${list.tradeno }+"'>";
-				p+="<textarea rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px; resize: none;'></textarea>";
+				p+="<textarea class='replytext' rows='4' cols='90' name='reply_content' placeholder='댓글을 입력하세요.' style='margin-left:25px; resize: none;'></textarea>";
 				p+="<input type='hidden' name='reorder' value='"+data.reorder+"'>";
 				p+="<input type='hidden' name='reparent' value='"+no+"'>";
 				p+="<input type='submit' value='댓글달기'>";

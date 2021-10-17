@@ -13,29 +13,52 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-	<style>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+    
+ #dwritedetail{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+}
 li input{
 	border:none;
 	outline: none;
 }
-#hr{
-	border: 1px solid green;
-}
-#replyarea input{
-	border-bottom: 1px solid silver;
-}
 .btn1{
 	background-color: white;
+	border: none;
 }
 .btn1:hover{
 	color: green;
 	text-decoration: underline;
 }
- #dwritedetail ,  #replydiv{
-      align:center;
-      margin:0 auto;
-      width:1400px;
-    }
+ul li{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+hr{
+	color: green;
+}
+input {
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+	border: 1px solid green;
+}
+.replytext{
+	border: 1px solid silver;
+}
 </style>
 <body>
 <div id="dwritedetail">
@@ -47,19 +70,10 @@ li input{
 </div>
 <ul>
 	<li>
-		<label>카테고리</label>
-		<span>${list.category1} > </span>
-		<span>${list.category2}</span>
-	</li>
-	<li>
-		<label>제목</label>
-		<input type="text" id="title" value="${list.title }" readonly>
-		<div style="float: right;">
+		<div>
 		<label>작성자</label>
 		<span> : ${list.user_id }</span>
 		</div>
-	</li>
-	<li>
 		<div style="float: right;">
 		<c:if test="${result ne null }">
 		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/하트.png" width="30px" height="30px">
@@ -69,6 +83,15 @@ li input{
 		</c:if>
 		<span class="likeno">좋아요 수 : ${list.likeno }</span>
 		</div>
+		<label>카테고리</label>
+		<span>${list.category1} > </span>
+		<span>${list.category2}</span>
+		<hr class="hr1">
+	</li>
+	<li>
+		<label>제목</label>
+		<input type="text" id="title" value="${list.title }" readonly>
+		<hr class="hr1">
 	</li>
 	<li>
 		<c:if test="${list2!=null }">
@@ -84,17 +107,18 @@ li input{
 	<div class="clear"></div>
 	</li>
 	<li>
-		<textarea rows="14" cols="68" class="left" readonly style="resize: none;">${list.content }</textarea>
+		<label>내용</label><br><hr class="hr1">
+		<textarea rows="15" cols="65" class="left" readonly style="resize: none;">${list.content }</textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px">장소</label>
-		<p id="map" style="width: 500px; height: 400px;"></p>
+		<p id="map" style="width: 650px; height: 470px;"></p>
 		</div>
 	</li>
 	<li>
-	<div class="clear"></div>
+	<div class="clear"></div><hr class="hr1">
 		<c:if test="${id == list.user_id }">
 		<input type="button" class="btn1" id="modibtn" value="수정" onclick="location.href='${pageContext.request.contextPath }/dwritemodify/${list.chatno}'">
-		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="location.href='${pageContext.request.contextPath }/dwritedelete/${list.chatno}'">
+		<input type="button" class="btn1" id="delbtn" value="삭제" onclick="del()">
 		</c:if>
 		<input type="button" class="btn1" id="donglist" value="목록" onclick="location.href='${pageContext.request.contextPath }/dongcomlist'">
 		<br><br><br><br>
@@ -102,8 +126,7 @@ li input{
 	<c:if test="${not empty list3}">
 	<li>
 		<label>댓글</label>
-		<hr id="hr">
-		<div id="replyarea">
+		<hr class="hr1">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
 				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
@@ -114,7 +137,7 @@ li input{
 				<span>${item.user_id }</span>&ensp;
 				</div>
 				<span style="flex-grow: 1;"> >> ${item.reply_content }</span>
-				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly>
+				<input type="text" name="reply_writedate" value="${item.reply_writedate }" readonly style="flex-grow: 0;">
 					<c:if test="${id eq item.user_id && item.dept==0}">
 						<a href="${pageContext.request.contextPath }/dreplydelete/${item.replyno}/${list.chatno}" style="color: red; font-size: 13px; margin-top: 7px;">삭제</a>
 					</c:if>
@@ -128,28 +151,35 @@ li input{
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
-		</div>
 	</li>
-	<hr id="hr" style="width:1375px; margin-left:268px;">
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">
-		<div style="margin-left:55px;"><br>	
+		<div><br>	
 			<div id="replydiv">
+			<hr class="hr1">
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/dreplyresult" method="post">
 				<input type="hidden" id="chatno" name="chatno" value="${list.chatno }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 
-				<textarea style="resize: none;" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
-				<input type="submit" value="등록">
+				<textarea class="replytext" style="resize: none;" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
+				<input type="submit" value="등록" style="margin-bottom:5px;" class="btn1">
 				</form><br><br><br><br>
 			</div>
 		</div>
 	</c:if>
 	</li>
-</ul>	
+</ul>
+</div>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
+function del() {
+    if (!confirm("정말 삭제 하시겠습니까?")) {
+        
+    } else {
+        alert("삭제하셨습니다.");
+        location.href="${pageContext.request.contextPath }/dwritedelete/${list.chatno}";
+    }
+}
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){

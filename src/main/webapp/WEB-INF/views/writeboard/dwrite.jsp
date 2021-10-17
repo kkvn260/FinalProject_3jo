@@ -13,13 +13,48 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
-	<style>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+    
  #dwrite{
       align:center;
       margin:0 auto;
       width:1400px;
-    }
-    </style>
+}
+
+.btn1{
+	background-color: white;
+	border: none;
+}
+.btn1:hover{
+	color: green;
+	text-decoration: underline;
+}
+ul li{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+hr{
+	color: green;
+}
+option,select {
+	font-size: 22px;
+	font-family: 'Gaegu', cursive;
+}
+input {
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+}
+</style>
 <body>
 <div id="dwrite">
 <br><br><br><br><br><br>
@@ -27,13 +62,15 @@
 <ul>
 	<li>
 		<label for="category">카테고리</label>
-		<select name="category1" id="category1"></select>
-		<select name="category2" id="category2"></select>
+		<select name="category1" id="category1" required></select>
+		<select name="category2" id="category2" required></select>
+		<hr class="hr1">
 	</li>
 	<li>
 		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<label>제목</label>
 		<input type="text" id="title" name="title" placeholder="제목" required>
+		<hr class="hr1">
 	</li>
 		<li>
 			<div class="filebody">
@@ -41,27 +78,28 @@
 					<label class="upload" for="filedata">사진첨부</label><span style="font-size: 15px;"> << 클릭</span>
 					<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 				</div>
-				
-				<label>미리보기</label>
+				<hr class="hr1">
 				<div id="preview" class="filecontent"></div>
 				<div class="clear"></div>
 			</div>
 		</li>
 	<li>
-		<textarea rows="14" cols="68" name="content" id="content" class="left" style="resize: none;" required></textarea>
+		<label>내용</label><br><hr class="hr1">
+		<textarea rows="15" cols="65" name="content" class="left"
+					 style="resize: none;" required placeholder="가품 및 판매와 관련되지 않은 게시글을 경우 제재가 가해질 수 있습니다."></textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px">장소 설정</label>
-		<p id="map" style="width: 500px; height: 400px;"></p>
+		<p id="map" style="width: 650px; height: 470px;"></p>
 		</div>
 	</li>
 	<li>
-		<div class="clear"></div>
+		<div class="clear"></div><hr class="hr1">
 		<input type="hidden" name="map_x" id="map_x" >
 		<input type="hidden" name="map_y" id="map_y" >
 	</li>
 	<li>
-		<input type="submit" value="등록">
-		<input type="button" value="취소">
+		<input type="submit" value="등록" class="btn1">
+		<input type="button" value="취소" class="btn1">
 	</li>
 </ul><br><br><br><br>
 
