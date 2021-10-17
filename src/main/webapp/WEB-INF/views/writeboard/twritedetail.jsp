@@ -115,7 +115,7 @@ textarea{
 	</li>
 	<li>
 		<label>판매 희망가격</label>
-		<input type="text" id="sell_price" value="${list.sell_price }" readonly>
+		<input type="text" id="sell_price" value="${list.sell_price }원" readonly>
 		<hr id="hr">
 	</li>
 	<li>
