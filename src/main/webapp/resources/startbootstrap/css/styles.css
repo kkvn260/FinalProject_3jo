@@ -594,9 +594,6 @@ progress {
 .blockquote-footer::before {
   content: "— ";
 }
-#content{
-	background-color:#FFFFCC;
-}
 .img-fluid {
   max-width: 100%;
   height: auto;
