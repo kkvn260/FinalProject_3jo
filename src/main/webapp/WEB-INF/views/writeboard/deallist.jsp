@@ -8,14 +8,22 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-   #h2{color:blue;}
-   h2 a{color:black;}
+  @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+ 
+   #h2{color:black;
+       font-family: 'Gowun Dodum', sans-serif;
+   }
+   h2 a{color:grey;
+   }
    h2 a:link{text-decoration:none;}
+   h2 a:hover, td a:hover{color:green;}
    h2 a{text-shadow: none;}
  #deallist{
       align:center;
       margin:0 auto;
       width:1400px;
+     font-family: 'Gowun Dodum', sans-serif;
+	  font-size: 22px;
     }
 </style>
 </head>
@@ -23,10 +31,12 @@
 <br><br><br><br><br><br>
 <div id="deallist">
 <div>
-<h2 id="h2"><a href="${pageContext.request.contextPath }/selllist">판매글 게시판 / </a> 경매글 게시판</h2><hr>
+<h2 id="h2"><a href="${pageContext.request.contextPath }/selllist">판매글 게시판&nbsp;</a>
+             <span style="background:url(${pageContext.request.contextPath}/resources/img/수채화이미지.png) no-repeat; opacity:0.8; z-index:-1;">
+                        경매글 게시판</span></h2><hr>
 </div>
-	<table class="table table-striped">
-		<thead>
+	<table class="table table-hover">
+		<thead style="background-color:#CCFFCC;">
 			<tr>
 				<th>글번호</th>
 				<th>아이디</th>
@@ -48,31 +58,15 @@
 						<td><c:out value="${item.writedate }" /></td>
 					</tr>
 				</c:forEach>
+				<img width="60" height="80" style="margin-top: 20px" src="${pageContext.request.contextPath}/resources/img/52.png"/>
 			</c:if>
 		</tbody>
 	</table>
-	<form method="get" action="deallist">
-		<select name="search">
-		  <option value="total">전체</option>
-		  <option value="user_id">회원ID</option>
-		  <option value="title">제목</option>
-		  <option value="content">내용</option>
-		</select>
-		<input type="text"  name="searchtxt">
-		<input type="submit" value="검색">
-	  </form>
-
-	  <span>
-		&emsp;&emsp;&emsp;&emsp;
-		<h4 style="display: inline">인기</h4>
-			<c:forEach items="${topSearch}" var="index">
-				<a href="deallist?search=cat&searchtxt=${index}"><c:out value="${index}"/> &nbsp;</a>
-			</c:forEach>
-	 </span>
-
+	
 	<c:if test="${id!=null }">
-	<a href="write" class="btn btn-success pull-right">글쓰기</a><br>
-	</c:if>
+	<a href="write"style="float:right;"><img width="110" height="40" src="${pageContext.request.contextPath}/resources/img/글쓰기.png"></a><br><br>
+	</c:if><br>
+<div style="text-align:center;">
 	<c:if test="${page.prev}">
   		<a href="deallist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">
    		 <c:out value="이전"/>
@@ -94,7 +88,26 @@
 	  <a href="deallist?currPage=${page.endBlock+1}&search=${search}&searchtxt=${searchtxt}">
    		<c:out value="다음"></c:out>
   	  </a>
- 	</c:if><br><br>
+ 	</c:if><br><br><br><br>
+
+	<form method="get" action="deallist">
+		<select name="search">
+		  <option value="total">전체</option>
+		  <option value="user_id">회원ID</option>
+		  <option value="title">제목</option>
+		  <option value="content">내용</option>
+		</select>
+		<input type="text"  name="searchtxt">
+		<input type="submit" value="검색">
+	  </form>
+
+	  <span>
+		<h4 style="display: inline; font-family: 'Gowun Dodum', sans-serif;  margin-right:170px;">인기</h4>
+			<c:forEach items="${topSearch}" var="index">
+				<a href="deallist?search=cat&searchtxt=${index}"><c:out value="${index}"/> &nbsp;</a>
+			</c:forEach>
+	 </span><br><br>
+</div>
  	</div>
 </body>
 </html>

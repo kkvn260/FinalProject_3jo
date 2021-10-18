@@ -8,19 +8,28 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
+ @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+ #h2{
+      font-family: 'Gowun Dodum', sans-serif;
+      background:url(${pageContext.request.contextPath}/resources/img/수채화이미지.png) no-repeat; opacity:0.8; z-index:-1;"
+ }
 #qnalist{
       align:center;
       margin:0 auto;
       width:1400px;
+      font-family: 'Gowun Dodum', sans-serif;
+	  font-size: 22px;
     }
+  td a:hover{color:green;}
 </style>
 </head>
 <body>
 <br><br><br><br><br><br>
 <div id="qnalist">   
-    <h2>Q & A 게시판</h2><hr>
-	<table class="table table-striped">
-		<thead>
+    <h2 id="h2">Q & A 게시판</h2><hr>
+	<table class="table table-hover">
+		<thead style="background-color:#CCFFCC;">
 			<tr>
 				<th>글번호</th>
 				<th>아이디</th>
@@ -39,12 +48,13 @@
 						<td><c:out value="${item.writedate }" /></td>
 					</tr>
 				</c:forEach>
+				<img width="60" height="80" style="margin-top: 20px" src="${pageContext.request.contextPath}/resources/img/52.png"/>
 			</c:if>
 		</tbody>
 	</table>
 	<c:if test="${id!=null }">
-	<a href="qwrite" class="btn btn-success pull-right">글쓰기</a><br>
+	<a href="qwrite" style="float:right;"><img width="110" height="40" src="${pageContext.request.contextPath}/resources/img/글쓰기.png"></a><br>
 	</c:if>
-</div>
+</div><br><br>
 </body>
 </html>

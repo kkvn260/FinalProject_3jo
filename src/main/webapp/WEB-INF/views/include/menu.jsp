@@ -9,8 +9,9 @@
 </head>
 <style>
  #login{
-   font-size:20px;
-   color:blue;
+   font-size:25px;
+   color:black;
+   text-shadow: 2px 2px 2px white;
  }
 </style>
 <body>
