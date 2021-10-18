@@ -21,7 +21,7 @@
       margin:0 auto;
       width:1400px;
 	  font-family: 'Gowun Dodum', sans-serif;
-	  font-size: 22px;
+	  font-size: 18px;
   }
   
 </style>
