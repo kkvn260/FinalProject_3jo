@@ -75,8 +75,8 @@
        <th><input type="text" name="birthday" value="${list.birthday }" readonly="readonly"/></th></tr>
    <tr><th>주소</th>
        <th><input type="text" value="${list.addr1 }/${list.addr2 }" readonly/></th></tr>
-   <tr><th></th><th><select name="addr1" id="addr1"></select>
-   				<select name="addr2" id="addr2"></select><th></tr>
+   <tr><th></th><th><select name="addr1" id="addr1" style="font-family: 'Gowun Dodum', sans-serif;"></select>
+   				<select name="addr2" id="addr2" style="font-family: 'Gowun Dodum', sans-serif;"></select><th></tr>
    <tr><th>성별</th>
        <th><c:out value="${list.gender }"/></th></tr>
 </table>
