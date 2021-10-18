@@ -29,9 +29,11 @@ $(function() {
 	$('#deal').click(function () {
 		if($('.deal_price').css("display")=='none'){
 			$('.deal_price').show();
+			$('.deal_price').attr("required",true);
 		}else{
 			$('.deal_price').val("");
 			$('.deal_price').hide();
+			$('.deal_price').attr("required",false);
 		}
 	})
 })
