@@ -18,9 +18,11 @@ $(function () {
 	$("#deal").on("click",function(){
 		if($('#sell_price').css("display")=='none'){
 			$('#sell_price').show();
+			$('#sell_price').attr("required",true);
 		}else{
 			$("#sell_price").val("");
 			$('#sell_price').hide();
+			$('#sell_price').attr("required",false);
 		}
 	})
 })
@@ -91,7 +93,7 @@ textarea{
 	<li>
 		<label>판매 희망가격</label>
 		<input type="text" id="sell_price" name="sell_price" placeholder="판매 희망 가격" 
-				onkeyup="numberWithCommas(this.value)" style="text-align: right;"><span>원</span>
+				onkeyup="numberWithCommas(this.value)" style="text-align: right;" required="required"><span>원</span>
 		<hr class="hr1">
 	</li>
 		<li>
@@ -123,13 +125,13 @@ textarea{
 		<div class="deal_price" style="display: none;">
 		<label>경매시작 가격</label>
 		<input type="text" class="deal_price" name="deal_price" placeholder="경매는 48시간 동안 진행됩니다."
-			 size="30" onkeyup="numberWithCommas2(this.value)" style="text-align: right;" ><span>원</span>
+			 size="30" onkeyup="numberWithCommas2(this.value)" style="text-align: right;" required="required"><span>원</span>
 		</div>
 		<hr class="hr1">
 	</li> 
 	<li>
 		<input type="submit" value="등록" class="btn1">
-		<input type="button" value="취소" class="btn1">
+		<input type="button" value="취소" class="btn1" onclick="location.href='${pageContext.request.contextPath }/selllist'">
 	</li>
 </ul><br><br><br><br>
 
