@@ -37,10 +37,7 @@
              <a href="${pageContext.request.contextPath }/naverlogin"> 
                 <img width="350" height="50" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
              </div> 
-			<div id="kakao_id_login" style="text-align:center">
-             <a href="${pageContext.request.contextPath }/kakaologin"> 
-                <img width="350" height="50" style="margin-top: 20px" src="${pageContext.request.contextPath}/resources/img/kakao_login_medium_narrow.png"/></a>
-             </div><br><br>
+			<br><br>
 				<div class="foot-lnk">
 					 <a href="${pageContext.request.contextPath }/registerForm" id="register">회원가입</a>
                      <span id="reoe">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
