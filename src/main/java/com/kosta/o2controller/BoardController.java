@@ -30,7 +30,7 @@ public class BoardController {
 	@RequestMapping("/selllist")
 	public String sellList(@RequestParam(required = false, defaultValue = "1") int currPage,
 			@RequestParam(required = false, defaultValue = "") String search,
-			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model,HttpSession session) {
+			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model, HttpSession session) {
 
 		Pattern pattern = Pattern.compile("(^[0-9]*$)");
 
@@ -57,9 +57,9 @@ public class BoardController {
 		List<O2MainBoardDTO> list = service.sellList(search, searchtxt, page.getStartRow(), pageSize);
 
 		List<String> topSearch = service.getTopSearch();
-		String id=(String)session.getAttribute("user_id");
-		
-		model.addAttribute("id",id);
+		String id = (String) session.getAttribute("user_id");
+
+		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
@@ -72,7 +72,7 @@ public class BoardController {
 	@RequestMapping("/deallist")
 	public String deallist(@RequestParam(required = false, defaultValue = "1") int currPage,
 			@RequestParam(required = false, defaultValue = "") String search,
-			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model,HttpSession session) {
+			@RequestParam(required = false, defaultValue = "") String searchtxt, Model model, HttpSession session) {
 
 		Pattern pattern = Pattern.compile("(^[0-9]*$)");
 
@@ -99,9 +99,9 @@ public class BoardController {
 		List<O2MainBoardDTO> list = service.dealList(search, searchtxt, page.getStartRow(), pageSize);
 
 		List<String> topSearch = service.getTopSearch();
-		String id=(String)session.getAttribute("user_id");
-		
-		model.addAttribute("id",id);
+		String id = (String) session.getAttribute("user_id");
+
+		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
@@ -112,24 +112,77 @@ public class BoardController {
 	}
 
 	@RequestMapping("/qnalist")
-	public String list(Model model,HttpSession session) {
-		List<O2QnaBoardDTO> list = service2.qnalist();
-		String id=(String)session.getAttribute("user_id");
+	public String list(@RequestParam(required = false, defaultValue = "1") int currPage,
+			@RequestParam(required = false, defaultValue = "") String search,
+			@RequestParam(required = false, defaultValue = "") String searchtxt, 
+			Model model, HttpSession session) 
+	{
 		
-		model.addAttribute("id",id);
+		String id = (String) session.getAttribute("user_id");
+		Pattern pattern = Pattern.compile("(^[0-9]*$)");
+
+		if (search == "total" || search.equals("total") || search == "user_id" || search.equals("user_id")
+				|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
+				|| search == "cat" || search.equals("cat")) {
+			Matcher matcher = pattern.matcher(searchtxt);
+			if (matcher.find()) {
+				model.addAttribute("searchtxt", searchtxt);
+			} else {
+				model.addAttribute("searchtxt", "");
+			}
+		}
+
+		int totalCount = service.sellCount(search, searchtxt);
+		int pageSize = 10;
+		int blockSize = 5;
+		
+		O2Page page = new O2Page(currPage, totalCount, pageSize, blockSize);
+		List<O2QnaBoardDTO> list = service2.qnaList(search, searchtxt, page.getStartRow(), pageSize);
+		
+		model.addAttribute("id", id);
 		model.addAttribute("list", list);
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
 
 		return "writeboard/qnalist";
 	}
 
+	
 	@RequestMapping("/dongcomlist")
-	public String donglist(Model model,HttpSession session) {
-		List<O2DongComDTO> list = service2.dongcomlist();
-		String id=(String)session.getAttribute("user_id");
+	public String donglist(@RequestParam(required = false, defaultValue = "1") int currPage,
+			@RequestParam(required = false, defaultValue = "") String search,
+			@RequestParam(required = false, defaultValue = "") String searchtxt, 
+			Model model, HttpSession session) 
+	{
+		String id = (String) session.getAttribute("user_id");
 		
-		model.addAttribute("id",id);
-		model.addAttribute("list", list);
+		Pattern pattern = Pattern.compile("(^[0-9]*$)");
 
+		if (search == "total" || search.equals("total") || search == "user_id" || search.equals("user_id")
+				|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
+				|| search == "cat" || search.equals("cat")) {
+			Matcher matcher = pattern.matcher(searchtxt);
+			if (matcher.find()) {
+				model.addAttribute("searchtxt", searchtxt);
+			} else {
+				model.addAttribute("searchtxt", "");
+			}
+		}
+
+		int totalCount = service.sellCount(search, searchtxt);
+		int pageSize = 10;
+		int blockSize = 5;
+		
+		O2Page page = new O2Page(currPage, totalCount, pageSize, blockSize);
+		List<O2DongComDTO> list = service.cmtyList(search, searchtxt, page.getStartRow(), pageSize);
+		
+		model.addAttribute("id", id);
+		model.addAttribute("list", list);
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("searchtxt", searchtxt);
+		
 		return "writeboard/dongcomlist";
 	}
 

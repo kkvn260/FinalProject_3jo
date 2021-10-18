@@ -1,5 +1,6 @@
 package com.kosta.o2writeservice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -117,7 +118,7 @@ public interface O2WriteService {
 
 	public O2DealDTO dealresult(int tradeno);
 
-	public List<MobileVO> getPriceData(String category, String itemProd);
+	public HashMap<String, Integer> getPriceData(String category, String itemProd);
 
 
 

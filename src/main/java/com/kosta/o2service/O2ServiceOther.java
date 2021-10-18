@@ -11,15 +11,13 @@ public interface O2ServiceOther {
 
 	public List<O2WriteBoardDTO> topview();
 
-	public List<O2QnaBoardDTO> qnalist();
-
-	public List<O2DongComDTO> dongcomlist();
-
 	public List<O2DongComDTO> dongtopview();
 
 	public void removeSearchData();
 
 	public int getMobileData();
+
+	public List<O2QnaBoardDTO> qnaList(String search, String searchtxt, int startRow, int pageSize);
 
 
 

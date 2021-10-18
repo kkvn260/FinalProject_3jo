@@ -2,6 +2,7 @@ package com.kosta.o2service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,16 +32,16 @@ public class O2ServiceImpleOther implements O2ServiceOther {
 		return dao.topviewlist();
 	}
 
-	@Override
-	public List<O2QnaBoardDTO> qnalist() {
-		// TODO Auto-generated method stub
-		return dao.getqlist();
-	}
 
 	@Override
-	public List<O2DongComDTO> dongcomlist() {
-		// TODO Auto-generated method stub
-		return dao.getdonglist();
+	public List<O2QnaBoardDTO> qnaList(String search, String searchtxt, int startRow, int pageSize) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+		
+		return dao.getqlist(hm);
 	}
 
 	@Override

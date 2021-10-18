@@ -576,14 +576,14 @@ public class WriteController {
 		return list;
 	}
 	
-	@RequestMapping("/getPriceData")
+	@RequestMapping("getPriceData")
 	@ResponseBody
-	public List<MobileVO> getPriceData(@RequestParam  HashMap<String, String>  hm) {
+	public HashMap<String, Integer> getPriceData(@RequestParam  HashMap<String, String>  hm) {
 		
 		String category = (String)hm.get("category");
 		String itemProd = (String)hm.get("itemProd");
 		
-		List<MobileVO> priceList= new ArrayList<MobileVO>();
+		HashMap<String, Integer> priceList=null;
 		
 		if(itemProd!=null || itemProd!="")
 			priceList = service.getPriceData(category,itemProd);

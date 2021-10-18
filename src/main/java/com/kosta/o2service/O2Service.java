@@ -3,6 +3,7 @@ package com.kosta.o2service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -31,6 +32,8 @@ public interface O2Service {
 	String getmail(String user_id);
 
 	void dealmail(String getmail, String title);
+
+	List<O2DongComDTO> cmtyList(String search, String searchtxt, int startRow, int pageSize);
 
 
 

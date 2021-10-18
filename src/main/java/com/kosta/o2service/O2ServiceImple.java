@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2WriteDAO;
+import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2MainBoardDTO;
 import com.kosta.o2dto.O2WriteBoardDTO;
 
@@ -144,6 +145,20 @@ public class O2ServiceImple implements O2Service {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public List<O2DongComDTO> cmtyList(String search, String searchtxt, int startRow, int pageSize) {
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startRow", startRow);
+		hm.put("pageSize", pageSize);
+				
+		return dao.cmtyList(hm);
+	}
+	
+	
+	
 
 	
 	

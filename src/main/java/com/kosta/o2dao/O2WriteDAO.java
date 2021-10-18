@@ -26,7 +26,7 @@ public interface O2WriteDAO {
 
 	List<O2WriteBoardDTO> topviewlist();
 
-	List<O2QnaBoardDTO> getqlist();
+	List<O2QnaBoardDTO> getqlist(HashMap<String, Object> hm);
 
 	int sellCount(HashMap<String, Object> hm);
 
@@ -192,6 +192,8 @@ public interface O2WriteDAO {
 
 	MobileVO getWeekPrice(HashMap<String, Object> hm);
 
-	MobileVO getDayPrice(HashMap<String, Object> hm);	
+	MobileVO getDayPrice(HashMap<String, Object> hm);
+
+	List<O2DongComDTO> cmtyList(HashMap<String, Object> hm);	
 	
 }
