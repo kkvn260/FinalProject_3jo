@@ -33,6 +33,9 @@
              font-size:20px;
              font-family: 'Gowun Dodum', sans-serif;
            }
+           .k1:hover{
+           		border: 3px solid green;
+           }
 
            @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
@@ -99,13 +102,13 @@
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="padding-top: 10px;">
                 <c:forEach var="item" items="${list }">
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 k1" style="border-radius: 30px;">
                             <!-- Product image-->
                             <c:if test="${not empty item.real_name }">
-                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
                             </c:if>
                             <c:if test="${empty item.real_name }">
-                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
                             </c:if>
                             <!-- Product details-->
                             <div class="card-body p-4">
@@ -138,13 +141,13 @@
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="padding-top: 10px;">
                 <c:forEach var="item" items="${list2 }">
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 k1" style="border-radius: 30px;">
                             <!-- Product image-->
                             <c:if test="${not empty item.real_name }">
-                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
                             </c:if>
                             <c:if test="${empty item.real_name }">
-                            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
                             </c:if>
                             <!-- Product details-->
                             <div class="card-body p-4">
@@ -154,7 +157,7 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top--transparent">
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="dwritedetail/${item.chatno }">보러가기</a></div>
                             </div>
                         </div>
