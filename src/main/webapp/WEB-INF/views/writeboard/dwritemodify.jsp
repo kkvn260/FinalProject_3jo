@@ -27,6 +27,30 @@
       margin:0 auto;
       width:1400px;
     }
+ul li,label{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+option,select {
+	font-size: 22px;
+	font-family: 'Gaegu', cursive;
+}
+input {
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+	border: 1px solid green;
+}
 </style>
 <body>
 <div id="dwritemodi">
@@ -35,13 +59,17 @@
 <ul>
 	<li>
 		<label for="category">카테고리</label>
+		<input type="text" name="map_x" id="map_x" required style="color: white; float: right;" >
+		<input type="text" name="map_y" id="map_y" required style="color: white; float: right;" >
 		<select name="category1" id="category1"></select>
 		<select name="category2" id="category2"></select>
+		<hr class="hr1">
 	</li>
 	<li>
 		<input type="hidden" name="chatno" id="chatno" value="${list.chatno }">
 		<label>제목</label>
-		<input type="text" id="title" name="title" value="${list.title }">
+		<input type="text" id="title" name="title" value="${list.title }" size="100">
+		<hr class="hr1">
 	</li>
 	<li>
 		<li>
@@ -59,30 +87,28 @@
 				</div>
 			</div>
 				</c:if>
-				<div class="clear"></div>
+				<div class="clear"></div><hr class="hr1">
 				<div id="attach">
 					<label class="upload" for="filedata">사진첨부</label>
 					<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 				</div>
-				<label>미리보기</label>
 				<div id="preview" class="filecontent"></div>
-
 			</div>
 			<div class="clear"></div>
 		</li>
 	<li>
-		<textarea rows="14" cols="68" class="left" name="content" style="resize: none;">${list.content }</textarea>
+		<label>내용</label><br><hr class="hr1">
+		<textarea rows="15" cols="65" class="left" name="content" style="resize: none;">${list.content }</textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px">장소 설정</label>
-		<p id="map" style="width: 500px; height: 400px;"></p>
+		<p id="map" style="width: 650px; height: 470px;"></p>
 		</div>
 	</li>
 	<li>
 		<div class="clear"></div>
-		<input type="hidden" name="map_x" id="map_x" value="${list.map_x }">
-		<input type="hidden" name="map_y" id="map_y" value="${list.map_y }">
 	</li>
 	<li>
+		<hr class="hr1">
 		<input type="submit" value="등록" class="btn1">
 		<input type="button" value="취소" class="btn1" onclick="location.href='${pageContext.request.contextPath }/dwritedetail/${list.chatno}'">
 	</li>

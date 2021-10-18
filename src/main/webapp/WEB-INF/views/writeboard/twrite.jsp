@@ -15,6 +15,7 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
 <script>
 $(function () {
+	$('.deal_price').attr("required",false);
 	$("#deal").on("click",function(){
 		if($('#sell_price').css("display")=='none'){
 			$('#sell_price').show();
@@ -26,6 +27,13 @@ $(function () {
 		}
 	})
 })
+function can() {
+	 if (!confirm("글작성을 그만 하시겠습니까?")) {
+         
+     } else {
+         location.href="${pageContext.request.contextPath }/selllist";
+     }
+}
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
@@ -66,20 +74,18 @@ textarea{
 }
 .hr1{
 	color: green;
+	border: 1px solid green;
 }
 </style>
 <body>
 <div id="twrite">
 <br><br><br><br><br><br>
-<div class="modal">
-	<div class="modal_content" title="클릭하면 닫기!.">
-		<img class="modalimg" src="">
-	</div>
-</div>
 <form method="post" action="twriteresult" enctype="multipart/form-data"> <!-- detail로 이동 -->
 <ul>
 	<li>
 		<label for="category">카테고리</label>
+		<input type="text" name="map_x" id="map_x" required style="color: white; float: right;" >
+		<input type="text" name="map_y" id="map_y" required style="color: white; float: right;" >
 		<select name="category1" id="category1" required></select>
 		<select name="category2" id="category2" required></select>
 		<hr class="hr1">
@@ -87,7 +93,7 @@ textarea{
 	<li>
 		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<label>제목</label>
-		<input type="text" id="title" name="title" placeholder="제목" required>
+		<input type="text" id="title" name="title" placeholder="제목" required size="100">
 		<hr class="hr1">
 	</li>
 	<li>
@@ -108,18 +114,19 @@ textarea{
 			</div>
 		</li>
 	<li>
-		<label>내용</label><br><hr class="hr1">
+		<label>내용</label><br>
+		<hr class="hr1">
 		<textarea rows="15" cols="65" name="content" class="left" 
 				style="resize: none;" required placeholder="가품 및 판매와 관련되지 않은 게시글을 경우 제재가 가해질 수 있습니다."></textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px"> 장소 설정</label>
+		<span style="color: red; font-size: 15px;"> 필수!</span>
 		<p id="map" style="width: 650px; height: 470px;"></p>
 		</div>
 	</li>
 	<li>
-		<div class="clear"></div><hr class="hr1">
-		<input type="hidden" name="map_x" id="map_x" required>
-		<input type="hidden" name="map_y" id="map_y" required>
+		<div class="clear"></div>
+		<hr class="hr1">
 		<label>경매기능 사용여부</label>
 		<input type="checkbox" id="deal">
 		<div class="deal_price" style="display: none;">
@@ -131,7 +138,7 @@ textarea{
 	</li> 
 	<li>
 		<input type="submit" value="등록" class="btn1">
-		<input type="button" value="취소" class="btn1" onclick="location.href='${pageContext.request.contextPath }/selllist'">
+		<input type="button" value="취소" class="btn1" onclick="can()">
 	</li>
 </ul><br><br><br><br>
 

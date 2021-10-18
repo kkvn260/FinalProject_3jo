@@ -27,6 +27,30 @@
       margin:0 auto;
       width:1400px;
     }
+ul li,label{
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	font-weight: bold;
+}
+option,select {
+	font-size: 22px;
+	font-family: 'Gaegu', cursive;
+}
+input {
+	font-family: 'Gaegu', cursive;
+	font-size: 22px;
+	border: 0;
+}
+input:focus, textarea:focus{
+	outline: none;
+}
+textarea{
+	border: none;
+}
+.hr1{
+	color: green;
+	border: 1px solid green;
+}
 </style>
 <body>
 <div id="qwritemodi">
@@ -37,18 +61,16 @@
 		<label for="category">카테고리</label>
 		<select name="category">
 			<option >카테고리를 설정해주세요</option>
-			<option value="의류" >의류</option> <!--남성/여성  -->
-			<option value="디지털/가전" >디지털/가전</option> <!--모바일,카메라,PC/노트북,가전  -->
-			<option value="생활/식품" >생활/식품</option> <!--생활용품  , 주방용품 , 식품  -->
-			<option value="취미" >취미</option> <!-- 스포츠 , 수집품 , 게임 , 반려동물  -->
-			<option value="도서/음반" >도서/음반</option> <!-- 국내도서 , 해외도서 , CD/DVD/LP  -->
-			<option value="기타" >기타(잡화)</option>
+			<option value="질문" >질문</option>
+			<option value="신고" >신고</option>
 		</select>
+		<hr class="hr1">
 	</li>
 	<li>
 		<input type="hidden" name="qnano" id="qnano" value="${list.qnano }">
 		<label>제목</label>
-		<input type="text" id="title" name="title" value="${list.title }">
+		<input type="text" id="title" name="title" value="${list.title }" size="100">
+		<hr class="hr1">
 	</li>
 	<li>
 		<li>
@@ -66,7 +88,7 @@
 				</div>
 			</div>
 				</c:if>
-				<div class="clear"></div>
+				<div class="clear"></div><hr class="hr1">
 				<div id="attach">
 					<label class="upload" for="filedata">사진첨부</label>
 					<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
@@ -75,12 +97,13 @@
 				<div id="preview" class="filecontent"></div>
 
 			</div>
-			<div class="clear"></div>
+			<div class="clear"></div><hr class="hr1">
 		</li>
 	<li>
 		<textarea rows="20" cols="100" name="content" style="resize: none;">${list.content }</textarea>
 	</li>
 	<li>
+		<hr class="hr1">
 		<input type="submit" value="등록" class="btn1">
 		<input type="button" value="취소" class="btn1" onclick="location.href='${pageContext.request.contextPath }/qwritedetail/${list.qnano}'">
 	</li>

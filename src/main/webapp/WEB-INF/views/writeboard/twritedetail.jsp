@@ -45,9 +45,6 @@ ul li,label{
 	font-size: 22px;
 	font-weight: bold;
 }
-hr{
-	color: green;
-}
 option,select {
 	font-size: 22px;
 	font-family: 'Gaegu', cursive;
@@ -62,9 +59,6 @@ input:focus, textarea:focus{
 }
 textarea{
 	border: none;
-}
-.hr1{
-	color: green;
 }
 .replytext{
 	border: 1px solid silver;

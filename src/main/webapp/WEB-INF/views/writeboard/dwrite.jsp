@@ -53,6 +53,7 @@ textarea{
 }
 .hr1{
 	color: green;
+	border: 1px solid green;
 }
 </style>
 <body>
@@ -62,6 +63,8 @@ textarea{
 <ul>
 	<li>
 		<label for="category">카테고리</label>
+		<input type="text" name="map_x" id="map_x" required style="color: white; float: right;" >
+		<input type="text" name="map_y" id="map_y" required style="color: white; float: right;" >
 		<select name="category1" id="category1" required></select>
 		<select name="category2" id="category2" required></select>
 		<hr class="hr1">
@@ -69,7 +72,7 @@ textarea{
 	<li>
 		<input type="hidden" id="user_id" name="user_id" value="${id }">
 		<label>제목</label>
-		<input type="text" id="title" name="title" placeholder="제목" required>
+		<input type="text" id="title" name="title" placeholder="제목" required size="100">
 		<hr class="hr1">
 	</li>
 		<li>
@@ -94,12 +97,10 @@ textarea{
 	</li>
 	<li>
 		<div class="clear"></div><hr class="hr1">
-		<input type="hidden" name="map_x" id="map_x" >
-		<input type="hidden" name="map_y" id="map_y" >
 	</li>
 	<li>
 		<input type="submit" value="등록" class="btn1">
-		<input type="button" value="취소" class="btn1">
+		<input type="button" value="취소" class="btn1" onclick="can()">
 	</li>
 </ul><br><br><br><br>
 
@@ -107,6 +108,13 @@ textarea{
 
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
+function can() {
+	 if (!confirm("글작성을 그만 하시겠습니까?")) {
+        
+    } else {
+        location.href="${pageContext.request.contextPath }/selllist";
+    }
+}
 	  
 	    //naver Map
 		var mapOptions = {
