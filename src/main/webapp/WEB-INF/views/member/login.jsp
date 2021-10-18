@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath }/resources/css/css2.css" rel="stylesheet" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+.login-wrap{
+ font-family: 'Gowun Dodum', sans-serif;
+}
+</style>
 	</head>
 	<body>
 <br><br><br><br><br><br>
@@ -52,7 +59,7 @@
 		</div>
 		</form>
 	</div>
-</div>
-	</body>
+</div><br><br><br>
+</body>
 </html>
 

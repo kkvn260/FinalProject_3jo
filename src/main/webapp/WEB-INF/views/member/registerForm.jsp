@@ -7,11 +7,14 @@
 <title>ReigsterForm</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 hi{
 	font-size: 30px;
 	margin-top: 50px;
 }
-
+select{
+      font-family: 'Gowun Dodum', sans-serif;
+}
 #gender{
 	widows: 100px;
 	height: 20px;
@@ -29,7 +32,11 @@ hi{
       align:center;
       margin:0 auto;
       width:1400px;
-    }
+      font-family: 'Gowun Dodum', sans-serif;
+}
+#s{
+  color:red;
+}
 
 
 </style>
@@ -212,57 +219,59 @@ $(document).ready(function(){
 <body>
 <div id="regi">
 <br><br><br><br><br><br>
-<div align="center">
+<div align="center"  style="font-weight: bold;">
+<div style="background:url(${pageContext.request.contextPath}/resources/img/regi.jpg) no-repeat; opacity:0.8; z-index:-1; 
+	                                width: 1000px; height:800px; margin-left:50px;">
    	<div class="titlestyle" align="center" style="font-weight: bold;">
-   		<hi>sign up</hi>
+   		<hi>회원가입</hi><br><hr><br>
    	</div>
    	<form method="POST" id="registerForm">
    		<!-- user_id -->
    		<div class="form-group" align="center">
-   			
-   				<input type="text" class="form-control" id="user_id" name="user_id" placeholder="아이디" required>
+   			<label for="user_id"><span id="s">*</span> 아이디&nbsp;</label>
+   			<input type="text" class="form-control" id="user_id" name="user_id" placeholder="아이디" required>
    			<div class="check_font" id="id_check"></div>
    		</div>
    		<!-- pwd -->
    		<div class="form-group" align="center">
-   			
-   				<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호 " required>
+   			<label for="pwd" style="margin-left:-12px;"><span id="s">*</span> 비밀번호&nbsp;</label>
+   			<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호 " required>
    			<div class="check_font" id="pw_check"></div>
    		</div>
    		<!-- password confirm -->
    		<div class="form-group">
-   			
-   				<input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="비밀번호 확인" required>
+   			<label for="user_pwd" style="margin-left:-45px;"><span id="s">*</span> 비밀번호 확인&nbsp;</label>
+   			<input type="password" class="form-control" id="user_pwd" name="user_pwd" placeholder="비밀번호 확인" required>
    			<div class="check_font" id="pw2_check"></div>
    		</div>
    		<!-- phoneno -->
    		<div class="form-group">
-   			
-   				<input type="text" class="form-control" id="phoneno" name="phoneno" placeholder="휴대폰번호('-'없이 번호만 입력)" required>
+   			<label for="phoneno" style="margin-left:-26px;"><span id="s">*</span> 휴대폰번호&nbsp;</label>
+   			<input type="text" class="form-control" id="phoneno" name="phoneno" placeholder="휴대폰번호('-'없이 번호만 입력)" required>
    			<div class="check_font" id="phone_check"></div>
    		</div>
    		<!-- email -->
    		<div class="form-group">
-   			
-   				<input type="text" class="form-control" id="email" name="email" placeholder="E-mail" required >
+   			<label for="email" style="margin-right:3px;"><span id="s">*</span> E-mail&nbsp;</label>
+   			<input type="text" class="form-control" id="email" name="email" placeholder="E-mail" required >
    			<div class="check_font" id="email_check"></div>
    		</div>
    		<!-- user_name -->
    		<div class="form-group">
-   			
-   				<input type="text" class="form-control" id="user_name" name="user_name" placeholder="이름" required>
+   			<label for="user_name" style="margin-right:18px;"><span id="s">*</span> 이름&nbsp;</label>
+   			<input type="text" class="form-control" id="user_name" name="user_name" placeholder="이름" required>
    			<div class="check_font" id="name_check"></div>
    		</div>
    		<!-- birthday -->
-   		<div class="form-group">
-   			<p>생년월일 선택</p>
-   				<input type="date" class="birthday" id="birthday" name="birthday" placeholder="ex)1990-01-01" required>
+   		<div class="form-group" style="margin-top:5px;">
+   			<label for="birthday" style="margin-left:-8px;"><span id="s">*</span> 생년월일&nbsp;</label>
+   			<input type="date" class="birthday" id="birthday" name="birthday" placeholder="ex)1990-01-01" required>
    			<div class="check_font" id="birth_check"></div>
    		</div>
    		
    		<!-- addr -->
 		<div class="form-group">
-			<label for="addr">주소</label>
+			<label for="addr" style="margin-top:10px; margin-left:-160px;"><span id="s">*</span> 주소&nbsp;&nbsp;</label>
 				<select name="addr1" id="addr1"></select>
    				<select name="addr2" id="addr2"></select>
 			<div class="check_font" id="addr_check"></div>	
@@ -270,7 +279,7 @@ $(document).ready(function(){
    		
    		<!-- gender -->
    		<div class="gender">
-   			<label for="gender">성별</label><br>
+   			<label for="gender" style="margin-top:10px; margin-left:-220px; margin-bottom:50px;"><span id="s">*</span> 성별&nbsp;&nbsp;</label>
    				<label for="man">남자</label>
    				<input type="radio" class="gender" id="man" name="gender" value="남자" placeholder="Gender" required>
    				<label for="woman">여자</label>
@@ -283,11 +292,12 @@ $(document).ready(function(){
 			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }/mainpage">
 				<i class="fa fa-rotate-right pr-2" aria-hidden="true"></i>취소하기
 			</a>&emsp;&emsp;
-			<button class="btn btn-primary px-3" id="sign_submit">
+			<button class="btn btn-success px-3" id="sign_submit">
 				<i class="fa fa-heart pr-2" aria-hidden="true"></i>가입하기
 			</button>
 		</div>   		
    	</form><br>
+   	</div>
    </div><br><br><br>
    <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
    </div>
