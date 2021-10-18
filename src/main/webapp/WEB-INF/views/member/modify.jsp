@@ -48,18 +48,20 @@
 <h3 id="h3">내 정보 수정</h3><hr id="h3hr">
 <br><br><br>
 	<div id="mypagemainlist">
-		<a href="${pageContext.request.contextPath }/myinfo"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/프로필i.jpg"/>&nbsp;<strong>내 정보</strong></a><br><br>
+	<div style="background:url(${pageContext.request.contextPath}/resources/img/myinfo.png) no-repeat; opacity:0.8; z-index:-1; 
+	                                width: 200px; height:370px; border-radius:60px; text-align:center;">
+	    <p>&nbsp;</p>
+		<a href="${pageContext.request.contextPath }/myinfo"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/프로필icon.jpg"/>&nbsp;<strong>내 정보</strong></a><br><br>
 		<p><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/글쓰기i.png"/>&nbsp;<strong>내가 쓴 글</strong></p>
 		<a href="${pageContext.request.contextPath }/mysboardlist">&nbsp;&nbsp; - 판매글</a><br><br>
 		<a href="${pageContext.request.contextPath }/mydboardlist">&nbsp;&nbsp; - 경매글</a><br><br>
 	    <a href="${pageContext.request.contextPath }/mydongboardlist">&nbsp;&nbsp; - 동네커뮤니티글</a><br><br>
 	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
 	    <a href="${pageContext.request.contextPath }/myreplylist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/댓글i.png"/>&nbsp;<strong>내가 쓴 댓글</strong></a>
-
+        </div>
 <form method="post" action="${pageContext.request.contextPath }/modifyresult" >
 
 <table class="table table-striped" id="myinfomo">
-<br>
 <thead>
    <tr><th>아이디</th>
        <th><input type="text" name="user_id" value="${list.user_id }" readonly="readonly"/></th></tr>
@@ -73,14 +75,14 @@
        <th><input type="text" name="birthday" value="${list.birthday }" readonly="readonly"/></th></tr>
    <tr><th>주소</th>
        <th><input type="text" value="${list.addr1 }/${list.addr2 }" readonly/></th></tr>
-   <tr><th></th><th>	<select name="addr1" id="addr1"></select>
+   <tr><th></th><th><select name="addr1" id="addr1"></select>
    				<select name="addr2" id="addr2"></select><th></tr>
    <tr><th>성별</th>
        <th><c:out value="${list.gender }"/></th></tr>
 </table>
-<div id="center" style="margin-left:600px; margin-top:50px;">
-<input type="submit" value="수정">
-<input type="reset" value="취소">
+<div id="center" style="margin-left:650px; margin-top:50px;">
+<input type="submit" class="btn btn-success"  value="수정">
+<input type="reset" class="btn btn-danger" value="취소">
 </div><br><br><br><br>
 </form>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>

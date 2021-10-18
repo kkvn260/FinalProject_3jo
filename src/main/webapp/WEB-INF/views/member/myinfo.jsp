@@ -20,8 +20,8 @@
      width:950px;
    }
    #myinfo{
-     margin-top:-300px;
-     margin-left:600px;
+     margin-top:-350px;
+     margin-left:480px;
      text-shadow: none;
      text-align:center;
      width:700px;
@@ -36,11 +36,6 @@
       width:1400px;
       font-family: 'Gowun Dodum', sans-serif;
     }
-    #img{
-      width: 150px;
-      height:150px;
-      border-radius: 75px; 
-    }
     #h3,#h3hr{
       margin-left:300px;
       font-family: 'Gowun Dodum', sans-serif;
@@ -53,16 +48,18 @@
 <h3 id="h3">내 정보</h3><hr id="h3hr">
  <br><br><br>
 	<div id="mypagemainlist">
-		<a href="${pageContext.request.contextPath }/myinfo"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/프로필i.jpg"/>&nbsp;<strong>내 정보</strong></a><br><br>
+	<div style="background:url(${pageContext.request.contextPath}/resources/img/myinfo.png) no-repeat; opacity:0.8; z-index:-1; 
+	                                width: 200px; height:370px; border-radius:60px; text-align:center;">
+	    <p>&nbsp;</p>
+		<a href="${pageContext.request.contextPath }/myinfo"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/프로필icon.jpg"/>&nbsp;<strong>내 정보</strong></a><br><br>
 		<p><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/글쓰기i.png"/>&nbsp;<strong>내가 쓴 글</strong></p>
 		<a href="${pageContext.request.contextPath }/mysboardlist">&nbsp;&nbsp; - 판매글</a><br><br>
 		<a href="${pageContext.request.contextPath }/mydboardlist">&nbsp;&nbsp; - 경매글</a><br><br>
 	    <a href="${pageContext.request.contextPath }/mydongboardlist">&nbsp;&nbsp; - 동네커뮤니티글</a><br><br>
 	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
-	    <a href="${pageContext.request.contextPath }/myreplylist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/댓글i.png"/>&nbsp;<strong>내가 쓴 댓글</strong></a>
-<img width="200" height="300" src="${pageContext.request.contextPath}/resources/img/52.png" style="margin-left:250px; margin-top:-300px;"/>
+	    <a href="${pageContext.request.contextPath }/myreplylist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/댓글i.png"/>&nbsp;<strong>내가 쓴 댓글</strong></a>  
+     </div>
 <table class="table table-striped"  id="myinfo">
-<br>
 <thead>
    <tr><th>아이디</th>
        <th><c:out value="${list.user_id }"/></th></tr>
@@ -81,10 +78,10 @@
 </thead>
 </table>
 </div>
-<div id="center" style="margin-left:150px;">
-  <input type="submit" id="infomodify" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
-  <input type="submit" id="infodelete" value="탈퇴"  onclick="location.href='${pageContext.request.contextPath }/deleteresult'"> 
-</div><br><br><br><br>
+<div id="center" style="margin-left:240px; margin-bottom:100px;">
+  <input type="submit" id="infomodify" class="btn btn-success" value="수정"  onclick="location.href='${pageContext.request.contextPath }/modify/${user_id}'">
+  <input type="submit" id="infodelete" class="btn btn-danger" value="탈퇴"  onclick="location.href='${pageContext.request.contextPath }/deleteresult'"> 
+</div>
 </div>
 </body>
 </html>
