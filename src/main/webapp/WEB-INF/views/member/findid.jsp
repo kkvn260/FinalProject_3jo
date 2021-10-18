@@ -6,19 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-h2{
-	font-size: 35px;
-	font-weight: bold;
-	color: darkgreen;
-	}
-#line{
-	margin:100px;
-	
-	}
+
+
 	#buttons{
-		margin-top: 100px;
+		margin-top: 70px;
+
+	}
+	#cancel{
+		border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid white;
+	}
+	
+	#idsearchbtn{
+		border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid white;
+	
 	}
 	input{
 		margin-top: 30px;
@@ -60,6 +70,7 @@ $(document).ready(function(){
 		
 	
 	});
+	
 	$('#cancel').click(function(){
 		var url = "${pageContext.request.contextPath}/login";
 		$(location).attr('href',url);
@@ -77,23 +88,23 @@ $(document).ready(function(){
 <br><br><br><br><br><br>
 <div id= "container">
 <div id="title" align="center">
-<h2>아이디 찾기</h2>
+<h2>ID 찾기</h2>
 </div>
-<div id="line" align="center" style="border: 2px solid darkgreen"></div>
+
 <div id="findid_form" align="center">
 <div id="result"></div>
 <br>
-<label for="user_name">이름</label>
-<input type="text" id="user_name" name="user_name" placeholder="ex)홍길동" required>
+<label for="user_name">이 름</label>
+<input type="text" id="user_name" name="user_name" placeholder="ex)홍길동" required style="width: 350px;">
 <br>
 <label for="birthday">생 년 월 일</label>
-<input type="date" id="birthday" name="birthday" placeholder="ex)1990-01-01" required><br>
+<input type="date" id="birthday" name="birthday" placeholder="ex)1990-01-01" required style="width: 310px"><br>
 <label for="phoneno">휴대폰번호</label>
-<input type="text" id="phoneno" name="phoneno" placeholder="ex)010-1234-5489" required><br>
+<input type="text" id="phoneno" name="phoneno" placeholder="ex)010-1234-5489" required style="width: 310px"><br>
 
 <div id="buttons">
-	<button type="button" id="cancel" style="width: 200px; height: 50px; background-color: darkgreen; color: white">취소</button>
-	<button type="button" id="idsearchbtn" style="width: 200px; height: 50px; background-color: darkgreen; color: white">확인</button>
+	<button type="button" id="cancel" style="width: 200px; height: 50px; background-color: #ff2233; color: white">취소</button>
+	<button type="button" id="idsearchbtn" style="width: 200px; height: 50px; background-color: #ff7722; color: white" >확인</button>
 	
 </div>
 

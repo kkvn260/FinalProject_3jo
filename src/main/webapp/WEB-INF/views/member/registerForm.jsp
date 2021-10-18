@@ -280,7 +280,7 @@ $(document).ready(function(){
    		
 		<!-- 가입버튼 -->
 		<div class="sign_button" align="center">
-			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }/">
+			<a class="btn btn-danger px-3" href="${pageContext.request.contextPath }/mainpage">
 				<i class="fa fa-rotate-right pr-2" aria-hidden="true"></i>취소하기
 			</a>&emsp;&emsp;
 			<button class="btn btn-primary px-3" id="sign_submit">
