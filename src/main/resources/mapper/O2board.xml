@@ -10,11 +10,11 @@
 		insert into TradeBoard_3jo(user_id,title,content
 		,category1,category2,writedate
 		,map_x,map_y
-		,tradeaddr,sell_price,deal_price)
+		,sell_price,deal_price)
 
 		values(#{user_id},#{title},#{content},#{category1},#{category2},sysdate()
 		,#{map_x},#{map_y}
-		,'서울 구로구',#{sell_price},#{deal_price})
+		,#{sell_price},#{deal_price})
 
 		<selectKey keyProperty="tradeno" resultType="int"
 			order="AFTER">
@@ -34,8 +34,11 @@
 		,user_id
 		,likeno
 		,writedate
+		,addr1
+		,addr2
 		from
-		TradeBoard_3jo
+		TradeBoard_3jo a1 inner join User_3jo a2
+		on a1.user_id=a2.user_id
 		where tradeno=#{no}
 	</select>
 

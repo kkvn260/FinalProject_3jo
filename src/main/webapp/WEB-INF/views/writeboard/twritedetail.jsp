@@ -103,6 +103,7 @@ textarea{
 		<hr id="hr">
 	</li>
 	<li>
+		<input type="hidden" id="user_id" value="${list.user_id }" readonly>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
 		<hr id="hr">

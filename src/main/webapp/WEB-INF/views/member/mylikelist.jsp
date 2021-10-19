@@ -18,37 +18,37 @@
      float:left;
      width:950px;
    }
-   #mydboardlist{
+   #myreplylist{
       margin-top:-400px;
       margin-left:300px;
       text-shadow: none;
    }
-     #myinfo2{
+   #myinfo2{
       align:center;
       margin:0 auto;
       width:1400px;
       margin-bottom:1000px;
       font-family: 'Gowun Dodum', sans-serif;
-    }
-     #img{
+   }       
+   #img{
       width: 150px;
       height:150px;
       border-radius: 75px; 
-    }
-     #h3,#h3hr{
+   }
+   #h3,#h3hr{
       margin-left:300px;
       font-family: 'Gowun Dodum', sans-serif;
-    }
-     td a:hover{color:green;}
+   }  
+    td a:hover{color:green;}
 </style>
 </head>
 <body>
 <div id="myinfo2">
 <br><br><br><br><br><br>
-    <h3 id="h3">나의 경매글</h3><hr id="h3hr">
+     <h3 id="h3">내가 좋아요 한 글</h3><hr id="h3hr">
     <br><br><br>
 	<div id="mypagemainlist">
-	   <div style="background:url(${pageContext.request.contextPath}/resources/img/myinfo.png) no-repeat; opacity:0.8; z-index:-1; 
+	<div style="background:url(${pageContext.request.contextPath}/resources/img/myinfo.png) no-repeat; opacity:0.8; z-index:-1; 
 	                                width: 200px; height:370px; border-radius:60px; text-align:center;">
 	    <p>&nbsp;</p>
 		<a href="${pageContext.request.contextPath }/myinfo"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/프로필icon.jpg"/>&nbsp;<strong>내 정보</strong></a><br><br>
@@ -59,16 +59,15 @@
 	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
 	    <a href="${pageContext.request.contextPath }/myreplylist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/댓글i.png"/>&nbsp;<strong>내가 쓴 댓글</strong></a><br><br>
 	    <a href="${pageContext.request.contextPath }/mylikelist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/하트.png"/>&nbsp;<strong>내가 좋아요 한 글</strong></a>
-</div>
-	<table class="table table-hover" id="mydboardlist">
+    </div>
+	<table class="table table-hover" id="myreplylist">
 		<thead style="background-color:#CCFFCC;">
 			<tr>
 				<th>글번호</th>
 				<th>제목</th>
-				<th>좋아요</th>
-				<th>조회수</th>
 				<th>작성일</th>
 				<th>작성자</th>
+				<th>주소</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -77,17 +76,21 @@
 					<c:set var="number" value="${number+1 }" />
 					<tr>
 						<td><c:out value="${number }" /></td>
-						<td><a href="tdealdetail/${item.tradeno }"><c:out value="${item.title }"></c:out></td>
-						<td><c:out value="${item.likeno }"/></td>
-						<td><c:out value="${item.viewno }" /></td>
-						<td><c:out value="${item.writedate }" /></td>
+						<c:if test="${empty item.deal_price}">
+						<td><a href="twritedetail/${item.tradeno }"><c:out value="${item.title}"></c:out></a></td>
+						</c:if>
+						<c:if test="${empty item.sell_price}">
+						<td><a href="tdealdetail/${item.tradeno }"><c:out value="${item.title}"></c:out></a></td>
+						</c:if>
+						<td><c:out value="${item.writedate }"/></td>
 						<td><c:out value="${item.user_id }"/></td>
+						<td><c:out value="${item.addr1 }/${item.addr2 }"/></td>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</tbody>
 	</table>
   </div>
-</div>
+ </div>
 </body>
 </html>

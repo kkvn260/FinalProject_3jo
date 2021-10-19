@@ -31,6 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 import com.kosta.o2dto.O2DongComDTO;
+import com.kosta.o2dto.O2LikeDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2UserDTO;
@@ -264,6 +265,16 @@ public class UserController {
 			List<O2ReplyDTO> list=service.myreplylist(user_id);
 			model.addAttribute("list",list);
 		return "member/myreplylist";
+		}
+		
+		@RequestMapping(value="/mylikelist")
+		public String mylikelist(HttpServletRequest request, HttpServletResponse response,Model model) {
+			HttpSession session=request.getSession();
+			String user_id=(String)session.getAttribute("user_id");
+			
+			List<O2LikeDTO> list=service.mylikelist(user_id);
+			model.addAttribute("list",list);
+		return "member/mylikelist";
 		}
 		
        private NaverLoginBO naverLoginBO;

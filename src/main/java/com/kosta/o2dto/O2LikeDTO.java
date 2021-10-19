@@ -16,4 +16,10 @@ public class O2LikeDTO {
 	private String user_id;
 	private int chatno;
 	private int tradeno;
+	private String writedate;
+	private String title;
+	private String addr1;
+	private String addr2;
+	private String deal_price;
+	private String sell_price;
 }

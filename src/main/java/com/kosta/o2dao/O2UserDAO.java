@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kosta.o2dto.O2DongComDTO;
+import com.kosta.o2dto.O2LikeDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2UserDTO;
@@ -33,6 +34,7 @@ public interface O2UserDAO {
 	void modiaddr(O2UserDTO dto);
 	String addrcheck(String user_id);
 	void findpwdupdate(HashMap<String, String> hm);
+	List<O2LikeDTO> mylikelist(String user_id);
 	
 	
 

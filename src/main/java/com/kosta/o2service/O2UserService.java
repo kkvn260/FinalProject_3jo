@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.kosta.o2dao.O2UserDAO;
 import com.kosta.o2dto.O2DongComDTO;
+import com.kosta.o2dto.O2LikeDTO;
 import com.kosta.o2dto.O2QnaBoardDTO;
 import com.kosta.o2dto.O2ReplyDTO;
 import com.kosta.o2dto.O2UserDTO;
@@ -178,6 +179,10 @@ public class O2UserService {
 		hm.put("pwd", pwd);
 		 userdao.findpwdupdate(hm);
 		
+	}
+	public List<O2LikeDTO> mylikelist(String user_id) {
+		// TODO Auto-generated method stub
+		return userdao.mylikelist(user_id);
 	}
 	
 		

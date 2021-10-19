@@ -206,4 +206,24 @@
 		where user_id=#{user_id}
 	</select>
 	
+	<select id="mylikelist" resultType="com.kosta.o2dto.O2LikeDTO" parameterType="String">
+     select 
+	     	    a3.tradeno
+	           ,title
+	           ,writedate
+	           ,a3.user_id
+	           ,sell_price
+	           ,deal_price
+	           ,a4.addr1
+	           ,a4.addr2
+	    from Like_3jo a1 left join User_3jo a2
+	    on a1.user_id=a2.user_id 
+	    left join TradeBoard_3jo a3
+	    on a1.tradeno=a3.tradeno
+        join User_3jo a4
+        on a3.user_id=a4.user_id
+	    where a1.user_id=#{user_id} and a3.likeno is not null
+	    order by writedate desc;
+	</select>
+	
 </mapper>
