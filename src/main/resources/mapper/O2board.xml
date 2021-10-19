@@ -358,10 +358,10 @@
 	<insert id="dwriteinsert"
 		parameterType="com.kosta.o2dto.O2DongComDTO">
 		insert into ChatBoard_3jo(user_id,title,content
-		,category1,category2,writedate
+		,category,writedate
 		,map_x,map_y)
 
-		values(#{user_id},#{title},#{content},#{category1},#{category2},sysdate()
+		values(#{user_id},#{title},#{content},#{category},sysdate()
 		,#{map_x},#{map_y})
 
 		<selectKey keyProperty="chatno" resultType="int"
@@ -374,8 +374,7 @@
 		resultType="com.kosta.o2dto.O2DongComDTO">
 		select title
 		,chatno
-		,category1
-		,category2
+		,category
 		,map_x,map_y
 		,content
 		,likeno
@@ -398,8 +397,7 @@
 	<update id="dwritemodifyresult"
 		parameterType="com.kosta.o2dto.O2DongComDTO">
 		update ChatBoard_3jo
-		set category1=#{category1}
-		,category2=#{category2}
+		set category=#{category}
 		,title=#{title}
 		,content=#{content}
 		,map_x=#{map_x}

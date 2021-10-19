@@ -12,8 +12,7 @@ public class O2DongComDTO {
 	private String title;
 	private String user_id;
 	private String content;
-	private String category1;
-	private String category2;
+	private String category;
 	private int likeno;
 	private String writedate;
 	private String map_x;

@@ -65,8 +65,12 @@ textarea{
 		<label for="category">카테고리</label>
 		<input type="text" name="map_x" id="map_x" required style="color: white; float: right;" >
 		<input type="text" name="map_y" id="map_y" required style="color: white; float: right;" >
-		<select name="category1" id="category1" required></select>
-		<select name="category2" id="category2" required></select>
+		<select name="category">
+			<option >카테고리를 설정해주세요</option>
+			<option value="제보" >제보</option>
+			<option value="무료나눔" >무료나눔</option>
+			<option value="재능기부" >재능기부</option>
+		</select>
 		<hr class="hr1">
 	</li>
 	<li>
@@ -89,7 +93,7 @@ textarea{
 	<li>
 		<label>내용</label><br><hr class="hr1">
 		<textarea rows="15" cols="65" name="content" class="left"
-					 style="resize: none;" required placeholder="가품 및 판매와 관련되지 않은 게시글을 경우 제재가 가해질 수 있습니다."></textarea>
+					 style="resize: none;" required placeholder="커뮤니티와 관련없는 게시글일 경우 제재가 가해질 수 있습니다."></textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px">장소 설정</label>
 		<p id="map" style="width: 650px; height: 470px;"></p>

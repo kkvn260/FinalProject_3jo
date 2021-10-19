@@ -16,7 +16,6 @@
 			,addr1
 			,addr2
 			,gender
-			,grade
 		) VALUES (
 			#{user_id}
 			,#{pwd}
@@ -27,7 +26,6 @@
 			,#{addr1}
 			,#{addr2}
 			,#{gender}
-			,0
 		)
 	</insert>
 	<!-- 아이디 중복 체크 -->
@@ -174,7 +172,6 @@
 			,addr1
 			,addr2
 			,gender
-			,grade
 		) VALUES (
 			#{user_id}
 			,0
@@ -187,7 +184,6 @@
 			,0
 			,0
 			,#{gender}
-			,0
 		)
 	</insert>
 	
