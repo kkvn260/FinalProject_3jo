@@ -31,7 +31,7 @@
 		,content
 		,sell_price
 		,deal_price
-		,user_id
+		,a1.user_id
 		,likeno
 		,writedate
 		,addr1
@@ -194,9 +194,10 @@
 
 	<select id="sellList" parameterType="hashmap"
 		resultType="com.kosta.o2dto.O2MainBoardDTO">
-		SELECT title,tradeno,user_id,writedate,viewno,likeno
+		SELECT title,tradeno,a1.user_id,writedate,viewno,likeno,addr1,addr2
 		FROM
-		TradeBoard_3jo
+		TradeBoard_3jo a1 inner join User_3jo a2
+		on a1.user_id=a2.user_id
 		WHERE deal_price is null or deal_price=''
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
@@ -265,9 +266,10 @@
 
 	<select id="dealList" parameterType="hashmap"
 		resultType="com.kosta.o2dto.O2MainBoardDTO">
-		SELECT title,tradeno,user_id,writedate,viewno,likeno
+		SELECT title,tradeno,a1.user_id,writedate,viewno,likeno,addr1,addr2
 		FROM
-		TradeBoard_3jo
+		TradeBoard_3jo a1 inner join User_3jo a2
+		on a1.user_id=a2.user_id
 		WHERE sell_price is null or sell_price=''
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
@@ -319,8 +321,9 @@
 
 	<select id="cmtyList" parameterType="hashmap"
 		resultType="com.kosta.o2dto.O2DongComDTO">
-		SELECT chatno ,title ,user_id ,writedate ,viewno ,likeno
-		FROM ChatBoard_3jo
+		SELECT chatno ,title ,a1.user_id ,writedate ,viewno ,likeno,addr1,addr2
+		FROM ChatBoard_3jo a1 inner join User_3jo a2
+		on a1.user_id=a2.user_id
 		<where>
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
@@ -372,10 +375,13 @@
 		,map_x,map_y
 		,content
 		,likeno
-		,user_id
+		,a1.user_id
 		,writedate
+		,addr1
+		,addr2
 		from
-		ChatBoard_3jo
+		ChatBoard_3jo a1 inner join User_3jo a2
+		on a1.user_id=a2.user_id
 		where chatno=#{no}
 	</select>
 
@@ -788,7 +794,7 @@
 		select user_id,chatno
 		from Like_3jo
 		where user_id=#{user_id}
-		and chatno=#{chatno}
+		and chatno=#{tradeno}
 	</select>
 
 	<delete id="dlikedelete"

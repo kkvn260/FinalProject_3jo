@@ -76,6 +76,7 @@
 					<c:set var="number" value="${number+1 }" />
 					<tr>
 						<td><c:out value="${number }" /></td>
+						<c:if test="${item.chatno==0}">
 						<c:if test="${empty item.deal_price}">
 						<td><a href="twritedetail/${item.tradeno }"><c:out value="${item.title}"></c:out></a></td>
 						</c:if>
@@ -85,6 +86,13 @@
 						<td><c:out value="${item.writedate }"/></td>
 						<td><c:out value="${item.user_id }"/></td>
 						<td><c:out value="${item.addr1 }/${item.addr2 }"/></td>
+						</c:if>
+						<c:if test="${item.tradeno==0}">
+						<td><a href="dwritedetail/${item.chatno }"><c:out value="${item.ctitle}"></c:out></a></td>
+						<td><c:out value="${item.cwritedate }"/></td>
+						<td><c:out value="${item.user_id }"/></td>
+						<td><c:out value="${item.addr1 }/${item.addr2 }"/></td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</c:if>

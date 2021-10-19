@@ -43,6 +43,7 @@
 				<th>제목</th>
 				<th>조회수</th>
 				<th>작성일</th>
+				<th>주소</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -56,6 +57,7 @@
 									value="${item.title }" /></a></td>
 						<td><c:out value="${item.viewno }"/></td>
 						<td><c:out value="${item.writedate }" /></td>
+						<td><c:out value="${item.addr1 }/${item.addr2 }" /></td>
 					</tr>
 				</c:forEach>
 				<img width="60" height="80" style="margin-top: 20px" src="${pageContext.request.contextPath}/resources/img/52.png"/>

@@ -207,7 +207,7 @@ public class WriteController {
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
 		model.addAttribute("result",result);
-		
+		System.out.println(result.getUser_id());
 		return "writeboard/dwritedetail";
 	}
 	

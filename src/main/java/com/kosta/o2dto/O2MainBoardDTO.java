@@ -16,6 +16,7 @@ public class O2MainBoardDTO {
 	private int likeno;
 	private String writedate;
 	private String file_name;
-	private String tradeaddr;
+	private String addr1;
+	private String addr2;
 	private int viewno;
 }

@@ -19,7 +19,8 @@ public class O2WriteBoardDTO {
 	private String deal_price;
 	private String map_x;
 	private String map_y;
-	private String tradeaddr;
+	private String addr1;
+	private String addr2;
 	private int viewno;
 	private String real_name;
 }

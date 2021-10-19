@@ -18,6 +18,8 @@ public class O2DongComDTO {
 	private String writedate;
 	private String map_x;
 	private String map_y;
+	private String addr1;
+	private String addr2;
 	private int viewno;
 	private String real_name;
 }

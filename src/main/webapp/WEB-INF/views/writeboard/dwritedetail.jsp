@@ -74,6 +74,10 @@ textarea{
 		<label>작성자</label>
 		<span> : ${list.user_id }</span>
 		</div>
+		<div>
+		<label>주소</label>
+		<span> : ${list.addr1 }/${list.addr2 }</span>
+		</div>
 		<div style="float: right;">
 		<c:if test="${result ne null }">
 		<img class="like_btn" alt="좋아요" src="${pageContext.request.contextPath }/resources/img/하트.png" width="30px" height="30px">
@@ -89,6 +93,7 @@ textarea{
 		<hr class="hr1">
 	</li>
 	<li>
+		<input type="hidden" id="user_id" value="${list.user_id }" readonly>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
 		<hr class="hr1">
@@ -191,7 +196,7 @@ $(function () {
 		}else{
 			$.ajax({
 				type:"post"
-				,url:"${pageContext.request.contextPath}/tlike"
+				,url:"${pageContext.request.contextPath}/dlike"
 				,dataType:'json'
 				,data: JSON.stringify(data1)
 				,contentType:"application/json;charset=utf-8"
