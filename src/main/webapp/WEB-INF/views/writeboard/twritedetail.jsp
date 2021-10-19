@@ -159,7 +159,7 @@ textarea{
 		<button type="button" id="btn_search" class="btn1" style="border:0;">시세조회</button>
 		<div id="graph" style="width: 80%; margin: 30px;">
 			<div>
-				<canvas id="priceChart" style="height: 30vh; width: 50vw"></canvas>
+				<canvas id="priceChart" style="height: 30vh; width: 40vw"></canvas>
 			</div>
 		</div>
 	</form>
@@ -200,6 +200,7 @@ textarea{
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
+		</div>
 	</li>
 	</c:if>
 	<li>
@@ -210,7 +211,6 @@ textarea{
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
-				<input type="hidden" name="user_id" value="${id }">
 				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."
 						 required style="resize: none;"></textarea>
 				<input type="submit" value="등록" style="margin-bottom:5px;" class="btn1">
@@ -220,7 +220,7 @@ textarea{
 	</c:if>
 	</li>
 </ul>
-</div>
+		</div>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
 //좋아요
@@ -315,75 +315,101 @@ var marker = new naver.maps.Marker({
 //가격비교 
 	$(function(){
 
+		$('#priceChart').empty();
+		
+
 		let chartData = [];
 		const itemName="";
+		
 
 		function createChart(){
 
 			const ctx = document.getElementById("priceChart").getContext("2d"); 
-			
-			LineChartDemo = Chart.Line(ctx, {
-				data : lineChartData,
-				options : {responsive: flase,
-						   legend: {
-								labels: {
-										fontColor: "black",
-										fontSize: 20
-								    }
-						 },
-					scales : {
-						yAxes : [ {
-							ticks : {
-								min: this.min,
-								max : this.max,
-								stepSize : 10000,	
-							},
-							scaleLabel:{
-								display:true,
-							}		
-						}]
-					}
-				}
-			});
 
+			let LineChartDemo = new Chart(ctx, {
+				type: 'bar',
+				data : lineChartData,
+				options : {responsive: true,
+						   legend: {
+								labels: {fontColor: "black",fontSize: 20}
+						 	},
+							scales : {
+								xAxes :[{
+									//stacked: true
+									barPercentage: 0.2
+								}],
+								yAxes : [ {
+									ticks : {
+										//beginAtZero :true,
+										stepSize : 10000,
+										min: this.min,
+										max: this.max,	
+									},
+									scaleLabel:{
+										display:true,
+									}		
+								}]
+							},
+							animation: {
+							duration: 0,
+							onComplete: function () {
+    						// render the value of the chart above the bar
+   								let ctx = this.chart.ctx;
+    							ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+  								ctx.fillStyle = this.chart.config.options.defaultFontColor;
+       							ctx.textAlign = 'center';
+   								ctx.textBaseline = 'bottom';
+    							this.data.datasets.forEach(function (dataset) {
+    							    for (let i = 0; i < dataset.data.length; i++) {
+          								  let model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+           								 ctx.fillText(dataset.data[i], model.x, model.y - 5);
+        								}
+    							});
+							}}
+
+				   		}
+			});
 		}
 	
 	$('#btn_search').click(function(){
 		let category = $('#searchKeyword option:selected').val();
 		let itemProd= $('#itemProd').val();
 	
-	$.ajax({
-		method:'post'
-		,url:"${pageContext.request.contextPath }/getPriceData"
-		,dataType: 'Json'
-		,data:{'category': category, 'itemProd':itemProd}
-		,success:function(data){
-				
-			$.each(data,function(key,value){
-	
-                chartData.push(value);
-			});
+		$.ajax({
+			method:'post'
+			,url:"${pageContext.request.contextPath }/getPriceData"
+			,dataType: 'Json'
+			,data:{'category': category, 'itemProd':itemProd}
+			,success:function(data){
 
-			// 챠트 데이터
-			lineChartData = 
-			{ 
-				labels: ["월평균가격", "주평균가격", "현재가격" ], 
-				datasets: [{ 
-					label: itemProd, 
-					backgroundColor: 'transparent', 
-					borderColor: 'red', 
-					data: chartData
-				}] 
-			}	
-			  createChart(); 
+				chartData.splice(0,chartData.length);
+
+				$.each(data,function(key,value){
+		               	chartData.push(value);
+				});
+
+				console.log(chartData);
+
+				// 챠트 데이터
+				lineChartData = 
+				{ 
+					labels: ["월 평균시세", "지난주 평균시세", "금일 평균시세" ], 
+					datasets: [{ 
+						label: itemProd, 
+						backgroundColor: 'rgba(87, 121, 234, 0.6)', 
+						borderColor: 'rgba(87, 121, 234, 0.6)', 
+						borderWidth:2,
+						data: chartData
+					}] 
+				}	
+			    createChart(); 
 			}
-	
-		,error:function(err)
-		{
+			,error:function(err)
+			{
 			console.log(err);
-		}
-	})
-    })
+			}
+		})//end ajax
+    })//end btn_search event
  
 });
 </script>
