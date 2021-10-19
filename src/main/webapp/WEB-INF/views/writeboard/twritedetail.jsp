@@ -107,7 +107,6 @@ textarea{
 		<hr id="hr">
 	</li>
 	<li>
-		<input type="hidden" id="user_id" value="${list.user_id }" readonly>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
 		<hr id="hr">
@@ -228,10 +227,9 @@ textarea{
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let id=$("#user_id").val();
 		let tradeno=${list.tradeno}
 		let data1={user_id:id,tradeno:tradeno};
-		if(id == null){
+		if(${empty id}){
 			alert("로그인이 필요합니다.");
 		}else{
 			$.ajax({

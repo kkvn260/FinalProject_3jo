@@ -188,10 +188,9 @@ function del() {
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let id=$("#user_id").val();
 		let chatno=${list.chatno}
 		let data1={user_id:id,chatno:chatno};
-		if(id == null){
+		if(${empty id}){
 			alert("로그인이 필요합니다.");
 		}else{
 			$.ajax({

@@ -131,7 +131,7 @@ $(function () {
 		}
 		var after=Number(ar);
 		   let data1={tradeno:$("#tradeno").val(),deal_price:a,user_id:$("#user_id").val()};
-		if($("#user_id").val()==null){
+		if(${empty id}){
 			alert("로그인이 필요합니다.");
 		}else if(after<=before){
 			alert("입찰 가격은 현재 입찰가 보다 높아야 합니다.");
@@ -305,10 +305,9 @@ function del() {
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let id=$("#user_id").val();
 		let tradeno=${list.tradeno}
 		let data1={user_id:id,tradeno:tradeno};
-		if(id == null){
+		if(${empty id}){
 			alert("로그인이 필요합니다.");
 		}else{
 			$.ajax({
