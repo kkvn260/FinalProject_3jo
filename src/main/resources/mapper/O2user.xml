@@ -73,8 +73,7 @@
 	           birthday,
 	           addr1,
 	           addr2,
-	           gender,
-	           grade
+	           gender
 	    from User_3jo
 	    where user_id=#{user_id}
 	</select>
