@@ -61,8 +61,12 @@ textarea{
 		<label for="category">카테고리</label>
 		<input type="text" name="map_x" id="map_x" required style="color: white; float: right;" >
 		<input type="text" name="map_y" id="map_y" required style="color: white; float: right;" >
-		<select name="category1" id="category1"></select>
-		<select name="category2" id="category2"></select>
+		<select name="category">
+			<option >카테고리를 설정해주세요</option>
+			<option value="제보" >제보</option>
+			<option value="무료나눔" >무료나눔</option>
+			<option value="재능기부" >재능기부</option>
+		</select>
 		<hr class="hr1">
 	</li>
 	<li>

@@ -89,8 +89,7 @@ textarea{
 		<span class="likeno">좋아요 수 : ${list.likeno }</span>
 		</div>
 		<label>카테고리</label>
-		<span>${list.category1} > </span>
-		<span>${list.category2}</span>
+		<span>${list.category}</span>
 		<hr class="hr1">
 	</li>
 	<li>

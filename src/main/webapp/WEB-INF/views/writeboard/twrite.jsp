@@ -117,7 +117,7 @@ textarea{
 		<label>내용</label><br>
 		<hr class="hr1">
 		<textarea rows="15" cols="65" name="content" class="left" 
-				style="resize: none;" required placeholder="가품 및 판매와 관련되지 않은 게시글을 경우 제재가 가해질 수 있습니다."></textarea>
+				style="resize: none;" required placeholder="가품 및 판매와 관련되지 않은 게시글일 경우 제재가 가해질 수 있습니다."></textarea>
 		<div class="right">
 		<label><img alt="지도" src="${pageContext.request.contextPath }/resources/img/지도아이콘.png" width="25px" height="25px"> 거래 장소 설정</label>
 		<span style="color: red; font-size: 15px;"> 필수!</span>
