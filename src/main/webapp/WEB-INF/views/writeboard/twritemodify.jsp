@@ -95,7 +95,7 @@ textarea{
 				</c:if>
 				<div class="clear"></div><hr class="hr1">
 				<div id="attach">
-					<label class="upload" for="filedata">사진첨부</label>
+					<label class="upload" for="filedata">사진첨부</label><span style="font-size: 15px;"> << 클릭</span>
 					<input id="filedata" type="file" name="filedata" style="display: none" multiple accept="image/*"/>
 				</div>
 				<div id="preview" class="filecontent"></div>
