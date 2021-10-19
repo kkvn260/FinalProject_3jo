@@ -59,8 +59,8 @@ textarea{
 <ul>
 	<li>
 		<label for="category">카테고리</label>
-		<input type="text" name="map_x" id="map_x" required style="color: white; float: right;" >
-		<input type="text" name="map_y" id="map_y" required style="color: white; float: right;" >
+		<input type="text" name="map_x" id="map_x" required style="color: white; float: right;" value="${list.map_x }">
+		<input type="text" name="map_y" id="map_y" required style="color: white; float: right;" value="${list.map_y }">
 		<select name="category1" id="category1"></select>
 		<select name="category2" id="category2"></select>
 		<hr class="hr1">
