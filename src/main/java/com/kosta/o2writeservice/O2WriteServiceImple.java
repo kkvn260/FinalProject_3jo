@@ -460,21 +460,12 @@ public class O2WriteServiceImple implements O2WriteService {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("itemProd", itemProd);
 		hm.put("category", category);
-		System.out.println("서비스 입력값: "+itemProd);
-		System.out.println("서비스 카테고리: "+category);
-		
-//		List<MobileVO> priceData = new ArrayList<>();
-//	
-//		priceData.add(dao.getDayPrice(hm));
-//		priceData.add(dao.getWeekPrice(hm));
-//		priceData.add(dao.getMonthPrice(hm));
 			
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("dayPrice", dao.getDayPrice(hm).getPrice());
 		map.put("weekPrice", dao.getWeekPrice(hm).getPrice());
 		map.put("monthPrice", dao.getMonthPrice(hm).getPrice());
-		
-		
+				
 		return map;
 	}
 	

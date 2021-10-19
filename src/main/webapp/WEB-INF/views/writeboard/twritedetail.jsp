@@ -13,6 +13,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=vjjh2gafg5"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 <style>
 li input{
 	border:none;
@@ -153,21 +155,17 @@ textarea{
 		  <option value="item_name">제품명</option>
 		  <option value="product_no">제품모델명</option>
 		</select>
-		<input type="text" id="itemProd" placeholder="검색어를 입력하세요" name="searchtxt">
+		<input type="text" id="itemProd" placeholder="검색어를 입력하세요" name="item_search">
 		<button type="button" id="btn_search" class="btn1" style="border:0;">시세조회</button>
+		<div id="graph" style="width: 80%; margin: 30px;">
+			<div>
+				<canvas id="priceChart" style="height: 30vh; width: 50vw"></canvas>
+			</div>
+		</div>
 	</form>
 	</div>
 	<br><br><br><br>
     </li>
-
-
-	<div>
-		<canvas id="myChart"></canvas>
-	</div>
-	
-	<div class="priceChart">
-		
-	</div>
 
 
 
@@ -316,27 +314,36 @@ var marker = new naver.maps.Marker({
 <script>
 //가격비교 
 	$(function(){
-		const chartLabels = [];
-		const chartData = [];
-		const itemName="";
 
-		const cooContractNo = '<c:out value="${no}"/>';
+		let chartData = [];
+		const itemName="";
 
 		function createChart(){
 
-			let ctx = document.getElementById('myChart').getContext('2d'); 
+			const ctx = document.getElementById("priceChart").getContext("2d"); 
+			
 			LineChartDemo = Chart.Line(ctx, {
 				data : lineChartData,
 				options : {
 					scales : {
 						yAxes : [ {
 							ticks : {
-								beginAtZero: true
+								min: 0,
+								max : this.max,
+								callback: function (value){
+									return (value/ this.max*100).toFixed(0)+'%';
+								},
+							},
+							scaleLabel:{
+								display:true,
+								labelString:'Percentage',
 							}
+							
 						}]
 					}
 				}
-			});  
+			});
+
 		}
 	
 
@@ -349,71 +356,38 @@ var marker = new naver.maps.Marker({
 	$.ajax({
 		method:'post'
 		,url:"${pageContext.request.contextPath }/getPriceData"
-		,dataType: 'text'
+		,dataType: 'Json'
 		,data:{'category': category, 'itemProd':itemProd}
 		,success:function(data){
-			console.log("test.............");
-            console.log(data,'hello');
+				
+			$.each(data,function(key,value){
+	
+                chartData.push(value);
+			});
 
-			// var ctx = document.getElementById('myChart').getContext('2d'); 
-			// var chart = new Chart(ctx, { 
-			// // 챠트 종류
-			// type: 'line', 
-		
-			// // 챠트 데이터
-			// data: { 
-			// 	labels: ['월평균가격', '주평균가격', '현재가격' ], 
-			// 	datasets: [{ 
-			// 		label: 'My First dataset', 
-			// 		backgroundColor: 'transparent', 
-			// 		borderColor: 'red', 
-			// 		data: Object.values(data)
-			// 	}] 
-			// }, 
-			// // 옵션 
-			// options: {} 
-			// });
-		}
+			console.log(chartData);
+						
+			// 챠트 데이터
+			lineChartData = 
+			{ 
+				labels: ["월평균가격", "주평균가격", "현재가격" ], 
+				datasets: [{ 
+					label: itemProd, 
+					backgroundColor: 'transparent', 
+					borderColor: 'red', 
+					data: chartData
+				}] 
+			}	
+			  createChart(); 
+			}
+	
 		,error:function(err)
 		{
 			console.log(err);
 		}
 	})
-      
-
-
-
-
-		// chartLabels = [];
-		// chartData = [];
-
-		// $.getJSON("./getPriceData",{
-		// 	  cooContractNo : cooContractNo,
-		// 	  itemName : itemName
-		// }),
-		// function(data){
-		// 	$.each(data,function(key, value){
-		// 		//DTO에서 데이터 넣기
-		// 		chartLabels.push(value.stateDate);
-		// 		chartData.push(value.stataAmount);
-		// 	});
-
-		// 	lineChartData = {
-		// 		labels: ['월평균가격', '주평균가격', '현재가격' ],
-		// 		backgroundColor: 'transparent', 
-		// 		borderColor: 'red', 
-		// 		data : chartData
-
-		// 	}
-
-		// 	createChart();
-		// }
-
-
-	});
-
-
-
+    })
+ 
 });
 </script>
 

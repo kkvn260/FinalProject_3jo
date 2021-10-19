@@ -92,18 +92,20 @@
   	  </a>
  	</c:if><br><br><br><br>
     
-	<div class="">
-	  <form method="get" action="deallist" >
-		 <select name="search">
-		   <option value="total">전체</option>
-		   <option value="user_id">회원ID</option>
-		   <option value="title">제목</option>
-		   <option value="content">내용</option>
-		   <option value="addr">지역</option>
-		 </select>
-		<input class="searchtxt" type="text"  name="searchtxt">
-		<input type="submit" value="검색">
-	  </form>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+	    <form method="get" action="deallist">
+		 	<select name="search">
+			   <option value="total">전체</option>
+			   <option value="user_id">회원ID</option>
+			   <option value="title">제목</option>
+	  	   	   <option value="content">내용</option>
+		 	   <option value="addr">지역</option>
+			 </select>
+			 <input class="searchtxt" type="text"  name="searchtxt">
+			<button class="searchicon"><i class="bi bi-search"></i></button>
+	    </form>
+	  </div>
 	</div>
 
 	  <span>
