@@ -40,15 +40,16 @@
 <br><br><br>
 <div id="mypagemainlist">
 	   <div style="background:url(${pageContext.request.contextPath}/resources/img/myinfo.png) no-repeat; opacity:0.8; z-index:-1; 
-	                                width: 200px; height:370px; border-radius:60px; text-align:center;">
-	    <p>&nbsp;</p>
+	                                width: 200px; height:420px; border-radius:60px; text-align:center;">
+	     <br>
 		<a href="${pageContext.request.contextPath }/myinfo"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/프로필icon.jpg"/>&nbsp;<strong>내 정보</strong></a><br><br>
 		<p><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/글쓰기i.png"/>&nbsp;<strong>내가 쓴 글</strong></p>
 		<a href="${pageContext.request.contextPath }/mysboardlist">&nbsp;&nbsp; - 판매글</a><br><br>
 		<a href="${pageContext.request.contextPath }/mydboardlist">&nbsp;&nbsp; - 경매글</a><br><br>
 	    <a href="${pageContext.request.contextPath }/mydongboardlist">&nbsp;&nbsp; - 동네커뮤니티글</a><br><br>
 	    <a href="${pageContext.request.contextPath }/myqnaboardlist">&nbsp;&nbsp; - Q & A</a><br><br>
-	    <a href="${pageContext.request.contextPath }/myreplylist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/댓글i.png"/>&nbsp;<strong>내가 쓴 댓글</strong></a>
+	    <a href="${pageContext.request.contextPath }/myreplylist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/댓글i.png"/>&nbsp;<strong>내가 쓴 댓글</strong></a><br><br>
+        <a href="${pageContext.request.contextPath }/mylikelist"><img width="20" height="20" src="${pageContext.request.contextPath}/resources/img/하트.png"/>&nbsp;<strong>내가 좋아요 한 글</strong></a>
 </div>
 <form method="post" action="${pageContext.request.contextPath }/delete">
  	<div id="delm">
