@@ -200,7 +200,6 @@ textarea{
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
-		</div>
 	</li>
 	</c:if>
 	<li>
@@ -211,6 +210,7 @@ textarea{
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
+				<input type="hidden" name="user_id" value="${id }">
 				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."
 						 required style="resize: none;"></textarea>
 				<input type="submit" value="등록" style="margin-bottom:5px;" class="btn1">
@@ -220,7 +220,7 @@ textarea{
 	</c:if>
 	</li>
 </ul>
-		</div>
+</div>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
 //좋아요

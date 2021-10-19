@@ -83,7 +83,7 @@ textarea{
 		<span> : ${list.user_id }</span>
 		</div>
 		<label>카테고리</label>
-		<span>${list.category}</span>
+		<span> : ${list.category}</span>
 		<hr id="hr">
 	</li>
 	<li>
@@ -155,6 +155,7 @@ textarea{
 			<hr id="hr">
 				<label>답변 쓰기</label>
 				<form action="${pageContext.request.contextPath }/qreplyresult" method="post">
+				<input type="hidden" name="user_id" value="${id }">
 				<input type="hidden" id="qnano" name="qnano" value="${list.qnano }">
 				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
 				<input type="submit" value="등록" style="margin-bottom:5px;" class="btn1">

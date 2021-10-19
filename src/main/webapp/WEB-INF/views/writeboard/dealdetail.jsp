@@ -291,7 +291,7 @@ function del() {
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/tdreplyresult" method="post">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
-				<input type="text" id="user_id" name="user_id" value="${id }" readonly><br> 
+				<input type="hidden" id="user_id" name="user_id" value="${id }" readonly><br> 
 				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
 				<input type="submit" value="등록">
 				</form><br><br><br><br>
@@ -299,7 +299,8 @@ function del() {
 		</div>
 	</c:if>
 	</li>
-</ul>	
+</ul>
+</div>
 <script src="${pageContext.request.contextPath}/resources/js/writeboard.js"></script>
 <script>
 //좋아요

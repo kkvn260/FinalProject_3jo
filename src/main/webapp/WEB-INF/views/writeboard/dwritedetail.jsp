@@ -89,7 +89,7 @@ textarea{
 		<span class="likeno">좋아요 수 : ${list.likeno }</span>
 		</div>
 		<label>카테고리</label>
-		<span>${list.category}</span>
+		<span> : ${list.category}</span>
 		<hr class="hr1">
 	</li>
 	<li>
@@ -164,6 +164,7 @@ textarea{
 			<hr class="hr1">
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/dreplyresult" method="post">
+				<input type="hidden" name="user_id" value="${id }">
 				<input type="hidden" id="chatno" name="chatno" value="${list.chatno }">
 				<textarea class="replytext" style="resize: none;" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required></textarea>
 				<input type="submit" value="등록" style="margin-bottom:5px;" class="btn1">
