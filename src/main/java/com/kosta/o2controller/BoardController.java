@@ -36,7 +36,7 @@ public class BoardController {
 
 		if (search == "total" || search.equals("total") || search == "user_id" || search.equals("user_id")
 				|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
-				|| search == "cat" || search.equals("cat")) {
+				|| search == "cat" || search.equals("cat")|| search == "addr" || search.equals("addr")) {
 			Matcher matcher = pattern.matcher(searchtxt);
 			if (matcher.find()) {
 				model.addAttribute("searchtxt", searchtxt);
@@ -78,7 +78,7 @@ public class BoardController {
 
 		if (search == "total" || search.equals("total") || search == "user_id" || search.equals("user_id")
 				|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
-				|| search == "cat" || search.equals("cat")) {
+				|| search == "cat" || search.equals("cat")|| search == "addr" || search.equals("addr")) {
 			Matcher matcher = pattern.matcher(searchtxt);
 			if (matcher.find()) {
 				model.addAttribute("searchtxt", searchtxt);
@@ -161,7 +161,8 @@ public class BoardController {
 
 		if (search == "total" || search.equals("total") || search == "user_id" || search.equals("user_id")
 				|| search == "title" || search.equals("title") || search == "content" || search.equals("content")
-				|| search == "cat" || search.equals("cat")) {
+				|| search == "cat" || search.equals("cat")|| search == "addr" || search.equals("addr")) {
+			
 			Matcher matcher = pattern.matcher(searchtxt);
 			if (matcher.find()) {
 				model.addAttribute("searchtxt", searchtxt);

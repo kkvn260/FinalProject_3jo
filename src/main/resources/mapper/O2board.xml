@@ -199,10 +199,9 @@
 			<choose>
 				<when test="search=='total'">
 					and (user_id like CONCAT ('%',#{searchtxt},'%')
-					or
-					title like CONCAT ('%',#{searchtxt},'%')
-					or content like CONCAT
-					('%',#{searchtxt},'%'))
+					or title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT('%',#{searchtxt},'%'))
+					or tradeaddr like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
@@ -213,8 +212,8 @@
 				<when test="search=='content'">
 					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
-				<when test="search=='cat'">
-					and category2 like CONCAT ('%',#{searchtxt},'%')
+				<when test="search=='addr'">
+					and tradeaddr like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
 		</if>
@@ -271,10 +270,9 @@
 			<choose>
 				<when test="search=='total'">
 					and (user_id like CONCAT ('%',#{searchtxt},'%')
-					or
-					title like CONCAT ('%',#{searchtxt},'%')
-					or content like CONCAT
-					('%',#{searchtxt},'%'))
+					or title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT ('%',#{searchtxt},'%'))
+					or tradeaddr like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
@@ -285,8 +283,8 @@
 				<when test="search=='content'">
 					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
-				<when test="search=='cat'">
-					and category2 like CONCAT ('%',#{searchtxt},'%')
+				<when test="search=='addr'">
+					and tradeaddr like CONCAT ('%',#{searchtxt},'%')
 				</when>
 			</choose>
 		</if>

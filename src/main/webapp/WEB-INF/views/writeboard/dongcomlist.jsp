@@ -87,6 +87,7 @@
 			<option value="user_id">회원ID</option>
 			<option value="title">제목</option>
 			<option value="content">내용</option>
+			<option value="addr">지역</option>
 		  </select>
 		  <input type="text"  name="searchtxt">
 		  <input type="submit" value="검색">

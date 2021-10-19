@@ -9,23 +9,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
- 
-   #h2{color:black;
-       font-family: 'Gowun Dodum', sans-serif;
-   }
-   h2 a{color:grey;
-   }
-   h2 a:link{text-decoration:none;}
-   h2 a:hover, td a:hover{color:green;}
-   h2 a{text-shadow: none;}
- #deallist{
-      align:center;
-      margin:0 auto;
-      width:1400px;
-      font-family: 'Gowun Dodum', sans-serif;
-	  font-size: 18px;
-    }
 </style>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/list/deallist.css">
+
 </head>
 <body>
 <br><br><br><br><br><br>
@@ -89,17 +75,20 @@
    		<c:out value="다음"></c:out>
   	  </a>
  	</c:if><br><br><br><br>
-
-	<form method="get" action="deallist">
-		<select name="search">
-		  <option value="total">전체</option>
-		  <option value="user_id">회원ID</option>
-		  <option value="title">제목</option>
-		  <option value="content">내용</option>
-		</select>
-		<input type="text"  name="searchtxt">
+    
+	<div class="">
+	  <form method="get" action="deallist" >
+		 <select name="search">
+		   <option value="total">전체</option>
+		   <option value="user_id">회원ID</option>
+		   <option value="title">제목</option>
+		   <option value="content">내용</option>
+		   <option value="addr">지역</option>
+		 </select>
+		<input class="searchtxt" type="text"  name="searchtxt">
 		<input type="submit" value="검색">
 	  </form>
+	</div>
 
 	  <span>
 		<h4 style="display: inline; font-family: 'Gowun Dodum', sans-serif;  margin-right:170px;">인기</h4>
