@@ -17,38 +17,6 @@
 	  font-size: 18px;
     }
    
-  .search_box{
-     margin-bottom: auto;
-     margin-top: auto;
-     height: 70px;
-     background-color: #fff;
-     border-radius: 40px;
-     padding: 10px
-  }
-  
-  .searchtxt{
-     color: white;
-     border: 0;
-     outline: 0;
-     background: none;
-     width: 0;
-     margin-top: 5px;
-     caret-color: transparent;
-     line-height: 40px;
-     transition: width 0.4s linear
-  }
-  
-  .search_box .searchtxt{
-     padding: 0 10px;
-     width: 550px;
-     caret-color: red;
-     transition: width 0.4s linear
-  }
-  
-  .search_box:hover>.searchicon {
-     background: red;
-     color: #fff
- }
 
  .searchicon {
      height: 50px;
@@ -62,7 +30,8 @@
      background-color: green;
  }
 
- a:link {
+ i:link {
      text-decoration: none
  }
+
     

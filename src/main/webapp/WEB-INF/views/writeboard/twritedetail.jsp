@@ -324,21 +324,23 @@ var marker = new naver.maps.Marker({
 			
 			LineChartDemo = Chart.Line(ctx, {
 				data : lineChartData,
-				options : {
+				options : {responsive: flase,
+						   legend: {
+								labels: {
+										fontColor: "black",
+										fontSize: 20
+								    }
+						 },
 					scales : {
 						yAxes : [ {
 							ticks : {
-								min: 0,
+								min: this.min,
 								max : this.max,
-								callback: function (value){
-									return (value/ this.max*100).toFixed(0)+'%';
-								},
+								stepSize : 10000,	
 							},
 							scaleLabel:{
 								display:true,
-								labelString:'Percentage',
-							}
-							
+							}		
 						}]
 					}
 				}
@@ -346,12 +348,9 @@ var marker = new naver.maps.Marker({
 
 		}
 	
-
 	$('#btn_search').click(function(){
 		let category = $('#searchKeyword option:selected').val();
 		let itemProd= $('#itemProd').val();
-		console.log(category);
-		console.log(itemProd);
 	
 	$.ajax({
 		method:'post'
@@ -365,8 +364,6 @@ var marker = new naver.maps.Marker({
                 chartData.push(value);
 			});
 
-			console.log(chartData);
-						
 			// 챠트 데이터
 			lineChartData = 
 			{ 
