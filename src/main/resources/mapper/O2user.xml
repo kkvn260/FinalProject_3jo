@@ -181,8 +181,6 @@
 			,#{birthday}
 			,0
 			,0
-			,0
-			,0
 			,#{gender}
 		)
 	</insert>
