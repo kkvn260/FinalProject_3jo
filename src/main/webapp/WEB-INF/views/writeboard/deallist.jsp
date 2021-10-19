@@ -8,7 +8,21 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+ 
+   #h2{color:black;
+       font-family: 'Gowun Dodum', sans-serif;
+   }
+   h2 a{color:grey;}
+   h2 a:link{text-decoration:none;}
+   h2 a:hover, td a:hover{color:green;}
+   #deallist{
+      align:center;
+      margin:0 auto;
+      width:1400px;
+	  font-family: 'Gowun Dodum', sans-serif;
+	  font-size: 18px;
+  }
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/list/deallist.css">
 
