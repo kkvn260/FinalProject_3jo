@@ -119,12 +119,9 @@ public class UserController {
 		@PostMapping(value = "/member/findidresult" )
 		@ResponseBody
 		public String findid(@RequestBody  O2UserDTO dto) {
-			System.out.println("user_name!!"+dto.getUser_name());
-			System.out.println("birthday!!"+dto.getBirthday());
-			System.out.println("phoneno!!"+dto.getPhoneno());
+			
 			String result= service.findidcheck(dto.getUser_name(), dto.getBirthday(),dto.getPhoneno());
 		 
-			System.out.println("result : "+result);
 			return result;
 		}
 		//pwd
@@ -136,7 +133,6 @@ public class UserController {
 		@PostMapping(value = "/findpwd")
 		public String findpwdSend(HttpSession session,@RequestParam (required=false)String email,RedirectAttributes ra) {
 			O2UserDTO member = service.findAccount(email);
-			System.out.println("email"+email);
 			String path="";
 			if(member ==null) {
 				ra.addFlashAttribute("resultMsg","입력하신 이메일로 가입된 정보가 없습니다.");
@@ -289,7 +285,6 @@ public class UserController {
        public String naverlogin(Model model, HttpSession session) { 
 
     	   String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session); 
-    	   System.out.println("네이버:" + naverAuthUrl); 
     	   model.addAttribute("url", naverAuthUrl); 
     	   return "member/naverlogin"; 
     	   } 

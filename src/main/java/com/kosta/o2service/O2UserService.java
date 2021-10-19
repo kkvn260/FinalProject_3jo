@@ -70,7 +70,7 @@ public class O2UserService {
 		
 		try {
 			resultcount = userdao.signUser(userdto);
-			System.out.println("dto 확인" +userdto.getUser_id()); 
+			 
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
