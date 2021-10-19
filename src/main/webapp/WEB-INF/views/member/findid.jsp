@@ -8,8 +8,11 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
-
+    #container{
+       font-family: 'Gowun Dodum', sans-serif;
+    }
 	#buttons{
 		margin-top: 70px;
 
@@ -88,7 +91,7 @@ $(document).ready(function(){
 <br><br><br><br><br><br>
 <div id= "container">
 <div id="title" align="center">
-<h2>ID 찾기</h2>
+<h2 style="font-family: 'Gowun Dodum', sans-serif;">ID 찾기</h2>
 </div>
 
 <div id="findid_form" align="center">
@@ -104,7 +107,7 @@ $(document).ready(function(){
 
 <div id="buttons">
 	<button type="button" id="cancel" style="width: 200px; height: 50px; background-color: #ff2233; color: white">취소</button>
-	<button type="button" id="idsearchbtn" style="width: 200px; height: 50px; background-color: #ff7722; color: white" >확인</button>
+	<button type="button" id="idsearchbtn" style="width: 200px; height: 50px; background-color: blue; color: white" >확인</button>
 	
 </div>
 

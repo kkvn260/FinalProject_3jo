@@ -7,9 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
+ @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 #container{
 	background-color: white;
+	 font-family: 'Gowun Dodum', sans-serif;
 }
 input{
 	width: 300px;
@@ -56,7 +57,7 @@ border-bottom-right-radius: 5px;
 <form id="content" action="findpwd" method="post" >
 	<div class="subtitle" align="center" style="font-weight: bold;">
 		<br><br>
-		<h2 style="font-size: 35px">PW 찾기</h2>
+		<h2 style="font-size: 35px;  font-family: 'Gowun Dodum', sans-serif;">PW 찾기</h2>
 		<p>가입한 이메일을 입력하면 다시 계정에 로그인 할 수 있는 임시 비밀번호를 보내드립니다.</p>
 	</div>
 	<br><br>
