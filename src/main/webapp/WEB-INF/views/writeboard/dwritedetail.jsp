@@ -61,8 +61,9 @@ textarea{
 }
 </style>
 <body>
-<div id="dwritedetail">
+<input type="text" id="user_id" value="${id }" readonly style="color: white;">
 <br><br><br><br><br><br>
+<div id="dwritedetail">
 <div class="modal">
 	<div class="modal_content" title="클릭하면 닫기!.">
 		<img class="modalimg" src="">
@@ -187,8 +188,9 @@ function del() {
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let chatno=${list.chatno};
-		let data1={user_id:id,chatno:chatno};
+		let id=$("#user_id").val();
+		let chatno=${list.chatno}
+		let data1={user_id:id,tradeno:chatno};
 		if(${empty id}){
 			alert("로그인이 필요합니다.");
 		}else{

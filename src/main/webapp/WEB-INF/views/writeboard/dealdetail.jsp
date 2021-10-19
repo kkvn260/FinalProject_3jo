@@ -166,8 +166,9 @@ function del() {
 }
 </script>
 <body>
-<div id="dealdetail">
+<input type="text" id="user_id" value="${id }" readonly style="color: white;">
 <br><br><br><br><br><br>
+<div id="dealdetail">
 <div class="modal">
 	<div class="modal_content" title="클릭하면 닫기!.">
 		<img class="modalimg" src="">
@@ -304,7 +305,8 @@ function del() {
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let tradeno=${list.tradeno};
+		let id=$("#user_id").val();
+		let tradeno=${list.tradeno}
 		let data1={user_id:id,tradeno:tradeno};
 		if(${empty id}){
 			alert("로그인이 필요합니다.");

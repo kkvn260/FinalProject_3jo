@@ -75,6 +75,7 @@ textarea{
     }
 </script>
 <body>
+<input type="text" id="user_id" value="${id }" readonly style="color: white;">
 <br><br><br><br><br><br>
 <div id="tdetail">
 <div class="modal">
@@ -227,7 +228,8 @@ textarea{
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let tradeno=${list.tradeno};
+		let id=$("#user_id").val();
+		let tradeno=${list.tradeno}
 		let data1={user_id:id,tradeno:tradeno};
 		if(${empty id}){
 			alert("로그인이 필요합니다.");
