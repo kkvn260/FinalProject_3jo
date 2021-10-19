@@ -19,14 +19,14 @@ public class SearchFilter {
 		//12시간마다 하루 전 검색데이터들 삭제
 	@Scheduled(cron = "0 0 0/12 * * *")
 	public void removeSearch() {
-		log.warn("removeSearchData.............");
+		log.info("removeSearchData.............");
 		serviceOther.removeSearchData();
 	}
 	
 		//매일 새벽1시에 중고시세 받아옴
 	@Scheduled(cron = "0 0 1 * * *")
 	public int scrapMobileData() {
-		log.warn("insertMobileData.................");
+		log.info("insertMobileData.................");
 		return serviceOther.getMobileData();
 	}
 	
