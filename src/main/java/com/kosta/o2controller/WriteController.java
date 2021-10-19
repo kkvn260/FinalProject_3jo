@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kosta.o2dto.MobileVO;
 import com.kosta.o2dto.O2DealDTO;
 import com.kosta.o2dto.O2DongComDTO;
 import com.kosta.o2dto.O2FileDTO;
@@ -571,13 +570,13 @@ public class WriteController {
 	@ResponseBody
 	public HashMap<String, Integer> getPriceData(@RequestParam  HashMap<String, String>  hm) {
 		
-		String category = (String)hm.get("category");
+		
 		String itemProd = (String)hm.get("itemProd");
 		
 		HashMap<String, Integer> priceList=null;
 		
 		if(itemProd!=null || itemProd!="")
-			priceList = service.getPriceData(category,itemProd);
+			priceList = service.getPriceData(itemProd);
 				
 		return priceList;
 	}

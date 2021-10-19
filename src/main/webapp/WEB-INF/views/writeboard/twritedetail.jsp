@@ -149,12 +149,10 @@ textarea{
 		<input type="button" class="btn1" id="slist" value="목록" onclick="location.href='${pageContext.request.contextPath }/selllist'">
 	</li>
 	<li>
-	<div>
+
+
+	
 	 <form class="priceSearch" id="priceSearch">
-		<select id="searchKeyword">
-		  <option value="item_name">제품명</option>
-		  <option value="product_no">제품모델명</option>
-		</select>
 		<input type="text" id="itemProd" placeholder="검색어를 입력하세요" name="item_search">
 		<button type="button" id="btn_search" class="btn1" style="border:0;">시세조회</button>
 		<div id="graph" style="width: 80%; margin: 30px;">
@@ -162,8 +160,10 @@ textarea{
 				<canvas id="priceChart" style="height: 30vh; width: 40vw"></canvas>
 			</div>
 		</div>
-	</form>
-	</div>
+	 </form>
+
+
+
 	<br><br><br><br>
     </li>
 
@@ -372,14 +372,14 @@ var marker = new naver.maps.Marker({
 		}
 	
 	$('#btn_search').click(function(){
-		let category = $('#searchKeyword option:selected').val();
+	
 		let itemProd= $('#itemProd').val();
 	
 		$.ajax({
 			method:'post'
 			,url:"${pageContext.request.contextPath }/getPriceData"
 			,dataType: 'Json'
-			,data:{'category': category, 'itemProd':itemProd}
+			,data:{'itemProd':itemProd}
 			,success:function(data){
 
 				chartData.splice(0,chartData.length);

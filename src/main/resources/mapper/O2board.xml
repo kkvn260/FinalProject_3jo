@@ -901,14 +901,8 @@
 		SELECT item_name, round(avg(price),-1) as price
 		FROM AvgPrice_3jo
 		WHERE writedate = date_format(now(),'%Y-%m-%d')
-			<choose>
-				<when test="category=='item_name'">
-				and item_name like CONCAT ('%',#{itemProd},'%')
-				</when>
-				<when test="category=='product_no'">
-				and product_no like CONCAT ('%',#{itemProd},'%')
-				</when>
-			</choose>
+		      and item_name like CONCAT ('%',#{itemProd},'%')
+			
 		GROUP BY item_name
 	</select>
 
@@ -918,18 +912,8 @@
 		select item_name, round(avg(price),-1) as price
 		from AvgPrice_3jo
 		where writedate between date_add(now(),interval-1 Week) and now()
-		
-		<if test="itemProd != null and itemProd!=''">
-			<choose>
-				<when test="category=='item_name'">
-			    and item_name like CONCAT ('%',#{itemProd},'%')
-				</when>
-				<when test="category=='product_no'">
-				and product_no like CONCAT ('%',#{itemProd},'%')
-				</when>
-			</choose>
-		</if>
-		group by item_name
+     		    and item_name like CONCAT ('%',#{itemProd},'%')
+		GROUP BY item_name
 
 	</select>
 
@@ -939,17 +923,8 @@
 		select item_name, round(avg(price),-1) as price
 		from AvgPrice_3jo
 		where writedate between date_add(now(),interval-1 Month) and now()
-		<if test="itemProd != null and itemProd!=''">
-			<choose>
-				<when test="category=='item_name'">
 				and item_name like CONCAT ('%',#{itemProd},'%')
-				</when>
-				<when test="category=='product_no'">
-				and product_no like CONCAT ('%',#{itemProd},'%')
-				</when>
-			</choose>
-		</if>
-		group by item_name
+		GROUP BY item_name
 	</select>
 
 </mapper>

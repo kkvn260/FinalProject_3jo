@@ -456,11 +456,10 @@ public class O2WriteServiceImple implements O2WriteService {
 	}
 
 	@Override
-	public HashMap<String, Integer > getPriceData(String category, String itemProd) {
+	public HashMap<String, Integer > getPriceData(String itemProd) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("itemProd", itemProd);
-		hm.put("category", category);
-			
+		
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("dayPrice", dao.getDayPrice(hm).getPrice());
 		map.put("weekPrice", dao.getWeekPrice(hm).getPrice());
