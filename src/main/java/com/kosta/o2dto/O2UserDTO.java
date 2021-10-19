@@ -23,5 +23,4 @@ public class O2UserDTO {
 	private String addr1;
 	private String addr2;
 	private String gender;
-	private int grade;
 }
