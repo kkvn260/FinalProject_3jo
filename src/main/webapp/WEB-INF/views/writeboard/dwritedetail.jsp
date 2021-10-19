@@ -93,7 +93,6 @@ textarea{
 		<hr class="hr1">
 	</li>
 	<li>
-		<input type="hidden" id="user_id" value="${list.user_id }" readonly>
 		<label>제목</label>
 		<input type="text" id="title" value="${list.title }" readonly>
 		<hr class="hr1">
@@ -188,7 +187,7 @@ function del() {
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let chatno=${list.chatno}
+		let chatno=${list.chatno};
 		let data1={user_id:id,chatno:chatno};
 		if(${empty id}){
 			alert("로그인이 필요합니다.");

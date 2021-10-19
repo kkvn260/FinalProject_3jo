@@ -115,12 +115,8 @@ public class WriteController {
 		String root_path = request.getSession().getServletContext().getRealPath("/"); 
 		String attach_path = "resources/img/";
 		 for (MultipartFile mf : images) {
-	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
-
-	            System.out.println("originFileName : " + fileName);
-
+	            String fileName = mf.getOriginalFilename(); 
 	            String safeFile = root_path + attach_path + fileName;
-	            System.out.println(safeFile);
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {
@@ -154,11 +150,7 @@ public class WriteController {
 		String attach_path = "resources/img/";
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
-
-	            System.out.println("originFileName : " + fileName);
-
 	            String safeFile = root_path + attach_path + fileName;
-	            System.out.println(safeFile);
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {
@@ -207,7 +199,6 @@ public class WriteController {
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
 		model.addAttribute("result",result);
-		System.out.println(result.getUser_id());
 		return "writeboard/dwritedetail";
 	}
 	

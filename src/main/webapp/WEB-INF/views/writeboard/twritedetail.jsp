@@ -227,7 +227,7 @@ textarea{
 //좋아요
 $(function () {
 	$(".like_btn").on("click",function(){
-		let tradeno=${list.tradeno}
+		let tradeno=${list.tradeno};
 		let data1={user_id:id,tradeno:tradeno};
 		if(${empty id}){
 			alert("로그인이 필요합니다.");
