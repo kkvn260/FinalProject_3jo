@@ -332,7 +332,12 @@ public class WriteController {
 	                e.printStackTrace();
 	            }
 	        }
+		 if(dto.getSell_price()!=null) {
 		return "redirect:/twritedetail/"+dto.getTradeno();
+		 }
+		 else {
+	    return "redirect:/tdealdetail/"+dto.getTradeno();
+		 }
 	}
 	
 	@RequestMapping("dwritemodifyresult")
