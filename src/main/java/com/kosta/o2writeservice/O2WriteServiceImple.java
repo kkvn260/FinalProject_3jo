@@ -79,7 +79,6 @@ public class O2WriteServiceImple implements O2WriteService {
 		// TODO Auto-generated method stub
 		int no=dto.getTradeno();
 		dao.twritemodifyresult(dto);
-//		System.out.println(no);
 		Calendar cal=Calendar.getInstance();
 		SimpleDateFormat dateform=new SimpleDateFormat("yyyyMMdd_HHmmSS");
 		String time=dateform.format(cal.getTime());

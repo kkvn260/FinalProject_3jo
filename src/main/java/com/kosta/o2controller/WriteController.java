@@ -76,12 +76,11 @@ public class WriteController {
 			}
 		}
 		service.twriteinsert(dto,images);
-		String root_path = request.getSession().getServletContext().getRealPath("/"); 
 		String attach_path = "resources/img/";
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
 
-	            String safeFile = root_path + attach_path + fileName;
+	            String safeFile =attach_path + fileName;
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {
@@ -111,11 +110,10 @@ public class WriteController {
 			}
 		}
 		service.dwriteinsert(dto,images);
-		String root_path = request.getSession().getServletContext().getRealPath("/"); 
 		String attach_path = "resources/img/";
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); 
-	            String safeFile = root_path + attach_path + fileName;
+	            String safeFile = attach_path + fileName;
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {
@@ -145,11 +143,10 @@ public class WriteController {
 			}
 		}
 		service.qwriteinsert(dto,images);
-		String root_path = request.getSession().getServletContext().getRealPath("/"); 
 		String attach_path = "resources/img/";
 		 for (MultipartFile mf : images) {
 	            String fileName = mf.getOriginalFilename(); // 원본 파일 명
-	            String safeFile = root_path + attach_path + fileName;
+	            String safeFile =  attach_path + fileName;
 	            try {
 	                mf.transferTo(new File(safeFile));
 	            } catch (IllegalStateException e) {

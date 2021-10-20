@@ -217,7 +217,7 @@ function del() {
 		<span id="ndeal_price">${price }</span><span>원</span>&ensp;
 		<label >입찰 희망가격</label>
 		<input type="text" id="deal_price" class="deal_price" name="deal_price" onkeyup="numberWithCommas2(this.value)">원
-		<button id="deal_btn" >입찰하기</button>
+		<button id="deal_btn" class="btn1" >입찰하기</button>
 		<hr id="hr">
 	</li>
 	<li>
@@ -293,7 +293,7 @@ function del() {
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<input type="hidden" id="user_id" name="user_id" value="${id }" readonly><br> 
 				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요." required style="resize: none;"></textarea>
-				<input type="submit" value="등록">
+				<input type="submit" value="등록" class="btn1">
 				</form><br><br><br><br>
 			</div>
 		</div>
