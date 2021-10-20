@@ -173,7 +173,6 @@ textarea{
 	<li>
 		<label>댓글</label>
 		<hr id="hr">
-		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
 				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
@@ -200,7 +199,6 @@ textarea{
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
-		</div>
 	</li>
 	</c:if>
 	<li>
@@ -210,6 +208,7 @@ textarea{
 			<hr id="hr">
 				<label>댓글 쓰기</label>
 				<form action="${pageContext.request.contextPath }/treplyresult" method="post">
+				<input type="hidden" name="user_id" value="${id }">
 				<input type="hidden" id="tradeno" name="tradeno" value="${list.tradeno }">
 				<textarea class="replytext" rows="4" cols="90" id="reply_content" name="reply_content" placeholder="댓글을 입력하세요."
 						 required style="resize: none;"></textarea>

@@ -188,6 +188,7 @@
 		TradeBoard_3jo a1 left join
 		File_3jo a2
 		on a1.tradeno=a2.tradeno
+		group by a1.tradeno
 		order
 		by viewno desc limit 8
 	</select>
@@ -497,6 +498,7 @@
 		ChatBoard_3jo b1 left join File_3jo b2
 		on
 		b1.chatno=b2.chatno
+		group by b1.chatno
 		order by viewno desc limit 8
 	</select>
 
