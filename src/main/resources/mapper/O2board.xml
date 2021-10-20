@@ -209,7 +209,7 @@
 					or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
 				</when>
 				<when test="search=='user_id'">
-					and user_id like CONCAT ('%',#{searchtxt},'%')
+					and a1.user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='title'">
 					and title like CONCAT ('%',#{searchtxt},'%')
@@ -283,7 +283,7 @@
 					or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
 				</when>
 				<when test="search=='user_id'">
-					and user_id like CONCAT ('%',#{searchtxt},'%')
+					and a1.user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='title'">
 					and title like CONCAT ('%',#{searchtxt},'%')
@@ -332,12 +332,12 @@
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
 				<when test="search=='total'">
-					and (user_id like CONCAT ('%',#{searchtxt},'%')
+					and (a1.user_id like CONCAT ('%',#{searchtxt},'%')
 					or title like CONCAT ('%',#{searchtxt},'%')
 					or content like CONCAT ('%',#{searchtxt},'%'))
 				</when>
 				<when test="search=='user_id'">
-					and user_id like CONCAT ('%',#{searchtxt},'%')
+					and a1.user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='title'">
 					and title like CONCAT ('%',#{searchtxt},'%')
