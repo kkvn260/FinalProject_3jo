@@ -36,6 +36,9 @@
            .k1:hover{
            		border: 3px solid green;
            }
+           .img1{
+            height: 150px;
+           }
 
            @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
@@ -105,10 +108,10 @@
                         <div class="card h-100 k1" style="border-radius: 30px;">
                             <!-- Product image-->
                             <c:if test="${not empty item.real_name }">
-                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px; height: 285px;" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
                             </c:if>
                             <c:if test="${empty item.real_name }">
-                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px; height: 285px;" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
                             </c:if>
                             <!-- Product details-->
                             <div class="card-body p-4">
@@ -144,10 +147,10 @@
                         <div class="card h-100 k1" style="border-radius: 30px;">
                             <!-- Product image-->
                             <c:if test="${not empty item.real_name }">
-                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px; height: 285px;" src="${pageContext.request.contextPath }/resources/img/${item.real_name}" alt="..." />
                             </c:if>
                             <c:if test="${empty item.real_name }">
-                            <img class="card-img-top" style="border-radius: 30px;" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
+                            <img class="card-img-top" style="border-radius: 30px; height: 285px;" src="${pageContext.request.contextPath }/resources/img/이미지x.png" alt="..." />
                             </c:if>
                             <!-- Product details-->
                             <div class="card-body p-4">
