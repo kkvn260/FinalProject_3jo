@@ -53,6 +53,7 @@
 		update TradeBoard_3jo
 		set category1=#{category1}
 		,category2=#{category2}
+		,sell_price=#{sell_price}
 		,title=#{title}
 		,content=#{content}
 		,map_x=#{map_x}

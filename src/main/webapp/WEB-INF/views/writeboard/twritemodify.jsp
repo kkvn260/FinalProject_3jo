@@ -68,7 +68,7 @@ textarea{
 	<li>
 		<input type="hidden" name="tradeno" id="tradeno" value="${list.tradeno }">
 		<label>제목</label>
-		<input type="text" id="title" name="title" value="${list.title }">
+		<input type="text" id="title" name="title" value="${list.title }" size="100">
 		<hr class="hr1">
 	</li>
 	<li>

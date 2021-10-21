@@ -47,6 +47,7 @@ var category2=["모바일","카메라","PC/노트북","가전"];
 var category3=["생활용품","주방용품","식품"];
 var category4=["스포츠","수집품","게임","반려동물"];
 var category5=["국내도서","해외도서","CD/DVD/LP"];
+var category6=["기타"];
 
 
  $("select[name=category1]").each(function() {

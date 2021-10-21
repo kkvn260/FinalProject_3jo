@@ -94,7 +94,7 @@ textarea{
 	</li>
 	<li>
 		<label>제목</label>
-		<input type="text" id="title" value="${list.title }" readonly>
+		<input type="text" id="title" value="${list.title }" readonly size="100">
 		<hr class="hr1">
 	</li>
 	<li>

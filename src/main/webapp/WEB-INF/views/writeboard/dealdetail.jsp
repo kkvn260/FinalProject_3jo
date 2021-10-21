@@ -254,7 +254,6 @@ function del() {
 	<li>
 		<label>댓글</label>
 		<hr id="hr">
-		<div id="replyarea">
 		<c:forEach var="item" items="${list3 }">
 			<li value="${item.replyno }">
 				<div class="replychild_btn" style="margin-left:${10*item.dept}px; display: flex; justify-content: space-between; margin-bottom:5px">
@@ -279,9 +278,7 @@ function del() {
 				<input type="hidden" value="${item.reparent }" name="reparent" class="reparent">
 			</li>
 		</c:forEach>
-		</div>
 	</li>
-	<hr id="hr" style="width:1375px; margin-left:268px;">
 	</c:if>
 	<li>
 	<c:if test="${id ne null}">

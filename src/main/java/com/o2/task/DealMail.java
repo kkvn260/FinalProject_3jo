@@ -29,7 +29,6 @@ public class DealMail {
 	public void dealresult() throws ParseException {
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		List<O2WriteBoardDTO> dto=service.maillist();
-		if(dto!=null || dto.equals("")) {
 		for(O2WriteBoardDTO list:dto) {
 			Date date=new Date();
 			Date listdate = sdFormat.parse(list.getWritedate());
@@ -38,9 +37,8 @@ public class DealMail {
 			O2DealDTO dto2=service2.dealresult(list.getTradeno());
 			String getmail=service.getmail(dto2.getUser_id());
 			if((r1-r2)==0.0) {
-					service.dealmail(getmail,list.getTitle());					
+					service.dealmail(getmail,list.getTitle());		
 			}
-		}
 		}
 		
 	}
