@@ -116,59 +116,69 @@
 
 
 	<select id="sellCount" parameterType="hashmap" resultType="int">
-		SELECT count(*) from TradeBoard_3jo
-		WHERE deal_price IS NULL or
-		deal_price=''
+		SELECT count(*) 
+		from TradeBoard_3jo a1 inner join User_3jo a2
+		on a1.user_id=a2.user_id
+		WHERE deal_price IS NULL or deal_price=''
 		<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 			<choose>
-				<when test="search=='total'">
-					and (user_id like CONCAT ('%',#{searchtxt},'%')
-					or
-					title like CONCAT ('%',#{searchtxt},'%')
-					or content like CONCAT
-					('%',#{searchtxt},'%'))
+				<when test='search=="total" or search.equals("total")'>
+					and (a1.user_id like CONCAT ('%',#{searchtxt},'%')
+					       or title like CONCAT ('%',#{searchtxt},'%')
+					       or content like CONCAT ('%',#{searchtxt},'%')
+					       or a2.addr1 like CONCAT ('%',#{searchtxt},'%')
+				           or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
 				</when>
 				<when test="search=='user_id'">
-					and user_id like CONCAT ('%',#{searchtxt},'%')
-				</when>
-				<when test="search=='content'">
-					and content like CONCAT ('%',#{searchtxt},'%')
+					and a1.user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='title'">
 					and title like CONCAT ('%',#{searchtxt},'%')
 				</when>
+				<when test="search=='content'">
+					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
 				<when test="search=='cat'">
 					and category2 like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='addr'">
+					and (a2.addr1 like CONCAT ('%',#{searchtxt},'%')
+					     or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
 				</when>
 			</choose>
 		</if>
 	</select>
 
 	<select id="dealCount" parameterType="hashmap" resultType="int">
-		SELECT count(*) from TradeBoard_3jo
-		<![CDATA[
-		WHERE deal_price is not NULL
-		]]>
+		SELECT count(*) 
+		FROM TradeBoard_3jo a1 inner join User_3jo a2 
+		     on a1.user_id=a2.user_id
+		WHERE sell_price is null or sell_price=''
+
 		<if test="searchtxt=null and searchtxt!='' and !searchtext.equals('')">
 			<choose>
 				<when test="search=='total'">
-					and (user_id like CONCAT ('%',#{searchtxt},'%')
-					or
-					title like CONCAT ('%',#{searchtxt},'%')
-					or content like CONCAT
-					('%',#{searchtxt},'%'))
+					and (a1.user_id like CONCAT ('%',#{searchtxt},'%')
+					or title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT ('%',#{searchtxt},'%')
+					or a2.addr1 like CONCAT ('%',#{searchtxt},'%')
+					or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
 				</when>
 				<when test="search=='user_id'">
-					and user_id like CONCAT ('%',#{searchtxt},'%')
-				</when>
-				<when test="search=='content'">
-					and content like CONCAT ('%',#{searchtxt},'%')
+					and a1.user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
 				<when test="search=='title'">
 					and title like CONCAT ('%',#{searchtxt},'%')
 				</when>
+				<when test="search=='content'">
+					and content like CONCAT ('%',#{searchtxt},'%')
+				</when>
 				<when test="search=='cat'">
 					and category2 like CONCAT ('%',#{searchtxt},'%')
+				</when>
+				<when test="search=='addr'">
+					and (a2.addr1 like CONCAT ('%',#{searchtxt},'%')
+					or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
 				</when>
 			</choose>
 		</if>
@@ -219,6 +229,9 @@
 				<when test="search=='content'">
 					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
+				<when test="search=='cat'">
+					and category2 like CONCAT ('%',#{searchtxt},'%')
+				</when>
 				<when test="search=='addr'">
 					and (a2.addr1 like CONCAT ('%',#{searchtxt},'%')
 					or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
@@ -233,10 +246,14 @@
 	<select id="searchSellCount" parameterType="hashmap"
 		resultType="String">
 		SELECT DISTINCT category2 FROM TradeBoard_3jo
-		WHERE deal_price is null
-		or deal_price=''
+		WHERE deal_price is null or deal_price=''
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
+				<when test="search=='total'">
+					and (user_id like CONCAT ('%',#{searchtxt},'%')
+					or title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT ('%',#{searchtxt},'%'))
+				</when>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>
@@ -293,6 +310,9 @@
 				<when test="search=='content'">
 					and content like CONCAT ('%',#{searchtxt},'%')
 				</when>
+				<when test="search=='cat'">
+					and category2 like CONCAT ('%',#{searchtxt},'%')
+				</when>
 				<when test="search=='addr'">
 					and (a2.addr1 like CONCAT ('%',#{searchtxt},'%')
 					or a2.addr2 like CONCAT ('%',#{searchtxt},'%'))
@@ -307,11 +327,14 @@
 	<select id="searchDealCount" parameterType="hashmap"
 		resultType="String">
 		SELECT DISTINCT category2 FROM TradeBoard_3jo
-    <![CDATA[  
-		WHERE deal_price REGEXP '^[0-9]+$'
-	]]>
+		WHERE sell_price is null or sell_price=''
 		<if test="searchtxt!=null and searchtxt!=''">
 			<choose>
+				<when test="search=='total'">
+					and (user_id like CONCAT ('%',#{searchtxt},'%')
+					or title like CONCAT ('%',#{searchtxt},'%')
+					or content like CONCAT ('%',#{searchtxt},'%'))
+				</when>
 				<when test="search=='user_id'">
 					and user_id like CONCAT ('%',#{searchtxt},'%')
 				</when>

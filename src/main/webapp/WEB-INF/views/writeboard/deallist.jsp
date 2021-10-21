@@ -47,7 +47,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:if test="${list!=null }">
+			<c:if test="${list!=null and list.size() != 0}">
 				<c:forEach var="item" items="${list }">
 					<c:set var="number" value="${number+1 }" />
 					<tr>
